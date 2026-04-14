@@ -1,0 +1,206 @@
+/* src/components/UsefulLinks/UsefulLinks.css */
+.useful-links-section {
+  padding: 60px 40px;
+  background-image: url("../../images/sectionImage.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.useful-swiper {
+  width: 100%;
+  padding: 15px 0;
+}
+
+.useful-swiper .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
+.useful-swiper .swiper-slide {
+  height: auto;
+}
+
+.useful-section-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #111a28;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.useful-container {
+  max-width: 1920px;
+  width: 100%;
+}
+
+
+
+.useful-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  padding: 30px 20px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.useful-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.useful-card-top {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.useful-img {
+  max-width: 80px;
+  max-height: 80px;
+  object-fit: contain;
+}
+
+/* Specific tweaks if logo requires resizing */
+.useful-img.edu {
+  max-width: 70px;
+}
+
+.useful-img.rau {
+  max-width: 120px;
+  max-height: 70px;
+}
+
+.useful-img.tezkorquiz {
+  max-width: 130px;
+  max-height: 65px;
+  object-fit: contain;
+}
+
+.useful-img.canva {
+  max-width: 120px;
+  max-height: 40px;
+  object-fit: contain;
+}
+
+.useful-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a2b4c;
+  line-height: 1.4;
+  margin: 0 0 20px 0;
+  flex: 1; /* Pushes the button down */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.useful-card-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #3f9c89; /* Teal green colour */
+  border: 1.5px solid #3f9c89;
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  background: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.useful-card-btn:hover {
+  background: #3f9c89;
+  color: #ffffff;
+}
+
+.useful-btn-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Logo CSS Mockups */
+.custom-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+/* LexUz Logo Mockup */
+.lexuz-logo {
+  flex-direction: column;
+  color: #0d5c9e; /* Blue */
+}
+.lexuz-top {
+  display: flex;
+  align-items: baseline;
+  background: linear-gradient(180deg, transparent 65%, #0d5c9e 65%, #0d5c9e 85%, transparent 85%);
+  padding-bottom: 5px;
+}
+.lex-l {
+  font-size: 50px;
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+.lex-rest {
+  font-size: 26px;
+  font-weight: 800;
+  font-style: italic;
+  margin-left: -5px;
+}
+.lexuz-bar {
+  margin-top: -10px;
+  font-size: 11px;
+  font-weight: 700;
+  font-style: italic;
+  justify-content: flex-end;
+  display: flex;
+  width: 100%;
+  padding-right: 5px;
+}
+
+/* Open Data Portal Mockup */
+.data-logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  color: #3b5cb4;
+}
+.data-dots {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.dots-row {
+  display: flex;
+  gap: 3px;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: #3b5cb4;
+  border-radius: 50%;
+}
+.data-text {
+  display: flex;
+  flex-direction: column;
+  font-size: 10px;
+  font-weight: 800;
+  line-height: 1.1;
+  text-align: left;
+}

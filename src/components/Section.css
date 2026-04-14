@@ -1,0 +1,268 @@
+* {
+  box-sizing: border-box;
+  font-family: "MuseoSansCyrl-500", sans-serif;
+}
+
+.vision-section {
+  padding: 100px 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: inherit;
+}
+
+.vision-container {
+  width: min(1920px, 100%);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.vision-card {
+  display: flex;
+  background: white;
+  border-radius: 0;
+  align-items: center;
+  position: relative;
+}
+
+/* LEFT SIDE */
+.vision-left {
+  flex: 1;
+  /* padding: 60px 80px 60px 0; */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* keeps "practices" + closing-quote on same line on wide screens,
+   wraps naturally on mobile without overflow */
+.vision-last-word {
+  position: relative;
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .vision-last-word { white-space: normal; }
+}
+
+.quote-icon {
+  font-size: 80px;
+  color: #009dbb;
+  font-family: Georgia, serif;
+  line-height: 1;
+  position: absolute;
+  /* Adjusting font weight to be slightly bolder for the image match */
+  font-weight: 900;
+  font-style: italic;
+}
+
+.quote-top {
+  top: -10px;
+  left: -50px;
+}
+
+.quote-bottom {
+  bottom: -20px;
+  right: -40px;
+  transform: scaleY(-1) scaleX(-1);
+}
+
+.vision-title {
+  font-size: clamp(32px, 3.5vw, 64px);
+  font-weight: 800;
+  color: #1a202c;
+  margin-bottom: 30px;
+  line-height: 1.35;
+  position: relative;
+  max-width: 100%;
+  margin-left: 50px;
+}
+
+.vision-desc {
+  font-size: clamp(16px, 1.25vw, 22px);
+  color: #4a5568;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.vision-author {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: 50px;
+}
+
+.vision-gerb {
+  width: 50px;
+  height: auto;
+}
+
+.vision-author-info h4 {
+  font-size: clamp(18px, 1.3vw, 26px);
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0 0 4px 0;
+}
+
+.vision-author-info span {
+  font-size: clamp(14px, 1vw, 18px);
+  color: #718096;
+}
+
+/* RIGHT SIDE */
+.vision-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.vision-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  height: 500px;
+}
+
+/* Flag gradient border */
+.flag-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* Align left edge */
+  bottom: 0;
+  width: 100px;
+  /* Striped background starting from right */
+  background: linear-gradient(to right,
+      #009dbb 0%, #009dbb 33%,
+      #d52d27 33%, #d52d27 38%,
+      #ffffff 38%, #ffffff 62%,
+      #d52d27 62%, #d52d27 67%,
+      #1eb53a 67%, #1eb53a 100%);
+  transform: skewX(-9deg);
+  /* Angle matching the image's clip-path */
+  transform-origin: bottom left;
+  z-index: 1;
+}
+
+.vision-image-wrapper img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 95%;
+  /* Make room for flag stripes on left */
+  height: 100%;
+  object-fit: cover;
+  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+  z-index: 2;
+}
+
+/* ══════════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════════ */
+
+/* ── ≤ 992px ──────────────────────────────────── */
+@media (max-width: 992px) {
+  .vision-card {
+    flex-direction: column-reverse;
+  }
+
+  .vision-left {
+    padding: 40px 0;
+  }
+
+  .vision-right {
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+  }
+
+  .vision-image-wrapper {
+    max-width: 100%;
+    height: 400px;
+  }
+}
+
+/* ── ≤ 768px ──────────────────────────────────── */
+@media (max-width: 768px) {
+  .vision-section   { padding: 60px 0; }
+  .vision-container { padding: 0 20px; }
+
+  /* Scale down indent proportionally */
+  .vision-title {
+    font-size: clamp(26px, 5vw, 36px);
+    margin-left: 42px;
+  }
+  .vision-author { margin-left: 42px; }
+
+  .quote-icon  { font-size: 68px; }
+  .quote-top   { left: -42px; top: -8px; }
+  .quote-bottom { right: -34px; bottom: -20px; }
+}
+
+/* ── ≤ 560px ──────────────────────────────────── */
+@media (max-width: 560px) {
+  .vision-section   { padding: 48px 0; }
+  .vision-container { padding: 0 16px; }
+
+  .vision-title {
+    font-size: clamp(22px, 6.5vw, 30px);
+    margin-left: 36px;
+    margin-bottom: 20px;
+  }
+  .vision-author { margin-left: 36px; }
+
+  .quote-icon   { font-size: 56px; }
+  .quote-top    { left: -36px; top: -6px; }
+  .quote-bottom { right: -28px; bottom: -18px; }
+}
+
+/* ── ≤ 480px ──────────────────────────────────── */
+@media (max-width: 480px) {
+  .vision-section   { padding: 36px 0; }
+  .vision-left      { padding: 24px 0 28px; }
+
+  .vision-title {
+    font-size: clamp(20px, 6vw, 26px);
+    margin-left: 30px;
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }
+  .vision-author    { margin-left: 30px; gap: 12px; }
+  .vision-gerb      { width: 40px; }
+
+  .vision-author-info h4   { font-size: 15px; }
+  .vision-author-info span { font-size: 13px; }
+
+  .quote-icon   { font-size: 46px; }
+  .quote-top    { left: -30px; top: -4px; }
+  .quote-bottom { right: -24px; bottom: -16px; }
+
+  .vision-image-wrapper { height: 280px; }
+}
+
+/* ── ≤ 360px ──────────────────────────────────── */
+@media (max-width: 360px) {
+  .vision-container { padding: 0 12px; }
+
+  .vision-title {
+    font-size: 18px;
+    margin-left: 26px;
+  }
+  .vision-author { margin-left: 26px; }
+
+  .quote-icon   { font-size: 38px; }
+  .quote-top    { left: -26px; top: -2px; }
+  .quote-bottom { right: -20px; bottom: -14px; }
+
+  .vision-image-wrapper { height: 240px; }
+}
+
+@media (min-width: 1920px) and (min-height: 1000px) {
+  .hero-bg-image {
+    width: 1920px;
+    height: 1080px;
+  }
+}

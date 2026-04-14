@@ -1,0 +1,289 @@
+/* src/components/NewsSection/NewsSection.css */
+.newsx,
+.newsx * {
+  font-family: "DM Sans", sans-serif !important;
+  box-sizing: border-box;
+}
+
+.newsx {
+  position: relative;
+  background-image: url("../images/sectionImage.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 60px 0 80px;
+  margin: 60px 0;
+}
+
+.newsx::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.85);
+  /* Light overlay to ensure text is readable */
+  z-index: 0;
+}
+
+.newsx-container {
+  position: relative;
+  z-index: 1;
+}
+
+.newsx-container {
+  width: min(1920px, 100%);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.newsx-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.newsx-title {
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+  line-height: 1.05;
+  font-size: clamp(28px, 3.2vw, 64px);
+  color: var(--nav-ink);
+}
+
+.newsx-title span {
+  color: var(--brand-blue);
+}
+
+.newsx-more {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--brand-green);
+  font-weight: 700;
+  font-size: 16px;
+  white-space: nowrap;
+  opacity: .95;
+}
+
+.newsx-more:hover {
+  opacity: 1;
+}
+
+.newsx-more svg {
+  font-size: 18px;
+}
+
+/* ===== GRID (featured + 4 cards) ===== */
+.newsx-grid {
+  display: grid;
+  grid-template-columns: 1.55fr 1.1fr .95fr;
+  gap: 22px;
+  align-items: start;
+}
+
+/* ✅ side olib tashlangan layout */
+.newsx-grid--noSide {
+  grid-template-columns: 1.6fr 1.4fr;
+  /* 4 cardlar kengroq bo‘lsin */
+}
+
+/* ===== MEDIA ===== */
+.newsx-media {
+  position: relative;
+  display: block;
+  border-radius: 22px;
+  overflow: hidden;
+  background: var(--r-8);
+  border: 1px solid rgba(11, 18, 32, .08);
+  box-shadow: 0 10px 26px rgba(11, 18, 32, .06);
+  transition: .18s ease;
+}
+
+.newsx-media:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(11, 18, 32, .10);
+}
+
+.newsx-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.02);
+}
+
+.newsx-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, .20) 100%);
+  pointer-events: none;
+}
+
+.newsx-media {
+  aspect-ratio: 16 / 11;
+}
+
+.newsx-media.sm {
+  aspect-ratio: 16 / 10;
+  border-radius: 18px;
+}
+
+/* ===== META BAR ===== */
+.newsx-metaBar {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+  z-index: 2;
+}
+
+.newsx-metaBar.sm {
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+}
+
+.newsx-chip {
+  height: 32px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, .95);
+  background: rgba(10, 17, 30, .55);
+  border: 1px solid rgba(255, 255, 255, .18);
+  backdrop-filter: blur(10px);
+
+  /* ✅ chip hech qachon qisilib qolmasin */
+  white-space: nowrap;
+}
+
+.newsx-chip svg {
+  font-size: 16px;
+  opacity: .95;
+}
+
+/* ===== TITLES ===== */
+.newsx-h3 {
+  display: block;
+  margin-top: 14px;
+  text-decoration: none;
+  color: var(--nav-ink);
+  font-weight: 900;
+  letter-spacing: -0.3px;
+  line-height: 1.18;
+  font-size: clamp(20px, 1.8vw, 36px);
+}
+
+.newsx-h3:hover {
+  color: rgba(11, 18, 32, .85);
+}
+
+/* ✅ kichik card title ustma-ust chiqmasin */
+.newsx-h4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  margin-top: 10px;
+  text-decoration: none;
+  color: var(--nav-ink);
+  font-weight: 900;
+  letter-spacing: -0.2px;
+  line-height: 1.28;
+  /* ✅ biroz kengroq */
+  font-size: clamp(15px, 1.1vw, 22px);
+  /* ✅ kichikroq */
+}
+
+.newsx-h4:hover {
+  color: rgba(11, 18, 32, .85);
+}
+
+/* ===== 4 CARDS (WIDE) ===== */
+.newsx-mid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+/* ✅ yana ham toza “yoyilgan” ko‘rinish */
+.newsx-mid--wide {
+  gap: 18px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1180px) {
+  .newsx-grid--noSide {
+    grid-template-columns: 1fr;
+  }
+
+  .newsx-mid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 860px) {
+  .newsx-container {
+    padding: 0 16px;
+  }
+
+  .newsx-grid--noSide {
+    grid-template-columns: 1fr;
+  }
+
+  .newsx-mid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .newsx-h3 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 560px) {
+  .newsx-mid {
+    grid-template-columns: 1fr;
+  }
+
+  .newsx-media {
+    aspect-ratio: 16 / 12;
+  }
+
+  .newsx-h4 {
+    font-size: 15px;
+  }
+
+  .newsx-chip {
+    font-size: 12px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .newsx {
+    padding: 40px 0;
+    margin: 40px 0;
+  }
+
+  .newsx-title {
+    font-size: 26px;
+  }
+
+  .newsx-h3 {
+    font-size: 20px;
+    margin-top: 10px;
+  }
+}

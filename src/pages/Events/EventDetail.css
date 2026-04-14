@@ -1,0 +1,135 @@
+/* src/pages/Events/EventDetail.css */
+.ed-page,
+.ed-page * {
+  font-family: "DM Sans", sans-serif !important;
+  box-sizing: border-box;
+}
+
+.ed-page {
+  min-height: 100vh;
+  background: #f1f4f9;
+  padding-top: 80px;
+}
+
+/* ── INFO CARD ───────────────────────────────────── */
+.ed-info-card {
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid rgba(11, 18, 32, 0.09);
+  box-shadow: 0 4px 18px rgba(11, 18, 32, 0.06);
+  padding: 22px 24px;
+  margin-bottom: 28px;
+}
+
+.ed-info-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 40px;
+}
+
+.ed-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 140px;
+}
+
+.ed-info-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #9ca3af;
+}
+
+.ed-info-label svg {
+  font-size: 13px;
+}
+
+.ed-info-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0b1220;
+  line-height: 1.35;
+}
+
+/* ── STATUS BADGE ────────────────────────────────── */
+.ed-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  width: fit-content;
+}
+
+.ed-badge--upcoming {
+  background: rgba(26, 107, 58, 0.1);
+  color: #1a6b3a;
+  border: 1px solid rgba(26, 107, 58, 0.2);
+}
+
+.ed-badge--past {
+  background: rgba(107, 114, 128, 0.1);
+  color: #4b5563;
+  border: 1px solid rgba(107, 114, 128, 0.2);
+}
+
+/* ── SIDEBAR DATE PANEL ──────────────────────────── */
+.ed-date-panel {
+  background: linear-gradient(170deg, #2c6bbd 0%, #1e4d8c 100%);
+  border-radius: 14px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 28px 20px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(26, 93, 181, 0.3);
+}
+
+.ed-date-panel__dates {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.3px;
+}
+
+.ed-date-panel__year {
+  font-size: 18px;
+  font-weight: 500;
+  opacity: 0.85;
+  margin-top: 2px;
+}
+
+.ed-date-panel__time {
+  font-size: 40px;
+  font-weight: 900;
+  letter-spacing: -0.8px;
+  margin-top: 6px;
+}
+
+/* ── RESPONSIVE ──────────────────────────────────── */
+@media (max-width: 768px) {
+  .ed-info-row {
+    gap: 16px 24px;
+  }
+  .ed-date-panel__dates { font-size: 20px; }
+  .ed-date-panel__time  { font-size: 32px; }
+}
+
+@media (max-width: 480px) {
+  .ed-info-card { padding: 16px; }
+  .ed-info-row  { gap: 14px 16px; }
+  .ed-info-item { min-width: 120px; }
+}

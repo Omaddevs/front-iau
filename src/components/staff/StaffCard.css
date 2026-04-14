@@ -1,0 +1,120 @@
+.stc-card {
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr);
+  gap: 12px;
+  min-height: 228px;
+  border-radius: calc(var(--radius, 16px) + 2px);
+  border: 1px solid var(--nav-whiteBorder, rgba(11, 18, 32, 0.1));
+  background: #fff;
+  box-shadow: 0 14px 36px rgba(11, 18, 32, 0.08);
+  overflow: visible;
+}
+
+.stc-photoWrap {
+  padding: 14px 0 14px 14px;
+  position: relative;
+}
+
+.stc-photo {
+  width: 100%;
+  height: 100%;
+  min-height: 198px;
+  object-fit: cover;
+  border-radius: var(--radius, 16px);
+  box-shadow: 0 12px 26px rgba(11, 18, 32, 0.12);
+  background: var(--r-8, #edf2f8);
+}
+
+.stc-body {
+  padding: 20px 20px 18px 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 11px;
+}
+
+.stc-name {
+  margin: 0;
+  color: var(--nav-ink, #0b1220);
+  font-size: 28px;
+  line-height: 1.1;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.stc-line {
+  width: 150px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--brand-blue, #3e74c9), transparent);
+}
+
+.stc-position {
+  margin: 0;
+  color: color-mix(in srgb, var(--nav-ink, #0b1220) 70%, white);
+  font-size: 15px;
+  line-height: 1.45;
+  font-weight: 600;
+}
+
+.stc-email-float {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: inset 0 0 0 4px white, 0 0 0 1px rgba(11, 18, 32, 0.1), 0 0 0 6px rgba(37, 99, 235, 0.15);
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stc-email-float:hover {
+  transform: translate(50%, -50%) scale(1.05);
+  box-shadow: inset 0 0 0 4px white, 0 0 0 1px rgba(11, 18, 32, 0.15), 0 0 0 6px rgba(37, 99, 235, 0.3);
+}
+
+.stc-email-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #2563eb;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+@media (max-width: 760px) {
+  .stc-card {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .stc-photoWrap {
+    padding: 14px 14px 0;
+  }
+
+  .stc-email-float {
+    right: 14px; /* match the new right padding */
+  }
+
+  .stc-photo {
+    min-height: 260px;
+  }
+
+  .stc-body {
+    padding: 14px 14px 18px;
+  }
+
+  .stc-name {
+    font-size: 24px;
+  }
+}

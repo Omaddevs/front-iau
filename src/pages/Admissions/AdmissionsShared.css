@@ -1,0 +1,433 @@
+/* PAGE LAYOUT */
+.admissions-page {
+     background-color: #f7f9fc;
+     min-height: 100vh;
+     padding-bottom: 80px;
+     background-image: url('../../images/stamps_pattern.png');
+     /* Replace with actual background pattern if we have one */
+     background-repeat: no-repeat;
+     background-position: center;
+     background-attachment: fixed;
+}
+
+/* HERO SECTION */
+.admissions-hero {
+     position: relative;
+     height: 250px;
+     width: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     margin-top: 80px;
+     /* Offset for fixed navbar */
+     overflow: hidden;
+}
+
+.admissions-hero-video,
+.admissions-hero-img {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+     z-index: 1;
+}
+
+.hero-overlay {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100%;
+     height: 100%;
+     background-color: rgba(20, 36, 60, 0.7);
+     /* Deep blue overlay */
+     z-index: 2;
+}
+
+.admissions-hero-content {
+     position: relative;
+     z-index: 3;
+     color: white;
+     text-align: center;
+}
+
+.breadcrumbs {
+     font-size: 14px;
+     margin-bottom: 15px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     gap: 8px;
+}
+
+.breadcrumbs a {
+     color: white;
+     text-decoration: none;
+}
+
+.breadcrumbs .separator {
+     color: rgba(255, 255, 255, 0.6);
+}
+
+.breadcrumbs .current {
+     color: rgba(255, 255, 255, 0.8);
+}
+
+.admissions-hero-content h1 {
+     font-size: 42px;
+     font-weight: 600;
+     margin: 0;
+}
+
+/* MAIN CONTAINER (Left & Right) */
+.admissions-container {
+     width: min(1920px, 100%);
+     margin: 40px auto 0;
+     padding: 0 40px;
+     display: flex;
+     gap: 30px;
+     position: relative;
+     z-index: 10;
+}
+
+/* LEFT CONTENT TABS */
+.admissions-main {
+     flex: 1;
+     display: flex;
+     flex-direction: column;
+     gap: 20px;
+}
+
+.tabs-container {
+     background: #edf2f7;
+     border-radius: 8px;
+     padding: 5px;
+}
+
+.tabs-list {
+     display: flex;
+}
+
+.tab-btn {
+     flex: 1;
+     padding: 12px 20px;
+     border: none;
+     background: transparent;
+     color: #4a5568;
+     font-size: 16px;
+     font-weight: 500;
+     cursor: pointer;
+     border-radius: 6px;
+     transition: all 0.2s;
+     text-align: left;
+}
+
+.tab-btn.active {
+     background: white;
+     color: #1a202c;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.tab-content-box {
+     background: white;
+     border-radius: 8px;
+     padding: 40px;
+     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.content-pane h2 {
+     font-size: 24px;
+     font-weight: 600;
+     color: #1a202c;
+     margin-bottom: 20px;
+}
+
+.content-pane p {
+     font-size: 15px;
+     line-height: 1.7;
+     color: #4a5568;
+     margin-bottom: 15px;
+}
+
+.fade-in {
+     animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+     from {
+          opacity: 0;
+          transform: translateY(5px);
+     }
+
+     to {
+          opacity: 1;
+          transform: translateY(0);
+     }
+}
+
+/* APPLICATIONS BOX */
+.applications-box {
+     background: white;
+     border-radius: 8px;
+     padding: 30px 40px;
+     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+     margin-top: 10px;
+}
+
+.applications-box h3 {
+     font-size: 20px;
+     color: #1a202c;
+     margin-bottom: 15px;
+}
+
+.apply-btn {
+     background-color: #38b2ac;
+     /* Teal */
+     color: white;
+     border: none;
+     padding: 12px 24px;
+     border-radius: 6px;
+     font-size: 16px;
+     cursor: pointer;
+     transition: background-color 0.2s;
+}
+
+.apply-btn:hover {
+     background-color: #319795;
+}
+
+/* RIGHT SIDEBAR */
+.admissions-sidebar {
+     width: 300px;
+     flex-shrink: 0;
+}
+
+.sidebar-box {
+     background: white;
+     border-radius: 8px;
+     padding: 24px;
+     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.sidebar-box h3 {
+     font-size: 18px;
+     font-weight: 700;
+     color: #1a202c;
+     margin-bottom: 20px;
+     padding-bottom: 10px;
+     border-bottom: 1px solid #edf2f7;
+}
+
+.sidebar-links {
+     list-style: none;
+     padding: 0;
+     margin: 0;
+     display: flex;
+     flex-direction: column;
+}
+
+.sidebar-links li {
+     border-bottom: 1px solid #edf2f7;
+}
+
+.sidebar-links li:last-child {
+     border-bottom: none;
+}
+
+.sidebar-links a {
+     display: block;
+     padding: 14px 0;
+     color: #4a5568;
+     text-decoration: none;
+     font-size: 15px;
+     transition: color 0.2s;
+     position: relative;
+}
+
+.sidebar-links a:hover {
+     color: #38b2ac;
+}
+
+.sidebar-links a.active-link {
+     color: #38b2ac;
+}
+
+.sidebar-links a.active-link::before {
+     content: "";
+     position: absolute;
+     left: -24px;
+     top: 14px;
+     bottom: 14px;
+     width: 3px;
+     background-color: #38b2ac;
+}
+
+/* MODULE CARDS FOR FOUNDATION */
+.modules-grid {
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     gap: 24px;
+}
+
+.module-card {
+     background: white;
+     border-radius: 8px;
+     overflow: hidden;
+     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+     border: 1px solid #edf2f7;
+     display: flex;
+     flex-direction: column;
+}
+
+.module-img-box {
+     position: relative;
+     height: 180px;
+}
+
+.module-img-box img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+}
+
+.module-strip {
+     position: absolute;
+     bottom: 0;
+     left: 0;
+     width: 100%;
+     height: 6px;
+}
+
+.module-strip.blue {
+     background: linear-gradient(90deg, #005f9e 0%, #009dbb 100%);
+}
+
+.module-strip.solid-blue {
+     background: #3182ce;
+}
+
+.module-info {
+     padding: 24px;
+     display: flex;
+     flex-direction: column;
+     flex: 1;
+}
+
+.module-info h4 {
+     font-size: 18px;
+     color: #1a202c;
+     font-weight: 700;
+     margin-bottom: 24px;
+}
+
+.module-divider {
+     border: none;
+     border-top: 1px solid #e2e8f0;
+     margin: auto 0 16px 0;
+}
+
+.module-link {
+     background: transparent;
+     border: none;
+     color: #3182ce;
+     font-size: 14px;
+     font-weight: 500;
+     cursor: pointer;
+     text-align: left;
+     padding: 0;
+     display: flex;
+     align-items: center;
+     transition: color 0.2s;
+}
+
+.module-link:hover {
+     color: #2b6cb0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+     .admissions-container {
+          flex-direction: column;
+     }
+
+     .admissions-sidebar {
+          width: 100%;
+          order: -1;
+          /* Move sidebar to top on mobile */
+     }
+
+     .tabs-list {
+          flex-direction: column;
+     }
+
+     .tab-btn {
+          text-align: center;
+     }
+}
+
+@media (max-width: 560px) {
+     .admissions-container {
+          padding: 0 20px;
+     }
+
+     .tab-content-box,
+     .applications-box {
+          padding: 20px;
+     }
+
+     .admissions-hero-content h1 {
+          font-size: 32px;
+     }
+
+     .modules-grid {
+          grid-template-columns: 1fr;
+     }
+}
+
+@media (max-width: 480px) {
+     .admissions-hero {
+          height: 180px;
+          margin-top: 60px;
+     }
+
+     .admissions-hero-content h1 {
+          font-size: 28px;
+     }
+
+     .tabs-list {
+          display: flex;
+          flex-direction: row;
+          overflow-x: auto;
+          white-space: nowrap;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+     }
+
+     .tabs-list::-webkit-scrollbar {
+          display: none;
+     }
+
+     .tab-btn {
+          flex: 0 0 auto;
+          padding: 10px 16px;
+          font-size: 14px;
+     }
+
+     .tab-content-box,
+     .applications-box {
+          padding: 16px;
+     }
+
+     .content-pane h2 {
+          font-size: 20px;
+     }
+
+     .module-info {
+          padding: 16px;
+     }
+
+     .module-img-box {
+          height: 140px;
+     }
+}

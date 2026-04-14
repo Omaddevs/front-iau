@@ -1,0 +1,322 @@
+/* Gucae.css */
+.gucae-page {
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    background-color: #f7f9fa;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Hero Section */
+.gucae-hero {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    margin-top: 80px; /* Offset for fixed navbar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.gucae-hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.gucae-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(16, 27, 51, 0.8), rgba(28, 43, 75, 0.6), rgba(16, 27, 51, 0.8));
+    z-index: 2;
+}
+
+.gucae-hero-content {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    max-width: 900px;
+    padding: 0 20px;
+}
+
+.gucae-hero-content h1 {
+    font-size: 26px;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Page Content Container */
+.gucae-container-wrap {
+    flex: 1;
+    background-color: #f7f9fa;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.gucae-container {
+    width: 100%;
+    max-width: 950px;
+    display: flex;
+    flex-direction: column;
+}
+
+.gucae-main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Tabs */
+.gucae-tabs-container {
+    margin-bottom: 20px;
+}
+
+.gucae-tabs-list {
+    display: inline-flex;
+    background-color: #eef1f5;
+    padding: 6px;
+    border-radius: 8px;
+}
+
+.gucae-tab-btn {
+    background: transparent;
+    border: none;
+    color: #4b5563;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 32px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.gucae-tab-btn.active {
+    background-color: #ffffff;
+    color: #1f2937;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Tab Content Box */
+.gucae-tab-content-box {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 35px 40px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    margin-bottom: 30px;
+}
+
+.gucae-tab-content-box h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 25px;
+    margin-top: 0;
+}
+
+.gucae-tab-content-box p, 
+.gucae-tab-content-box ul {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #4b5563;
+    margin-bottom: 12px;
+}
+
+.gucae-tab-content-box ul {
+    padding-left: 20px;
+    list-style-type: none; /* using disc with subtle styling? Actually let's use default or custom */
+}
+
+.gucae-tab-content-box ul li {
+    position: relative;
+    padding-left: 10px;
+    margin-bottom: 4px;
+}
+
+.gucae-tab-content-box ul li::before {
+    content: "•";
+    position: absolute;
+    left: -5px;
+    color: #4b5563;
+}
+
+.gucae-section-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f2937;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+/* Members Grid */
+.gucae-members-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.gucae-member-card {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+}
+
+.gucae-member-mail-icon {
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    width: 32px;
+    height: 32px;
+    background-color: #3182ce;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    z-index: 5;
+    border: 3px solid white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    cursor: pointer;
+}
+
+.gucae-member-img-wrap {
+    width: 100%;
+    border-top-left-radius: 11px;
+    border-top-right-radius: 11px;
+    overflow: hidden;
+    padding: 0;
+    height: 200px; /* based on image proportions */
+    background: #e2e8f0;
+}
+
+.gucae-member-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+}
+
+.gucae-member-info {
+    padding: 15px 10px;
+    text-align: left;
+}
+
+.gucae-member-info h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+    margin-bottom: 4px;
+}
+
+.gucae-member-info p {
+    font-size: 12px;
+    color: #6b7280;
+    margin: 0 !important;
+}
+
+/* Applications Box */
+.gucae-applications-box {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 35px 40px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    margin-bottom: 40px;
+}
+
+.gucae-applications-box h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f2937;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.gucae-apply-btn {
+    background-color: #38b2ac; /* Site teal color */
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.gucae-apply-btn:hover {
+    background-color: #319795;
+}
+
+.fade-in {
+    animation: fadeIn 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 800px) {
+    .gucae-members-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 560px) {
+    .gucae-container-wrap {
+        padding: 20px 10px;
+    }
+    .gucae-tab-content-box,
+    .gucae-applications-box {
+        padding: 20px;
+    }
+    .gucae-hero-content h1 {
+        font-size: 20px;
+    }
+    .gucae-members-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    .gucae-member-img-wrap {
+        height: 160px;
+    }
+}
+
+@media (max-width: 480px) {
+    .gucae-hero {
+        height: 180px;
+        margin-top: 60px;
+    }
+    .gucae-tabs-list {
+        display: flex;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    .gucae-members-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,359 @@
+/* ─────────────────────────────────────────────────────────────────────────
+   SocialNetworks.css
+   Desktop  > 1100px  : text left | 5 phones right (horizontal)
+   Tablet   768-1100px: text center top | phones scroll row
+   Mobile   < 768px   : text center top | phones scroll row (compact)
+───────────────────────────────────────────────────────────────────────── */
+.social-networks-section {
+  position: relative;
+  background-color: #1e3a78;
+  color: #fff;
+  font-family: "DM Sans", sans-serif;
+  /* extra vertical margin so phone cards don't overlap siblings */
+  margin: 100px 0;
+  /* desktop: fixed height so phones can overflow top/bottom */
+  height: 300px;
+  display: flex;
+  align-items: center;
+  overflow: visible;
+}
+
+/* ── Background pattern ───────────────────────────────────────────────── */
+.sn-bg-icons {
+  position: absolute;
+  inset: 0;
+  background-image: url("../images/bg-images.png");
+  background-size: 50% auto;
+  background-repeat: repeat;
+  background-position: center;
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Container ────────────────────────────────────────────────────────── */
+.sn-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 0 48px;
+  gap: 40px;
+}
+
+/* ── Text block ───────────────────────────────────────────────────────── */
+.sn-text-content {
+  flex: 0 0 auto;
+  max-width: 420px;
+}
+
+.sn-title {
+  font-size: clamp(28px, 2.8vw, 42px);
+  font-weight: 800;
+  line-height: 1.25;
+  margin: 0 0 12px;
+  color: #fff;
+}
+
+.sn-highlight { color: #2eb496; }
+
+.sn-subtitle {
+  font-size: clamp(14px, 1.1vw, 18px);
+  color: #cbd5e1;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* ── Scroll area (phones + dots) ─────────────────────────────────────── */
+.sn-scroll-area {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0;
+  overflow: visible;
+}
+
+/* ── Phones row ───────────────────────────────────────────────────────── */
+.sn-phones-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  /* phones overflow the section top/bottom */
+  height: 420px;
+  width: 100%;
+  justify-content: flex-end;
+  overflow: visible;
+}
+
+/* ── Right fade shadow (mobile only) ─────────────────────────────────── */
+.sn-fade-right {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: calc(100% - 48px); /* exclude dots area */
+  background: linear-gradient(to right, transparent, rgba(30, 58, 120, 0.85));
+  pointer-events: none;
+  z-index: 30;
+  border-radius: 0 8px 8px 0;
+}
+
+/* ── Scroll dots ──────────────────────────────────────────────────────── */
+.sn-dots {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.sn-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  padding: 0;
+  transition: width 0.28s ease, background 0.28s ease;
+  flex-shrink: 0;
+}
+
+.sn-dot--active {
+  width: 24px;
+  border-radius: 999px;
+  background: #2eb496;
+}
+
+/* ── Single phone card ────────────────────────────────────────────────── */
+.sn-phone-card {
+  position: relative;
+  flex: 0 0 auto;
+  height: 360px;
+}
+
+.sn-phone-screen {
+  position: relative;
+  width: 172px;
+  height: 100%;
+  background: #000;
+  border-radius: 28px;
+  border: 6px solid #111;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* inner reflection */
+.sn-phone-screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.35);
+  z-index: 15;
+  pointer-events: none;
+}
+
+.sn-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44%;
+  height: 20px;
+  background: #111;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  z-index: 20;
+}
+
+.sn-screen-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* button overlapping bottom bezel */
+.sn-button-overlay {
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  z-index: 25;
+}
+
+.sn-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 0;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1fa48a, #2b61ae);
+  color: #fff;
+  font-weight: 700;
+  font-size: 13.5px;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+.sn-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+.sn-action-btn svg { font-size: 16px; }
+
+
+/* ══════════════════════════════════════════════════
+   TABLET  ≤ 1100px
+══════════════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .social-networks-section {
+    height: auto;
+    padding: 52px 0 32px;
+    margin: 60px 0;
+    overflow: hidden;
+  }
+
+  .sn-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 32px;
+    gap: 32px;
+  }
+
+  .sn-text-content  { max-width: 600px; }
+
+  .sn-scroll-area {
+    align-items: center;
+    width: 100%;
+  }
+
+  .sn-phones-wrapper {
+    height: auto;
+    padding-bottom: 28px;   /* room for button overflow */
+    justify-content: flex-start;
+    /* horizontal scroll — show ~3 phones on tablet */
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-left: 4px;
+    padding-right: 60px;    /* leave room so fade is visible */
+    gap: 16px;
+  }
+  .sn-phones-wrapper::-webkit-scrollbar { display: none; }
+  .sn-phones-wrapper { scrollbar-width: none; }
+
+  .sn-phone-card {
+    flex: 0 0 auto;
+    height: 320px;
+    scroll-snap-align: start;
+  }
+  .sn-phone-screen { width: 155px; }
+  .sn-action-btn   { font-size: 13px; }
+
+  /* show dots + fade */
+  .sn-dots       { display: flex; }
+  .sn-fade-right { display: block; }
+}
+
+/* ══════════════════════════════════════════════════
+   MOBILE  ≤ 768px
+══════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .social-networks-section {
+    padding: 44px 0 28px;
+    margin: 48px 0;
+  }
+
+  .sn-container {
+    padding: 0 20px;
+    gap: 24px;
+  }
+
+  .sn-title    { font-size: clamp(24px, 6vw, 32px); }
+  .sn-subtitle { font-size: 14px; }
+
+  .sn-phones-wrapper {
+    padding-bottom: 26px;
+    padding-right: 50px;
+    gap: 14px;
+  }
+
+  .sn-phone-card  { height: 290px; }
+  .sn-phone-screen {
+    width: 138px;
+    border-radius: 22px;
+    border-width: 5px;
+  }
+  .sn-notch          { height: 17px; }
+  .sn-action-btn     { font-size: 12px; padding: 9px 0; border-radius: 8px; }
+  .sn-button-overlay { bottom: -14px; }
+
+  .sn-dots { margin-top: 18px; }
+}
+
+/* ══════════════════════════════════════════════════
+   MOBILE  ≤ 480px
+══════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .social-networks-section {
+    padding: 36px 0 24px;
+    margin: 40px 0;
+  }
+
+  .sn-container   { padding: 0 16px; gap: 20px; }
+  .sn-title       { font-size: clamp(20px, 6.5vw, 26px); margin-bottom: 8px; }
+  .sn-subtitle    { font-size: 13px; }
+
+  .sn-phones-wrapper {
+    gap: 12px;
+    padding-bottom: 24px;
+    padding-right: 44px;
+  }
+
+  .sn-phone-card  { height: 260px; }
+  .sn-phone-screen {
+    width: 124px;
+    border-radius: 20px;
+    border-width: 5px;
+  }
+  .sn-notch          { height: 15px; width: 40%; }
+  .sn-button-overlay { bottom: -12px; width: 92%; }
+  .sn-action-btn     { font-size: 11.5px; gap: 5px; padding: 8px 0; border-radius: 8px; }
+  .sn-action-btn svg { font-size: 14px; }
+
+  .sn-dots    { margin-top: 14px; gap: 6px; }
+  .sn-dot     { width: 7px; height: 7px; }
+  .sn-dot--active { width: 20px; }
+}
+
+/* ══════════════════════════════════════════════════
+   MOBILE  ≤ 360px
+══════════════════════════════════════════════════ */
+@media (max-width: 360px) {
+  .sn-container      { padding: 0 12px; }
+  .sn-title          { font-size: 19px; }
+  .sn-phones-wrapper { gap: 10px; padding-right: 36px; }
+  .sn-phone-card     { height: 240px; }
+  .sn-phone-screen   { width: 114px; border-radius: 18px; }
+  .sn-action-btn     { font-size: 11px; padding: 7px 0; }
+  .sn-dot            { width: 6px; height: 6px; }
+  .sn-dot--active    { width: 18px; }
+}

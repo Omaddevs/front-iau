@@ -1,0 +1,81 @@
+/* PROFILE CARD & ROW */
+.agri-bottom-row {
+     display: flex;
+     gap: 30px;
+     margin-top: 20px;
+     align-items: flex-end;
+}
+
+.agri-bottom-row .applications-box {
+     margin-top: 0;
+     flex: 1;
+}
+
+@media (max-width: 768px) {
+     .agri-bottom-row {
+          flex-direction: column;
+          align-items: stretch;
+     }
+     .agri-bottom-row .profile-card {
+          margin: 0 auto;
+     }
+}
+
+.profile-card {
+     background: white;
+     border-radius: 12px;
+     padding: 16px;
+     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+     width: max-content;
+     display: flex;
+     flex-direction: column;
+     border: 1px solid #edf2f7;
+     position: relative;
+}
+
+.profile-email-icon {
+     position: absolute;
+     top: -12px;
+     right: -12px;
+     background-color: #2b6cb0;
+     color: white;
+     width: 40px;
+     height: 40px;
+     border-radius: 50%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+     border: 4px solid white;
+     transition: transform 0.2s;
+}
+
+.profile-email-icon:hover {
+     transform: scale(1.05);
+}
+
+.profile-email-icon svg {
+     width: 18px;
+     height: 18px;
+}
+
+.profile-card img {
+     width: 180px;
+     height: 220px;
+     object-fit: cover;
+     border-radius: 12px;
+     margin-bottom: 12px;
+}
+
+.profile-info h4 {
+     margin: 0;
+     font-size: 16px;
+     color: #1a365d;
+     font-weight: 600;
+}
+
+.profile-info p {
+     margin: 4px 0 0 0;
+     font-size: 13px;
+     color: #718096;
+}

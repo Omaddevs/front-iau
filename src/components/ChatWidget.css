@@ -1,0 +1,488 @@
+/* =========================================
+   IAU ChatWidget
+========================================= */
+
+/* ── Floating Action Button (FAB) ── */
+.chatw-fab {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 10000001;
+
+    width: 62px;
+    height: 62px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+
+    background: linear-gradient(135deg, #1e6fa8 0%, #1eb894 100%);
+    box-shadow:
+        0 8px 32px rgba(30, 111, 168, 0.45),
+        0 2px 8px rgba(0, 0, 0, 0.2);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.3s ease;
+    outline: none;
+}
+
+.chatw-fab:hover {
+    transform: scale(1.08) translateY(-2px);
+    box-shadow:
+        0 14px 40px rgba(30, 111, 168, 0.55),
+        0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.chatw-fab--open {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    box-shadow: 0 8px 28px rgba(231, 76, 60, 0.4);
+}
+
+.chatw-fab--pulse {
+    animation: chatFabPulse 1s ease-out;
+}
+
+@keyframes chatFabPulse {
+    0% { box-shadow: 0 8px 32px rgba(30, 111, 168, 0.45), 0 0 0 0 rgba(30, 184, 148, 0.5); }
+    50% { box-shadow: 0 8px 32px rgba(30, 111, 168, 0.45), 0 0 0 16px rgba(30, 184, 148, 0); }
+    100% { box-shadow: 0 8px 32px rgba(30, 111, 168, 0.45), 0 0 0 0 rgba(30, 184, 148, 0); }
+}
+
+.chatw-fab-icon {
+    width: 28px;
+    height: 28px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.chatw-fab-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.chatw-fab--open .chatw-fab-icon {
+    transform: rotate(0deg);
+}
+
+.chatw-fab-badge {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #f59e0b;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #fff;
+    animation: badgeBounce 2s ease-in-out infinite;
+}
+
+@keyframes badgeBounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+/* ── Chat Panel ── */
+.chatw-panel {
+    position: fixed;
+    bottom: 104px;
+    right: 28px;
+    z-index: 10000000;
+
+    width: 380px;
+    height: 560px;
+    border-radius: 24px;
+    overflow: hidden;
+
+    background: #ffffff;
+    box-shadow:
+        0 32px 80px rgba(0, 0, 0, 0.18),
+        0 8px 24px rgba(0, 0, 0, 0.10);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+
+    display: flex;
+    flex-direction: column;
+
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    pointer-events: none;
+    transition: opacity 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+        transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transform-origin: bottom right;
+}
+
+.chatw-panel--open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+}
+
+/* ── Header ── */
+.chatw-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 16px 14px;
+    background: linear-gradient(135deg, #1a5f8a 0%, #1a9e7e 100%);
+    flex-shrink: 0;
+}
+
+.chatw-header-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.chatw-header-avatar svg {
+    width: 24px;
+    height: 24px;
+}
+
+.chatw-header-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.chatw-header-name {
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.2px;
+}
+
+.chatw-header-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 12px;
+    margin-top: 2px;
+}
+
+.chatw-status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 0 2px rgba(74, 222, 128, 0.35);
+    animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+    0%, 100% { box-shadow: 0 0 0 2px rgba(74, 222, 128, 0.35); }
+    50% { box-shadow: 0 0 0 5px rgba(74, 222, 128, 0); }
+}
+
+.chatw-header-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.chatw-icon-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+
+.chatw-icon-btn:hover {
+    background: rgba(255, 255, 255, 0.22);
+}
+
+.chatw-icon-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ── Messages ── */
+.chatw-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    background: #f8fafc;
+    scroll-behavior: smooth;
+}
+
+.chatw-messages::-webkit-scrollbar {
+    width: 4px;
+}
+
+.chatw-messages::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.chatw-messages::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+/* ── Message ── */
+.chatw-msg {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    animation: msgSlideIn 0.25s ease-out;
+}
+
+@keyframes msgSlideIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.chatw-msg--user {
+    flex-direction: row-reverse;
+}
+
+.chatw-msg-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #1a5f8a, #1a9e7e);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.chatw-msg-avatar svg {
+    width: 18px;
+    height: 18px;
+}
+
+.chatw-msg-body {
+    max-width: 78%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.chatw-msg--user .chatw-msg-body {
+    align-items: flex-end;
+}
+
+.chatw-msg-bubble {
+    padding: 10px 14px;
+    border-radius: 18px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    word-break: break-word;
+    font-family: "DM Sans", sans-serif;
+}
+
+.chatw-msg--bot .chatw-msg-bubble {
+    background: #fff;
+    color: #1a1a2e;
+    border-bottom-left-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.chatw-msg--user .chatw-msg-bubble {
+    background: linear-gradient(135deg, #1a5f8a 0%, #1a9e7e 100%);
+    color: #fff;
+    border-bottom-right-radius: 4px;
+}
+
+.chatw-msg-time {
+    font-size: 11px;
+    color: #9ca3af;
+    padding: 0 4px;
+}
+
+/* ── Typing indicator ── */
+.chatw-typing {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 12px 16px;
+    min-width: 60px;
+}
+
+.chatw-typing span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #9ca3af;
+    animation: typingDot 1.2s ease-in-out infinite;
+}
+
+.chatw-typing span:nth-child(2) { animation-delay: 0.2s; }
+.chatw-typing span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typingDot {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+    30% { transform: translateY(-6px); opacity: 1; }
+}
+
+/* ── Suggested questions ── */
+.chatw-suggested {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    animation: msgSlideIn 0.3s ease-out;
+}
+
+.chatw-suggested-label {
+    font-size: 12px;
+    color: #6b7280;
+    font-weight: 600;
+    padding: 0 4px;
+}
+
+.chatw-suggested-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.chatw-suggested-btn {
+    background: #fff;
+    border: 1.5px solid #e0e7ef;
+    border-radius: 14px;
+    padding: 9px 14px;
+    text-align: left;
+    font-size: 13px;
+    color: #1a5f8a;
+    cursor: pointer;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 500;
+    transition: all 0.18s ease;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+    line-height: 1.4;
+}
+
+.chatw-suggested-btn:hover {
+    background: linear-gradient(135deg, rgba(26, 95, 138, 0.06), rgba(26, 158, 126, 0.06));
+    border-color: #1a9e7e;
+    transform: translateX(3px);
+    color: #1a9e7e;
+}
+
+/* ── Input area ── */
+.chatw-input-area {
+    padding: 12px 14px 10px;
+    background: #fff;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    flex-shrink: 0;
+}
+
+.chatw-input-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    background: #f3f7fa;
+    border: 1.5px solid #e0e7ef;
+    border-radius: 16px;
+    padding: 6px 6px 6px 14px;
+    transition: border-color 0.2s ease;
+}
+
+.chatw-input-row:focus-within {
+    border-color: #1a9e7e;
+    background: #fff;
+}
+
+.chatw-input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 13.5px;
+    font-family: "DM Sans", sans-serif;
+    color: #1a1a2e;
+    resize: none;
+    max-height: 80px;
+    overflow-y: auto;
+    line-height: 1.5;
+    padding: 4px 0;
+}
+
+.chatw-input::placeholder {
+    color: #94a3b8;
+}
+
+.chatw-send-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 12px;
+    border: none;
+    background: #d1d5db;
+    color: #9ca3af;
+    cursor: not-allowed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+.chatw-send-btn--active {
+    background: linear-gradient(135deg, #1a5f8a, #1a9e7e);
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(26, 158, 126, 0.35);
+}
+
+.chatw-send-btn--active:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(26, 158, 126, 0.45);
+}
+
+.chatw-send-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.chatw-footer-note {
+    text-align: center;
+    font-size: 10.5px;
+    color: #b0bec5;
+    margin-top: 6px;
+    letter-spacing: 0.2px;
+}
+
+/* ── Mobile ── */
+@media (max-width: 480px) {
+    .chatw-panel {
+        bottom: 0;
+        right: 0;
+        left: 0;
+        width: 100%;
+        height: 88dvh;
+        border-radius: 24px 24px 0 0;
+        border-bottom: none;
+    }
+
+    .chatw-fab {
+        bottom: 20px;
+        right: 20px;
+    }
+}

@@ -1,0 +1,345 @@
+.os-page {
+  font-family: "DM Sans", sans-serif;
+  color: var(--nav-ink, #0b1220);
+}
+
+/* HERO */
+.os-hero {
+  position: relative;
+  height: 260px;
+  overflow: hidden;
+}
+
+.os-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.os-hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.02);
+}
+
+.os-hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(3, 10, 25, .70), rgba(3, 10, 25, .55));
+}
+
+.os-hero-inner {
+  position: relative;
+  z-index: 2;
+  width: min(1920px, 100%);
+  margin: 0 auto;
+  padding: 34px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.os-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  color: rgba(255, 255, 255, .85);
+  font-size: 14px;
+}
+
+.os-crumb {
+  color: rgba(255, 255, 255, .86);
+  text-decoration: none;
+}
+
+.os-crumb:hover {
+  text-decoration: underline;
+}
+
+.os-crumbSep {
+  opacity: .7;
+}
+
+.os-crumbActive {
+  opacity: .95;
+  font-weight: 700;
+}
+
+.os-title {
+  margin: 14px 0 0;
+  color: rgba(255, 255, 255, .96);
+  font-size: 42px;
+  letter-spacing: -.4px;
+  font-weight: 800;
+}
+
+/* BODY */
+.os-body {
+  background: linear-gradient(180deg, rgba(237, 242, 248, .70), rgba(246, 248, 241, .80));
+  padding: 28px 0 60px;
+}
+
+.os-container {
+  width: min(1920px, 100%);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.os-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 22px;
+  align-items: start;
+}
+
+/* GRID */
+.os-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+/* CARD */
+.os-card {
+  position: relative;
+  min-height: 170px;
+  border-radius: 18px;
+  border: 1px solid rgba(44, 84, 137, .28);
+  background: linear-gradient(180deg, rgba(192, 210, 233, .55), rgba(237, 242, 248, .95));
+  box-shadow: 0 14px 36px rgba(11, 18, 32, .08);
+  padding: 20px 20px 18px;
+  overflow: hidden;
+
+  /* ✅ NEW */
+  cursor: pointer;
+  transform: translateY(0);
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease, filter .35s ease;
+}
+
+/* ✅ Hover ko'tarilish */
+.os-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 44px rgba(11, 18, 32, .12);
+  border-color: rgba(44, 84, 137, .36);
+}
+
+/* ✅ Keyboard focus ham chiroyli bo'lsin */
+.os-card:focus {
+  outline: none;
+}
+
+.os-card:focus-visible {
+  box-shadow: 0 0 0 4px rgba(62, 116, 201, .18), 0 20px 44px rgba(11, 18, 32, .12);
+  border-color: rgba(62, 116, 201, .55);
+}
+
+.os-cardTitle {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -.2px;
+  line-height: 1.25;
+}
+
+.os-cardLine {
+  margin-top: 14px;
+  height: 2px;
+  width: 65%;
+  background: linear-gradient(90deg, var(--brand-blue, #3e74c9), transparent);
+  opacity: .75;
+}
+
+.os-cardBottom {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.os-avatars {
+  display: flex;
+  align-items: center;
+}
+
+.os-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 3px solid rgba(255, 255, 255, .95);
+  object-fit: cover;
+  margin-left: -10px;
+  box-shadow: 0 10px 18px rgba(11, 18, 32, .14);
+}
+
+.os-avatar:first-child {
+  margin-left: 0;
+}
+
+.os-moreBtn {
+  border: 0;
+  background: transparent;
+  color: rgba(11, 18, 32, .78);
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.os-moreBtn:hover {
+  color: rgba(11, 18, 32, .92);
+}
+
+.os-arrow {
+  font-size: 18px;
+}
+
+/* pattern */
+.os-pattern {
+  position: absolute;
+  right: -20px;
+  top: -20px;
+  width: 170px;
+  height: 170px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(44, 84, 137, .14), transparent 60%),
+    radial-gradient(circle at 70% 70%, rgba(63, 143, 108, .12), transparent 55%);
+  opacity: .9;
+  pointer-events: none;
+}
+
+/* SIDEBAR */
+.os-sideCard {
+  border-radius: 18px;
+  background: rgba(255, 255, 255, .92);
+  border: 1px solid rgba(11, 18, 32, .10);
+  box-shadow: 0 14px 40px rgba(11, 18, 32, .08);
+  overflow: hidden;
+}
+
+.os-sideTitle {
+  padding: 16px 16px;
+  font-weight: 800;
+  font-size: 18px;
+  border-bottom: 1px solid rgba(11, 18, 32, .08);
+}
+
+.os-sideLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  color: rgba(11, 18, 32, .86);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(11, 18, 32, .08);
+}
+
+.os-sideLink:last-child {
+  border-bottom: 0;
+}
+
+.os-sideLink:hover {
+  background: rgba(11, 18, 32, .03);
+}
+
+.os-sideLink.active {
+  color: var(--brand-green, #3f8f6c);
+  background: rgba(63, 143, 108, .06);
+}
+
+.os-sideMark {
+  width: 4px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--brand-green, #3f8f6c);
+  opacity: 0;
+}
+
+.os-sideLink.active .os-sideMark {
+  opacity: 1;
+}
+
+.os-sidePhoto {
+  margin-top: 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, .92);
+  border: 1px solid rgba(11, 18, 32, .10);
+  box-shadow: 0 14px 40px rgba(11, 18, 32, .08);
+  overflow: hidden;
+}
+
+.os-sidePhotoInner {
+  padding: 16px;
+}
+
+.os-sidePhotoPlaceholder {
+  height: 220px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(44, 84, 137, .18), rgba(237, 242, 248, .95));
+  display: grid;
+  place-items: center;
+  color: rgba(11, 18, 32, .60);
+  font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .os-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .os-side {
+    order: 2;
+  }
+
+  .os-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .os-hero-inner {
+    padding: 28px 16px;
+  }
+
+  .os-container {
+    padding: 0 16px;
+  }
+
+  .os-title {
+    font-size: 34px;
+  }
+
+  .os-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .os-hero {
+    height: 200px;
+  }
+
+  .os-hero-inner {
+    padding: 20px 16px;
+  }
+
+  .os-title {
+    font-size: 28px;
+  }
+
+  .os-card {
+    min-height: 140px;
+    padding: 16px;
+  }
+
+  .os-cardTitle {
+    font-size: 18px;
+  }
+}

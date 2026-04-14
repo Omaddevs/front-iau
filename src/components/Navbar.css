@@ -1,0 +1,1071 @@
+/* src/components/Navbar.css */
+
+/* =========================
+   NAVBAR (DM Sans everywhere)
+========================= */
+
+:root {
+  --r-1: #e2eed9;
+  --r-2: #a48d49;
+  --r-3: #2d6752;
+  --r-4: #2c5489;
+  --r-5: #f6f8f1;
+  --r-6: #f4f0e7;
+  --r-7: #addbcd;
+  --r-8: #edf2f8;
+  --r-9: #c0d2e9;
+  --r-10: #b7cce5;
+
+  --nav-ink: #0b1220;
+  --nav-soft: rgba(255, 255, 255, .10);
+  --nav-border: rgba(255, 255, 255, .18);
+  --nav-glow: rgba(0, 0, 0, .28);
+  --nav-whiteBorder: rgba(11, 18, 32, .10);
+
+  --brand-green: #3f8f6c;
+  --brand-blue: #3e74c9;
+
+  --radius: 16px;
+}
+
+/* DM Sans hard apply to everything inside nav */
+.navx,
+.navx * {
+  box-sizing: border-box;
+  font-family: "DM Sans", sans-serif !important;
+}
+
+/* sticky (video ustida) */
+.navx {
+  position: sticky;
+  top: 0;
+  z-index: 999999;
+}
+
+/* container rule */
+.navx-container {
+  width: min(1920px, 100%);
+  margin: 0 auto;
+  padding: 10px 40px 8px;
+}
+
+/* logo */
+.navx-logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.navx.is-scrolled .navx-logo {
+  filter: brightness(0);
+}
+
+/* ================= TOP STRIP ================= */
+.navx-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+/* ── Test Mode Badge ── */
+.navx-test-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 16px;
+  border-radius: 20px;
+  border: 1.5px solid rgba(74, 126, 199, 0.45);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+
+  /* Gradient text */
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(135deg, #4a7ec7 0%, #1eb894 100%);
+
+  /* Override background for the element itself — dual background trick */
+  position: relative;
+}
+
+/* Glass bg layer (border-box background ile text gradient birga ishlashi uchun) */
+.navx-test-badge::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: -1;
+}
+
+/* Icon gradient */
+.navx-test-badge svg {
+  flex-shrink: 0;
+  fill: url(#testBadgeGrad);
+}
+
+.navx-top-left,
+.navx-top-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.navx-top-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, .85);
+  text-decoration: none;
+  font-size: clamp(13px, 0.9vw, 15px);
+  letter-spacing: .2px;
+}
+
+.navx-main-link {
+  font-size: clamp(15px, 1.1vw, 17px);
+}
+
+.navx-sep {
+  width: 1px;
+  height: 18px;
+  background: rgba(255, 255, 255, .22);
+  display: inline-block;
+}
+
+.navx-top-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.navx-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(34, 197, 94, .15);
+  border: 1px solid rgba(34, 197, 94, .35);
+  color: rgba(230, 255, 240, .92);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.navx-pill-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: rgba(34, 197, 94, .95);
+  box-shadow: 0 0 0 6px rgba(34, 197, 94, .14);
+}
+
+/* icon buttons */
+.navx-iconBtn {
+  display: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, .16);
+  background: rgba(255, 255, 255, .06);
+  color: rgba(255, 255, 255, .86);
+  /* display: grid; */
+  place-items: center;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.navx-iconBtn:hover {
+  background: rgba(255, 255, 255, .10);
+  transform: translateY(-1px);
+}
+
+.navx-iconA {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, .86);
+  border: 1px solid transparent;
+  transition: .2s ease;
+  text-decoration: none;
+}
+
+.navx-iconA:hover {
+  border-color: rgba(255, 255, 255, .18);
+  background: rgba(255, 255, 255, .06);
+  transform: translateY(-1px);
+}
+
+/* language dropdown */
+.navx-lang {
+  position: relative;
+}
+
+.navx-langBtn {
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, .16);
+  background: rgba(255, 255, 255, .06);
+  color: rgba(255, 255, 255, .9);
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.navx-flag {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.navx-chev {
+  font-size: 16px;
+  opacity: .9;
+}
+
+.navx-langMenu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 160px;
+  padding: 8px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, .16);
+  background: rgba(10, 17, 30, .88);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, .35);
+  display: none;
+}
+
+.navx-lang.open .navx-langMenu {
+  display: block;
+}
+
+.navx-langMenu button {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, .9);
+  padding: 10px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.navx-langMenu button:hover {
+  background: rgba(255, 255, 255, .08);
+}
+
+/* ================= MAIN NAV ================= */
+.navx-main-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* brand */
+.navx-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 240px;
+  text-decoration: none;
+}
+
+/* desktop links */
+.navx-links {
+  position: absolute;
+  left: 52%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: center;
+
+  /* Glassmorphism effect */
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 100px;
+  padding: 6px 12px;
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.1);
+}
+
+.navx-link,
+.navx-dd>button {
+  height: 38px;
+  padding: 0 16px;
+  border-radius: 100px;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.navx-dd>button svg {
+  font-size: 14px;
+  opacity: 0.9;
+  transition: transform 0.2s ease;
+}
+
+.navx-dd.open>button svg {
+  transform: rotate(180deg);
+}
+
+.navx-link:hover,
+.navx-dd>button:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.navx-dd.open>button {
+  background: linear-gradient(135deg, #3d79b8 0%, #21af8f 100%);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* dropdown */
+.navx-dd {
+  position: relative;
+}
+
+.navx-ddMenu {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 0;
+  min-width: 250px;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: linear-gradient(135deg, rgba(61, 121, 184, 0.98) 0%, rgba(33, 175, 143, 0.98) 100%);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+  display: none;
+
+  /* ✅ MUHIM: a va button ikkalasi ham shundan rang oladi */
+  color: #ffffff;
+}
+
+.navx-dd.open .navx-ddMenu {
+  display: block;
+}
+
+.navx-ddMenu a,
+.navx-ddMenu button,
+.navx-ddSubMenuContainer>a {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: clamp(14px, 1vw, 16px);
+  color: inherit;
+  background: transparent;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navx-ddMenu a:hover,
+.navx-ddMenu button:hover,
+.navx-ddSubMenuContainer>a:hover {
+  background: rgba(255, 255, 255, .08);
+}
+
+/* nested menu */
+.navx-ddSubMenuContainer {
+  position: relative;
+}
+
+.navx-subChev {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.navx-ddSubMenu {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  margin-left: 10px;
+  min-width: 200px;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: linear-gradient(135deg, rgba(61, 121, 184, 0.98) 0%, rgba(33, 175, 143, 0.98) 100%);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+  display: none;
+  color: #ffffff;
+}
+
+.navx-ddSubMenuContainer.open .navx-ddSubMenu {
+  display: block;
+}
+
+.navx-ddSubMenu a {
+  display: block;
+  width: 100%;
+  padding: 10px 10px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: clamp(14px, 1vw, 16px);
+  color: inherit;
+  background: transparent;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+}
+
+.navx-ddSubMenu a:hover {
+  background: rgba(255, 255, 255, .08);
+}
+
+/* right apply */
+.navx-cta {
+  min-width: 170px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navx-apply {
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, .20);
+  background: linear-gradient(135deg, #4a7ec7 0%, #1eb894 100%);
+  color: #fff;
+  font-weight: 900;
+  letter-spacing: .2px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: .2s ease;
+  box-shadow: 0 4px 16px rgba(30, 184, 148, 0.35);
+}
+
+.navx-apply:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+.navx-applyArrow {
+  font-size: 18px;
+  margin-top: -1px;
+}
+
+/* burger (hidden desktop) */
+.navx-burger {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, .16);
+  background: rgba(255, 255, 255, .06);
+  color: rgba(255, 255, 255, .92);
+  cursor: pointer;
+  place-items: center;
+}
+
+.navx-burger svg {
+  font-size: 24px;
+}
+
+/* ================= SCROLLED (white) ================= */
+.navx.is-scrolled .navx-top {
+  background: rgba(255, 255, 255, .92);
+  border-bottom: 1px solid var(--nav-whiteBorder);
+}
+
+.navx.is-scrolled .navx-main {
+  background: rgba(255, 255, 255, .92);
+  border-bottom: 1px solid var(--nav-whiteBorder);
+}
+
+/* switch colors */
+.navx.is-scrolled .navx-top-link,
+.navx.is-scrolled .navx-iconA,
+.navx.is-scrolled .navx-iconBtn,
+.navx.is-scrolled .navx-langBtn {
+  color: rgba(11, 18, 32, .86);
+}
+
+.navx.is-scrolled .navx-iconBtn,
+.navx.is-scrolled .navx-langBtn {
+  background: rgba(11, 18, 32, .04);
+  border-color: rgba(11, 18, 32, .10);
+}
+
+.navx.is-scrolled .navx-sep {
+  background: rgba(11, 18, 32, .16);
+}
+
+.navx.is-scrolled .navx-link,
+.navx.is-scrolled .navx-dd>button {
+  color: rgba(11, 18, 32, .86);
+}
+
+.navx.is-scrolled .navx-link:hover,
+.navx.is-scrolled .navx-dd>button:hover {
+  background: rgba(11, 18, 32, 0.08);
+}
+
+/* Glass pill color inverted for scrolled mode */
+.navx.is-scrolled .navx-links {
+  background: rgba(11, 18, 32, 0.04);
+  border-color: rgba(11, 18, 32, 0.08);
+  box-shadow: none;
+}
+
+.navx.is-scrolled .navx-ddMenu,
+.navx.is-scrolled .navx-ddSubMenu {
+  background: rgba(255, 255, 255, .96);
+  border-color: rgba(11, 18, 32, .10);
+  color: rgba(11, 18, 32, .88);
+}
+
+.navx.is-scrolled .navx-ddMenu a:hover,
+.navx.is-scrolled .navx-ddMenu button:hover,
+.navx.is-scrolled .navx-ddSubMenuContainer>a:hover,
+.navx.is-scrolled .navx-ddSubMenu a:hover {
+  background: rgba(11, 18, 32, .05);
+}
+
+.navx.is-scrolled .navx-pill {
+  background: rgba(34, 197, 94, .12);
+  border-color: rgba(34, 197, 94, .25);
+  color: rgba(11, 18, 32, .78);
+}
+
+.navx.is-scrolled .navx-apply {
+  background: linear-gradient(135deg, #4a7ec7 0%, #1eb894 100%);
+  border-color: rgba(255, 255, 255, .20);
+  color: #fff;
+}
+
+.navx.is-scrolled .navx-burger {
+  color: rgba(11, 18, 32, .86);
+  border-color: rgba(11, 18, 32, .10);
+  background: rgba(11, 18, 32, .04);
+}
+
+/* ================= MOBILE OVERLAY ================= */
+.navx-mOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999999;
+  display: none;
+}
+
+.navx-mOverlay.open {
+  display: block;
+}
+
+.navx-mBackdrop {
+  display: none;
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(0, 0, 0, .35);
+  backdrop-filter: blur(2px);
+}
+
+.navx-mPanel {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  left: 10px;
+  bottom: 10px;
+  border-radius: 22px;
+  background: #0b1220;
+  border: 1px solid rgba(255, 255, 255, .14);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .6);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 14px;
+}
+
+.navx-mPanel::-webkit-scrollbar {
+  width: 4px;
+}
+
+.navx-mPanel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.navx-mPanel::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+.navx-mTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, .12);
+}
+
+.navx-mBrand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navx-mClose {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  background: rgba(255, 255, 255, .06);
+  color: rgba(255, 255, 255, .92);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.navx-mClose svg {
+  font-size: 24px;
+}
+
+.navx-mSearch {
+  margin: 10px 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, .14);
+  background: rgba(255, 255, 255, .06);
+  color: rgba(255, 255, 255, .82);
+}
+
+.navx-mSearch input {
+  width: 100%;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: rgba(255, 255, 255, .92);
+  font-size: 14px;
+}
+
+.navx-mSearch input::placeholder {
+  color: rgba(255, 255, 255, .55);
+}
+
+.navx-mLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.navx-mLinks details {
+  border: 1px solid rgba(255, 255, 255, .12);
+  background: rgba(255, 255, 255, .08);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.navx-mLinks summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 10px 12px;
+  color: rgba(255, 255, 255, .92);
+  font-weight: 800;
+  display: flex;
+  font-size: 15px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navx-mLinks summary::-webkit-details-marker {
+  display: none;
+}
+
+.navx-mDD {
+  padding: 4px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.navx-mDD a {
+  color: rgba(255, 255, 255, .78);
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, .10);
+  background: rgba(0, 0, 0, .12);
+  font-size: 14px;
+}
+
+.navx-mDD a:hover {
+  background: rgba(255, 255, 255, .08);
+}
+
+/* mobile sub menu styles */
+.navx-mSubDetails {
+  border: none !important;
+  background: transparent !important;
+  margin: 0;
+  padding: 0;
+}
+
+.navx-mSubDetails summary {
+  color: rgba(255, 255, 255, .78);
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, .10);
+  background: rgba(0, 0, 0, .12);
+  font-size: 14px;
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navx-mSubDetails summary:hover {
+  background: rgba(255, 255, 255, .08);
+}
+
+.navx-mSubDD {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 6px 0 6px 12px;
+  border-left: 2px solid rgba(255, 255, 255, 0.1);
+  margin-left: 10px;
+}
+
+.navx-mSubDD a {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* OUR STAFF mobile button */
+.navx-mDDbtn {
+  width: 100%;
+  color: rgba(255, 255, 255, .78);
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, .10);
+  background: rgba(0, 0, 0, .12);
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.navx-mDDbtn:hover,
+.navx-subItemBtn:hover,
+.navx-mSubBtn:hover {
+  background: rgba(255, 255, 255, .08);
+}
+
+.navx-subItemBtn {
+  display: block;
+  width: 100%;
+  padding: 10px 10px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 14px;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+}
+
+.navx-mSubBtn {
+  width: 100%;
+  color: rgba(255, 255, 255, .78);
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, .10);
+  background: rgba(0, 0, 0, .2);
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.navx.is-scrolled .navx-subItemBtn {
+  color: rgba(11, 18, 32, .88);
+}
+.navx.is-scrolled .navx-subItemBtn:hover {
+  background: rgba(11, 18, 32, .05);
+}
+
+.navx-mLink {
+  color: rgba(255, 255, 255, .92);
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  background: rgba(255, 255, 255, .05);
+  font-weight: 800;
+  font-size: 15px;
+}
+
+.navx-mActions {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, .12);
+}
+
+.navx-apply.wide {
+  width: 100%;
+  height: 40px;
+  font-size: 15px;
+  justify-content: center;
+}
+
+.navx-mContacts {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.navx-mContacts a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, .78);
+  text-decoration: none;
+  padding: 10px 10px;
+  border-radius: 12px;
+  font-size: 14px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  background: rgba(255, 255, 255, .05);
+}
+
+.navx-mContacts a:hover {
+  background: rgba(255, 255, 255, .08);
+}
+
+.navx-mExtras {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.navx-mSocials {
+  display: flex;
+  gap: 12px;
+}
+
+.navx-mSocials .navx-iconA {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 18px;
+}
+
+.navx-mExtras .navx-lang {
+  flex: 1;
+}
+
+.navx-mExtras .navx-langBtn {
+  width: 100%;
+  justify-content: space-between;
+  height: 38px;
+}
+
+.navx-mExtras .navx-langMenu {
+  right: auto;
+  left: 0;
+  width: 100%;
+}
+
+/* ================= Responsive ================= */
+@media (max-width: 1280px) {
+  .navx-top-center {
+    display: none;
+  }
+
+  /* Test badge ni kichik ekranlarda ham ko'rsatish */
+  .navx-top-center:has(.navx-test-badge) {
+    display: flex;
+  }
+
+  .navx-top-right .navx-iconA,
+  .navx-top-right .navx-lang {
+    display: none;
+  }
+
+  .navx-links {
+    display: none;
+  }
+
+  .navx-cta {
+    display: none;
+  }
+
+  .navx-burger {
+    display: grid;
+  }
+}
+
+@media (max-width: 896px) {
+  .navx-container {
+    padding: 10px 16px 8px;
+  }
+
+  .navx-top-left {
+    display: none;
+  }
+}
+
+/* ✅ OurStaff kabi hero-baner page lar uchun overlay nav */
+.navx.navx--overlay .navx-top {
+  background: rgba(10, 17, 30, .45);
+  border-bottom: 1px solid rgba(255, 255, 255, .10);
+  backdrop-filter: blur(10px);
+}
+
+.navx.navx--overlay .navx-main {
+  background: rgba(10, 17, 30, .18);
+  border-bottom: 1px solid rgba(255, 255, 255, .10);
+  backdrop-filter: blur(12px);
+}
+
+/* ✅ Scroll bo‘lganda baribir oq rejim ishlasin */
+.navx.navx--overlay.is-scrolled .navx-top {
+  background: rgba(255, 255, 255, .92);
+  border-bottom: 1px solid var(--nav-whiteBorder);
+}
+
+.navx.navx--overlay.is-scrolled .navx-main {
+  background: rgba(255, 255, 255, .92);
+  border-bottom: 1px solid var(--nav-whiteBorder);
+}
+
+
+
+
+
+
+/* ===============================
+   ONLY OurStaff + Department page
+   (navx--solid)
+================================ */
+
+/* navbar fonlari oq */
+.navx.navx--solid .navx-top,
+.navx.navx--solid .navx-main {
+  background: rgba(255, 255, 255, .92);
+  border-bottom: 1px solid rgba(11, 18, 32, .10);
+  backdrop-filter: blur(12px);
+}
+
+/* text/ikonlar qora */
+.navx.navx--solid .navx-top-link,
+.navx.navx--solid .navx-iconA,
+.navx.navx--solid .navx-iconBtn,
+.navx.navx--solid .navx-link,
+.navx.navx--solid .navx-dd>button,
+.navx.navx--solid .navx-brand-text,
+.navx.navx--solid .navx-langBtn {
+  color: rgba(11, 18, 32, 0.86);
+}
+
+/* Glass pill inverted for solid white mode */
+.navx.navx--solid .navx-links {
+  background: rgba(11, 18, 32, 0.04);
+  border-color: rgba(11, 18, 32, 0.08);
+  box-shadow: none;
+}
+
+/* icon button style */
+.navx.navx--solid .navx-iconBtn {
+  background: rgba(11, 18, 32, .04);
+  border-color: rgba(11, 18, 32, .10);
+}
+
+/* separator */
+.navx.navx--solid .navx-sep {
+  background: rgba(11, 18, 32, .16);
+}
+
+/* dropdown menu ham oq bo‘lsin */
+.navx.navx--solid .navx-ddMenu,
+.navx.navx--solid .navx-ddSubMenu,
+.navx.navx--solid .navx-langMenu {
+  background: rgba(255, 255, 255, .96);
+  border-color: rgba(11, 18, 32, .10);
+}
+
+.navx.navx--solid .navx-ddMenu a,
+.navx.navx--solid .navx-ddMenu button,
+.navx.navx--solid .navx-ddSubMenuContainer>a,
+.navx.navx--solid .navx-ddSubMenu a,
+.navx.navx--solid .navx-langMenu button {
+  color: rgba(11, 18, 32, .86);
+}
+
+.navx.navx--solid .navx-ddMenu a:hover,
+.navx.navx--solid .navx-ddMenu button:hover,
+.navx.navx--solid .navx-ddSubMenuContainer>a:hover,
+.navx.navx--solid .navx-ddSubMenu a:hover,
+.navx.navx--solid .navx-langMenu button:hover {
+  background: rgba(11, 18, 32, .05);
+}
+
+/* Apply button */
+.navx.navx--solid .navx-apply {
+  background: linear-gradient(135deg, #4a7ec7 0%, #1eb894 100%);
+  border-color: rgba(255, 255, 255, .20);
+  color: #fff;
+}
+
+/* Burger button — solid (white bg) sahifalarida qora ko'rinsin */
+.navx.navx--solid .navx-burger {
+  color: rgba(11, 18, 32, .86);
+  border-color: rgba(11, 18, 32, .10);
+  background: rgba(11, 18, 32, .04);
+}
+
+/* LOGO masalasi:
+   agar logong oq bo‘lsa -> bu qatorni O'CHIRIB tashla
+   agar logong qora bo‘lishi kerak bo‘lsa -> qoldir
+*/
+.navx.navx--solid .navx-logo {
+  filter: brightness(0);
+}
