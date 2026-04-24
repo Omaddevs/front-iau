@@ -83,7 +83,7 @@ export default function Navbar() {
                 "FOUNDATION",
                 "UNDERGRADUATE",
                 "POSTGRADUATE",
-                "PHD AND DSC PROGRAMMES",
+                "PhD AND DSs PROGRAMMES",
             ],
             research: [
                 "ACADEMIC CALENDAR FOR 2025/2026",
@@ -96,7 +96,7 @@ export default function Navbar() {
                 "INTERVIEWS",
                 "KELAJAKKA QADAM",
             ],
-            admissions: ["IAU SCIENTIFIC COUNCIL", "RESEARCH PROJECTS", "GERMAN-UZBEK CHAIN ON CENTRAL ASIAN AGRICULTURAL ECONOMICS (GUCAE)"],
+            admissions: ["IAU SCIENTIFIC COUNCIL", "RESEARCH PROJECTS", "RESEARCH PUBLICATION", "GERMAN-UZBEK CHAIN ON CENTRAL ASIAN AGRICULTURAL ECONOMICS (GUCAE)"],
             life: {
                 title: "LIFE SCIENCE FESTIVAL",
                 items: [
@@ -152,7 +152,9 @@ export default function Navbar() {
     };
 
     const isScientificCouncilPage = location.pathname.startsWith("/research/scientific-council");
-    const isResearchProjectsPage = location.pathname.startsWith("/research/research-projects");
+    const isResearchProjectsPage =
+        location.pathname.startsWith("/research/research-projects") ||
+        location.pathname.startsWith("/research/research-publication");
     const isGucaePage = location.pathname.startsWith("/research/gucae");
 
     const isAboutPage = location.pathname === "/about";
@@ -457,6 +459,21 @@ export default function Navbar() {
                                                     onClick={() => {
                                                         closeAll();
                                                         navigate("/research/research-projects");
+                                                    }}
+                                                >
+                                                    {x}
+                                                </button>
+                                            );
+                                        }
+                                        if (x === "RESEARCH PUBLICATION") {
+                                            return (
+                                                <button
+                                                    key={x}
+                                                    type="button"
+                                                    className="navx-ddAction"
+                                                    onClick={() => {
+                                                        closeAll();
+                                                        navigate("/research/research-publication");
                                                     }}
                                                 >
                                                     {x}
@@ -809,6 +826,21 @@ export default function Navbar() {
                                                 onClick={() => {
                                                     setMobileOpen(false);
                                                     navigate("/research/research-projects");
+                                                }}
+                                            >
+                                                {x}
+                                            </button>
+                                        );
+                                    }
+                                    if (x === "RESEARCH PUBLICATION") {
+                                        return (
+                                            <button
+                                                key={x}
+                                                type="button"
+                                                className="navx-mDDbtn"
+                                                onClick={() => {
+                                                    setMobileOpen(false);
+                                                    navigate("/research/research-publication");
                                                 }}
                                             >
                                                 {x}

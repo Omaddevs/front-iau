@@ -29,6 +29,7 @@ import MScSustainableAgriculture from "./pages/Admissions/MScSustainableAgricult
 import MScAgriBusinessManagement from "./pages/Admissions/MScAgriBusinessManagement";
 import ScientificCouncil from "./pages/Research/ScientificCouncil";
 import ResearchProjects from "./pages/Research/ResearchProjects";
+import ResearchPublication from "./pages/Research/ResearchPublication";
 import AboutUs from "./pages/About/AboutUs";
 import ContactUs from "./pages/Contact/ContactUs";
 import Gucae from "./pages/Research/Gucae";
@@ -86,6 +87,7 @@ export default function App() {
         {/* Research Routes */}
         <Route path="/research/scientific-council" element={<ScientificCouncil />} />
         <Route path="/research/research-projects" element={<ResearchProjects />} />
+        <Route path="/research/research-publication" element={<ResearchPublication />} />
         <Route path="/research/gucae" element={<Gucae />} />
         <Route path="/festivals/summary-2025" element={<Summary2025 />} />
         <Route path="/festivals/summary-2024" element={<Summary2024 />} />

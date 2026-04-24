@@ -82,16 +82,8 @@
 
 /* Layout Content */
 .rp-content-layout {
-     display: grid;
-     grid-template-columns: 2fr 1fr;
-     gap: 40px;
+     display: block;
      margin-bottom: 40px;
-}
-
-@media (max-width: 1024px) {
-     .rp-content-layout {
-          grid-template-columns: 1fr;
-     }
 }
 
 /* Cards Grid */
@@ -243,7 +235,9 @@
 }
 
 @keyframes rpFadeIn {
-     to { opacity: 1; }
+     to {
+          opacity: 1;
+     }
 }
 
 .rp-modal-content {
@@ -261,7 +255,9 @@
 }
 
 @keyframes rpSlideUp {
-     to { transform: translateY(0); }
+     to {
+          transform: translateY(0);
+     }
 }
 
 .rp-modal-close {
@@ -357,7 +353,7 @@
      border-radius: 8px;
      overflow: hidden;
      background: #fff;
-     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 .rp-accordion-header {
