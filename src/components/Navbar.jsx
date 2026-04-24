@@ -83,7 +83,7 @@ export default function Navbar() {
                 "FOUNDATION",
                 "UNDERGRADUATE",
                 "POSTGRADUATE",
-                "PhD AND DSs PROGRAMMES",
+                "PhD AND DSc PROGRAMMES",
             ],
             research: [
                 "ACADEMIC CALENDAR FOR 2025/2026",

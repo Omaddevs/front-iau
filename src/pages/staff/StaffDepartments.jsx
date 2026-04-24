@@ -6,7 +6,7 @@ import "./StaffDepartments.css";
 
 const teamMenu = [
   { label: "University Staff",      href: "/staff" },
-  { label: "Rectorate",             href: "/staff/rectorate" },
+  { label: "Executive",             href: "/staff/rectorate" },
   { label: "Deans",                 href: "/staff/deans" },
   { label: "Heads of Departments",  href: "/staff/heads" },
   { label: "Academic Staff",        href: "/staff/academic-staff" },

@@ -1,5 +1,5 @@
 export const DEPARTMENT_TITLES = {
-  rectorate: "Rectorate",
+  rectorate: "Executive",
   deans: "Deans",
   heads: "Heads of Departments",
   "academic-staff": "Academic Staff",
