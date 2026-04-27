@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./ScientificCouncil.css";
 
 import gapImg from "../../research-image/gap-image.jpg";
@@ -157,8 +158,18 @@ export default function ScientificCouncil() {
                          <div className="sc-sidebar-box">
                               <h4 className="sc-sidebar-title">Research</h4>
                               <ul className="sc-sidebar-menu">
-                                   <li className="active"><a href="#">IAU Scientific council</a></li>
-                                   <li><a href="/research/gucae">German-Uzbek Chain on Central Asian Agricultural Economics (GUCAE)</a></li>
+                                   <li className="active">
+                                        <Link to="/research/scientific-council">IAU Scientific council</Link>
+                                   </li>
+                                   <li>
+                                        <Link to="/research/research-projects">Research projects</Link>
+                                   </li>
+                                   <li>
+                                        <Link to="/research/research-publication">Research publication</Link>
+                                   </li>
+                                   <li>
+                                        <Link to="/research/gucae">German-Uzbek Chain on Central Asian Agricultural Economics (GUCAE)</Link>
+                                   </li>
                               </ul>
                          </div>
                     </aside>
