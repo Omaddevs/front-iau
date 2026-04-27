@@ -6,88 +6,108 @@ import bgVideo from "../../all-bg-videos/iau-bg.mp4";
 
 const members = [
      {
-          name: "Iroda Rustamova (Chairman)",
-          role: "Department of Business Management, Tashkent State Agrarian University, Doctor of Economics (DSc), Professor",
-          image: gapImg,
-          imagePos: "right"
+          id: 1,
+          name: "Rustamova Iroda Baxramjanovna (Chair)",
+          code: "08.00.04",
+          role: "Professor, Department of Business Management, Tashkent State Agrarian University, Doctor of Science (DSc) in Economics"
      },
      {
-          name: "Munira Aminova (Deputy chairman)",
-          role: "Rector of the International Agricultural University, Doctor of Political Science (DSc)",
-          // desc: "Acting Rector of the International Agricultural University – Secretary of the Supervisory Board\nDr. Munira Aminova is newly appointed Rector of International Agriculture University. She has a long-standing career as an academic. She worked in the European, UK and the US universities for the last 19 years. The last 14 years she lived in Belgium and worked at the Vrije Universiteit Belgium in different capacities. She was a Dean of a business school with 3 branches in Brussels, Luxembourg and Shanghai.Munira Aminova holds a PhD from Vrije Universiteit Brussel in Political Sciences (2011). She also holds an MBA in Public Service from University of Birmingham (UK). Beyond her academic career, she is a leading expert in entrepreneurship and innovation, as well as public administration, governance and civil service. She has also continuously advised a wide range of international organizations, such as the United Nations, UNDP, USAID, ZEF, IWMI and others. Since 2018 Munira Aminova has been working together with the International Telecommunication Union (ITU) in a capacity of Regional Consultant. Munira Aminova is also an expert evaluator for the EU projects Erasmus+ and Horizon2020.",
-          image: gapImg,
-          imagePos: "left"
+          id: 2,
+          name: "Munira Aminova Abdugafurovna (Deputy Chair)",
+          code: "08.00.04",
+          role: "Rector of the International Agriculture University, Doctor of Science (DSc) in Political Science"
      },
      {
-          name: "Abdulla Primov (Academician)",
-          role: "Vice Rector for Academic Affairs of the International Agriculture University",
-          // desc: "Academician of the Academy of Sciences of the Republic of Uzbekistan, Doctor of Agricultural Sciences, Professor. He actively participates in the public and political life of the country, is a member of the Committee on Agrarian, Water Management Issues and Ecology of the Legislative Chamber of the Oliy Majlis.",
-          image: gapImg,
-          imagePos: "right"
+          id: 3,
+          name: "Primov Abdulla Egamkulovich (Secretary)",
+          code: "08.00.04",
+          role: "Vice-Rector for Scientific Affairs, Innovations and Spirituality, International Agriculture University, Doctor of Philosophy (PhD) in Economics, Associate Professor"
      },
      {
-          name: "Shavkat Hasanov",
-          role: "Head of the Department of Agriculture, Ministry of Agriculture of the Republic of Uzbekistan",
-          image: gapImg,
-          imagePos: "left"
+          id: 4,
+          name: "Slavomir Wroblewski",
+          code: "08.00.04",
+          role: "Head of Department, International Agriculture University, Doctor of Science (DSc) in Economics (Poland)"
      },
      {
-          name: "Slawomir Wroblewski",
-          role: "Professor of the Department of Agriculture, International Agriculture University",
-          // desc: "A distinguished university expert, he holds a PhD degree in Economics and Management. He previously served as head of department and project manager in several local and foreign authorities. He managed the Royal Danish Academy... and EU pre-accession assistance. He worked as a visiting professor in several universities globally: USA, UK, Germany... He completed his postdoctoral research at the Center...",
-          image: gapImg,
-          imagePos: "right"
+          id: 5,
+          name: "Hasanov Shavkat Tursunqulovich",
+          code: "08.00.04",
+          role: "Rector of the Samarkand Institute of Agro-Innovations and Research, Doctor of Science (DSc) in Economics, Professor"
      },
      {
-          name: "Ihtiyor Bobojonov",
-          role: "Lecturer, Department of Agriculture, International Agriculture University. Senior Researcher at IAMO (Leibniz Institute of Agricultural Development in Transition Economies).",
-          // desc: "He has a wealth of experience in the sector of Agriculture. He worked previously on development projects in CIS, African countries. His scientific works are deeply published in Scopus Web. He is recognized as a leading expert in climate change...",
-          image: gapImg,
-          imagePos: "left"
+          id: 6,
+          name: "Nazarkulov Umidjon Raximjanovich",
+          code: "08.00.04",
+          role: "Associate Professor, Tashkent State University of Economics, Doctor of Science (DSc) in Economics"
      },
      {
-          name: "Somebody",
-          role: "Loading",
-          image: gapImg,
-          imagePos: "right"
+          id: 7,
+          name: "Bobojonov Ihtiyor Bahtiyorovich",
+          code: "08.00.04",
+          role: "Leibniz Institute of Agricultural Development in Transition Economies (IAMO), Doctor of Science (DSc) in Economics, (Germany)"
      },
      {
-          name: "Bekhzod Egamberdiev",
-          role: "Assistant professor of the New Uzbekistan University",
-          // desc: "He was awarded the title of Professor of the Academy of Sciences of the Republic of Uzbekistan... His scientific works are deeply published in Web of Science, Scopus...",
-          image: gapImg,
-          imagePos: "left"
+          id: 8,
+          name: "Djanibekov Nodir Davranovich",
+          code: "08.00.04",
+          role: "Leibniz Institute of Agricultural Development in Transition Economies (IAMO), Doctor of Science (DSc) in Economics, (Germany)"
      },
      {
-          name: "Mardon Nasirov",
-          role: "Associate Professor, Department of Agriculture, International Agriculture University",
-          image: gapImg,
-          imagePos: "right"
+          id: 9,
+          name: "Hamidov Ahmad Muhammadxonovich",
+          code: "08.00.04",
+          role: "Humboldt University of Berlin (HUB), Doctor of Science (DSc) in Economics, (Germany)"
      },
      {
-          name: "Aziz Karimov",
-          role: "Head of the Department of Agriculture, International Agriculture University",
-          image: gapImg,
-          imagePos: "left"
+          id: 10,
+          name: "Karimov Aziz Akmalovich",
+          code: "08.00.04",
+          role: "Food and Agriculture Organization (FAO), Doctor of Science (DSc) in Economics, (Hungary)"
+     },
+     {
+          id: 11,
+          name: "Egamberdiev Bekhzod Baxodirovich",
+          code: "08.00.04",
+          role: "Associate Professor, Department of Economics, New Uzbekistan University, Doctor of Philosophy (PhD) in Economics"
+     },
+     {
+          id: 12,
+          name: "Askarov Nazimjon Niyozovich",
+          code: "08.00.04",
+          role: "Head of the Department for Development of Agrobusiness Entities' Activities and Marketing, International Center for Strategic Development and Research in Food and Agriculture, Doctor of Science (DSc) in Economics"
+     },
+     {
+          id: 13,
+          name: "Babadjanov Jakhongir Madiyarovich",
+          code: "08.00.04",
+          role: "Associate Professor, Department of Agribusiness, International Agriculture University, Doctor of Philosophy (PhD) in Economics"
      }
 ];
+
 
 export default function ScientificCouncil() {
      return (
           <div className="sc-page">
-               <div className="sc-hero">
-                    <video
-                         className="sc-hero-video"
-                         autoPlay
-                         loop
-                         muted
-                         playsInline
-                    >
-                         <source src={bgVideo} type="video/mp4" />
-                    </video>
-                    <div className="sc-hero-overlay"></div>
-                    <h1 className="sc-title">The Members of the Scientific Council</h1>
-               </div>
+                <div className="sc-hero">
+                     <video
+                          className="sc-hero-video"
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                     >
+                          <source src={bgVideo} type="video/mp4" />
+                     </video>
+                     <div className="sc-hero-overlay"></div>
+                     <div className="sc-hero-content">
+                          <h1 className="sc-title">
+                               Membership of the Scientific Council No. PhD.08/2025.27.12.I.15.01 for Conferring
+                               Academic Degrees in Economic Sciences under the International Agriculture University
+                          </h1>
+                          <p className="sc-subtitle">08.00.04 – Agricultural Economics</p>
+                     </div>
+                </div>
 
                <div className="sc-container">
                     <div className="sc-main">
@@ -98,20 +118,30 @@ export default function ScientificCouncil() {
                               </div>
                          </div>
 
-                         <div className="sc-list">
-                              {members.map((member, idx) => (
-                                   <div key={idx} className={`sc-member-card ${member.imagePos === 'right' ? 'flex-row-reverse' : ''}`}>
-                                        <div className="sc-text-content">
-                                             <h3 className="sc-member-name">{member.name}</h3>
-                                             <p className="sc-member-role">{member.role}</p>
-                                             {member.desc && <p className="sc-member-desc">{member.desc}</p>}
-                                        </div>
-                                        <div className="sc-image-content">
-                                             <img src={member.image} alt={member.name} className="sc-member-img" />
-                                        </div>
-                                   </div>
-                              ))}
-                         </div>
+                          <div className="sc-table-wrapper">
+                               <table className="sc-table">
+                                    <thead>
+                                         <tr>
+                                              <th className="th-tr">T/r</th>
+                                              <th className="th-name">Full Name</th>
+                                              <th className="th-code">Specialty Code</th>
+                                              <th className="th-role">Place of Work, Position, Academic Degree, Academic Title</th>
+                                         </tr>
+                                    </thead>
+                                    <tbody>
+                                         {members.map((member) => (
+                                              <tr key={member.id}>
+                                                   <td className="td-tr">{member.id}</td>
+                                                   <td className="td-name">
+                                                        <strong>{member.name}</strong>
+                                                   </td>
+                                                   <td className="td-code">{member.code}</td>
+                                                   <td className="td-role">{member.role}</td>
+                                              </tr>
+                                         ))}
+                                    </tbody>
+                               </table>
+                          </div>
                     </div>
 
                     <aside className="sc-sidebar">
