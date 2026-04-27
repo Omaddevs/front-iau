@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Gucae.css";
+import "./ScientificCouncil.css";
 import { Link } from "react-router-dom";
 import bgVideo from "../../all-bg-videos/iau-bg.mp4";
 import { IoMail } from "react-icons/io5";
@@ -39,11 +40,11 @@ export default function Gucae() {
     ];
 
     return (
-        <div className="gucae-page">
+        <div className="sc-page">
             {/* PAGE HEADER */}
-            <div className="gucae-hero">
+            <div className="sc-hero">
                 <video
-                    className="gucae-hero-video"
+                    className="sc-hero-video"
                     autoPlay
                     loop
                     muted
@@ -51,97 +52,114 @@ export default function Gucae() {
                 >
                     <source src={bgVideo} type="video/mp4" />
                 </video>
-                <div className="gucae-hero-overlay"></div>
-                <div className="gucae-hero-content">
-                    <h1>German-Uzbek Chair on Central Asian Agricultural<br />Economics (GUCAE)</h1>
+                <div className="sc-hero-overlay"></div>
+                <div className="sc-hero-content">
+                    <h1 className="sc-title">German-Uzbek Chain on Central Asian Agricultural Economics (GUCAE)</h1>
                 </div>
             </div>
 
             {/* MAIN CONTENT AREA */}
-            <div className="gucae-container-wrap">
-                <div className="gucae-container">
-                    {/* LEFT COMPONENT */}
-                    <div className="gucae-main">
-                        {/* TABS */}
-                        <div className="gucae-tabs-container">
-                            <div className="gucae-tabs-list">
-                                <button
-                                    className={`gucae-tab-btn ${activeTab === "gucae" ? "active" : ""}`}
-                                    onClick={() => setActiveTab("gucae")}
-                                >
-                                    GUCAE
-                                </button>
-                            </div>
-                        </div>
-
-                        {/* TAB CONTENT */}
-                        <div className="gucae-tab-content-box fade-in">
-                            <h2>German-Uzbek Chair on Central Asian Agricultural Economics (GUCAE)</h2>
-                            <p>
-                                The German-Uzbek Chair on Central Asian Agricultural Economics (GUCAE) was established in cooperation with IAMO and IAU to implement high-level research and capacity building of junior researchers from Central Asia.
-                            </p>
-                            <p>GUCAE's research focuses on the following areas:</p>
-                            <ul>
-                                <li>Improving productivity and efficiency in the agricultural sector of Uzbekistan</li>
-                                <li>Integration of agricultural value chains in global markets</li>
-                                <li>Determine the impact of climate change on agricultural production and rural livelihoods</li>
-                                <li>Design and efficiency of agricultural insurance and risk management</li>
-                                <li>Crop estimation and yield predictions with remote sensing technologies</li>
-                                <li>Study consumer behavior in the food industry</li>
-                                <li>Analyze drivers and impact of innovation adoption among farmers</li>
-                            </ul>
-                            <p>
-                                At the same time, GUCAE is aiming at dedicated transfer of their findings to an audience outside academia, including government institutions and business actors in the agri-food industry and the financial sector.
-                            </p>
-
-                            <h3 className="gucae-section-title">Members of the Chair</h3>
-                            <div className="gucae-members-grid">
-                                {memberData1.map((member, i) => (
-                                    <div key={i} className="gucae-member-card">
-                                        {member.email && (
-                                            <a href={`mailto:${member.email}`} className="gucae-member-mail-icon">
-                                                <IoMail />
-                                            </a>
-                                        )}
-                                        <div className="gucae-member-img-wrap">
-                                            <img src={member.img} alt={member.name} />
-                                        </div>
-                                        <div className="gucae-member-info">
-                                            <h4>{member.name}</h4>
-                                            <p>{member.title}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-
-                            <h3 className="gucae-section-title" style={{ marginTop: '40px' }}>DSc and PhD Researchers of the Chair</h3>
-                            <div className="gucae-members-grid">
-                                {memberData2.map((member, i) => (
-                                    <div key={i} className="gucae-member-card">
-                                        {member.email && (
-                                            <a href={`mailto:${member.email}`} className="gucae-member-mail-icon">
-                                                <IoMail />
-                                            </a>
-                                        )}
-                                        <div className="gucae-member-img-wrap">
-                                            <img src={member.img} alt={member.name} />
-                                        </div>
-                                        <div className="gucae-member-info">
-                                            <h4>{member.name}</h4>
-                                            <p>{member.title}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* APPLICATIONS OPEN BOX */}
-                        <div className="gucae-applications-box">
-                            <h3>Applications for Fall 2026 are now open!</h3>
-                            <button className="gucae-apply-btn" onClick={() => window.open('https://iau-admission.tilda.ws', '_blank')}>Start Your Application &rarr;</button>
+            <div className="sc-container">
+                <div className="sc-main">
+                    {/* TABS */}
+                    <div className="gucae-tabs-container">
+                        <div className="gucae-tabs-list">
+                            <button
+                                className={`gucae-tab-btn ${activeTab === "gucae" ? "active" : ""}`}
+                                onClick={() => setActiveTab("gucae")}
+                            >
+                                GUCAE
+                            </button>
                         </div>
                     </div>
+
+                    {/* TAB CONTENT */}
+                    <div className="gucae-tab-content-box fade-in">
+                        <h2>German-Uzbek Chair on Central Asian Agricultural Economics (GUCAE)</h2>
+                        <p>
+                            The German-Uzbek Chair on Central Asian Agricultural Economics (GUCAE) was established in cooperation with IAMO and IAU to implement high-level research and capacity building of junior researchers from Central Asia.
+                        </p>
+                        <p>GUCAE's research focuses on the following areas:</p>
+                        <ul>
+                            <li>Improving productivity and efficiency in the agricultural sector of Uzbekistan</li>
+                            <li>Integration of agricultural value chains in global markets</li>
+                            <li>Determine the impact of climate change on agricultural production and rural livelihoods</li>
+                            <li>Design and efficiency of agricultural insurance and risk management</li>
+                            <li>Crop estimation and yield predictions with remote sensing technologies</li>
+                            <li>Study consumer behavior in the food industry</li>
+                            <li>Analyze drivers and impact of innovation adoption among farmers</li>
+                        </ul>
+                        <p>
+                            At the same time, GUCAE is aiming at dedicated transfer of their findings to an audience outside academia, including government institutions and business actors in the agri-food industry and the financial sector.
+                        </p>
+
+                        <h3 className="gucae-section-title">Members of the Chair</h3>
+                        <div className="gucae-members-grid">
+                            {memberData1.map((member, i) => (
+                                <div key={i} className="gucae-member-card">
+                                    {member.email && (
+                                        <a href={`mailto:${member.email}`} className="gucae-member-mail-icon">
+                                            <IoMail />
+                                        </a>
+                                    )}
+                                    <div className="gucae-member-img-wrap">
+                                        <img src={member.img} alt={member.name} />
+                                    </div>
+                                    <div className="gucae-member-info">
+                                        <h4>{member.name}</h4>
+                                        <p>{member.title}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        <h3 className="gucae-section-title" style={{ marginTop: '40px' }}>DSc and PhD Researchers of the Chair</h3>
+                        <div className="gucae-members-grid">
+                            {memberData2.map((member, i) => (
+                                <div key={i} className="gucae-member-card">
+                                    {member.email && (
+                                        <a href={`mailto:${member.email}`} className="gucae-member-mail-icon">
+                                            <IoMail />
+                                        </a>
+                                    )}
+                                    <div className="gucae-member-img-wrap">
+                                        <img src={member.img} alt={member.name} />
+                                    </div>
+                                    <div className="gucae-member-info">
+                                        <h4>{member.name}</h4>
+                                        <p>{member.title}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* APPLICATIONS OPEN BOX */}
+                    <div className="gucae-applications-box" style={{ marginTop: '40px' }}>
+                        <h3>Applications for Fall 2026 are now open!</h3>
+                        <button className="gucae-apply-btn" onClick={() => window.open('https://iau-admission.tilda.ws', '_blank')}>Start Your Application &rarr;</button>
+                    </div>
                 </div>
+
+                <aside className="sc-sidebar">
+                    <div className="sc-sidebar-box">
+                        <h4 className="sc-sidebar-title">Research</h4>
+                        <ul className="sc-sidebar-menu">
+                            <li>
+                                <Link to="/research/scientific-council">IAU Scientific council</Link>
+                            </li>
+                            <li>
+                                <Link to="/research/research-projects">Research projects</Link>
+                            </li>
+                            <li>
+                                <Link to="/research/research-publication">Research publication</Link>
+                            </li>
+                            <li className="active">
+                                <Link to="/research/gucae">German-Uzbek Chain on Central Asian Agricultural Economics (GUCAE)</Link>
+                            </li>
+                        </ul>
+                    </div>
+                </aside>
             </div>
         </div>
     );

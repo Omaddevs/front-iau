@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./ResearchProjects.css";
+import "./ScientificCouncil.css";
 import bgVideo from "../../all-bg-videos/iau-bg.mp4";
 
 export default function ResearchPublication() {
@@ -77,19 +79,26 @@ export default function ResearchPublication() {
      ];
 
      return (
-          <div className="rp-page">
-               <div className="rp-hero">
-                    <video className="rp-hero-video" autoPlay loop muted playsInline>
+          <div className="sc-page">
+               <div className="sc-hero">
+                    <video className="sc-hero-video" autoPlay loop muted playsInline>
                          <source src={bgVideo} type="video/mp4" />
                     </video>
-                    <div className="rp-hero-overlay"></div>
-                    <h1 className="rp-title">Research Publication</h1>
+                    <div className="sc-hero-overlay"></div>
+                    <div className="sc-hero-content">
+                         <h1 className="sc-title">Research Publication</h1>
+                    </div>
                </div>
 
-               <div className="rp-container">
-                    <div className="rp-publications-column">
-                         <h2 className="rp-publications-title">Publications</h2>
-                         <div className="rp-accordions">
+               <div className="sc-container">
+                    <div className="sc-main">
+                         <div className="sc-tabs-container">
+                              <div className="sc-tabs">
+                                   <div className="sc-tab active">Publications</div>
+                              </div>
+                         </div>
+
+                         <div className="rp-accordions" style={{ marginTop: "20px" }}>
                               {publicationsData.map((pubGroup, idx) => (
                                    <div key={idx} className={`rp-accordion-item ${openPubYear === pubGroup.year ? "open" : ""}`}>
                                         <button className="rp-accordion-header" onClick={() => togglePubYear(pubGroup.year)}>
@@ -114,6 +123,26 @@ export default function ResearchPublication() {
                               ))}
                          </div>
                     </div>
+
+                    <aside className="sc-sidebar">
+                         <div className="sc-sidebar-box">
+                              <h4 className="sc-sidebar-title">Research</h4>
+                              <ul className="sc-sidebar-menu">
+                                   <li>
+                                        <Link to="/research/scientific-council">IAU Scientific council</Link>
+                                   </li>
+                                   <li>
+                                        <Link to="/research/research-projects">Research projects</Link>
+                                   </li>
+                                   <li className="active">
+                                        <Link to="/research/research-publication">Research publication</Link>
+                                   </li>
+                                   <li>
+                                        <Link to="/research/gucae">German-Uzbek Chain on Central Asian Agricultural Economics (GUCAE)</Link>
+                                   </li>
+                              </ul>
+                         </div>
+                    </aside>
                </div>
           </div>
      );

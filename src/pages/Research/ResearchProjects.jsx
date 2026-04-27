@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./ResearchProjects.css";
+import "./ScientificCouncil.css";
 import img1 from "../../research-images/3.png";
 import img2 from "../../research-images/4.png";
 import bgVideo from "../../all-bg-videos/iau-bg.mp4";
@@ -129,47 +131,68 @@ export default function ResearchProjects() {
      };
 
      return (
-          <div className="rp-page">
-               <div className="rp-hero">
-                    <video className="rp-hero-video" autoPlay loop muted playsInline>
+          <div className="sc-page">
+               <div className="sc-hero">
+                    <video className="sc-hero-video" autoPlay loop muted playsInline>
                          <source src={bgVideo} type="video/mp4" />
                     </video>
-                    <div className="rp-hero-overlay"></div>
-                    <h1 className="rp-title">Research Projects</h1>
-               </div>
-               <div className="rp-container">
-                    <div className="rp-tabs-container">
-                         <div className="rp-tabs">
-                              <div className="rp-tab active">Research Projects</div>
-                         </div>
+                    <div className="sc-hero-overlay"></div>
+                    <div className="sc-hero-content">
+                         <h1 className="sc-title">Research Projects</h1>
                     </div>
+               </div>
 
-                    <div className="rp-content-layout">
-                         <div className="rp-projects-column">
-                              <div className="rp-grid">
-                                   {projects.map((project, idx) => (
-                                        <div key={idx} className="rp-card" onClick={() => openModal(project)} style={{ cursor: "pointer" }}>
-                                             <div className="rp-img-box">
-                                                  <img src={project.image} alt={project.title} />
-                                                  <div className="rp-strip blue"></div>
-                                             </div>
-                                             <div className="rp-card-content">
-                                                  <h3 className="rp-card-title">{project.title}</h3>
-                                                  <hr className="rp-divider" />
-                                                  <button className="rp-link">See more &rarr;</button>
-                                             </div>
-                                        </div>
-                                   ))}
+               <div className="sc-container">
+                    <div className="sc-main">
+                         <div className="sc-tabs-container">
+                              <div className="sc-tabs">
+                                   <div className="sc-tab active">Research Projects</div>
                               </div>
                          </div>
+
+                         <div className="rp-grid" style={{ marginTop: "20px" }}>
+                              {projects.map((project, idx) => (
+                                   <div key={idx} className="rp-card" onClick={() => openModal(project)} style={{ cursor: "pointer" }}>
+                                        <div className="rp-img-box">
+                                             <img src={project.image} alt={project.title} />
+                                             <div className="rp-strip blue"></div>
+                                        </div>
+                                        <div className="rp-card-content">
+                                             <h3 className="rp-card-title">{project.title}</h3>
+                                             <hr className="rp-divider" />
+                                             <button className="rp-link">See more &rarr;</button>
+                                        </div>
+                                   </div>
+                              ))}
+                         </div>
+
+                         <div className="rp-applications-box" style={{ marginTop: "40px" }}>
+                              <h3>Applications for Fall 2026 are now open!</h3>
+                              <button className="rp-apply-btn" onClick={() => window.open("https://iau-admission.tilda.ws", "_blank")}>
+                                   Start Your Application &rarr;
+                              </button>
+                         </div>
                     </div>
 
-                    <div className="rp-applications-box">
-                         <h3>Applications for Fall 2026 are now open!</h3>
-                         <button className="rp-apply-btn" onClick={() => window.open("https://iau-admission.tilda.ws", "_blank")}>
-                              Start Your Application &rarr;
-                         </button>
-                    </div>
+                    <aside className="sc-sidebar">
+                         <div className="sc-sidebar-box">
+                              <h4 className="sc-sidebar-title">Research</h4>
+                              <ul className="sc-sidebar-menu">
+                                   <li>
+                                        <Link to="/research/scientific-council">IAU Scientific council</Link>
+                                   </li>
+                                   <li className="active">
+                                        <Link to="/research/research-projects">Research projects</Link>
+                                   </li>
+                                   <li>
+                                        <Link to="/research/research-publication">Research publication</Link>
+                                   </li>
+                                   <li>
+                                        <Link to="/research/gucae">German-Uzbek Chain on Central Asian Agricultural Economics (GUCAE)</Link>
+                                   </li>
+                              </ul>
+                         </div>
+                    </aside>
                </div>
 
                {selectedProject && (
