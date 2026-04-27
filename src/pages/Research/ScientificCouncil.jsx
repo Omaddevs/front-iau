@@ -89,25 +89,25 @@ const members = [
 export default function ScientificCouncil() {
      return (
           <div className="sc-page">
-                <div className="sc-hero">
-                     <video
-                          className="sc-hero-video"
-                          autoPlay
-                          loop
-                          muted
-                          playsInline
-                     >
-                          <source src={bgVideo} type="video/mp4" />
-                     </video>
-                     <div className="sc-hero-overlay"></div>
-                     <div className="sc-hero-content">
-                          <h1 className="sc-title">
-                               Membership of the Scientific Council No. PhD.08/2025.27.12.I.15.01 for Conferring
-                               Academic Degrees in Economic Sciences under the International Agriculture University
-                          </h1>
-                          <p className="sc-subtitle">08.00.04 – Agricultural Economics</p>
-                     </div>
-                </div>
+               <div className="sc-hero">
+                    <video
+                         className="sc-hero-video"
+                         autoPlay
+                         loop
+                         muted
+                         playsInline
+                    >
+                         <source src={bgVideo} type="video/mp4" />
+                    </video>
+                    <div className="sc-hero-overlay"></div>
+                    <div className="sc-hero-content">
+                         <h1 className="sc-title">
+                              Membership of the Scientific Council No. PhD.08/2025.27.12.I.15.01 for Conferring
+                              Academic Degrees in Economic Sciences under the International Agriculture University
+                         </h1>
+                         <p className="sc-subtitle">08.00.04 – Agricultural Economics</p>
+                    </div>
+               </div>
 
                <div className="sc-container">
                     <div className="sc-main">
@@ -118,30 +118,39 @@ export default function ScientificCouncil() {
                               </div>
                          </div>
 
-                          <div className="sc-table-wrapper">
-                               <table className="sc-table">
-                                    <thead>
-                                         <tr>
-                                              <th className="th-tr">T/r</th>
-                                              <th className="th-name">Full Name</th>
-                                              <th className="th-code">Specialty Code</th>
-                                              <th className="th-role">Place of Work, Position, Academic Degree, Academic Title</th>
-                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                         {members.map((member) => (
-                                              <tr key={member.id}>
-                                                   <td className="td-tr">{member.id}</td>
-                                                   <td className="td-name">
-                                                        <strong>{member.name}</strong>
-                                                   </td>
-                                                   <td className="td-code">{member.code}</td>
-                                                   <td className="td-role">{member.role}</td>
-                                              </tr>
-                                         ))}
-                                    </tbody>
-                               </table>
-                          </div>
+                         <div className="sc-table-wrapper">
+                              <table className="sc-table">
+                                   <thead>
+                                        <tr>
+                                             <th className="th-tr">T/r</th>
+                                             <th className="th-name">Full Name</th>
+                                             <th className="th-code">Specialty Code</th>
+                                             <th className="th-role">Place of Work, Position, Academic Degree, Academic Title</th>
+                                        </tr>
+                                   </thead>
+                                   <tbody>
+                                        {members.map((member) => {
+                                             const nameWords = member.name.split(" ");
+                                             const firstPart = nameWords.slice(0, 2).join(" ");
+                                             const secondPart = nameWords.slice(2).join(" ");
+                                             
+                                             return (
+                                                  <tr key={member.id}>
+                                                       <td className="td-tr">{member.id}</td>
+                                                       <td className="td-name">
+                                                            <strong>
+                                                                 {firstPart}
+                                                                 {secondPart && <><br />{secondPart}</>}
+                                                            </strong>
+                                                       </td>
+                                                       <td className="td-code">{member.code}</td>
+                                                       <td className="td-role">{member.role}</td>
+                                                  </tr>
+                                             );
+                                        })}
+                                   </tbody>
+                              </table>
+                         </div>
                     </div>
 
                     <aside className="sc-sidebar">
