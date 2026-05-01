@@ -622,7 +622,7 @@ export default function Navbar() {
 
                         <div className="navx-cta">
                             <button className="navx-apply" type="button" onClick={() => window.open('https://iau-admission.tilda.ws', '_blank')}>
-                                Register <IoChevronForwardOutline className="navx-applyArrow" />
+                                Apply Now <IoChevronForwardOutline className="navx-applyArrow" />
                             </button>
                         </div>
 
@@ -1024,7 +1024,7 @@ export default function Navbar() {
                         </div>
 
                         <button className="navx-apply wide" type="button" onClick={() => window.open('https://iau-admission.tilda.ws', '_blank')}>
-                            Register <IoChevronForwardOutline className="navx-applyArrow" />
+                            Apply Now <IoChevronForwardOutline className="navx-applyArrow" />
                         </button>
 
                         <div className="navx-mContacts">

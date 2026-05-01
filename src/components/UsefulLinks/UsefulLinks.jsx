@@ -119,7 +119,9 @@ const UsefulLinks = () => {
 
   return (
     <section className="useful-links-section">
-      <h2 className="useful-section-title">Foydali havolalar</h2>
+      <h2 className="useful-section-title">
+        Useful <span className="text-teal">Links</span>
+      </h2>
       <div className="useful-container">
         <Swiper
           modules={[Autoplay]}
