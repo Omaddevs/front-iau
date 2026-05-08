@@ -29,14 +29,14 @@ export default function Gucae() {
         { name: "Dr. Ihtiyor Bobojonov", title: "Head of the Chair", img: img1, email: "bobojonov@iamo.de" },
         { name: "Dr. Lena Kuhn", title: "Senior Researcher", img: img2, email: "kuhn@iamo.de" },
         { name: "Dr. Abdulla Primov", title: "Deputy Head of the Chair", img: img4, email: "primov@iamo.de" },
-        { name: "Bekhzod Egamberdiev", title: "Senior Researcher", img: img5, email: "egamberdiev@iamo.de" },
+        { name: "Dr. Bekhzod Egamberdiev", title: "Senior Researcher", img: img5, email: "egamberdiev@iamo.de" },
         { name: "Mukhayyo Djuraeva", title: "Senior Researcher", img: img3, email: "djuraeva@iamo.de" },
         { name: "Dr. Shovkat Khodjaev", title: "Senior Researcher", img: img12, email: "khodjaev@iamo.de" },
         { name: "Elyor Urozaliev", title: "PhD student", img: img13, email: "eurozaliev@sbtsue.uz" },
     ];
 
     const memberData2 = [
-        { name: "Sirojiddin Eshmatov", title: "DSc student", img: img6, email: "sirojiddin.eshmatov@iau.uz" },
+        { name: "Dr. Sirojiddin Eshmatov", title: "DSc student", img: img6, email: "sirojiddin.eshmatov@iau.uz" },
         { name: "Asrakulov Javlonbek", title: "PhD student", img: img11, email: "javlonbek.asrakulov@iau.uz" },
         { name: "Bekhzod Kodirkhonov", title: "PhD student", img: img10, email: "bekhzod.kodirkhonov@iau.uz" },
         { name: "Imomjon Khamidov", title: "PhD student", img: img7, email: "imomjon.khamidov@iau.uz" },
