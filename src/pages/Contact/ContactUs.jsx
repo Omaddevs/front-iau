@@ -73,6 +73,16 @@ export default function ContactUs() {
 
                                    <div className="contact-info-item">
                                         <div className="contact-icon-wrapper">
+                                             <IoPaperPlane />
+                                        </div>
+                                        <div className="contact-text-wrapper">
+                                             <span className="contact-label">Telegram Account:</span>
+                                             <span className="contact-value">+998 (99) 981-09-19</span>
+                                        </div>
+                                   </div>
+
+                                   <div className="contact-info-item">
+                                        <div className="contact-icon-wrapper">
                                              <IoMail />
                                         </div>
                                         <div className="contact-text-wrapper">
