@@ -15,6 +15,8 @@ import img7 from "../../chain-images/chain7.png";
 import img8 from "../../chain-images/chain8.png";
 import img10 from "../../chain-images/chain10.png";
 import img11 from "../../chain-images/chain11.png";
+import img12 from "../../chain-images/chain12.png";
+import img13 from "../../chain-images/chain13.png";
 
 export default function Gucae() {
     const [activeTab, setActiveTab] = useState("gucae");
@@ -27,8 +29,10 @@ export default function Gucae() {
         { name: "Dr. Ihtiyor Bobojonov", title: "Head of the Chair", img: img1, email: "bobojonov@iamo.de" },
         { name: "Dr. Lena Kuhn", title: "Senior Researcher", img: img2, email: "kuhn@iamo.de" },
         { name: "Dr. Abdulla Primov", title: "Deputy Head of the Chair", img: img4, email: "primov@iamo.de" },
-        { name: "Mukhayyo Djuraeva", title: "Senior Researcher", img: img3, email: "djuraeva@iamo.de" },
         { name: "Bekhzod Egamberdiev", title: "Senior Researcher", img: img5, email: "egamberdiev@iamo.de" },
+        { name: "Mukhayyo Djuraeva", title: "Senior Researcher", img: img3, email: "djuraeva@iamo.de" },
+        { name: "Dr. Shovkat Khodjaev", title: "Senior Researcher", img: img12, email: "khodjaev@iamo.de" },
+        { name: "Elyor Urozaliev", title: "PhD student", img: img13, email: "eurozaliev@sbtsue.uz" },
     ];
 
     const memberData2 = [
