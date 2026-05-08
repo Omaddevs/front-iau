@@ -67,7 +67,7 @@ export default function ContactUs() {
                                         </div>
                                         <div className="contact-text-wrapper">
                                              <span className="contact-label">Phone number:</span>
-                                             <span className="contact-value">+998 (99) 981-09-19</span>
+                                             <span className="contact-value">+998 (55) 517 00 71</span>
                                         </div>
                                    </div>
 
