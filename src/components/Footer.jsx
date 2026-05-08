@@ -7,6 +7,7 @@ import {
   IoChevronForwardOutline,
 } from "react-icons/io5";
 import footerLogo from "../images/navbarLogo.PNG";
+import developedByLogo from "../images/fibertech.png";
 import { Link } from "react-router-dom";
 
 export default function Footer() {
@@ -225,8 +226,10 @@ export default function Footer() {
             © {new Date().getFullYear()} International Agriculture University. All rights
             reserved.
           </span>
-
-
+          <div className="footx-devBy" aria-label="Developed by">
+            <span>Developed by:</span>
+            <img src={developedByLogo} alt="Developer logo" className="footx-devLogo" />
+          </div>
         </motion.div>
       </motion.section>
     </motion.footer>

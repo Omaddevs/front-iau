@@ -43,7 +43,6 @@ import LatestNews from "./pages/News/LatestNews";
 import NewsDetail from "./pages/News/NewsDetail";
 import AllEvents from "./pages/Events/AllEvents";
 import EventDetail from "./pages/Events/EventDetail";
-import ChatWidget from "./components/ChatWidget";
 
 function Home() {
   return (
@@ -105,9 +104,6 @@ export default function App() {
 
       <SocialNetworks />
       <Footer />
-
-      {/* ── Global Chatbot Widget ── */}
-      <ChatWidget />
     </div>
   );
 }

@@ -238,6 +238,24 @@
   font-size: 13px;
 }
 
+.footx-devBy {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 13px;
+  user-select: none;
+}
+
+.footx-devLogo {
+  width: 92px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
 .footx-social {
   display: flex;
   gap: 10px;
