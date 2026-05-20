@@ -19,15 +19,29 @@ import { FaTelegramPlane } from "react-icons/fa";
 import navbarLogo from "../images/navbarLogo.PNG";
 
 export default function Navbar() {
-    const [scrolled, setScrolled] = useState(false);
-    const [langOpen, setLangOpen] = useState(false);
-    const [openDD, setOpenDD] = useState(null);
+    const [scrolled, setScrolled]   = useState(false);
+    const [langOpen, setLangOpen]   = useState(false);
+    const [openDD, setOpenDD]       = useState(null);
     const [openSubDD, setOpenSubDD] = useState(null);
     const [mobileOpen, setMobileOpen] = useState(false);
+    const [a11yActive, setA11yActive] = useState(false);
 
     const location = useLocation();
     const navigate = useNavigate();
     const navRef = useRef(null);
+
+    // ── Listen for accessibility settings changes ─────────────
+    useEffect(() => {
+        const handler = (e) => setA11yActive(e.detail?.count > 0);
+        window.addEventListener("iau:a11y:changed", handler);
+        // Check initial state from localStorage
+        try {
+            const s = JSON.parse(localStorage.getItem("iau_a11y_v1") || "{}");
+            const active = Object.values(s).some((v) => v === true) || (s.fontSize && s.fontSize !== 16);
+            setA11yActive(!!active);
+        } catch {}
+        return () => window.removeEventListener("iau:a11y:changed", handler);
+    }, []);
 
     // ✅ OurStaff va shunga o‘xshash hero-baner page lar
     const isStaffListPage = location.pathname === "/staff";
@@ -94,7 +108,7 @@ export default function Navbar() {
                 "IAU CLUBS",
                 "STUDENTS CREATIVITY",
                 "INTERVIEWS",
-                "KELAJAKKA QADAM",
+                "EKOFAOL TALABALAR",
             ],
             admissions: ["IAU SCIENTIFIC COUNCIL", "RESEARCH PROJECTS", "RESEARCH PUBLICATION", "GERMAN-UZBEK CHAIN ON CENTRAL ASIAN AGRICULTURAL ECONOMICS (GUCAE)"],
             life: {
@@ -138,6 +152,14 @@ export default function Navbar() {
         }),
         []
     );
+    const hiddenStudentLifeItems = new Set([
+        "INTERNATIONAL STUDENTS",
+        "PRESENTATION FOR APPLICANTS",
+        "CAREER SERVICES",
+        "IAU CLUBS",
+        "STUDENTS CREATIVITY",
+        "INTERVIEWS",
+    ]);
 
     const closeAll = () => {
         setLangOpen(false);
@@ -163,11 +185,15 @@ export default function Navbar() {
     const isFestivalsPage = location.pathname.startsWith("/festivals");
     const isAcademicCalendarPage = location.pathname.startsWith("/student-life/academic-calendar");
     const isStudentHandbookPage = location.pathname.startsWith("/student-life/student-handbook");
+    const isPresentationApplicantsPage = location.pathname.startsWith("/student-life/presentation-for-applicants");
+    const isIauClubsPage = location.pathname.startsWith("/student-life/iau-clubs");
+    const isInternationalStudentsPage = location.pathname.startsWith("/student-life/international-students");
+    const isEkofaolTalabalarPage = location.pathname.startsWith("/student-life/ekofaol-talabalar");
     const isLatestNewsPage = location.pathname.startsWith("/latest-news");
     const isNewsDetailPage = location.pathname.startsWith("/news/");
     const isEventsPage = location.pathname.startsWith("/events");
     const solidWhiteMode =
-        isStaffListPage || isStaffDetailPage || isLegacyStaffPage || isAdmissionsPage || isScientificCouncilPage || isResearchProjectsPage || isGucaePage || isAboutPage || isContactPage || isFestivalsPage || isAcademicCalendarPage || isStudentHandbookPage || isLatestNewsPage || isNewsDetailPage || isEventsPage;
+        isStaffListPage || isStaffDetailPage || isLegacyStaffPage || isAdmissionsPage || isScientificCouncilPage || isResearchProjectsPage || isGucaePage || isAboutPage || isContactPage || isFestivalsPage || isAcademicCalendarPage || isStudentHandbookPage || isPresentationApplicantsPage || isIauClubsPage || isInternationalStudentsPage || isEkofaolTalabalarPage || isLatestNewsPage || isNewsDetailPage || isEventsPage;
 
     return (
         <header
@@ -181,7 +207,7 @@ export default function Navbar() {
                 <div className="navx-container">
                     <div className="navx-top-row">
                         <div className="navx-top-left">
-                            <a className="navx-top-link" href="mailto:info@newuu.uz">
+                            <a className="navx-top-link" href="mailto:info@iau.uz">
                                 <IoMailOutline /> info@iau.uz
                             </a>
                             <span className="navx-sep" />
@@ -206,8 +232,19 @@ export default function Navbar() {
                         </div>
 
                         <div className="navx-top-right">
-                            <button className="navx-iconBtn" type="button" aria-label="View">
+                            {/* ── Accessibility trigger ── */}
+                            <button
+                                className={`navx-iconBtn navx-a11y-btn`}
+                                type="button"
+                                aria-label="Open accessibility settings"
+                                aria-controls="a11y-panel"
+                                title="Accessibility Settings (WCAG 2.1)"
+                                onClick={() => window.dispatchEvent(new CustomEvent("iau:a11y:toggle"))}
+                            >
                                 <IoEyeOutline />
+                                {a11yActive && (
+                                    <span className="navx-a11y-dot" aria-hidden="true" />
+                                )}
                             </button>
 
                             <button
@@ -218,7 +255,7 @@ export default function Navbar() {
                                 <IoSearchOutline />
                             </button>
 
-                            <a className="navx-iconA" href="instagram.com/iau_uz?igsh=MW1qeTZ5N3YyazhneA==" aria-label="Instagram">
+                            <a className="navx-iconA" href="https://www.instagram.com/iau_uz/" aria-label="Instagram">
                                 <IoLogoInstagram />
                             </a>
                             <a className="navx-iconA" href="https://www.youtube.com/@iau_2022?si=wpViWkIgyDb5xzc-" aria-label="YouTube">
@@ -352,7 +389,7 @@ export default function Navbar() {
                                                 </button>
                                             );
                                         }
-                                        if (x === "PHD AND DSC PROGRAMMES") {
+                                        if (x === "PhD AND DSc PROGRAMMES") {
                                             return (
                                                 <button
                                                     key={x}
@@ -388,6 +425,7 @@ export default function Navbar() {
                                 </button>
                                 <div className="navx-ddMenu">
                                     {dropdowns.research.map((x) => (
+                                        hiddenStudentLifeItems.has(x) ? null :
                                         x === "ACADEMIC CALENDAR FOR 2025/2026" ? (
                                             <button
                                                 key={x}
@@ -408,6 +446,54 @@ export default function Navbar() {
                                                 onClick={() => {
                                                     closeAll();
                                                     navigate("/student-life/student-handbook");
+                                                }}
+                                            >
+                                                {x}
+                                            </button>
+                                        ) : x === "INTERNATIONAL STUDENTS" ? (
+                                            <button
+                                                key={x}
+                                                type="button"
+                                                className="navx-ddAction"
+                                                onClick={() => {
+                                                    closeAll();
+                                                    navigate("/student-life/international-students");
+                                                }}
+                                            >
+                                                {x}
+                                            </button>
+                                        ) : x === "PRESENTATION FOR APPLICANTS" ? (
+                                            <button
+                                                key={x}
+                                                type="button"
+                                                className="navx-ddAction"
+                                                onClick={() => {
+                                                    closeAll();
+                                                    navigate("/student-life/presentation-for-applicants");
+                                                }}
+                                            >
+                                                {x}
+                                            </button>
+                                        ) : x === "IAU CLUBS" ? (
+                                            <button
+                                                key={x}
+                                                type="button"
+                                                className="navx-ddAction"
+                                                onClick={() => {
+                                                    closeAll();
+                                                    navigate("/student-life/iau-clubs");
+                                                }}
+                                            >
+                                                {x}
+                                            </button>
+                                        ) : x === "EKOFAOL TALABALAR" ? (
+                                            <button
+                                                key={x}
+                                                type="button"
+                                                className="navx-ddAction"
+                                                onClick={() => {
+                                                    closeAll();
+                                                    navigate("/student-life/ekofaol-talabalar");
                                                 }}
                                             >
                                                 {x}
@@ -733,7 +819,7 @@ export default function Navbar() {
                                             </button>
                                         );
                                     }
-                                    if (x === "PHD AND DSC PROGRAMMES") {
+                                    if (x === "PhD AND DSc PROGRAMMES") {
                                         return (
                                             <button
                                                 key={x}
@@ -762,7 +848,8 @@ export default function Navbar() {
                                 Students Life <IoChevronDownOutline />
                             </summary>
                             <div className="navx-mDD">
-                                {dropdowns.research.map((x) => (
+                                    {dropdowns.research.map((x) => (
+                                    hiddenStudentLifeItems.has(x) ? null :
                                     x === "ACADEMIC CALENDAR FOR 2025/2026" ? (
                                         <button
                                             key={x}
@@ -783,6 +870,54 @@ export default function Navbar() {
                                             onClick={() => {
                                                 setMobileOpen(false);
                                                 navigate("/student-life/student-handbook");
+                                            }}
+                                        >
+                                            {x}
+                                        </button>
+                                    ) : x === "INTERNATIONAL STUDENTS" ? (
+                                        <button
+                                            key={x}
+                                            type="button"
+                                            className="navx-mDDbtn"
+                                            onClick={() => {
+                                                setMobileOpen(false);
+                                                navigate("/student-life/international-students");
+                                            }}
+                                        >
+                                            {x}
+                                        </button>
+                                    ) : x === "PRESENTATION FOR APPLICANTS" ? (
+                                        <button
+                                            key={x}
+                                            type="button"
+                                            className="navx-mDDbtn"
+                                            onClick={() => {
+                                                setMobileOpen(false);
+                                                navigate("/student-life/presentation-for-applicants");
+                                            }}
+                                        >
+                                            {x}
+                                        </button>
+                                    ) : x === "IAU CLUBS" ? (
+                                        <button
+                                            key={x}
+                                            type="button"
+                                            className="navx-mDDbtn"
+                                            onClick={() => {
+                                                setMobileOpen(false);
+                                                navigate("/student-life/iau-clubs");
+                                            }}
+                                        >
+                                            {x}
+                                        </button>
+                                    ) : x === "EKOFAOL TALABALAR" ? (
+                                        <button
+                                            key={x}
+                                            type="button"
+                                            className="navx-mDDbtn"
+                                            onClick={() => {
+                                                setMobileOpen(false);
+                                                navigate("/student-life/ekofaol-talabalar");
                                             }}
                                         >
                                             {x}
@@ -1008,7 +1143,7 @@ export default function Navbar() {
                             </div>
 
                             <div className="navx-mSocials">
-                                <a className="navx-iconA" href="instagram.com/iau_uz?igsh=MW1qeTZ5N3YyazhneA==" aria-label="Instagram">
+                                <a className="navx-iconA" href="https://www.instagram.com/iau_uz/" aria-label="Instagram">
                                     <IoLogoInstagram />
                                 </a>
                                 <a className="navx-iconA" href="https://www.youtube.com/@iau_2022?si=wpViWkIgyDb5xzc-" aria-label="YouTube">
@@ -1028,11 +1163,11 @@ export default function Navbar() {
                         </button>
 
                         <div className="navx-mContacts">
-                            <a href="mailto:info@newuu.uz">
+                            <a href="mailto:info@iau.uz">
                                 <IoMailOutline /> info@iau.uz
                             </a>
-                            <a href="tel:+998712024111">
-                                <IoCallOutline /> +998 (99) 981-09-19
+                            <a href="tel:+998555170071">
+                                <IoCallOutline /> +998 (55) 517 00 71
                             </a>
                         </div>
                     </div>

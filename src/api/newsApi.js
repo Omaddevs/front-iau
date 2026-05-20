@@ -65,6 +65,15 @@ export async function fetchNewsDetail(id) {
 }
 
 /**
+ * Barcha kategoriyalar ro'yxati (LatestNews filter uchun).
+ */
+export async function fetchCategories() {
+  const res = await fetch(`${BASE_URL}/categories/`);
+  if (!res.ok) throw new Error(`Categories fetch failed: ${res.status}`);
+  return res.json();
+}
+
+/**
  * Homepage uchun eng ko'p ko'rilgan top-5 yangiliklar.
  */
 export async function fetchFeaturedNews() {

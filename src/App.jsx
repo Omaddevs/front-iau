@@ -1,5 +1,6 @@
 import "./App.css";
 import { Navigate, Route, Routes } from "react-router-dom";
+import AccessibilityToolbar from "./components/AccessibilityToolbar/AccessibilityToolbar";
 
 import Navbar from "./components/Navbar";
 import Header from "./components/Header";
@@ -39,6 +40,11 @@ import Summary2023 from "./pages/Festivals/Summary2023";
 import Reasons22 from "./pages/Festivals/Reasons22";
 import AcademicCalendar from "./pages/StudentLife/AcademicCalendar";
 import StudentHandbook from "./pages/StudentLife/StudentHandbook";
+import IauClubs from "./pages/StudentLife/IauClubs";
+import PresentationForApplicants from "./pages/StudentLife/PresentationForApplicants";
+import InternationalStudents from "./pages/StudentLife/InternationalStudents";
+import EkofaolTalabalar from "./pages/StudentLife/EkofaolTalabalar";
+import EkofaolNewsDetail from "./pages/StudentLife/EkofaolNewsDetail";
 import LatestNews from "./pages/News/LatestNews";
 import NewsDetail from "./pages/News/NewsDetail";
 import AllEvents from "./pages/Events/AllEvents";
@@ -61,6 +67,9 @@ function Home() {
 export default function App() {
   return (
     <div>
+      {/* Accessibility panel — triggered by navbar eye icon */}
+      <AccessibilityToolbar />
+
       <Navbar />
 
       <Routes>
@@ -94,6 +103,11 @@ export default function App() {
         <Route path="/festivals/22-reasons" element={<Reasons22 />} />
         <Route path="/student-life/academic-calendar" element={<AcademicCalendar />} />
         <Route path="/student-life/student-handbook" element={<StudentHandbook />} />
+        <Route path="/student-life/iau-clubs" element={<IauClubs />} />
+        <Route path="/student-life/presentation-for-applicants" element={<PresentationForApplicants />} />
+        <Route path="/student-life/international-students" element={<InternationalStudents />} />
+        <Route path="/student-life/ekofaol-talabalar" element={<EkofaolTalabalar />} />
+        <Route path="/student-life/ekofaol-talabalar/:id" element={<EkofaolNewsDetail />} />
         <Route path="/latest-news" element={<LatestNews />} />
         <Route path="/news/:id" element={<NewsDetail />} />
         <Route path="/events" element={<AllEvents />} />

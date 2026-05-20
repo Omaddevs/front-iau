@@ -1,0 +1,160 @@
+/* ============================================================
+   FloatingSocialBar.css  ·  IAU University  ·  2025
+   Fixed left-edge vertical pill with hover label reveal
+   ============================================================ */
+
+/* ── Wrapper ────────────────────────────────────────────────── */
+.fsb {
+  position: fixed;
+  left:     0;
+  top:      50%;
+  transform: translateY(-50%);
+  z-index:  9990;
+}
+
+.fsb__list {
+  list-style: none;
+  margin:     0;
+  padding:    8px 0;
+  display:    flex;
+  flex-direction: column;
+  gap:        2px;
+
+  /* Glassmorphism pill */
+  background:          rgba(255, 255, 255, 0.82);
+  backdrop-filter:     blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border-radius:       0 18px 18px 0;
+  border:              1px solid rgba(255, 255, 255, 0.55);
+  border-left:         none;
+  box-shadow:          4px 4px 24px rgba(0, 0, 0, 0.10),
+                       0  2px 8px  rgba(0, 0, 0, 0.07);
+}
+
+.fsb__item { display: flex; }
+
+/* ── Link ───────────────────────────────────────────────────── */
+.fsb__link {
+  display:     flex;
+  align-items: center;
+  gap:         0;
+
+  padding:     10px 12px 10px 10px;
+  color:       rgba(0, 0, 0, 0.55);
+  text-decoration: none;
+
+  border-radius: 0 12px 12px 0;
+  overflow:    hidden;
+  max-width:   44px; /* collapsed: icon only */
+
+  transition:
+    max-width    0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background   0.22s ease,
+    color        0.22s ease,
+    box-shadow   0.22s ease,
+    padding-right 0.25s ease;
+
+  /* CSS custom property for accent color */
+  --fsb-c: #555;
+}
+
+.fsb__link:hover,
+.fsb__link:focus-visible {
+  max-width:     160px; /* expand to show label */
+  padding-right: 14px;
+  background:    var(--fsb-c);
+  color:         #fff;
+  box-shadow:    2px 2px 14px rgba(0, 0, 0, 0.18);
+}
+
+.fsb__link:focus-visible {
+  outline:        2px solid var(--fsb-c);
+  outline-offset: 2px;
+}
+
+/* ── Icon ───────────────────────────────────────────────────── */
+.fsb__icon {
+  flex-shrink: 0;
+  display:     flex;
+  align-items: center;
+  font-size:   18px;
+  line-height: 1;
+  width:       22px;
+  transition:  transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.fsb__link:hover .fsb__icon { transform: scale(1.15); }
+
+/* ── Label ──────────────────────────────────────────────────── */
+.fsb__lbl {
+  font-size:      12px;
+  font-weight:    700;
+  letter-spacing: 0.3px;
+  white-space:    nowrap;
+  opacity:        0;
+  max-width:      0;
+  overflow:       hidden;
+  transition:
+    opacity   0.25s ease 0.05s,
+    max-width 0.30s ease;
+}
+
+.fsb__link:hover .fsb__lbl,
+.fsb__link:focus-visible .fsb__lbl {
+  opacity:   1;
+  max-width: 100px;
+  margin-left: 8px;
+}
+
+/* ── Dark mode ──────────────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+  .fsb__list {
+    background:   rgba(14, 22, 38, 0.88);
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow:   4px 4px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  .fsb__link {
+    color: rgba(255, 255, 255, 0.6);
+  }
+}
+
+/* ── Hide on very small screens ─────────────────────────────── */
+@media (max-width: 480px) {
+  .fsb {
+    top:       auto;
+    bottom:    20px;
+    left:      50%;
+    transform: translateX(-50%);
+  }
+
+  .fsb__list {
+    flex-direction: row;
+    border-radius: 999px;
+    border:   1px solid rgba(255,255,255,0.55);
+    padding:  6px 8px;
+    gap:      4px;
+  }
+
+  .fsb__link {
+    max-width:     44px;
+    border-radius: 50%;
+    padding:       9px;
+    justify-content: center;
+  }
+
+  .fsb__link:hover {
+    max-width:     44px;
+    border-radius: 50%;
+    padding-right: 9px;
+  }
+
+  .fsb__lbl { display: none; }
+}
+
+/* ── Reduced motion ─────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .fsb__link,
+  .fsb__icon,
+  .fsb__lbl { transition: none !important; }
+}

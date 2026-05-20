@@ -1,0 +1,48 @@
+.pfa-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.pfa-card h2 {
+  margin: 0 0 10px;
+  font-size: clamp(24px, 2.1vw, 30px);
+  color: #1a202c;
+}
+
+.pfa-card p {
+  margin: 0;
+  color: #4a5568;
+  line-height: 1.65;
+}
+
+.pfa-actions {
+  margin-top: 18px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pfa-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.pfa-btn.primary {
+  color: #fff;
+  background: linear-gradient(135deg, #3e74c9 0%, #1eb894 100%);
+}
+
+.pfa-btn.ghost {
+  color: #334155;
+  background: #fff;
+  border: 1px solid #dbe4ee;
+}

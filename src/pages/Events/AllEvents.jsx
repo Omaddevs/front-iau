@@ -9,10 +9,11 @@ import "./AllEvents.css";
 export default function AllEvents() {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialTab = searchParams.get("tab") === "previous" ? "previous" : "upcoming";
-  const [tab, setTab]         = useState(initialTab);
-  const [events, setEvents]   = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError]     = useState(null);
+  const [tab, setTab]           = useState(initialTab);
+  const [events, setEvents]     = useState([]);
+  const [loading, setLoading]   = useState(true);
+  const [error, setError]       = useState(null);
+  const [refreshKey, setRefreshKey] = useState(0);
 
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
@@ -29,7 +30,7 @@ export default function AllEvents() {
       .then(setEvents)
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));
-  }, [tab]);
+  }, [tab, refreshKey]);
 
   return (
     <div className="aev-page">
@@ -76,7 +77,7 @@ export default function AllEvents() {
         {error && (
           <div className="aev-error">
             <p>Failed to load events. Please try again.</p>
-            <button onClick={() => setTab(tab)}>Retry</button>
+            <button onClick={() => setRefreshKey((k) => k + 1)}>Retry</button>
           </div>
         )}
 

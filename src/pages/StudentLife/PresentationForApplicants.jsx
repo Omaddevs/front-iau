@@ -1,14 +1,14 @@
-// src/pages/StudentLife/AcademicCalendar.jsx
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import "./AcademicCalendar.css";
+import "./PresentationForApplicants.css";
 import bgVideo from "../../all-bg-videos/iau-bg.mp4";
 
 const SIDEBAR_LINKS = [
-  { label: "ACADEMIC CALENDAR FOR 2025/2026", href: "/student-life/academic-calendar", active: true },
+  { label: "ACADEMIC CALENDAR FOR 2025/2026", href: "/student-life/academic-calendar" },
   { label: "INTERNATIONAL STUDENTS", href: "/student-life/international-students", hidden: true },
   { label: "STUDENT HANDBOOK", href: "/student-life/student-handbook" },
-  { label: "PRESENTATION FOR APPLICANTS", href: "/student-life/presentation-for-applicants", hidden: true },
+  { label: "PRESENTATION FOR APPLICANTS", href: "/student-life/presentation-for-applicants", active: true, hidden: true },
   { label: "CAREER SERVICES", href: "#", hidden: true },
   { label: "IAU CLUBS", href: "/student-life/iau-clubs", hidden: true },
   { label: "STUDENTS CREATIVITY", href: "#", hidden: true },
@@ -16,67 +16,57 @@ const SIDEBAR_LINKS = [
   { label: "EKOFAOL TALABALAR", href: "/student-life/ekofaol-talabalar" },
 ];
 
-export default function AcademicCalendar() {
-  const [activeTab, setActiveTab] = useState("undergraduate");
-
+export default function PresentationForApplicants() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <div className="academic-calendar-page">
-      {/* Hero header */}
       <div className="ac-hero">
         <video className="ac-hero-video" autoPlay loop muted playsInline>
           <source src={bgVideo} type="video/mp4" />
         </video>
         <div className="ac-hero-overlay" />
         <div className="ac-hero-content">
-          <h1>Academic calendar</h1>
+          <h1>Presentation for Applicants</h1>
         </div>
       </div>
 
-      {/* Main content */}
       <div className="ac-container">
         <div className="ac-main">
-          {/* Tabs */}
-          <div className="ac-tabs">
-            <button
-              type="button"
-              className={`ac-tab-btn ${activeTab === "undergraduate" ? "active" : ""}`}
-              onClick={() => setActiveTab("undergraduate")}
-            >
-              British Academic Calendar 2025-2026
-            </button>
-            <button
-              type="button"
-              className={`ac-tab-btn ${activeTab === "graduate" ? "active" : ""}`}
-              onClick={() => setActiveTab("graduate")}
-            >
-              Uzbek Academic Calendar 2025-2026
-            </button>
-          </div>
+          <section className="pfa-card">
+            <h2>Everything you need before applying</h2>
+            <p>
+              Explore key details about IAU programs, admission requirements, tuition information,
+              campus life, and student support services in one concise presentation.
+            </p>
+            <div className="pfa-actions">
+              <a
+                className="pfa-btn primary"
+                href="/pdfs/student-handbook.pdf"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Open Presentation
+              </a>
+              <a className="pfa-btn ghost" href="/contact">
+                Ask Admissions Team
+              </a>
+            </div>
+          </section>
 
-          {/* PDF Viewer */}
           <div className="ac-calendar-card ac-pdf-container">
             <iframe
-              key={activeTab}
-              src={activeTab === "undergraduate"
-                ? "/pdfs/academic-calendar.pdf"
-                : "/pdfs/kalendar-uz.pdf"
-              }
+              src="/pdfs/student-handbook.pdf"
               width="100%"
               height="800px"
               className="ac-pdf-iframe"
-              title={activeTab === "undergraduate"
-                ? "British Academic Calendar 2025-2026"
-                : "Uzbek Academic Calendar 2025-2026"
-              }
+              title="Presentation for Applicants"
             />
           </div>
         </div>
 
-        {/* Right sidebar */}
         <aside className="ac-sidebar">
           <div className="ac-sidebar-box">
             <h3>Student life</h3>

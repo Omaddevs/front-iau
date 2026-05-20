@@ -4,21 +4,14 @@ import { Link } from "react-router-dom";
 import "./LatestNews.css";
 import { IoCalendarOutline, IoEyeOutline, IoChevronForwardOutline } from "react-icons/io5";
 import bgVideo from "../../all-bg-videos/iau-bg.mp4";
-import { fetchNewsList } from "../../api/newsApi";
+import { fetchNewsList, fetchCategories } from "../../api/newsApi";
 
 const PAGE_SIZE = 12;
 const PLACEHOLDER_IMG = "https://placehold.co/400x250/1a6b3a/ffffff?text=IAU+News";
 
-const CATEGORIES = [
+const BASE_CATEGORIES = [
   { id: null, name: "All" },
-  { id: "latest", name: "News" },
-  { id: 2, name: "Events" },
-  { id: 3, name: "Announcements" },
-  { id: 4, name: "Research" },
-  { id: 5, name: "Student Life" },
-  { id: 6, name: "Partnerships" },
-  { id: 7, name: "International" },
-  { id: 8, name: "Sports" },
+  { id: "latest", name: "Latest" },
 ];
 
 export default function LatestNews() {
@@ -28,9 +21,18 @@ export default function LatestNews() {
   const [currentPage, setCurrentPage] = useState(1);
   const [activeCategoryId, setActiveCategoryId] = useState(null);
   const [totalCount, setTotalCount]   = useState(0);
+  const [categories, setCategories]   = useState(BASE_CATEGORIES);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    fetchCategories()
+      .then((data) => {
+        setCategories([
+          ...BASE_CATEGORIES,
+          ...data.map((c) => ({ id: c.id, name: c.name })),
+        ]);
+      })
+      .catch(() => {});
   }, []);
 
   useEffect(() => {
@@ -85,9 +87,9 @@ export default function LatestNews() {
 
           {/* Category Filter */}
           <div className="news-category-filter">
-            {CATEGORIES.map((cat) => (
+            {categories.map((cat) => (
               <button
-                key={cat.id || "all"}
+                key={cat.id ?? "all"}
                 className={`news-cat-btn ${activeCategoryId === cat.id ? "active" : ""}`}
                 onClick={() => handleCategoryClick(cat.id)}
               >

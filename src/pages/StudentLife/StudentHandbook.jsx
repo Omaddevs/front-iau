@@ -6,14 +6,14 @@ import bgVideo from "../../all-bg-videos/iau-bg.mp4";
 
 const SIDEBAR_LINKS = [
   { label: "ACADEMIC CALENDAR FOR 2025/2026", href: "/student-life/academic-calendar" },
-  { label: "INTERNATIONAL STUDENTS", href: "#" },
+  { label: "INTERNATIONAL STUDENTS", href: "/student-life/international-students", hidden: true },
   { label: "STUDENT HANDBOOK", href: "/student-life/student-handbook", active: true },
-  { label: "PRESENTATION FOR APPLICANTS", href: "#" },
-  { label: "CAREER SERVICES", href: "#" },
-  { label: "IAU CLUBS", href: "#" },
-  { label: "STUDENTS CREATIVITY", href: "#" },
-  { label: "INTERVIEWS", href: "#" },
-  { label: "KELAJAKKA QADAM", href: "#" },
+  { label: "PRESENTATION FOR APPLICANTS", href: "/student-life/presentation-for-applicants", hidden: true },
+  { label: "CAREER SERVICES", href: "#", hidden: true },
+  { label: "IAU CLUBS", href: "/student-life/iau-clubs", hidden: true },
+  { label: "STUDENTS CREATIVITY", href: "#", hidden: true },
+  { label: "INTERVIEWS", href: "#", hidden: true },
+  { label: "EKOFAOL TALABALAR", href: "/student-life/ekofaol-talabalar" },
 ];
 
 export default function StudentHandbook() {
@@ -55,7 +55,7 @@ export default function StudentHandbook() {
             <h3>Student life</h3>
             <ul className="ac-sidebar-links">
               {SIDEBAR_LINKS.map((link, i) => (
-                <li key={i}>
+                <li key={i} style={{ display: link.hidden ? "none" : "block" }}>
                   {link.href.startsWith("/") ? (
                     <Link to={link.href} className={link.active ? "active" : ""}>
                       {link.label}
