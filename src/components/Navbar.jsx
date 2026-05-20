@@ -108,7 +108,7 @@ export default function Navbar() {
                 "IAU CLUBS",
                 "STUDENTS CREATIVITY",
                 "INTERVIEWS",
-                "EKOFAOL TALABALAR",
+                "ECO-ACTIVE STUDENTS",
             ],
             admissions: ["IAU SCIENTIFIC COUNCIL", "RESEARCH PROJECTS", "RESEARCH PUBLICATION", "GERMAN-UZBEK CHAIN ON CENTRAL ASIAN AGRICULTURAL ECONOMICS (GUCAE)"],
             life: {
@@ -486,7 +486,7 @@ export default function Navbar() {
                                             >
                                                 {x}
                                             </button>
-                                        ) : x === "EKOFAOL TALABALAR" ? (
+                                        ) : x === "ECO-ACTIVE STUDENTS" ? (
                                             <button
                                                 key={x}
                                                 type="button"
@@ -910,7 +910,7 @@ export default function Navbar() {
                                         >
                                             {x}
                                         </button>
-                                    ) : x === "EKOFAOL TALABALAR" ? (
+                                    ) : x === "ECO-ACTIVE STUDENTS" ? (
                                         <button
                                             key={x}
                                             type="button"

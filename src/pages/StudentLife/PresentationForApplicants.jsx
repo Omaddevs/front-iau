@@ -13,7 +13,7 @@ const SIDEBAR_LINKS = [
   { label: "IAU CLUBS", href: "/student-life/iau-clubs", hidden: true },
   { label: "STUDENTS CREATIVITY", href: "#", hidden: true },
   { label: "INTERVIEWS", href: "#", hidden: true },
-  { label: "EKOFAOL TALABALAR", href: "/student-life/ekofaol-talabalar" },
+  { label: "ECO-ACTIVE STUDENTS", href: "/student-life/ekofaol-talabalar" },
 ];
 
 export default function PresentationForApplicants() {

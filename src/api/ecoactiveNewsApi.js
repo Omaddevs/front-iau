@@ -4,38 +4,52 @@ const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000/api";
 const SECONDARY_BASE_URL = "http://localhost:4001/api";
 const PLACEHOLDER_IMG = localPlaceholder;
 
-function proxyMediaUrl(url) {
+function resolveMediaUrl(url) {
   if (!url) return null;
   try {
-    const parsed = new URL(url);
-    return parsed.pathname + parsed.search;
+    if (url.startsWith("http://") || url.startsWith("https://")) {
+      const parsed = new URL(url);
+      return parsed.pathname + parsed.search;
+    }
   } catch {
-    return url;
+    // keep original
   }
+  return url.startsWith("/") ? url : `/${url}`;
 }
 
 function normalizeItem(item) {
+  const cover = resolveMediaUrl(item.img) || PLACEHOLDER_IMG;
+  const gallery_images = (item.gallery_images || [])
+    .map((g) => {
+      const raw = typeof g === "string" ? g : g?.image;
+      const image = resolveMediaUrl(raw);
+      if (!image) return null;
+      return {
+        ...(typeof g === "object" && g !== null ? g : {}),
+        image,
+        caption: (typeof g === "object" && g?.caption) || "",
+      };
+    })
+    .filter(Boolean);
+
   return {
     ...item,
     views: Number(item?.views ?? 0),
-    img: proxyMediaUrl(item.img) || PLACEHOLDER_IMG,
-    gallery_images: (item.gallery_images || []).map((g) => ({
-      ...g,
-      image: proxyMediaUrl(g.image),
-    })),
+    img: cover,
+    gallery_images,
   };
 }
 
 const FALLBACK_LIST = [
   {
     id: "demo-1",
-    title: "Ekologik hashar: talabalar tomonidan 250 tup daraxt ekildi",
-    text: "Universitet hududida “Yashil makon” doirasida katta ko'kalamzorlashtirish aksiyasi o'tkazildi.",
-    body: "Talabalar, professor-o'qituvchilar va volontyorlar ishtirokida umumiy hashar tashkil qilindi. Aksiya davomida 250 tup manzarali va mevali daraxtlar ekildi.\n\nTadbir yakunida ekologik targ'ibot bo'yicha ochiq muloqot ham o'tkazildi.",
+    title: "Tree planting drive: students plant 250 trees",
+    text: "A large greening campaign was held on campus as part of the Green Space initiative.",
+    body: "Students, faculty, and volunteers joined a community clean-up and planting day. During the event, 250 ornamental and fruit trees were planted.\n\nAn open discussion on environmental awareness was held at the end of the day.",
     date: "2026-05-20",
     views: 0,
     img: PLACEHOLDER_IMG,
-    categories: [{ name: "Yashil makon" }],
+    categories: [{ name: "Green Space" }],
     gallery_images: [],
   },
 ];
@@ -89,5 +103,5 @@ export async function fetchEkofaolNewsDetail(id) {
 
   const found = FALLBACK_LIST.find((x) => String(x.id) === String(id));
   if (found) return normalizeItem({ ...found, views: Number(found.views || 0) + 1 });
-  throw new Error("Ekofaol news not found");
+  throw new Error("Article not found");
 }

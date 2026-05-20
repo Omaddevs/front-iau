@@ -15,7 +15,7 @@ const SIDEBAR_LINKS = [
   { label: "IAU CLUBS", href: "/student-life/iau-clubs", hidden: true },
   { label: "STUDENTS CREATIVITY", href: "#", hidden: true },
   { label: "INTERVIEWS", href: "#", hidden: true },
-  { label: "EKOFAOL TALABALAR", href: "/student-life/ekofaol-talabalar", active: true },
+  { label: "ECO-ACTIVE STUDENTS", href: "/student-life/ekofaol-talabalar", active: true },
 ];
 
 const PAGE_SIZE = 8;
@@ -45,7 +45,7 @@ export default function EkofaolTalabalar() {
         setNews(data.results || []);
         setTotalCount(data.count || 0);
       } catch (err) {
-        setError(err.message || "Ekofaol talabalar ma'lumotlari yuklanmadi.");
+        setError(err.message || "Failed to load eco-active students content.");
       } finally {
         setLoading(false);
       }
@@ -63,7 +63,7 @@ export default function EkofaolTalabalar() {
         </video>
         <div className="ac-hero-overlay" />
         <div className="ac-hero-content">
-          <h1>Ekofaol talabalar</h1>
+          <h1>Eco-active Students</h1>
         </div>
       </div>
 
@@ -71,8 +71,8 @@ export default function EkofaolTalabalar() {
         <div className="ac-main">
           <section className="eco-head">
             <div className="eco-head-copy">
-              <h2>Ekofaol talabalar</h2>
-              <p>Ekologik tadbirlar, hasharlar va yashil tashabbuslar haqidagi yangiliklar.</p>
+              <h2>Eco-active Students</h2>
+              <p>News about ecological events, clean-up days, and green initiatives.</p>
             </div>
             <input
               className="eco-search"
@@ -81,8 +81,8 @@ export default function EkofaolTalabalar() {
                 setQuery(e.target.value);
                 setCurrentPage(1);
               }}
-              placeholder="Yangilik qidirish..."
-              aria-label="Yangilik qidirish"
+              placeholder="Search news..."
+              aria-label="Search news"
             />
           </section>
 
@@ -118,6 +118,9 @@ export default function EkofaolTalabalar() {
                         <h3>{item.title}</h3>
                       </Link>
                       <p>{item.text}</p>
+                      <Link to={`/student-life/ekofaol-talabalar/${item.id}`} className="eco-news-more">
+                        See more <IoChevronForwardOutline />
+                      </Link>
                     </div>
                   </article>
                 ))}
@@ -168,11 +171,6 @@ export default function EkofaolTalabalar() {
                 </li>
               ))}
             </ul>
-          </div>
-
-          <div className="eco-admin-hint">
-            <h4>Admin boshqaruv</h4>
-            <p>Yangi e'lonlar Django admin orqali qo'shiladi: `ekofaol-news`.</p>
           </div>
         </aside>
       </div>
