@@ -45,7 +45,7 @@ export default function EkofaolTalabalar() {
         setNews(data.results || []);
         setTotalCount(data.count || 0);
       } catch (err) {
-        setError(err.message || "Ekofaol yangiliklar yuklanmadi.");
+        setError(err.message || "Ekofaol talabalar ma'lumotlari yuklanmadi.");
       } finally {
         setLoading(false);
       }
@@ -71,7 +71,7 @@ export default function EkofaolTalabalar() {
         <div className="ac-main">
           <section className="eco-head">
             <div className="eco-head-copy">
-              <h2>Ekofaol yangiliklar</h2>
+              <h2>Ekofaol talabalar</h2>
               <p>Ekologik tadbirlar, hasharlar va yashil tashabbuslar haqidagi yangiliklar.</p>
             </div>
             <input
