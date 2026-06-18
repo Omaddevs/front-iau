@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import "./SocialNetworks.css";
+import { useLanguage } from "../i18n/LanguageContext";
 import {
   FaInstagram, FaTelegramPlane, FaFacebookF,
   FaYoutube, FaLinkedinIn,
@@ -20,6 +21,7 @@ const NETWORKS = [
 ];
 
 export default function SocialNetworks() {
+  const { t } = useLanguage();
   const trackRef   = useRef(null);
   const [active, setActive]     = useState(0);
   const [isMobile, setIsMobile] = useState(false);
@@ -60,10 +62,10 @@ export default function SocialNetworks() {
         {/* ── Text ── */}
         <div className="sn-text-content">
           <h2 className="sn-title">
-            Subscribe to our pages<br />
-            on <span className="sn-highlight">social networks</span>
+            {t("social.title")}<br />
+            {t("social.on")} <span className="sn-highlight">{t("social.highlight")}</span>
           </h2>
-          <p className="sn-subtitle">Follow the latest news about us</p>
+          <p className="sn-subtitle">{t("social.subtitle")}</p>
         </div>
 
         {/* ── Phones + scroll indicator ── */}

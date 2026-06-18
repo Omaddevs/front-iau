@@ -2,6 +2,7 @@ import "./PartnersSection.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
+import { useLanguage } from "../i18n/LanguageContext";
 
 import agrobank from "../partners/agrobank.svg";
 import fao from "../partners/fao.png";
@@ -12,6 +13,7 @@ import rau from "../partners/rau1.png";
 import turonbank from "../partners/turon-bank.png";
 import worldbank from "../partners/world-bank 1.png";
 import iamo from "../partners/iamo.svg";
+import agrohouse from "../partners/agrohouse.png";
 
 const PaperClipIconGradient = () => (
      <svg
@@ -44,16 +46,18 @@ const partnersData = [
      { img: rau, url: "https://rau.ac.uk", label: "rau.ac.uk" },
      { img: turonbank, url: "https://turonbank.uz", label: "turonbank.uz" },
      { img: worldbank, url: "https://worldbank.org", label: "worldbank.org" },
-     { img: iamo, url: "https://www.iamo.de/home", label: "iamo.de" }
+     { img: iamo, url: "https://www.iamo.de/home", label: "iamo.de" },
+     { img: agrohouse, url: "https://www.agro.house", label: "agro.house" }
 ];
 
 export default function PartnersSection() {
+     const { t } = useLanguage();
 
      return (
           <section className="partners-section">
                <div className="partners-container">
                     <h2 className="partners-title">
-                         Our <span className="text-teal">Partners</span>
+                         {t("partners.title")} <span className="text-teal">{t("partners.titleHighlight")}</span>
                     </h2>
 
                     <div className="partners-slider-wrapper">

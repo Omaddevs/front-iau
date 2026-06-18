@@ -9,6 +9,7 @@ import React, {
 } from "react";
 import { createPortal } from "react-dom";
 import "./AccessibilityToolbar.css";
+import { useLanguage } from "../../i18n/LanguageContext";
 import {
   IoAccessibilityOutline,
   IoCloseOutline,
@@ -110,6 +111,7 @@ function Btn({ id, active, onClick, label, icon, children }) {
 //  MAIN COMPONENT
 // ════════════════════════════════════════════════════════════
 export default function AccessibilityToolbar() {
+  const { lang, t } = useLanguage();
   const [open,      setOpen]      = useState(false);
   const [settings,  setSettings]  = useState(loadSettings);
   const [ttsStatus, setTtsStatus] = useState("idle");
@@ -277,9 +279,9 @@ export default function AccessibilityToolbar() {
           <div className="a11y-hd__info">
             <div className="a11y-hd__title">
               <IoAccessibilityOutline aria-hidden="true" />
-              Accessibility
+              {t("a11y.title")}
             </div>
-            <div className="a11y-hd__sub">WCAG 2.1 AA · Settings auto-saved</div>
+            <div className="a11y-hd__sub">{t("a11y.subtitle")}</div>
           </div>
           <button
             ref={firstBtnRef}
@@ -299,7 +301,7 @@ export default function AccessibilityToolbar() {
           <section className="a11y-sec" aria-labelledby="a11y-ttl-text">
             <h3 id="a11y-ttl-text" className="a11y-sec__ttl">
               <FaFont aria-hidden="true" />
-              Text
+              {t("a11y.textSection")}
             </h3>
 
             {/* Font-size stepper */}
@@ -367,20 +369,20 @@ export default function AccessibilityToolbar() {
           <section className="a11y-sec" aria-labelledby="a11y-ttl-vision">
             <h3 id="a11y-ttl-vision" className="a11y-sec__ttl">
               <IoEyeOutline aria-hidden="true" />
-              Vision
+              {t("a11y.visionSection")}
             </h3>
             <div className="a11y-grid a11y-grid--3">
               <Btn active={settings.contrast} onClick={() => toggle("contrast")}
                 label="High contrast mode" icon={<IoContrastOutline size={22} />}>
-                High<br />Contrast
+                {t("a11y.highContrast").split("\n").map((l, i) => i === 0 ? l : <><br key={i}/>{l}</>)}
               </Btn>
               <Btn active={settings.grayscale} onClick={() => toggle("grayscale")}
                 label="Black and white mode" icon={<IoColorPaletteOutline size={22} />}>
-                Black<br />&amp; White
+                {t("a11y.blackWhite").split("\n").map((l, i) => i === 0 ? l : <><br key={i}/>{l}</>)}
               </Btn>
               <Btn active={settings.blueLight} onClick={() => toggle("blueLight")}
                 label="Blue light reduction" icon={<IoSunnyOutline size={22} />}>
-                Blue<br />Light
+                {t("a11y.blueLight").split("\n").map((l, i) => i === 0 ? l : <><br key={i}/>{l}</>)}
               </Btn>
             </div>
           </section>
@@ -389,7 +391,7 @@ export default function AccessibilityToolbar() {
           <section className="a11y-sec" aria-labelledby="a11y-ttl-ui">
             <h3 id="a11y-ttl-ui" className="a11y-sec__ttl">
               <IoHandRightOutline aria-hidden="true" />
-              Interface
+              {t("a11y.interfaceSection")}
             </h3>
             <div className="a11y-grid a11y-grid--3">
               <Btn active={settings.noImages} onClick={() => toggle("noImages")}
@@ -397,15 +399,15 @@ export default function AccessibilityToolbar() {
                 icon={settings.noImages
                   ? <IoEyeOffOutline size={22} />
                   : <IoEyeOutline size={22} />}>
-                {settings.noImages ? "Show\nImages" : "Hide\nImages"}
+                {(settings.noImages ? t("a11y.showImages") : t("a11y.hideImages")).split("\n").map((l, i) => i === 0 ? l : <><br key={i}/>{l}</>)}
               </Btn>
               <Btn active={settings.readGuide} onClick={() => toggle("readGuide")}
                 label="Reading guide" icon={<IoReaderOutline size={22} />}>
-                Read<br />Guide
+                {t("a11y.readGuide").split("\n").map((l, i) => i === 0 ? l : <><br key={i}/>{l}</>)}
               </Btn>
               <Btn active={settings.bigCursor} onClick={() => toggle("bigCursor")}
                 label="Large cursor" icon={<IoHandRightOutline size={22} />}>
-                Big<br />Cursor
+                {t("a11y.bigCursor").split("\n").map((l, i) => i === 0 ? l : <><br key={i}/>{l}</>)}
               </Btn>
             </div>
           </section>
@@ -414,7 +416,7 @@ export default function AccessibilityToolbar() {
           <section className="a11y-sec" aria-labelledby="a11y-ttl-audio">
             <h3 id="a11y-ttl-audio" className="a11y-sec__ttl">
               <IoVolumeHighOutline aria-hidden="true" />
-              Audio
+              {t("a11y.audioSection")}
             </h3>
             <div className="a11y-tts">
               <button
@@ -425,7 +427,7 @@ export default function AccessibilityToolbar() {
                 type="button"
               >
                 <IoVolumeHighOutline size={18} aria-hidden="true" />
-                Read Page
+                {t("a11y.readPage")}
               </button>
               <button
                 className={`a11y-tts__ctrl${ttsStatus === "paused" ? " is-on" : ""}`}
@@ -450,7 +452,7 @@ export default function AccessibilityToolbar() {
             {ttsStatus !== "idle" && (
               <p className="a11y-tts__status" role="status" aria-live="polite">
                 <span className="a11y-tts__dot" aria-hidden="true" />
-                {ttsStatus === "speaking" ? "Reading page…" : "Paused"}
+                {ttsStatus === "speaking" ? t("a11y.reading") : t("a11y.paused")}
               </p>
             )}
           </section>
@@ -463,7 +465,7 @@ export default function AccessibilityToolbar() {
             type="button"
           >
             <IoRefreshOutline size={16} aria-hidden="true" />
-            Reset All Settings
+            {t("a11y.resetAll")}
           </button>
         </div>
 

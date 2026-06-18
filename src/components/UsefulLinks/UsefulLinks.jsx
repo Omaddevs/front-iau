@@ -4,6 +4,7 @@ import "./UsefulLinks.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
+import { useLanguage } from "../../i18n/LanguageContext";
 
 // import the standard gerb and oliy talim images we know exist
 import gerbImg from "../../images/gerb.png";
@@ -31,11 +32,13 @@ const PaperClipIcon = () => (
 );
 
 const UsefulLinks = () => {
+  const { t } = useLanguage();
+
   const links = [
     {
       id: 1,
       type: "tezkorquiz",
-      title: "TezkorQuiz – Milliy bilimlar platformasi",
+      title: t("usefulLinks.links.tezkorquiz"),
       urlLabel: "tezkorquiz.uz",
       url: "https://tezkorquiz.uz",
       img: tezkorImg,
@@ -43,7 +46,7 @@ const UsefulLinks = () => {
     {
       id: 2,
       type: "president",
-      title: "O'zbekiston Respublikasi Prezidenti",
+      title: t("usefulLinks.links.president"),
       urlLabel: "president.uz",
       url: "https://president.uz",
       img: gerbImg,
@@ -51,7 +54,7 @@ const UsefulLinks = () => {
     {
       id: 3,
       type: "rau",
-      title: "Royal Agricultural University (RAU) VLE",
+      title: t("usefulLinks.links.rau"),
       urlLabel: "internationalvle.rau.ac.uk",
       url: "https://internationalvle.rau.ac.uk/",
       img: rauImg,
@@ -59,14 +62,14 @@ const UsefulLinks = () => {
     {
       id: 4,
       type: "data",
-      title: "O'zbekiston Respublikasi ochiq ma'lumotlar portali",
+      title: t("usefulLinks.links.data"),
       urlLabel: "data.egov.uz",
       url: "https://data.egov.uz",
     },
     {
       id: 5,
       type: "edu",
-      title: "O'zbekiston Respublikasi Oliy ta'lim, fan va innovatsiyalar vazirligi",
+      title: t("usefulLinks.links.edu"),
       urlLabel: "gov.uz/oz/edu",
       url: "https://gov.uz/oz/edu",
       img: eduImg,
@@ -74,7 +77,7 @@ const UsefulLinks = () => {
     {
       id: 6,
       type: "canva",
-      title: "Canva – Online Design Platform",
+      title: t("usefulLinks.links.canva"),
       urlLabel: "canva.com",
       url: "https://www.canva.com",
       img: canvaImg,
@@ -120,7 +123,7 @@ const UsefulLinks = () => {
   return (
     <section className="useful-links-section">
       <h2 className="useful-section-title">
-        Useful <span className="text-teal">Links</span>
+        {t("usefulLinks.title")} <span className="text-teal">{t("usefulLinks.titleHighlight")}</span>
       </h2>
       <div className="useful-container">
         <Swiper

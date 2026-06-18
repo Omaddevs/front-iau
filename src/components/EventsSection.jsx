@@ -5,11 +5,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { IoLocationOutline, IoChevronForwardOutline } from "react-icons/io5";
 import { fetchUpcomingEvents, fetchPreviousEvents } from "../api/eventsApi";
+import { useLanguage } from "../i18n/LanguageContext";
 
 export default function EventsSection() {
   const [tab, setTab]         = useState("upcoming");
   const [events, setEvents]   = useState([]);
   const [loading, setLoading] = useState(true);
+  const { t } = useLanguage();
 
   useEffect(() => {
     setLoading(true);
@@ -43,10 +45,10 @@ export default function EventsSection() {
         {/* HEAD */}
         <div className="evx-head">
           <h2 className="evx-title">
-            University <span>Events</span>
+            {t("events.title")} <span>{t("events.titleHighlight")}</span>
           </h2>
           <Link className="evx-more" to="/events">
-            See more <IoChevronForwardOutline />
+            {t("events.seeMore")} <IoChevronForwardOutline />
           </Link>
         </div>
 
@@ -58,7 +60,7 @@ export default function EventsSection() {
             className={`evx-tab ${tab === "upcoming" ? "evx-tab--active" : ""}`}
             onClick={() => setTab("upcoming")}
           >
-            Upcoming Events
+            {t("events.upcoming")}
           </button>
           <button
             role="tab"
@@ -66,7 +68,7 @@ export default function EventsSection() {
             className={`evx-tab ${tab === "previous" ? "evx-tab--active" : ""}`}
             onClick={() => setTab("previous")}
           >
-            Previous Events
+            {t("events.previous")}
           </button>
         </div>
 
@@ -77,7 +79,9 @@ export default function EventsSection() {
               <div className="evx-spinner" />
             </div>
           ) : events.length === 0 ? (
-            <p className="evx-empty">No {tab} events at the moment.</p>
+            <p className="evx-empty">
+              {tab === "upcoming" ? t("events.noUpcoming") : t("events.noPrevious")}
+            </p>
           ) : (
             <motion.div
               className="evx-track"
@@ -103,7 +107,7 @@ export default function EventsSection() {
                         <div className="evx-divider" />
                         <div className="evx-loc">
                           <span className="evx-locIc"><IoLocationOutline /></span>
-                          <span className="evx-locTx">{e.location}</span>
+                          <span className="evx-locTx">{e.location || t("events.location")}</span>
                         </div>
                       </div>
 

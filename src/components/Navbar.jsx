@@ -17,6 +17,7 @@ import {
 } from "react-icons/io5";
 import { FaTelegramPlane } from "react-icons/fa";
 import navbarLogo from "../images/navbarLogo.PNG";
+import { useLanguage } from "../i18n/LanguageContext";
 
 export default function Navbar() {
     const [scrolled, setScrolled]   = useState(false);
@@ -25,6 +26,7 @@ export default function Navbar() {
     const [openSubDD, setOpenSubDD] = useState(null);
     const [mobileOpen, setMobileOpen] = useState(false);
     const [a11yActive, setA11yActive] = useState(false);
+    const { lang, setLang, t } = useLanguage();
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -161,6 +163,40 @@ export default function Navbar() {
         "INTERVIEWS",
     ]);
 
+    // ── nav dropdown label lookup (key → translated string) ──
+    const nl = (key) => t(`nav.${key}`);
+    const navLabels = {
+        "PRE-FOUNDATION": nl("preFoundation"),
+        "FOUNDATION": nl("foundation"),
+        "UNDERGRADUATE": nl("undergraduate"),
+        "POSTGRADUATE": nl("postgraduate"),
+        "PhD AND DSc PROGRAMMES": nl("phdDsc"),
+        "ACADEMIC CALENDAR FOR 2025/2026": nl("academicCalendar"),
+        "INTERNATIONAL STUDENTS": nl("internationalStudents"),
+        "STUDENT HANDBOOK": nl("studentHandbook"),
+        "PRESENTATION FOR APPLICANTS": nl("presentationApplicants"),
+        "CAREER SERVICES": nl("careerServices"),
+        "IAU CLUBS": nl("iauClubs"),
+        "STUDENTS CREATIVITY": nl("studentsCreativity"),
+        "INTERVIEWS": nl("interviews"),
+        "ECO-ACTIVE STUDENTS": nl("ecoActiveStudents"),
+        "IAU SCIENTIFIC COUNCIL": nl("scientificCouncil"),
+        "RESEARCH PROJECTS": nl("researchProjects"),
+        "RESEARCH PUBLICATION": nl("researchPublication"),
+        "GERMAN-UZBEK CHAIN ON CENTRAL ASIAN AGRICULTURAL ECONOMICS (GUCAE)": nl("gucae"),
+        "LIFE SCIENCE FESTIVAL": nl("lifeScienceFestival"),
+        "LIFE SCIENCE FESTIVAL - 2025": nl("festival2025"),
+        "LIFE SCIENCE FESTIVAL - 2024": nl("festival2024"),
+        "LIFE SCIENCE FESTIVAL - 2023": nl("festival2023"),
+        "SUMMARY OF EVENT 2025": nl("summary2025"),
+        "SUMMARY OF EVENT 2024": nl("summary2024"),
+        "SUMMARY OF EVENT 2023": nl("summary2023"),
+        "22 REASONS TO ATTEND": nl("reasons22"),
+        "ABOUT UNIVERSITY": nl("aboutUniversity"),
+        "OUR STAFF": nl("staffMenu"),
+    };
+    const nL = (x) => navLabels[x] || x;
+
     const closeAll = () => {
         setLangOpen(false);
         setOpenDD(null);
@@ -227,7 +263,7 @@ export default function Navbar() {
                                     </defs>
                                     <path fill="url(#testBadgeGrad)" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
                                 </svg>
-                                The site works in test mode
+                                {t("nav.testBadge")}
                             </div>
                         </div>
 
@@ -277,19 +313,21 @@ export default function Navbar() {
                                         setLangOpen((v) => !v);
                                     }}
                                 >
-                                    <span className="navx-flag">GB</span>
-                                    <span>English</span>
+                                    <span className="navx-flag">
+                                        {lang === "uz" ? "UZ" : lang === "ru" ? "RU" : "EN"}
+                                    </span>
+                                    <span>{t("nav.langLabel")}</span>
                                     <IoChevronDownOutline className="navx-chev" />
                                 </button>
 
                                 <div className="navx-langMenu">
-                                    <button type="button" onClick={() => setLangOpen(false)}>
-                                        UZ — O‘zbek
+                                    <button type="button" className={lang === "uz" ? "active-lang" : ""} onClick={() => { setLang("uz"); setLangOpen(false); }}>
+                                        UZ — O’zbek
                                     </button>
-                                    <button type="button" onClick={() => setLangOpen(false)}>
+                                    <button type="button" className={lang === "ru" ? "active-lang" : ""} onClick={() => { setLang("ru"); setLangOpen(false); }}>
                                         RU — Русский
                                     </button>
-                                    <button type="button" onClick={() => setLangOpen(false)}>
+                                    <button type="button" className={lang === "en" ? "active-lang" : ""} onClick={() => { setLang("en"); setLangOpen(false); }}>
                                         EN — English
                                     </button>
                                 </div>
@@ -324,7 +362,7 @@ export default function Navbar() {
                                         setOpenDD((v) => (v === "about" ? null : "about"));
                                     }}
                                 >
-                                    Programmes <IoChevronDownOutline />
+                                    {t("nav.programmes")} <IoChevronDownOutline />
                                 </button>
 
                                 <div className="navx-ddMenu">
@@ -332,7 +370,7 @@ export default function Navbar() {
                                         if (x === "PRE-FOUNDATION") {
                                             return (
                                                 <button
-                                                    key={x}
+                                                    key={nL(x)}
                                                     type="button"
                                                     className="navx-ddAction"
                                                     onClick={() => {
@@ -340,14 +378,14 @@ export default function Navbar() {
                                                         navigate("/admissions/pre-foundation");
                                                     }}
                                                 >
-                                                    {x}
+                                                    {nL(x)}
                                                 </button>
                                             );
                                         }
                                         if (x === "FOUNDATION") {
                                             return (
                                                 <button
-                                                    key={x}
+                                                    key={nL(x)}
                                                     type="button"
                                                     className="navx-ddAction"
                                                     onClick={() => {
@@ -355,14 +393,14 @@ export default function Navbar() {
                                                         navigate("/admissions/foundation");
                                                     }}
                                                 >
-                                                    {x}
+                                                    {nL(x)}
                                                 </button>
                                             );
                                         }
                                         if (x === "UNDERGRADUATE") {
                                             return (
                                                 <button
-                                                    key={x}
+                                                    key={nL(x)}
                                                     type="button"
                                                     className="navx-ddAction"
                                                     onClick={() => {
@@ -370,14 +408,14 @@ export default function Navbar() {
                                                         navigate("/admissions/undergraduate");
                                                     }}
                                                 >
-                                                    {x}
+                                                    {nL(x)}
                                                 </button>
                                             );
                                         }
                                         if (x === "POSTGRADUATE") {
                                             return (
                                                 <button
-                                                    key={x}
+                                                    key={nL(x)}
                                                     type="button"
                                                     className="navx-ddAction"
                                                     onClick={() => {
@@ -385,14 +423,14 @@ export default function Navbar() {
                                                         navigate("/admissions/postgraduate");
                                                     }}
                                                 >
-                                                    {x}
+                                                    {nL(x)}
                                                 </button>
                                             );
                                         }
                                         if (x === "PhD AND DSc PROGRAMMES") {
                                             return (
                                                 <button
-                                                    key={x}
+                                                    key={nL(x)}
                                                     type="button"
                                                     className="navx-ddAction"
                                                     onClick={() => {
@@ -400,13 +438,13 @@ export default function Navbar() {
                                                         navigate("/admissions/phd");
                                                     }}
                                                 >
-                                                    {x}
+                                                    {nL(x)}
                                                 </button>
                                             );
                                         }
                                         return (
-                                            <a key={x} href="#" onClick={() => setOpenDD(null)}>
-                                                {x}
+                                            <a key={nL(x)} href="#" onClick={() => setOpenDD(null)}>
+                                                {nL(x)}
                                             </a>
                                         );
                                     })}
@@ -421,14 +459,14 @@ export default function Navbar() {
                                         setOpenDD((v) => (v === "research" ? null : "research"));
                                     }}
                                 >
-                                    Students Life <IoChevronDownOutline />
+                                    {t("nav.studentLife")} <IoChevronDownOutline />
                                 </button>
                                 <div className="navx-ddMenu">
                                     {dropdowns.research.map((x) => (
                                         hiddenStudentLifeItems.has(x) ? null :
                                         x === "ACADEMIC CALENDAR FOR 2025/2026" ? (
                                             <button
-                                                key={x}
+                                                key={nL(x)}
                                                 type="button"
                                                 className="navx-ddAction"
                                                 onClick={() => {
@@ -436,11 +474,11 @@ export default function Navbar() {
                                                     navigate("/student-life/academic-calendar");
                                                 }}
                                             >
-                                                {x}
+                                                {nL(x)}
                                             </button>
                                         ) : x === "STUDENT HANDBOOK" ? (
                                             <button
-                                                key={x}
+                                                key={nL(x)}
                                                 type="button"
                                                 className="navx-ddAction"
                                                 onClick={() => {
@@ -448,11 +486,11 @@ export default function Navbar() {
                                                     navigate("/student-life/student-handbook");
                                                 }}
                                             >
-                                                {x}
+                                                {nL(x)}
                                             </button>
                                         ) : x === "INTERNATIONAL STUDENTS" ? (
                                             <button
-                                                key={x}
+                                                key={nL(x)}
                                                 type="button"
                                                 className="navx-ddAction"
                                                 onClick={() => {
@@ -460,11 +498,11 @@ export default function Navbar() {
                                                     navigate("/student-life/international-students");
                                                 }}
                                             >
-                                                {x}
+                                                {nL(x)}
                                             </button>
                                         ) : x === "PRESENTATION FOR APPLICANTS" ? (
                                             <button
-                                                key={x}
+                                                key={nL(x)}
                                                 type="button"
                                                 className="navx-ddAction"
                                                 onClick={() => {
@@ -472,11 +510,11 @@ export default function Navbar() {
                                                     navigate("/student-life/presentation-for-applicants");
                                                 }}
                                             >
-                                                {x}
+                                                {nL(x)}
                                             </button>
                                         ) : x === "IAU CLUBS" ? (
                                             <button
-                                                key={x}
+                                                key={nL(x)}
                                                 type="button"
                                                 className="navx-ddAction"
                                                 onClick={() => {
@@ -484,11 +522,11 @@ export default function Navbar() {
                                                     navigate("/student-life/iau-clubs");
                                                 }}
                                             >
-                                                {x}
+                                                {nL(x)}
                                             </button>
                                         ) : x === "ECO-ACTIVE STUDENTS" ? (
                                             <button
-                                                key={x}
+                                                key={nL(x)}
                                                 type="button"
                                                 className="navx-ddAction"
                                                 onClick={() => {
@@ -496,11 +534,11 @@ export default function Navbar() {
                                                     navigate("/student-life/ekofaol-talabalar");
                                                 }}
                                             >
-                                                {x}
+                                                {nL(x)}
                                             </button>
                                         ) : (
-                                            <a key={x} href="#" onClick={() => setOpenDD(null)}>
-                                                {x}
+                                            <a key={nL(x)} href="#" onClick={() => setOpenDD(null)}>
+                                                {nL(x)}
                                             </a>
                                         )
                                     ))}
@@ -517,14 +555,14 @@ export default function Navbar() {
                                         setOpenDD((v) => (v === "admissions" ? null : "admissions"));
                                     }}
                                 >
-                                    Research <IoChevronDownOutline />
+                                    {t("nav.research")} <IoChevronDownOutline />
                                 </button>
                                 <div className="navx-ddMenu">
                                     {dropdowns.admissions.map((x) => {
                                         if (x === "IAU SCIENTIFIC COUNCIL") {
                                             return (
                                                 <button
-                                                    key={x}
+                                                    key={nL(x)}
                                                     type="button"
                                                     className="navx-ddAction"
                                                     onClick={() => {
@@ -532,14 +570,14 @@ export default function Navbar() {
                                                         navigate("/research/scientific-council");
                                                     }}
                                                 >
-                                                    {x}
+                                                    {nL(x)}
                                                 </button>
                                             );
                                         }
                                         if (x === "RESEARCH PROJECTS") {
                                             return (
                                                 <button
-                                                    key={x}
+                                                    key={nL(x)}
                                                     type="button"
                                                     className="navx-ddAction"
                                                     onClick={() => {
@@ -547,14 +585,14 @@ export default function Navbar() {
                                                         navigate("/research/research-projects");
                                                     }}
                                                 >
-                                                    {x}
+                                                    {nL(x)}
                                                 </button>
                                             );
                                         }
                                         if (x === "RESEARCH PUBLICATION") {
                                             return (
                                                 <button
-                                                    key={x}
+                                                    key={nL(x)}
                                                     type="button"
                                                     className="navx-ddAction"
                                                     onClick={() => {
@@ -562,14 +600,14 @@ export default function Navbar() {
                                                         navigate("/research/research-publication");
                                                     }}
                                                 >
-                                                    {x}
+                                                    {nL(x)}
                                                 </button>
                                             );
                                         }
                                         if (x === "GERMAN-UZBEK CHAIN ON CENTRAL ASIAN AGRICULTURAL ECONOMICS (GUCAE)") {
                                             return (
                                                 <button
-                                                    key={x}
+                                                    key={nL(x)}
                                                     type="button"
                                                     className="navx-ddAction"
                                                     onClick={() => {
@@ -577,13 +615,13 @@ export default function Navbar() {
                                                         navigate("/research/gucae");
                                                     }}
                                                 >
-                                                    {x}
+                                                    {nL(x)}
                                                 </button>
                                             );
                                         }
                                         return (
-                                            <a key={x} href="#" onClick={() => setOpenDD(null)}>
-                                                {x}
+                                            <a key={nL(x)} href="#" onClick={() => setOpenDD(null)}>
+                                                {nL(x)}
                                             </a>
                                         );
                                     })}
@@ -599,11 +637,11 @@ export default function Navbar() {
                                         if (openDD === "life") setOpenSubDD(null);
                                     }}
                                 >
-                                    Festivals <IoChevronDownOutline />
+                                    {t("nav.festivals")} <IoChevronDownOutline />
                                 </button>
                                 <div className="navx-ddMenu navx-festivals-menu">
                                     {dropdowns.life.items.map((x) => (
-                                        <div key={x.name} className={`navx-ddSubMenuContainer ${openSubDD === x.name ? "open" : ""}`}>
+                                        <div key={nL(x.name)} className={`navx-ddSubMenuContainer ${openSubDD === x.name ? "open" : ""}`}>
                                             <a href="#" onClick={(e) => {
                                                 e.preventDefault();
                                                 if (x.subItems && x.subItems.length === 0) {
@@ -621,12 +659,12 @@ export default function Navbar() {
                                                     setOpenSubDD(prev => prev === x.name ? null : x.name);
                                                 }
                                             }} className="navx-ddAction">
-                                                {x.name} {x.subItems && x.subItems.length > 0 && <IoChevronForwardOutline className={`navx-subChev ${openSubDD === x.name ? "open" : ""}`} />}
+                                                {nL(x.name)} {x.subItems && x.subItems.length > 0 && <IoChevronForwardOutline className={`navx-subChev ${openSubDD === x.name ? "open" : ""}`} />}
                                             </a>
                                             {x.subItems && x.subItems.length > 0 && (
                                                 <div className="navx-ddSubMenu">
                                                     {x.subItems.map(subItem => (
-                                                        <button key={subItem} className="navx-subItemBtn" onClick={() => {
+                                                        <button key={nL(subItem)} className="navx-subItemBtn" onClick={() => {
                                                             closeAll();
                                                             if (subItem === "SUMMARY OF EVENT 2025") {
                                                                 navigate("/festivals/summary-2025");
@@ -638,7 +676,7 @@ export default function Navbar() {
                                                                 navigate("/festivals/summary-2023");
                                                             }
                                                         }}>
-                                                            {subItem}
+                                                            {nL(subItem)}
                                                         </button>
                                                     ))}
                                                 </div>
@@ -656,7 +694,7 @@ export default function Navbar() {
                                         setOpenDD((v) => (v === "news" ? null : "news"));
                                     }}
                                 >
-                                    About us <IoChevronDownOutline />
+                                    {t("nav.about")} <IoChevronDownOutline />
                                 </button>
 
                                 <div className="navx-ddMenu">
@@ -664,7 +702,7 @@ export default function Navbar() {
                                         if (x === "ABOUT UNIVERSITY") {
                                             return (
                                                 <button
-                                                    key={x}
+                                                    key={nL(x)}
                                                     type="button"
                                                     className="navx-ddAction"
                                                     onClick={() => {
@@ -672,26 +710,26 @@ export default function Navbar() {
                                                         navigate("/about");
                                                     }}
                                                 >
-                                                    {x}
+                                                    {nL(x)}
                                                 </button>
                                             );
                                         }
                                         if (x === "OUR STAFF") {
                                             return (
                                                 <button
-                                                    key={x}
+                                                    key={nL(x)}
                                                     type="button"
                                                     className="navx-ddAction"
                                                     onClick={goStaff}
                                                 >
-                                                    {x}
+                                                    {nL(x)}
                                                 </button>
                                             );
                                         }
 
                                         return (
-                                            <a key={x} href="#" onClick={() => setOpenDD(null)}>
-                                                {x}
+                                            <a key={nL(x)} href="#" onClick={() => setOpenDD(null)}>
+                                                {nL(x)}
                                             </a>
                                         );
                                     })}
@@ -699,16 +737,16 @@ export default function Navbar() {
                             </div>
 
                             <button className="navx-link" style={{ background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit' }} onClick={() => { setOpenDD(null); navigate("/latest-news"); }}>
-                                News
+                                {t("nav.latestNews")}
                             </button>
                             <button className="navx-link" style={{ background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit' }} onClick={() => { setOpenDD(null); navigate("/contact"); }}>
-                                Contact us
+                                {t("nav.contact")}
                             </button>
                         </div>
 
                         <div className="navx-cta">
                             <button className="navx-apply" type="button" onClick={() => window.open('https://iau-admission.tilda.ws', '_blank')}>
-                                Apply Now <IoChevronForwardOutline className="navx-applyArrow" />
+                                {t("common.applyNow")} <IoChevronForwardOutline className="navx-applyArrow" />
                             </button>
                         </div>
 
@@ -749,20 +787,20 @@ export default function Navbar() {
 
                     <div className="navx-mSearch">
                         <IoSearchOutline />
-                        <input placeholder="Search..." />
+                        <input placeholder={lang === "uz" ? "Qidirish..." : lang === "ru" ? "Поиск..." : "Search..."} />
                     </div>
 
                     <div className="navx-mLinks">
                         <details>
                             <summary>
-                                Programmes <IoChevronDownOutline />
+                                {t("nav.programmes")} <IoChevronDownOutline />
                             </summary>
                             <div className="navx-mDD">
                                 {dropdowns.about.map((x) => {
                                     if (x === "PRE-FOUNDATION") {
                                         return (
                                             <button
-                                                key={x}
+                                                key={nL(x)}
                                                 type="button"
                                                 className="navx-mDDbtn"
                                                 onClick={() => {
@@ -770,14 +808,14 @@ export default function Navbar() {
                                                     navigate("/admissions/pre-foundation");
                                                 }}
                                             >
-                                                {x}
+                                                {nL(x)}
                                             </button>
                                         );
                                     }
                                     if (x === "FOUNDATION") {
                                         return (
                                             <button
-                                                key={x}
+                                                key={nL(x)}
                                                 type="button"
                                                 className="navx-mDDbtn"
                                                 onClick={() => {
@@ -785,14 +823,14 @@ export default function Navbar() {
                                                     navigate("/admissions/foundation");
                                                 }}
                                             >
-                                                {x}
+                                                {nL(x)}
                                             </button>
                                         );
                                     }
                                     if (x === "UNDERGRADUATE") {
                                         return (
                                             <button
-                                                key={x}
+                                                key={nL(x)}
                                                 type="button"
                                                 className="navx-mDDbtn"
                                                 onClick={() => {
@@ -800,14 +838,14 @@ export default function Navbar() {
                                                     navigate("/admissions/undergraduate");
                                                 }}
                                             >
-                                                {x}
+                                                {nL(x)}
                                             </button>
                                         );
                                     }
                                     if (x === "POSTGRADUATE") {
                                         return (
                                             <button
-                                                key={x}
+                                                key={nL(x)}
                                                 type="button"
                                                 className="navx-mDDbtn"
                                                 onClick={() => {
@@ -815,14 +853,14 @@ export default function Navbar() {
                                                     navigate("/admissions/postgraduate");
                                                 }}
                                             >
-                                                {x}
+                                                {nL(x)}
                                             </button>
                                         );
                                     }
                                     if (x === "PhD AND DSc PROGRAMMES") {
                                         return (
                                             <button
-                                                key={x}
+                                                key={nL(x)}
                                                 type="button"
                                                 className="navx-mDDbtn"
                                                 onClick={() => {
@@ -830,13 +868,13 @@ export default function Navbar() {
                                                     navigate("/admissions/phd");
                                                 }}
                                             >
-                                                {x}
+                                                {nL(x)}
                                             </button>
                                         );
                                     }
                                     return (
-                                        <a key={x} href="#" onClick={() => setMobileOpen(false)}>
-                                            {x}
+                                        <a key={nL(x)} href="#" onClick={() => setMobileOpen(false)}>
+                                            {nL(x)}
                                         </a>
                                     );
                                 })}
@@ -845,14 +883,14 @@ export default function Navbar() {
 
                         <details>
                             <summary>
-                                Students Life <IoChevronDownOutline />
+                                {t("nav.studentLife")} <IoChevronDownOutline />
                             </summary>
                             <div className="navx-mDD">
                                     {dropdowns.research.map((x) => (
                                     hiddenStudentLifeItems.has(x) ? null :
                                     x === "ACADEMIC CALENDAR FOR 2025/2026" ? (
                                         <button
-                                            key={x}
+                                            key={nL(x)}
                                             type="button"
                                             className="navx-mDDbtn"
                                             onClick={() => {
@@ -860,11 +898,11 @@ export default function Navbar() {
                                                 navigate("/student-life/academic-calendar");
                                             }}
                                         >
-                                            {x}
+                                            {nL(x)}
                                         </button>
                                     ) : x === "STUDENT HANDBOOK" ? (
                                         <button
-                                            key={x}
+                                            key={nL(x)}
                                             type="button"
                                             className="navx-mDDbtn"
                                             onClick={() => {
@@ -872,11 +910,11 @@ export default function Navbar() {
                                                 navigate("/student-life/student-handbook");
                                             }}
                                         >
-                                            {x}
+                                            {nL(x)}
                                         </button>
                                     ) : x === "INTERNATIONAL STUDENTS" ? (
                                         <button
-                                            key={x}
+                                            key={nL(x)}
                                             type="button"
                                             className="navx-mDDbtn"
                                             onClick={() => {
@@ -884,11 +922,11 @@ export default function Navbar() {
                                                 navigate("/student-life/international-students");
                                             }}
                                         >
-                                            {x}
+                                            {nL(x)}
                                         </button>
                                     ) : x === "PRESENTATION FOR APPLICANTS" ? (
                                         <button
-                                            key={x}
+                                            key={nL(x)}
                                             type="button"
                                             className="navx-mDDbtn"
                                             onClick={() => {
@@ -896,11 +934,11 @@ export default function Navbar() {
                                                 navigate("/student-life/presentation-for-applicants");
                                             }}
                                         >
-                                            {x}
+                                            {nL(x)}
                                         </button>
                                     ) : x === "IAU CLUBS" ? (
                                         <button
-                                            key={x}
+                                            key={nL(x)}
                                             type="button"
                                             className="navx-mDDbtn"
                                             onClick={() => {
@@ -908,11 +946,11 @@ export default function Navbar() {
                                                 navigate("/student-life/iau-clubs");
                                             }}
                                         >
-                                            {x}
+                                            {nL(x)}
                                         </button>
                                     ) : x === "ECO-ACTIVE STUDENTS" ? (
                                         <button
-                                            key={x}
+                                            key={nL(x)}
                                             type="button"
                                             className="navx-mDDbtn"
                                             onClick={() => {
@@ -920,11 +958,11 @@ export default function Navbar() {
                                                 navigate("/student-life/ekofaol-talabalar");
                                             }}
                                         >
-                                            {x}
+                                            {nL(x)}
                                         </button>
                                     ) : (
-                                        <a key={x} href="#" onClick={() => setMobileOpen(false)}>
-                                            {x}
+                                        <a key={nL(x)} href="#" onClick={() => setMobileOpen(false)}>
+                                            {nL(x)}
                                         </a>
                                     )
                                 ))}
@@ -933,14 +971,14 @@ export default function Navbar() {
 
                         <details>
                             <summary>
-                                Research <IoChevronDownOutline />
+                                {t("nav.research")} <IoChevronDownOutline />
                             </summary>
                             <div className="navx-mDD">
                                 {dropdowns.admissions.map((x) => {
                                     if (x === "IAU SCIENTIFIC COUNCIL") {
                                         return (
                                             <button
-                                                key={x}
+                                                key={nL(x)}
                                                 type="button"
                                                 className="navx-mDDbtn"
                                                 onClick={() => {
@@ -948,14 +986,14 @@ export default function Navbar() {
                                                     navigate("/research/scientific-council");
                                                 }}
                                             >
-                                                {x}
+                                                {nL(x)}
                                             </button>
                                         );
                                     }
                                     if (x === "RESEARCH PROJECTS") {
                                         return (
                                             <button
-                                                key={x}
+                                                key={nL(x)}
                                                 type="button"
                                                 className="navx-mDDbtn"
                                                 onClick={() => {
@@ -963,14 +1001,14 @@ export default function Navbar() {
                                                     navigate("/research/research-projects");
                                                 }}
                                             >
-                                                {x}
+                                                {nL(x)}
                                             </button>
                                         );
                                     }
                                     if (x === "RESEARCH PUBLICATION") {
                                         return (
                                             <button
-                                                key={x}
+                                                key={nL(x)}
                                                 type="button"
                                                 className="navx-mDDbtn"
                                                 onClick={() => {
@@ -978,14 +1016,14 @@ export default function Navbar() {
                                                     navigate("/research/research-publication");
                                                 }}
                                             >
-                                                {x}
+                                                {nL(x)}
                                             </button>
                                         );
                                     }
                                     if (x === "GERMAN-UZBEK CHAIN ON CENTRAL ASIAN AGRICULTURAL ECONOMICS (GUCAE)") {
                                         return (
                                             <button
-                                                key={x}
+                                                key={nL(x)}
                                                 type="button"
                                                 className="navx-mDDbtn"
                                                 onClick={() => {
@@ -993,13 +1031,13 @@ export default function Navbar() {
                                                     navigate("/research/gucae");
                                                 }}
                                             >
-                                                {x}
+                                                {nL(x)}
                                             </button>
                                         );
                                     }
                                     return (
-                                        <a key={x} href="#" onClick={() => setMobileOpen(false)}>
-                                            {x}
+                                        <a key={nL(x)} href="#" onClick={() => setMobileOpen(false)}>
+                                            {nL(x)}
                                         </a>
                                     );
                                 })}
@@ -1008,41 +1046,41 @@ export default function Navbar() {
 
                         <details>
                             <summary>
-                                Festivals <IoChevronDownOutline />
+                                {t("nav.festivals")} <IoChevronDownOutline />
                             </summary>
                             <div className="navx-mDD">
                                 {dropdowns.life.items.map((x) => (
                                     x.name === "FREQUENTLY ASKED QUESTIONS" ? (
                                         <button
-                                            key={x.name}
+                                            key={nL(x.name)}
                                             className="navx-mSubBtn navx-mSubBtn--full"
                                             onClick={() => {
                                                 setMobileOpen(false);
                                                 navigate("/festivals/faq");
                                             }}
                                         >
-                                            {x.name}
+                                            {nL(x.name)}
                                         </button>
                                     ) : x.name === "22 REASONS TO ATTEND" ? (
                                         <button
-                                            key={x.name}
+                                            key={nL(x.name)}
                                             className="navx-mSubBtn navx-mSubBtn--full"
                                             onClick={() => {
                                                 setMobileOpen(false);
                                                 navigate("/festivals/22-reasons");
                                             }}
                                         >
-                                            {x.name}
+                                            {nL(x.name)}
                                         </button>
                                     ) : (
-                                        <details key={x.name} className="navx-mSubDetails">
+                                        <details key={nL(x.name)} className="navx-mSubDetails">
                                             <summary>
-                                                {x.name} {x.subItems && x.subItems.length > 0 && <IoChevronDownOutline />}
+                                                {nL(x.name)} {x.subItems && x.subItems.length > 0 && <IoChevronDownOutline />}
                                             </summary>
                                             {x.subItems && x.subItems.length > 0 && (
                                                 <div className="navx-mSubDD">
                                                     {x.subItems.map(subItem => (
-                                                        <button key={subItem} className="navx-mSubBtn" onClick={() => {
+                                                        <button key={nL(subItem)} className="navx-mSubBtn" onClick={() => {
                                                             setMobileOpen(false);
                                                             if (subItem === "SUMMARY OF EVENT 2025") {
                                                                 navigate("/festivals/summary-2025");
@@ -1054,7 +1092,7 @@ export default function Navbar() {
                                                                 navigate("/festivals/summary-2023");
                                                             }
                                                         }}>
-                                                            {subItem}
+                                                            {nL(subItem)}
                                                         </button>
                                                     ))}
                                                 </div>
@@ -1074,7 +1112,7 @@ export default function Navbar() {
                                     if (x === "ABOUT UNIVERSITY") {
                                         return (
                                             <button
-                                                key={x}
+                                                key={nL(x)}
                                                 type="button"
                                                 className="navx-mDDbtn"
                                                 onClick={() => {
@@ -1082,25 +1120,25 @@ export default function Navbar() {
                                                     navigate("/about");
                                                 }}
                                             >
-                                                {x}
+                                                {nL(x)}
                                             </button>
                                         );
                                     }
                                     if (x === "OUR STAFF") {
                                         return (
                                             <button
-                                                key={x}
+                                                key={nL(x)}
                                                 type="button"
                                                 className="navx-mDDbtn"
                                                 onClick={goStaff}
                                             >
-                                                {x}
+                                                {nL(x)}
                                             </button>
                                         );
                                     }
                                     return (
-                                        <a key={x} href="#" onClick={() => setMobileOpen(false)}>
-                                            {x}
+                                        <a key={nL(x)} href="#" onClick={() => setMobileOpen(false)}>
+                                            {nL(x)}
                                         </a>
                                     );
                                 })}
@@ -1108,10 +1146,10 @@ export default function Navbar() {
                         </details>
 
                         <button className="navx-mLink" style={{ background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', fontFamily: 'inherit' }} onClick={() => { setMobileOpen(false); navigate("/latest-news"); }}>
-                            News
+                            {t("nav.latestNews")}
                         </button>
                         <button className="navx-mLink" style={{ background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', fontFamily: 'inherit' }} onClick={() => { setMobileOpen(false); navigate("/contact"); }}>
-                            Contact us
+                            {t("nav.contact")}
                         </button>
                     </div>
 
@@ -1127,17 +1165,20 @@ export default function Navbar() {
                                     }}
                                 >
                                     <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                                        <span className="navx-flag">GB</span>
-                                        <span>English</span>
+                                        <span className="navx-flag">{lang === "uz" ? "UZ" : lang === "ru" ? "RU" : "EN"}</span>
+                                        <span>{t("nav.langLabel")}</span>
                                     </span>
                                     <IoChevronDownOutline className="navx-chev" />
                                 </button>
                                 <div className="navx-langMenu">
-                                    <button type="button" onClick={() => setLangOpen(false)}>
-                                        UZ — O‘zbek
+                                    <button type="button" className={lang === "uz" ? "active-lang" : ""} onClick={() => { setLang("uz"); setLangOpen(false); }}>
+                                        UZ — O’zbek
                                     </button>
-                                    <button type="button" onClick={() => setLangOpen(false)}>
+                                    <button type="button" className={lang === "ru" ? "active-lang" : ""} onClick={() => { setLang("ru"); setLangOpen(false); }}>
                                         RU — Русский
+                                    </button>
+                                    <button type="button" className={lang === "en" ? "active-lang" : ""} onClick={() => { setLang("en"); setLangOpen(false); }}>
+                                        EN — English
                                     </button>
                                 </div>
                             </div>
@@ -1159,7 +1200,7 @@ export default function Navbar() {
                         </div>
 
                         <button className="navx-apply wide" type="button" onClick={() => window.open('https://iau-admission.tilda.ws', '_blank')}>
-                            Apply Now <IoChevronForwardOutline className="navx-applyArrow" />
+                            {t("common.applyNow")} <IoChevronForwardOutline className="navx-applyArrow" />
                         </button>
 
                         <div className="navx-mContacts">

@@ -42,7 +42,7 @@ export default function DepartmentCommunity() {
           <div className="dcx-layout">
             {/* LEFT */}
             <div className="dcx-left">
-              <h2 className="dcx-title">Department community</h2>
+              <h2 className="dcx-title">{deptTitle}</h2>
 
               <div className="dcx-grid">
                 {STAFF.map((p) => (

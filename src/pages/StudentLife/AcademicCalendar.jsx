@@ -1,23 +1,25 @@
 // src/pages/StudentLife/AcademicCalendar.jsx
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../../i18n/LanguageContext";
 import "./AcademicCalendar.css";
 import bgVideo from "../../all-bg-videos/iau-bg.mp4";
 
-const SIDEBAR_LINKS = [
-  { label: "ACADEMIC CALENDAR FOR 2025/2026", href: "/student-life/academic-calendar", active: true },
-  { label: "INTERNATIONAL STUDENTS", href: "/student-life/international-students", hidden: true },
-  { label: "STUDENT HANDBOOK", href: "/student-life/student-handbook" },
-  { label: "PRESENTATION FOR APPLICANTS", href: "/student-life/presentation-for-applicants", hidden: true },
-  { label: "CAREER SERVICES", href: "#", hidden: true },
-  { label: "IAU CLUBS", href: "/student-life/iau-clubs", hidden: true },
-  { label: "STUDENTS CREATIVITY", href: "#", hidden: true },
-  { label: "INTERVIEWS", href: "#", hidden: true },
-  { label: "ECO-ACTIVE STUDENTS", href: "/student-life/ekofaol-talabalar" },
-];
-
 export default function AcademicCalendar() {
   const [activeTab, setActiveTab] = useState("undergraduate");
+  const { t } = useLanguage();
+
+  const SIDEBAR_LINKS = [
+    { label: t("nav.academicCalendar"),      href: "/student-life/academic-calendar", active: true },
+    { label: t("nav.internationalStudents"), href: "/student-life/international-students", hidden: true },
+    { label: t("nav.studentHandbook"),       href: "/student-life/student-handbook" },
+    { label: t("nav.presentationApplicants"),href: "/student-life/presentation-for-applicants", hidden: true },
+    { label: t("nav.careerServices"),        href: "#", hidden: true },
+    { label: t("nav.iauClubs"),              href: "/student-life/iau-clubs", hidden: true },
+    { label: t("nav.studentsCreativity"),    href: "#", hidden: true },
+    { label: t("nav.interviews"),            href: "#", hidden: true },
+    { label: t("nav.ecoActiveStudents"),     href: "/student-life/ekofaol-talabalar" },
+  ];
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -32,7 +34,7 @@ export default function AcademicCalendar() {
         </video>
         <div className="ac-hero-overlay" />
         <div className="ac-hero-content">
-          <h1>Academic calendar</h1>
+          <h1>{t("studentLife.heroAcademicCalendar")}</h1>
         </div>
       </div>
 
@@ -46,14 +48,14 @@ export default function AcademicCalendar() {
               className={`ac-tab-btn ${activeTab === "undergraduate" ? "active" : ""}`}
               onClick={() => setActiveTab("undergraduate")}
             >
-              British Academic Calendar 2025-2026
+              {t("studentLife.calendar.british")}
             </button>
             <button
               type="button"
               className={`ac-tab-btn ${activeTab === "graduate" ? "active" : ""}`}
               onClick={() => setActiveTab("graduate")}
             >
-              Uzbek Academic Calendar 2025-2026
+              {t("studentLife.calendar.uzbek")}
             </button>
           </div>
 
@@ -69,8 +71,8 @@ export default function AcademicCalendar() {
               height="800px"
               className="ac-pdf-iframe"
               title={activeTab === "undergraduate"
-                ? "British Academic Calendar 2025-2026"
-                : "Uzbek Academic Calendar 2025-2026"
+                ? t("studentLife.calendar.british")
+                : t("studentLife.calendar.uzbek")
               }
             />
           </div>
@@ -79,7 +81,7 @@ export default function AcademicCalendar() {
         {/* Right sidebar */}
         <aside className="ac-sidebar">
           <div className="ac-sidebar-box">
-            <h3>Student life</h3>
+            <h3>{t("studentLife.sidebar.title")}</h3>
             <ul className="ac-sidebar-links">
               {SIDEBAR_LINKS.map((link, i) => (
                 <li key={i} style={{ display: link.hidden ? "none" : "block" }}>

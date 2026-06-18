@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./AdmissionsShared.css";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../../i18n/LanguageContext";
 import heroImg from "../../images/campus.PNG";
 import image7 from "../../iau-images/7.png"; // Placeholder
 import image8 from "../../iau-images/8.png"; // Placeholder
@@ -8,6 +9,7 @@ import bgVideo from "../../all-bg-videos/iau-bg.mp4";
 
 export default function Postgraduate() {
      const [activeTab, setActiveTab] = useState("courseContent");
+     const { t } = useLanguage();
 
      return (
           <div className="admissions-page">
@@ -27,11 +29,11 @@ export default function Postgraduate() {
                          <div className="breadcrumbs">
                               <Link to="/">🏠</Link>
                               <span className="separator">&gt;</span>
-                              <span>Admissions</span>
+                              <span>{t("admissions.breadAdmissions")}</span>
                               <span className="separator">&gt;</span>
-                              <span className="current">Postgraduate</span>
+                              <span className="current">{t("admissions.pages.postgraduate")}</span>
                          </div>
-                         <h1>Postgraduate</h1>
+                         <h1>{t("admissions.pages.postgraduate")}</h1>
                     </div>
                </div>
 
@@ -47,19 +49,19 @@ export default function Postgraduate() {
                                         className={`tab-btn ${activeTab === "courseContent" ? "active" : ""}`}
                                         onClick={() => setActiveTab("courseContent")}
                                    >
-                                        Course content
+                                        {t("admissions.tabCourse")}
                                    </button>
                                    {/* <button
                                         className={`tab-btn ${activeTab === "entryRequirements" ? "active" : ""}`}
                                         onClick={() => setActiveTab("entryRequirements")}
                                    >
-                                        Entry requirements
+                                        {t("admissions.tabEntry")}
                                    </button>
                                    <button
                                         className={`tab-btn ${activeTab === "fees" ? "active" : ""}`}
                                         onClick={() => setActiveTab("fees")}
                                    >
-                                        Fees
+                                        {t("admissionsExtra.tabFees")}
                                    </button> */}
                               </div>
                          </div>
@@ -78,7 +80,7 @@ export default function Postgraduate() {
                                                   <div className="module-info">
                                                        <h4>MSc Sustainable Agriculture and Food Security</h4>
                                                        <hr className="module-divider" />
-                                                       <Link to="/admissions/msc-sustainable-agriculture" className="module-link" style={{ textDecoration: 'none' }}>See more →</Link>
+                                                       <Link to="/admissions/msc-sustainable-agriculture" className="module-link" style={{ textDecoration: 'none' }}>{t("common.seeMore")} →</Link>
                                                   </div>
                                              </div>
 
@@ -91,7 +93,7 @@ export default function Postgraduate() {
                                                   <div className="module-info">
                                                        <h4>MSc Agri-Business Management</h4>
                                                        <hr className="module-divider" />
-                                                       <Link to="/admissions/msc-agri-business" className="module-link" style={{ textDecoration: 'none' }}>See more →</Link>
+                                                       <Link to="/admissions/msc-agri-business" className="module-link" style={{ textDecoration: 'none' }}>{t("common.seeMore")} →</Link>
                                                   </div>
                                              </div>
                                         </div>
@@ -100,45 +102,45 @@ export default function Postgraduate() {
 
                               {activeTab === "entryRequirements" && (
                                    <div className="content-pane fade-in">
-                                        <h2>Entry requirements</h2>
-                                        <p>Information about Postgraduate entry requirements goes here.</p>
+                                        <h2>{t("admissions.tabEntry")}</h2>
+                                        <p>{t("adm.placeholderEntry")}</p>
                                    </div>
                               )}
 
                               {activeTab === "fees" && (
                                    <div className="content-pane fade-in">
-                                        <h2>Fees</h2>
-                                        <p>Information about Postgraduate fees goes here.</p>
+                                        <h2>{t("admissions.tabFees")}</h2>
+                                        <p>{t("adm.placeholderFees")}</p>
                                    </div>
                               )}
                          </div>
 
                          {/* APPLICATIONS OPEN BOX */}
                          <div className="applications-box">
-                              <h3>Applications for Fall 2026 are now open!</h3>
-                              <button className="apply-btn" onClick={() => window.open('https://iau-admission.tilda.ws', '_blank')}>Start Your Application →</button>
+                              <h3>{t("common.applyFall")}</h3>
+                              <button className="apply-btn" onClick={() => window.open('https://iau-admission.tilda.ws', '_blank')}>{t("common.startApplication")}</button>
                          </div>
                     </div>
 
                     {/* RIGHT SIDEBAR */}
                     <div className="admissions-sidebar">
                          <div className="sidebar-box">
-                              <h3>Admissions</h3>
+                              <h3>{t("admissionsExtra.sidebarTitle")}</h3>
                               <ul className="sidebar-links">
                                    <li>
-                                        <Link to="/admissions/pre-foundation">Pre-Foundation</Link>
+                                        <Link to="/admissions/pre-foundation">{t("admissions.pages.preFoundation")}</Link>
                                    </li>
                                    <li>
-                                        <Link to="/admissions/foundation">Foundation</Link>
+                                        <Link to="/admissions/foundation">{t("admissions.pages.foundation")}</Link>
                                    </li>
                                    <li>
-                                        <Link to="/admissions/undergraduate">Undergraduate</Link>
+                                        <Link to="/admissions/undergraduate">{t("admissions.pages.undergraduate")}</Link>
                                    </li>
                                    <li>
-                                        <Link to="/admissions/postgraduate" className="active-link">Postgraduate</Link>
+                                        <Link to="/admissions/postgraduate" className="active-link">{t("admissions.pages.postgraduate")}</Link>
                                    </li>
                                    <li>
-                                        <Link to="/admissions/phd">PhD and DSc Programmes</Link>
+                                        <Link to="/admissions/phd">{t("admissions.pages.phd")}</Link>
                                    </li>
                               </ul>
                          </div>

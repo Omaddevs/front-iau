@@ -1,5 +1,6 @@
 import "./UpcomingEvents.css";
 import { IoChevronForwardOutline, IoLocationOutline } from "react-icons/io5";
+import { useLanguage } from "../../i18n/LanguageContext";
 
 const events = [
   {
@@ -32,16 +33,17 @@ const events = [
 ];
 
 export default function UpcomingEvents() {
+  const { t } = useLanguage();
   return (
     <section className="upev" aria-label="Upcoming Events">
       <div className="upev__container">
         <div className="upev__head">
           <h2 className="upev__title">
-            Upcoming <span>Events</span>
+            {t("events.title")} <span>{t("events.titleHighlight")}</span>
           </h2>
 
           <a className="upev__more" href="/">
-            See more <IoChevronForwardOutline />
+            {t("common.seeMore")} <IoChevronForwardOutline />
           </a>
         </div>
 
@@ -67,7 +69,7 @@ export default function UpcomingEvents() {
           ))}
         </div>
 
-        <p className="upev__label">Section</p>
+        <p className="upev__label">{t("x.sectionLabel")}</p>
       </div>
     </section>
   );

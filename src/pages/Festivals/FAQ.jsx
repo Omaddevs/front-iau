@@ -1,3 +1,4 @@
+import { useLanguage } from "../../i18n/LanguageContext";
 // // src/pages/Festivals/FAQ.jsx
 // import React, { useEffect, useState } from "react";
 // import "./FAQ.css";

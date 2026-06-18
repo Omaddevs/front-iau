@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../../i18n/LanguageContext";
 import "./ScientificCouncil.css";
 
 import gapImg from "../../research-image/gap-image.jpg";
@@ -88,6 +89,7 @@ const members = [
 
 
 export default function ScientificCouncil() {
+     const { t } = useLanguage();
      return (
           <div className="sc-page">
                <div className="sc-hero">
@@ -103,8 +105,7 @@ export default function ScientificCouncil() {
                     <div className="sc-hero-overlay"></div>
                     <div className="sc-hero-content">
                          <h1 className="sc-title">
-                              Membership of the Scientific Council No. PhD.08/2025.27.12.I.15.01 for Conferring
-                              Academic Degrees in Economic Sciences under the International Agriculture University
+                              {t("adm.scientificCouncilTitle")}
                          </h1>
                          <p className="sc-subtitle">08.00.04 – Agricultural Economics</p>
                     </div>
@@ -115,7 +116,7 @@ export default function ScientificCouncil() {
 
                          <div className="sc-tabs-container">
                               <div className="sc-tabs">
-                                   <div className="sc-tab active">All members</div>
+                                   <div className="sc-tab active">{t("researchExtra.allMembers")}</div>
                               </div>
                          </div>
 
@@ -123,10 +124,10 @@ export default function ScientificCouncil() {
                               <table className="sc-table">
                                    <thead>
                                         <tr>
-                                             <th className="th-tr">T/r</th>
-                                             <th className="th-name">Full Name</th>
-                                             <th className="th-code">Specialty Code</th>
-                                             <th className="th-role">Place of Work, Position, Academic Degree, Academic Title</th>
+                                             <th className="th-tr">{t("researchExtra.serialNoFull")}</th>
+                                             <th className="th-name">{t("researchExtra.memberFull")}</th>
+                                             <th className="th-code">{t("researchExtra.specCode")}</th>
+                                             <th className="th-role">{t("researchExtra.roleDetail")}</th>
                                         </tr>
                                    </thead>
                                    <tbody>
@@ -156,19 +157,19 @@ export default function ScientificCouncil() {
 
                     <aside className="sc-sidebar">
                          <div className="sc-sidebar-box">
-                              <h4 className="sc-sidebar-title">Research</h4>
+                              <h4 className="sc-sidebar-title">{t("researchExtra.sidebarResearch")}</h4>
                               <ul className="sc-sidebar-menu">
                                    <li className="active">
-                                        <Link to="/research/scientific-council">IAU Scientific council</Link>
+                                        <Link to="/research/scientific-council">{t("research.heroScientificCouncil")}</Link>
                                    </li>
                                    <li>
-                                        <Link to="/research/research-projects">Research projects</Link>
+                                        <Link to="/research/research-projects">{t("research.heroResearchProjects")}</Link>
                                    </li>
                                    <li>
-                                        <Link to="/research/research-publication">Research publication</Link>
+                                        <Link to="/research/research-publication">{t("research.heroResearchPublication")}</Link>
                                    </li>
                                    <li>
-                                        <Link to="/research/gucae">German-Uzbek Chain on Central Asian Agricultural Economics (GUCAE)</Link>
+                                        <Link to="/research/gucae">{t("researchExtra.gucaeTitle")}</Link>
                                    </li>
                               </ul>
                          </div>

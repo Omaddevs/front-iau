@@ -5,11 +5,13 @@ import { IoLocationOutline, IoCalendarOutline, IoTimeOutline } from "react-icons
 import bgVideo from "../../all-bg-videos/iau-bg.mp4";
 import { fetchUpcomingEvents, fetchPreviousEvents } from "../../api/eventsApi";
 import "./AllEvents.css";
+import { useLanguage } from "../../i18n/LanguageContext";
 
 export default function AllEvents() {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialTab = searchParams.get("tab") === "previous" ? "previous" : "upcoming";
-  const [tab, setTab]           = useState(initialTab);
+  const [tab, setTab] = useState(initialTab);
+  const { t } = useLanguage();
   const [events, setEvents]     = useState([]);
   const [loading, setLoading]   = useState(true);
   const [error, setError]       = useState(null);
@@ -42,7 +44,7 @@ export default function AllEvents() {
         </video>
         <div className="aev-hero-overlay" />
         <div className="aev-hero-content">
-          <h1>News &amp; Events</h1>
+          <h1>{t("eventsPage.heroTitle")}</h1>
         </div>
       </section>
 
@@ -57,7 +59,7 @@ export default function AllEvents() {
             className={`aev-tab${tab === "upcoming" ? " aev-tab--active" : ""}`}
             onClick={() => handleTab("upcoming")}
           >
-            Upcoming Events
+            {t("common.upcomingEvents")}
           </button>
           <button
             role="tab"
@@ -65,7 +67,7 @@ export default function AllEvents() {
             className={`aev-tab${tab === "previous" ? " aev-tab--active" : ""}`}
             onClick={() => handleTab("previous")}
           >
-            Previous Events
+            {t("common.previousEvents")}
           </button>
         </div>
 
@@ -76,15 +78,15 @@ export default function AllEvents() {
 
         {error && (
           <div className="aev-error">
-            <p>Failed to load events. Please try again.</p>
-            <button onClick={() => setRefreshKey((k) => k + 1)}>Retry</button>
+            <p>{t("common.failedToLoad")}</p>
+            <button onClick={() => setRefreshKey((k) => k + 1)}>{t("common.retry")}</button>
           </div>
         )}
 
         {!loading && !error && events.length === 0 && (
           <div className="aev-empty">
             <IoCalendarOutline />
-            <p>No {tab === "upcoming" ? "upcoming" : "previous"} events found.</p>
+            <p>{t("common.noEventsTab")}</p>
           </div>
         )}
 

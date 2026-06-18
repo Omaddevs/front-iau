@@ -9,12 +9,14 @@ import {
   IoChevronForwardOutline,
 } from "react-icons/io5";
 import { fetchFeaturedNews } from "../api/newsApi";
+import { useLanguage } from "../i18n/LanguageContext";
 
 const PLACEHOLDER = "https://placehold.co/600x400/1a6b3a/ffffff?text=IAU+News";
 
 export default function NewsSection() {
   const [items, setItems]     = useState([]);
   const [loading, setLoading] = useState(true);
+  const { t } = useLanguage();
 
   useEffect(() => {
     fetchFeaturedNews()
@@ -68,10 +70,10 @@ export default function NewsSection() {
         {/* HEAD */}
         <motion.div className="newsx-head" variants={fadeDown}>
           <h2 className="newsx-title">
-            University <span>News</span>
+            {t("news.title")} <span>{t("news.titleHighlight")}</span>
           </h2>
           <Link to="/latest-news" className="newsx-more">
-            See more <IoChevronForwardOutline />
+            {t("news.seeMore")} <IoChevronForwardOutline />
           </Link>
         </motion.div>
 

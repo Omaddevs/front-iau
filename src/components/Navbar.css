@@ -40,6 +40,18 @@
   position: sticky;
   top: 0;
   z-index: 999999;
+  isolation: isolate;
+}
+
+/* Top strip above main row so dropdowns are not covered by apply bar */
+.navx-top {
+  position: relative;
+  z-index: 30;
+}
+
+.navx-main {
+  position: relative;
+  z-index: 20;
 }
 
 /* container rule */
@@ -285,6 +297,7 @@
 /* language dropdown */
 .navx-lang {
   position: relative;
+  z-index: 10000000;
 }
 
 .navx-langBtn {
@@ -322,6 +335,7 @@
   backdrop-filter: blur(14px);
   box-shadow: 0 18px 40px rgba(0, 0, 0, .35);
   display: none;
+  z-index: 10000001;
 }
 
 .navx-lang.open .navx-langMenu {
@@ -341,6 +355,11 @@
 
 .navx-langMenu button:hover {
   background: rgba(255, 255, 255, .08);
+}
+.navx-langMenu button.active-lang {
+  background: rgba(255, 255, 255, .15);
+  font-weight: 700;
+  color: #fff;
 }
 
 /* ================= MAIN NAV ================= */
@@ -391,6 +410,7 @@
   background: transparent;
   color: rgba(255, 255, 255, 0.95);
   font-size: 15px;
+  font-weight: 600;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -982,10 +1002,16 @@
   height: 38px;
 }
 
+.navx-mExtras .navx-lang {
+  position: relative;
+  z-index: 10000000;
+}
+
 .navx-mExtras .navx-langMenu {
   right: auto;
   left: 0;
   width: 100%;
+  z-index: 10000001;
 }
 
 /* ================= Responsive ================= */

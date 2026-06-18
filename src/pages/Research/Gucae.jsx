@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Gucae.css";
 import "./ScientificCouncil.css";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../../i18n/LanguageContext";
 import bgVideo from "../../all-bg-videos/iau-bg.mp4";
 import { IoMail } from "react-icons/io5";
 
@@ -20,6 +21,7 @@ import img13 from "../../chain-images/chain13.png";
 
 export default function Gucae() {
     const [activeTab, setActiveTab] = useState("gucae");
+    const { t } = useLanguage();
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -58,7 +60,7 @@ export default function Gucae() {
                 </video>
                 <div className="sc-hero-overlay"></div>
                 <div className="sc-hero-content">
-                    <h1 className="sc-title">German-Uzbek Chain on Central Asian Agricultural Economics (GUCAE)</h1>
+                    <h1 className="sc-title">{t("research.heroGucae")}</h1>
                 </div>
             </div>
 
@@ -79,25 +81,21 @@ export default function Gucae() {
 
                     {/* TAB CONTENT */}
                     <div className="gucae-tab-content-box fade-in">
-                        <h2>German-Uzbek Chair on Central Asian Agricultural Economics (GUCAE)</h2>
-                        <p>
-                            The German-Uzbek Chair on Central Asian Agricultural Economics (GUCAE) was established in cooperation with IAMO and IAU to implement high-level research and capacity building of junior researchers from Central Asia.
-                        </p>
-                        <p>GUCAE's research focuses on the following areas:</p>
+                        <h2>{t("researchExtra.gucaeTitle")}</h2>
+                        <p>{t("x.gucaeIntro")}</p>
+                        <p>{t("x.gucaeFocusIntro")}</p>
                         <ul>
-                            <li>Improving productivity and efficiency in the agricultural sector of Uzbekistan</li>
-                            <li>Integration of agricultural value chains in global markets</li>
-                            <li>Determine the impact of climate change on agricultural production and rural livelihoods</li>
-                            <li>Design and efficiency of agricultural insurance and risk management</li>
-                            <li>Crop estimation and yield predictions with remote sensing technologies</li>
-                            <li>Study consumer behavior in the food industry</li>
-                            <li>Analyze drivers and impact of innovation adoption among farmers</li>
+                            <li>{t("x.gucaeFocus1")}</li>
+                            <li>{t("x.gucaeFocus2")}</li>
+                            <li>{t("x.gucaeFocus3")}</li>
+                            <li>{t("x.gucaeFocus4")}</li>
+                            <li>{t("x.gucaeFocus5")}</li>
+                            <li>{t("x.gucaeFocus6")}</li>
+                            <li>{t("x.gucaeFocus7")}</li>
                         </ul>
-                        <p>
-                            At the same time, GUCAE is aiming at dedicated transfer of their findings to an audience outside academia, including government institutions and business actors in the agri-food industry and the financial sector.
-                        </p>
+                        <p>{t("x.gucaeOutro")}</p>
 
-                        <h3 className="gucae-section-title">Members of the Chair</h3>
+                        <h3 className="gucae-section-title">{t("researchExtra.membersOfChair")}</h3>
                         <div className="gucae-members-grid">
                             {memberData1.map((member, i) => (
                                 <div key={i} className="gucae-member-card">
@@ -117,7 +115,7 @@ export default function Gucae() {
                             ))}
                         </div>
 
-                        <h3 className="gucae-section-title" style={{ marginTop: '40px' }}>DSc and PhD Researchers of the Chair</h3>
+                        <h3 className="gucae-section-title" style={{ marginTop: '40px' }}>{t("researchExtra.dscPhDResearchers")}</h3>
                         <div className="gucae-members-grid">
                             {memberData2.map((member, i) => (
                                 <div key={i} className="gucae-member-card">
@@ -140,26 +138,26 @@ export default function Gucae() {
 
                     {/* APPLICATIONS OPEN BOX */}
                     <div className="gucae-applications-box" style={{ marginTop: '40px' }}>
-                        <h3>Applications for Fall 2026 are now open!</h3>
-                        <button className="gucae-apply-btn" onClick={() => window.open('https://iau-admission.tilda.ws', '_blank')}>Start Your Application &rarr;</button>
+                        <h3>{t("festivalsExtra.applyFall")}</h3>
+                        <button className="gucae-apply-btn" onClick={() => window.open('https://iau-admission.tilda.ws', '_blank')}>{t("festivalsExtra.startApp")}</button>
                     </div>
                 </div>
 
                 <aside className="sc-sidebar">
                     <div className="sc-sidebar-box">
-                        <h4 className="sc-sidebar-title">Research</h4>
+                        <h4 className="sc-sidebar-title">{t("researchExtra.sidebarResearch")}</h4>
                         <ul className="sc-sidebar-menu">
                             <li>
-                                <Link to="/research/scientific-council">IAU Scientific council</Link>
+                                <Link to="/research/scientific-council">{t("research.heroScientificCouncil")}</Link>
                             </li>
                             <li>
-                                <Link to="/research/research-projects">Research projects</Link>
+                                <Link to="/research/research-projects">{t("research.heroResearchProjects")}</Link>
                             </li>
                             <li>
-                                <Link to="/research/research-publication">Research publication</Link>
+                                <Link to="/research/research-publication">{t("research.heroResearchPublication")}</Link>
                             </li>
                             <li className="active">
-                                <Link to="/research/gucae">German-Uzbek Chain on Central Asian Agricultural Economics (GUCAE)</Link>
+                                <Link to="/research/gucae">{t("researchExtra.gucaeTitle")}</Link>
                             </li>
                         </ul>
                     </div>

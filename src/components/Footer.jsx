@@ -1,5 +1,6 @@
 import "./Footer.css";
 import { motion } from "framer-motion";
+import { useLanguage } from "../i18n/LanguageContext";
 import {
   IoMailOutline,
   IoCallOutline,
@@ -12,6 +13,7 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   const easePro = [0.22, 1, 0.36, 1];
+  const { t } = useLanguage();
 
   const wrap = {
     hidden: { opacity: 1 },
@@ -90,11 +92,8 @@ export default function Footer() {
       <motion.section className="footx-cta" variants={fadeDown}>
         <div className="footx-shell footx-ctaRow">
           <motion.div className="footx-ctaLeft" variants={fadeLeft}>
-            <h3>Ready to start your journey?</h3>
-            <p>
-              Explore programs, admissions, scholarships and campus life — all in
-              one place.
-            </p>
+            <h3>{t("footer.ctaTitle")}</h3>
+            <p>{t("footer.ctaDesc")}</p>
           </motion.div>
 
           <motion.div className="footx-ctaRight" variants={fadeRight}>
@@ -107,7 +106,7 @@ export default function Footer() {
               transition={{ duration: 0.18 }}
               onClick={() => window.open('https://iau-admission.tilda.ws', '_blank')}
             >
-              Apply now <IoChevronForwardOutline />
+              {t("footer.applyNow")} <IoChevronForwardOutline />
             </motion.button>
 
             <motion.button
@@ -118,7 +117,7 @@ export default function Footer() {
               whileTap={{ scale: 0.98 }}
               transition={{ duration: 0.18 }}
             >
-              Contact us <IoChevronForwardOutline />
+              {t("footer.contactUs")} <IoChevronForwardOutline />
             </motion.button>
           </motion.div>
         </div>
@@ -149,48 +148,48 @@ export default function Footer() {
 
           {/* Quick links */}
           <motion.div className="footx-col" variants={fadeUp}>
-            <h4 className="footx-h4">Research</h4>
+            <h4 className="footx-h4">{t("footer.research")}</h4>
             <ul className="footx-links">
               <li>
-                <Link to="/research/scientific-council">IAU Scientific Council</Link>
+                <Link to="/research/scientific-council">{t("footer.links.scientificCouncil")}</Link>
               </li>
               <li>
-                <Link to="/research/research-projects">Research Projects</Link>
+                <Link to="/research/research-projects">{t("footer.links.researchProjects")}</Link>
               </li>
               <li>
-                <Link to="/research/gucae">German-Uzbek Chain (GUCAE)</Link>
+                <Link to="/research/gucae">{t("footer.links.gucae")}</Link>
               </li>
             </ul>
           </motion.div>
 
           {/* Academics */}
           <motion.div className="footx-col" variants={fadeUp}>
-            <h4 className="footx-h4">Academics</h4>
+            <h4 className="footx-h4">{t("footer.academics")}</h4>
             <ul className="footx-links">
               <li>
-                <Link to="/admissions/pre-foundation">Pre-Foundation</Link>
+                <Link to="/admissions/pre-foundation">{t("footer.links.preFoundation")}</Link>
               </li>
               <li>
-                <Link to="/admissions/foundation">Foundation</Link>
+                <Link to="/admissions/foundation">{t("footer.links.foundation")}</Link>
               </li>
               <li>
-                <Link to="/admissions/undergraduate">Undergraduate</Link>
+                <Link to="/admissions/undergraduate">{t("footer.links.undergraduate")}</Link>
               </li>
               <li>
-                <Link to="/admissions/postgraduate">Postgraduate</Link>
+                <Link to="/admissions/postgraduate">{t("footer.links.postgraduate")}</Link>
               </li>
               <li>
-                <Link to="/admissions/phd">PhD & DSc</Link>
+                <Link to="/admissions/phd">{t("footer.links.phd")}</Link>
               </li>
             </ul>
           </motion.div>
 
           {/* Contact */}
           <motion.div className="footx-col" variants={fadeRight}>
-            <h4 className="footx-h4">Contact</h4>
+            <h4 className="footx-h4">{t("footer.contact")}</h4>
 
             <div className="footx-contact">
-              <a className="footx-contactRow" href="mailto:info@newuu.uz">
+              <a className="footx-contactRow" href="mailto:info@iau.uz">
                 <span className="footx-ic">
                   <IoMailOutline />
                 </span>
@@ -215,7 +214,7 @@ export default function Footer() {
             </div>
 
             <div className="footx-miniNote">
-              Working hours: Mon–Fri, 9:00–18:00
+              {t("footer.workingHours")}
             </div>
           </motion.div>
         </div>
@@ -223,11 +222,10 @@ export default function Footer() {
         {/* Bottom */}
         <motion.div className="footx-shell footx-bottom" variants={fadeUp}>
           <span className="footx-copy">
-            © {new Date().getFullYear()} International Agriculture University. All rights
-            reserved.
+            © {new Date().getFullYear()} {t("footer.copyright")}
           </span>
           <div className="footx-devBy" aria-label="Developed by">
-            <span>Developed by:</span>
+            <span>{t("footer.developedBy")}</span>
             <img src={developedByLogo} alt="Developer logo" className="footx-devLogo" />
           </div>
         </motion.div>

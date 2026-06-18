@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../../i18n/LanguageContext";
 import "./AcademicCalendar.css";
 import "./InternationalStudents.css";
 import bgVideo from "../../all-bg-videos/iau-bg.mp4";
@@ -11,124 +12,49 @@ import imgGallery1 from "../../images/image2.jpg";
 import imgGallery2 from "../../images/image3.jpg";
 import imgGallery3 from "../../images/newsBig.jpg";
 
-const SIDEBAR_LINKS = [
-  { label: "ACADEMIC CALENDAR FOR 2025/2026", href: "/student-life/academic-calendar" },
-  { label: "INTERNATIONAL STUDENTS", href: "/student-life/international-students", active: true, hidden: true },
-  { label: "STUDENT HANDBOOK", href: "/student-life/student-handbook" },
-  { label: "PRESENTATION FOR APPLICANTS", href: "/student-life/presentation-for-applicants", hidden: true },
-  { label: "CAREER SERVICES", href: "#", hidden: true },
-  { label: "IAU CLUBS", href: "/student-life/iau-clubs", hidden: true },
-  { label: "STUDENTS CREATIVITY", href: "#", hidden: true },
-  { label: "INTERVIEWS", href: "#", hidden: true },
-  { label: "ECO-ACTIVE STUDENTS", href: "/student-life/ekofaol-talabalar" },
-];
-
-const JOURNEY_STEPS = [
-  {
-    num: "01",
-    title: "Apply & prepare documents",
-    body: "Complete your application, receive your offer, and gather credentials for enrolment and travel.",
-    image: imgSection,
-    imageAlt: "Students and academic life at IAU",
-  },
-  {
-    num: "02",
-    title: "Visa & arrival plan",
-    body: "Use our checklist for visa steps, insurance, and suggested travel windows to align with orientation.",
-    image: imgRau,
-    imageAlt: "International partnerships and academic mobility",
-  },
-  {
-    num: "03",
-    title: "Campus onboarding",
-    body: "Register, collect your student ID, meet your buddy mentor, and join the welcome session.",
-    image: imgCampus,
-    imageAlt: "IAU campus buildings and grounds",
-  },
-  {
-    num: "04",
-    title: "Thrive at IAU",
-    body: "Access language support, counselling, career advising, and student communities from day one.",
-    image: imgEvents,
-    imageAlt: "Campus events and student community",
-  },
-];
-
-const SUPPORT_HUBS = [
-  {
-    title: "Arrival & orientation",
-    tag: "Welcome",
-    body: "Structured welcome week, campus tours, and essentials so you settle quickly in Tashkent.",
-    href: "/student-life/student-handbook",
-    linkLabel: "Student handbook",
-    image: imgCampus,
-    imageAlt: "Welcome and orientation on campus",
-  },
-  {
-    title: "Visa & legal basics",
-    tag: "Admin",
-    body: "Guidance on timelines, translations, and who to contact when requirements change.",
-    href: "/contact",
-    linkLabel: "Write to admissions",
-    image: imgSection,
-    imageAlt: "Documents and study planning",
-  },
-  {
-    title: "Buddy & peer network",
-    tag: "Community",
-    body: "Current students help with daily life—housing, transport, and social introductions.",
-    href: "/student-life/iau-clubs",
-    linkLabel: "Explore IAU clubs",
-    image: imgGallery1,
-    imageAlt: "Students connecting on campus",
-  },
-  {
-    title: "Well-being & inclusion",
-    tag: "Care",
-    body: "Confidential support, cultural comfort, and practical tips for studying away from home.",
-    href: "/contact",
-    linkLabel: "Reach student support",
-    image: imgGallery2,
-    imageAlt: "Supportive student environment",
-  },
-];
-
 const GALLERY_IMAGES = [
   { src: imgGallery1, alt: "Student life at IAU" },
   { src: imgGallery2, alt: "Learning and collaboration" },
   { src: imgGallery3, alt: "University community" },
 ];
 
-const FAQ_ITEMS = [
-  {
-    question: "What language will I use day to day?",
-    answer:
-      "Courses and services are designed for international cohorts with English as the main academic language, with optional pathways to strengthen your communication skills alongside peers.",
-  },
-  {
-    question: "Can I work or intern while I study?",
-    answer:
-      "Rules depend on your visa category and programme schedule. The career team shares realistic options, timelines, and documentation as you progress through your degree.",
-  },
-  {
-    question: "How do I find housing near campus?",
-    answer:
-      "You receive vetted suggestions, templates for landlord conversations, and peer tips. Our team can connect you with trusted partners where available.",
-  },
-  {
-    question: "Who do I contact in an emergency?",
-    answer:
-      "Use the official emergency numbers provided at orientation, alert your buddy mentor if appropriate, and contact the university helpline listed in your arrival pack.",
-  },
-  {
-    question: "Where can I see dates and deadlines?",
-    answer:
-      "The academic calendar lists teaching weeks, exams, and breaks. Pair it with your programme handbook for assessment-specific milestones.",
-  },
-];
-
 export default function InternationalStudents() {
   const [openFaq, setOpenFaq] = useState(null);
+  const { t } = useLanguage();
+
+  const SIDEBAR_LINKS = [
+    { label: t("nav.academicCalendar"),      href: "/student-life/academic-calendar" },
+    { label: t("nav.internationalStudents"), href: "/student-life/international-students", active: true, hidden: true },
+    { label: t("nav.studentHandbook"),       href: "/student-life/student-handbook" },
+    { label: t("nav.presentationApplicants"),href: "/student-life/presentation-for-applicants", hidden: true },
+    { label: t("nav.careerServices"),        href: "#", hidden: true },
+    { label: t("nav.iauClubs"),              href: "/student-life/iau-clubs", hidden: true },
+    { label: t("nav.studentsCreativity"),    href: "#", hidden: true },
+    { label: t("nav.interviews"),            href: "#", hidden: true },
+    { label: t("nav.ecoActiveStudents"),     href: "/student-life/ekofaol-talabalar" },
+  ];
+
+  const JOURNEY_STEPS = [
+    { num: "01", title: t("studentLife.intl.step1Title"), body: t("studentLife.intl.step1Body"), image: imgSection, imageAlt: "Students and academic life at IAU" },
+    { num: "02", title: t("studentLife.intl.step2Title"), body: t("studentLife.intl.step2Body"), image: imgRau,     imageAlt: "International partnerships and academic mobility" },
+    { num: "03", title: t("studentLife.intl.step3Title"), body: t("studentLife.intl.step3Body"), image: imgCampus,  imageAlt: "IAU campus buildings and grounds" },
+    { num: "04", title: t("studentLife.intl.step4Title"), body: t("studentLife.intl.step4Body"), image: imgEvents,  imageAlt: "Campus events and student community" },
+  ];
+
+  const SUPPORT_HUBS = [
+    { title: t("intlStudents.hub1Title"), tag: t("intlStudents.hub1Tag"), body: t("intlStudents.hub1Body"), href: "/student-life/student-handbook",            linkLabel: t("intlStudents.hub1Link"), image: imgCampus,   imageAlt: "Welcome and orientation on campus" },
+    { title: t("intlStudents.hub2Title"), tag: t("intlStudents.hub2Tag"), body: t("intlStudents.hub2Body"), href: "/contact",                                   linkLabel: t("intlStudents.hub2Link"), image: imgSection,  imageAlt: "Documents and study planning" },
+    { title: t("intlStudents.hub3Title"), tag: t("intlStudents.hub3Tag"), body: t("intlStudents.hub3Body"), href: "/student-life/iau-clubs",                    linkLabel: t("intlStudents.hub3Link"), image: imgGallery1, imageAlt: "Students connecting on campus" },
+    { title: t("intlStudents.hub4Title"), tag: t("intlStudents.hub4Tag"), body: t("intlStudents.hub4Body"), href: "/contact",                                   linkLabel: t("intlStudents.hub4Link"), image: imgGallery2, imageAlt: "Supportive student environment" },
+  ];
+
+  const FAQ_ITEMS = [
+    { question: t("intlStudents.faq1Q"), answer: t("intlStudents.faq1A") },
+    { question: t("intlStudents.faq2Q"), answer: t("intlStudents.faq2A") },
+    { question: t("intlStudents.faq3Q"), answer: t("intlStudents.faq3A") },
+    { question: t("intlStudents.faq4Q"), answer: t("intlStudents.faq4A") },
+    { question: t("intlStudents.faq5Q"), answer: t("intlStudents.faq5A") },
+  ];
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -142,7 +68,7 @@ export default function InternationalStudents() {
         </video>
         <div className="ac-hero-overlay" />
         <div className="ac-hero-content">
-          <h1>International Students</h1>
+          <h1>{t("intlStudents.heroTitle")}</h1>
         </div>
       </div>
 
@@ -155,13 +81,11 @@ export default function InternationalStudents() {
               </div>
               <div className="intl-intro-inner">
                 <p className="intl-kicker">
-                  <span aria-hidden="true" /> Global campus · Local warmth
+                  <span aria-hidden="true" /> {t("x.introKicker")}
                 </p>
-                <h2 id="intl-intro-heading">Your bridge from home to IAU</h2>
+                <h2 id="intl-intro-heading">{t("x.introHeading")}</h2>
                 <p>
-                  A single hub for practical next steps—before you board the plane and after you land.
-                  Explore your journey, connect with people who have walked the same path, and keep
-                  official resources one tap away.
+                  {t("x.introText")}
                 </p>
                 <div className="intl-intro-actions">
                   <a
@@ -170,13 +94,13 @@ export default function InternationalStudents() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Start application
+                    {t("common.applyNow")}
                   </a>
                   <Link className="intl-btn ghost" to="/student-life/presentation-for-applicants">
-                    Applicant presentation
+                    {t("nav.presentationApplicants")}
                   </Link>
                   <Link className="intl-btn ghost" to="/contact">
-                    Ask a question
+                    {t("nav.contact")}
                   </Link>
                 </div>
               </div>
@@ -193,8 +117,8 @@ export default function InternationalStudents() {
           </div>
 
           <h2 className="intl-section-title">
-            Arrival roadmap
-            <span>Four milestones from offer letter to full campus life</span>
+            {t("intlStudents.arrivalRoadmap")}
+            <span>{t("intlStudents.roadmapDesc")}</span>
           </h2>
           <div className="intl-roadmap">
             {JOURNEY_STEPS.map((s) => (
@@ -203,7 +127,7 @@ export default function InternationalStudents() {
                   <img src={s.image} alt={s.imageAlt} loading="lazy" width={400} height={240} />
                 </div>
                 <div className="intl-step-body">
-                  <span className="intl-step-num">Step {s.num}</span>
+                  <span className="intl-step-num">{t("x.stepLabel")} {s.num}</span>
                   <h3>{s.title}</h3>
                   <p>{s.body}</p>
                 </div>
@@ -212,8 +136,8 @@ export default function InternationalStudents() {
           </div>
 
           <h2 className="intl-section-title">
-            Campus life in pictures
-            <span>A glimpse of IAU before you arrive</span>
+            {t("intlStudents.campusPictures")}
+            <span>{t("x.campusSub")}</span>
           </h2>
           <div className="intl-gallery" aria-label="Campus and student life">
             {GALLERY_IMAGES.map((g) => (
@@ -224,15 +148,15 @@ export default function InternationalStudents() {
           </div>
 
           <h2 className="intl-section-title">
-            Quick links
-            <span>Frequently opened resources for international students</span>
+            {t("intlStudents.quickLinks")}
+            <span>{t("x.quickLinksSub")}</span>
           </h2>
           <div className="intl-quick-row" role="list">
             <Link className="intl-quick" to="/student-life/academic-calendar" role="listitem">
-              Academic calendar 2025/26
+              {t("intlStudents.linkCalendar")}
             </Link>
             <Link className="intl-quick" to="/student-life/student-handbook" role="listitem">
-              Handbook &amp; policies
+              {t("intlStudents.linkHandbook")}
             </Link>
             <a
               className="intl-quick"
@@ -241,16 +165,16 @@ export default function InternationalStudents() {
               rel="noopener noreferrer"
               role="listitem"
             >
-              PDF quick view
+              {t("intlStudents.linkPdfView")}
             </a>
             <Link className="intl-quick" to="/student-life/iau-clubs" role="listitem">
-              Clubs &amp; communities
+              {t("intlStudents.linkClubs")}
             </Link>
           </div>
 
           <h2 className="intl-section-title">
-            Support hubs
-            <span>Pick a lane—each card points to the right next step</span>
+            {t("intlStudents.supportHubs")}
+            <span>{t("x.supportHubsSub")}</span>
           </h2>
           <div className="intl-hubs">
             {SUPPORT_HUBS.map((hub) => (
@@ -271,14 +195,14 @@ export default function InternationalStudents() {
           </div>
 
           <h2 className="intl-section-title">
-            Questions students ask first
-            <span>Tap to expand—plain language, no jargon</span>
+            {t("intlStudents.faqTitle")}
+            <span>{t("x.faqSub")}</span>
           </h2>
           <div className="intl-faq">
             {FAQ_ITEMS.map((item, idx) => {
               const open = openFaq === idx;
               return (
-                <div key={item.question} className="intl-faq-item">
+                <div key={idx} className="intl-faq-item">
                   <button
                     type="button"
                     className="intl-faq-header"
@@ -310,7 +234,7 @@ export default function InternationalStudents() {
 
         <aside className="ac-sidebar">
           <div className="ac-sidebar-box">
-            <h3>Student life</h3>
+            <h3>{t("studentLife.sidebar.title")}</h3>
             <ul className="ac-sidebar-links">
               {SIDEBAR_LINKS.map((link, i) => (
                 <li key={i} style={{ display: link.hidden ? "none" : "block" }}>

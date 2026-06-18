@@ -1,22 +1,23 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useLanguage } from "../../i18n/LanguageContext";
 import DepartmentCard from "../../components/staff/DepartmentCard";
 import { fetchDepartments } from "../../api/staffApi";
 import "./StaffDepartments.css";
 
-const teamMenu = [
-  { label: "University Staff",      href: "/staff" },
-  { label: "Executive",             href: "/staff/rectorate" },
-  { label: "Deans",                 href: "/staff/deans" },
-  { label: "Heads of Departments",  href: "/staff/heads" },
-  { label: "Academic Staff",        href: "/staff/academic-staff" },
-];
-
 export default function StaffDepartments() {
   const location = useLocation();
+  const { t } = useLanguage();
   const [departments, setDepartments] = useState([]);
   const [loading, setLoading]         = useState(true);
   const [error, setError]             = useState(null);
+
+  const teamMenu = [
+    { label: t("dept.universityStaff"),    href: "/staff" },
+    { label: t("dept.academicCommunity"),  href: "/staff/rectorate" },
+    { label: t("dept.otherOrgs"),          href: "/staff/deans" },
+    { label: t("dept.universityStructure"),href: "/staff/heads" },
+  ];
 
   useEffect(() => {
     fetchDepartments()
@@ -30,13 +31,13 @@ export default function StaffDepartments() {
       <section className="sdp-hero">
         <div className="sdp-hero__container">
           <nav className="sdp-breadcrumb" aria-label="Breadcrumb">
-            <Link to="/">Home</Link>
+            <Link to="/">{t("common.home")}</Link>
             <span>/</span>
-            <span>Our team</span>
+            <span>{t("dept.ourTeam")}</span>
             <span>/</span>
-            <strong>University Staff</strong>
+            <strong>{t("staff.heroTitle")}</strong>
           </nav>
-          <h1 className="sdp-title">University Staff</h1>
+          <h1 className="sdp-title">{t("staff.heroTitle")}</h1>
         </div>
       </section>
 
@@ -51,7 +52,7 @@ export default function StaffDepartments() {
               )}
               {error && (
                 <div className="sdp-error">
-                  <p>Failed to load staff data. Make sure the backend server is running.</p>
+                  <p>{t("common.failedToLoad")}</p>
                 </div>
               )}
               {!loading && !error && (
@@ -65,7 +66,7 @@ export default function StaffDepartments() {
 
             <aside className="sdp-side">
               <div className="sdp-sideCard">
-                <h2 className="sdp-sideTitle">Our team</h2>
+                <h2 className="sdp-sideTitle">{t("dept.ourTeam")}</h2>
                 {teamMenu.map((item) => (
                   <Link
                     key={item.label}

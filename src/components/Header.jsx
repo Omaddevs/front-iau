@@ -15,44 +15,7 @@ import { useNavigate } from "react-router-dom";
 import HeroVideo from "../images/hero.mp4";
 import leftRibbon from "../images/left-ribbon.png";
 import rightRibbon from "../images/right-ribbon.png";
-
-const cards = [
-  {
-    title: "Pre-Foundation",
-    sub: "Browse the pre-foundation courses",
-    icon: <IoSchoolOutline />,
-    tone: "teal",
-    link: "/admissions/pre-foundation",
-  },
-  {
-    title: "Foundation",
-    sub: "Browse the foundation programs",
-    icon: <IoBookOutline />,
-    tone: "blue",
-    link: "/admissions/foundation",
-  },
-  {
-    title: "Undergraduate",
-    sub: "Browse the undergraduate degrees",
-    icon: <IoSchoolOutline />,
-    tone: "green",
-    link: "/admissions/undergraduate",
-  },
-  {
-    title: "Postgraduate",
-    sub: "Browse the postgraduate degrees",
-    icon: <IoRibbonOutline />,
-    tone: "blue2",
-    link: "/admissions/postgraduate",
-  },
-  {
-    title: "PhD and DSc Programmes",
-    sub: "Browse the programs",
-    icon: <IoFlaskOutline />,
-    tone: "teal",
-    link: "/admissions/phd",
-  },
-];
+import { useLanguage } from "../i18n/LanguageContext";
 
 const easePro = [0.22, 1, 0.36, 1];
 
@@ -103,6 +66,45 @@ const btnPop = {
 
 export default function Header() {
   const navigate = useNavigate();
+  const { t } = useLanguage();
+
+  const cards = [
+    {
+      title: t("header.cards.preFoundation.title"),
+      sub: t("header.cards.preFoundation.sub"),
+      icon: <IoSchoolOutline />,
+      tone: "teal",
+      link: "/admissions/pre-foundation",
+    },
+    {
+      title: t("header.cards.foundation.title"),
+      sub: t("header.cards.foundation.sub"),
+      icon: <IoBookOutline />,
+      tone: "blue",
+      link: "/admissions/foundation",
+    },
+    {
+      title: t("header.cards.undergraduate.title"),
+      sub: t("header.cards.undergraduate.sub"),
+      icon: <IoSchoolOutline />,
+      tone: "green",
+      link: "/admissions/undergraduate",
+    },
+    {
+      title: t("header.cards.postgraduate.title"),
+      sub: t("header.cards.postgraduate.sub"),
+      icon: <IoRibbonOutline />,
+      tone: "blue2",
+      link: "/admissions/postgraduate",
+    },
+    {
+      title: t("header.cards.phd.title"),
+      sub: t("header.cards.phd.sub"),
+      icon: <IoFlaskOutline />,
+      tone: "teal",
+      link: "/admissions/phd",
+    },
+  ];
 
   return (
     <motion.section
@@ -136,7 +138,7 @@ export default function Header() {
       <div className="hero-container">
         <div className="hero-content">
           <motion.h1 className="hero-title-center" variants={fadeUp}>
-            SCIENCE-BASED<br></br> <span style={{ color: "#F9F8F3", WebkitTextFillColor: "#F9F8F3" }}>PRACTICE-ORIENTED</span>
+            {t("x.heroLine1")}<br></br> <span style={{ color: "#F9F8F3", WebkitTextFillColor: "#F9F8F3" }}>{t("x.heroLine2")}</span>
           </motion.h1>
 
           <div className="hero-btn-group">
@@ -149,7 +151,7 @@ export default function Header() {
               transition={{ duration: 0.18 }}
               onClick={() => window.open('https://iau-admission.tilda.ws', '_blank')}
             >
-              Apply Now <IoArrowForwardOutline />
+              {t("header.applyNow")} <IoArrowForwardOutline />
             </motion.button>
 
             {/* <motion.button
@@ -161,7 +163,7 @@ export default function Header() {
               transition={{ duration: 0.18 }}
               onClick={() => navigate('/admissions/undergraduate')}
             >
-              Apply Now <IoArrowForwardOutline />
+              {t("header.applyNow")} <IoArrowForwardOutline />
             </motion.button> */}
           </div>
 

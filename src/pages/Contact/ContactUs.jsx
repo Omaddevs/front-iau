@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLanguage } from "../../i18n/LanguageContext";
 import "./ContactUs.css";
 import {
      IoCall,
@@ -21,6 +22,7 @@ export default function ContactUs() {
      const [sending, setSending] = useState(false);
      const [success, setSuccess] = useState(null);
      const [apiError, setApiError] = useState(null);
+     const { t } = useLanguage();
 
      const handleChange = (e) => {
           setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -34,10 +36,10 @@ export default function ContactUs() {
           setApiError(null);
           try {
                await submitContactForm(form);
-               setSuccess("Your application has been received. We will contact you shortly.");
+               setSuccess(t("contact.successMsg"));
                setForm({ name: "", phone: "", message: "" });
           } catch (err) {
-               setApiError(err.message || "Something went wrong. Please try again.");
+               setApiError(err.message || t("contact.errorMsg"));
           } finally {
                setSending(false);
           }
@@ -50,7 +52,7 @@ export default function ContactUs() {
                          <source src={bgVideo} type="video/mp4" />
                     </video>
                     <div className="contact-hero-overlay"></div>
-                    <h1 className="contact-title">Contact us</h1>
+                    <h1 className="contact-title">{t("contact.heroTitle")}</h1>
                </div>
 
                <div className="contact-container">
@@ -58,7 +60,7 @@ export default function ContactUs() {
                     <div className="contact-cards-grid">
                          {/* LEFT CARD: INFO */}
                          <div className="contact-card">
-                              <h2>Contact information</h2>
+                              <h2>{t("contact.infoTitle")}</h2>
 
                               <div className="contact-info-list">
                                    <div className="contact-info-item">
@@ -66,7 +68,7 @@ export default function ContactUs() {
                                              <IoCall />
                                         </div>
                                         <div className="contact-text-wrapper">
-                                             <span className="contact-label">Phone number:</span>
+                                             <span className="contact-label">{t("contact.phone")}</span>
                                              <span className="contact-value">+998 (55) 517 00 71</span>
                                         </div>
                                    </div>
@@ -76,7 +78,7 @@ export default function ContactUs() {
                                              <IoPaperPlane />
                                         </div>
                                         <div className="contact-text-wrapper">
-                                             <span className="contact-label">Telegram Account:</span>
+                                             <span className="contact-label">{t("contact.telegram")}</span>
                                              <span className="contact-value">+998 (99) 981-09-19</span>
                                         </div>
                                    </div>
@@ -86,7 +88,7 @@ export default function ContactUs() {
                                              <IoMail />
                                         </div>
                                         <div className="contact-text-wrapper">
-                                             <span className="contact-label">Email address:</span>
+                                             <span className="contact-label">{t("contact.email")}</span>
                                              <span className="contact-value">info@iau.uz</span>
                                         </div>
                                    </div>
@@ -96,8 +98,8 @@ export default function ContactUs() {
                                              <IoLocationSharp />
                                         </div>
                                         <div className="contact-text-wrapper">
-                                             <span className="contact-label">Location:</span>
-                                             <span className="contact-value">University street №2 Kibray, Tashkent Uzbekistan, 111200</span>
+                                             <span className="contact-label">{t("contact.location")}</span>
+                                             <span className="contact-value">{t("contact.address")}</span>
                                         </div>
                                    </div>
 
@@ -106,8 +108,8 @@ export default function ContactUs() {
                                              <IoTimeOutline />
                                         </div>
                                         <div className="contact-text-wrapper">
-                                             <span className="contact-label">Work time:</span>
-                                             <span className="contact-value">Mon - Fri: 09:00 - 18:00</span>
+                                             <span className="contact-label">{t("contact.workingHours")}</span>
+                                             <span className="contact-value">{t("contact.workingHoursVal")}</span>
                                         </div>
                                    </div>
                               </div>
@@ -130,7 +132,7 @@ export default function ContactUs() {
 
                          {/* RIGHT CARD: FORM */}
                          <div className="contact-card">
-                              <h2>Send an application</h2>
+                              <h2>{t("contact.formTitle")}</h2>
 
                               {success && (
                                    <div className="contact-feedback contact-feedback--success">
@@ -146,22 +148,22 @@ export default function ContactUs() {
                               <form className="contact-form" onSubmit={handleSubmit}>
                                    <div className="form-row">
                                         <div className="form-group">
-                                             <label>Name:</label>
+                                             <label>{t("contact.nameLabel")}</label>
                                              <input
                                                   type="text"
                                                   name="name"
-                                                  placeholder="Enter"
+                                                  placeholder={t("contact.namePlaceholder")}
                                                   value={form.name}
                                                   onChange={handleChange}
                                                   required
                                              />
                                         </div>
                                         <div className="form-group">
-                                             <label>Phone number:</label>
+                                             <label>{t("contact.phoneLabel")}</label>
                                              <input
                                                   type="text"
                                                   name="phone"
-                                                  placeholder="Enter"
+                                                  placeholder={t("contact.phonePlaceholder")}
                                                   value={form.phone}
                                                   onChange={handleChange}
                                                   required
@@ -170,10 +172,10 @@ export default function ContactUs() {
                                    </div>
 
                                    <div className="form-group" style={{ flex: 1 }}>
-                                        <label>Message:</label>
+                                        <label>{t("contact.messageLabel")}</label>
                                         <textarea
                                              name="message"
-                                             placeholder="Enter"
+                                             placeholder={t("contact.messagePlaceholder")}
                                              value={form.message}
                                              onChange={handleChange}
                                              required
@@ -181,7 +183,7 @@ export default function ContactUs() {
                                    </div>
 
                                    <button type="submit" className="submit-btn" disabled={sending}>
-                                        {sending ? "Sending…" : "Send application"}
+                                        {sending ? t("contact.sending") : t("contact.sendBtn")}
                                    </button>
                               </form>
                          </div>

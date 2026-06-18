@@ -20,3 +20,115 @@ body {
 * {
   font-family: "MuseoSansCyrl-500", sans-serif;
 }
+
+/* ═══════════════════════════════════════════════
+   Language-specific font-size adjustments
+   Russian text is ~20-25% longer than English,
+   so we scale down slightly to keep layouts intact.
+   ═══════════════════════════════════════════════ */
+
+/* Russian — scale down navigation, buttons, headings */
+[data-lang="ru"] .navx-dd > button,
+[data-lang="ru"] .navx-link,
+[data-lang="ru"] .navx-ddMenu button,
+[data-lang="ru"] .navx-mLink,
+[data-lang="ru"] .navx-mDD button {
+  font-size: 0.82em;
+  letter-spacing: -0.01em;
+}
+
+[data-lang="ru"] .navx-apply {
+  font-size: 0.83em;
+  padding-left: 14px;
+  padding-right: 14px;
+}
+
+[data-lang="ru"] .footx-ctaLeft h3 {
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+}
+
+[data-lang="ru"] .footx-ctaLeft p {
+  font-size: 0.88em;
+}
+
+[data-lang="ru"] .footx-btn {
+  font-size: 0.88em;
+}
+
+[data-lang="ru"] .evx-tab {
+  font-size: 0.88em;
+}
+
+[data-lang="ru"] .hero-card-title {
+  font-size: 0.88em;
+}
+
+[data-lang="ru"] .hero-card-sub {
+  font-size: 0.8em;
+}
+
+/* Uzbek — text is close to English, minor adjustments for long words */
+[data-lang="uz"] .navx-dd > button,
+[data-lang="uz"] .navx-link {
+  font-size: 0.9em;
+}
+
+[data-lang="uz"] .navx-ddMenu button {
+  font-size: 0.85em;
+}
+
+[data-lang="uz"] .navx-apply {
+  font-size: 0.9em;
+}
+
+[data-lang="uz"] .evx-tab {
+  font-size: 0.9em;
+}
+
+/* Contact form labels */
+[data-lang="ru"] .contact-label,
+[data-lang="ru"] .form-group label {
+  font-size: 0.88em;
+}
+
+/* About page stat labels */
+[data-lang="ru"] .about-stat-card p,
+[data-lang="uz"] .about-stat-card p {
+  font-size: 0.9em;
+}
+
+/* Footer links */
+[data-lang="ru"] .footx-links a {
+  font-size: 0.88em;
+}
+
+/* AcademicCalendar tabs */
+[data-lang="ru"] .ac-tab-btn {
+  font-size: 0.88em;
+  padding: 10px 14px;
+}
+
+/* Admissions tab buttons */
+[data-lang="ru"] .tab-btn {
+  font-size: 0.88em;
+}
+
+[data-lang="uz"] .tab-btn {
+  font-size: 0.9em;
+}
+
+/* Hero headline — UZ/RU translations are longer than EN, scale down to avoid overflow */
+[data-lang="ru"] .hero-title-center {
+  font-size: clamp(26px, 4.4vw, 74px);
+  letter-spacing: -0.5px;
+}
+
+[data-lang="uz"] .hero-title-center {
+  font-size: clamp(28px, 4.8vw, 84px);
+  letter-spacing: -0.5px;
+}
+
+/* International students section subtitles can run long in RU */
+[data-lang="ru"] .intl-section-title span {
+  font-size: 0.9em;
+}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./AdmissionsShared.css";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../../i18n/LanguageContext";
 import heroImg from "../../images/campus.PNG";
 import agriImg from "../../iau-images/1.png"; // Placeholder
 import businessImg from "../../iau-images/2.png"; // Placeholder
@@ -8,6 +9,7 @@ import bgVideo from "../../all-bg-videos/iau-bg.mp4";
 
 export default function Foundation() {
      const [activeTab, setActiveTab] = useState("courseContent");
+     const { t } = useLanguage();
 
      return (
           <div className="admissions-page">
@@ -27,11 +29,11 @@ export default function Foundation() {
                          <div className="breadcrumbs">
                               <Link to="/">🏠</Link>
                               <span className="separator">&gt;</span>
-                              <span>Admissions</span>
+                              <span>{t("admissions.breadAdmissions")}</span>
                               <span className="separator">&gt;</span>
-                              <span className="current">Foundation</span>
+                              <span className="current">{t("admissions.pages.foundation")}</span>
                          </div>
-                         <h1>Foundation</h1>
+                         <h1>{t("admissions.pages.foundation")}</h1>
                     </div>
                </div>
 
@@ -47,19 +49,19 @@ export default function Foundation() {
                                         className={`tab-btn ${activeTab === "courseContent" ? "active" : ""}`}
                                         onClick={() => setActiveTab("courseContent")}
                                    >
-                                        Course content
+                                        {t("admissions.tabCourse")}
                                    </button>
                                    <button
                                         className={`tab-btn ${activeTab === "entryRequirements" ? "active" : ""}`}
                                         onClick={() => setActiveTab("entryRequirements")}
                                    >
-                                        Entry requirements
+                                        {t("admissions.tabEntry")}
                                    </button>
                                    <button
                                         className={`tab-btn ${activeTab === "fees" ? "active" : ""}`}
                                         onClick={() => setActiveTab("fees")}
                                    >
-                                        Fees
+                                        {t("admissionsExtra.tabFees")}
                                    </button>
                               </div>
                          </div>
@@ -75,9 +77,9 @@ export default function Foundation() {
                                                        <div className="module-strip blue"></div>
                                                   </div>
                                                   <div className="module-info">
-                                                       <h4>Agriculture Modules</h4>
+                                                       <h4>{t("admissionsExtra.breadAgri")}</h4>
                                                        <hr className="module-divider" />
-                                                       <Link to="/admissions/agriculture" className="module-link" style={{ textDecoration: 'none' }}>See more →</Link>
+                                                       <Link to="/admissions/agriculture" className="module-link" style={{ textDecoration: 'none' }}>{t("common.seeMore")} →</Link>
                                                   </div>
                                              </div>
 
@@ -87,9 +89,9 @@ export default function Foundation() {
                                                        <div className="module-strip solid-blue"></div>
                                                   </div>
                                                   <div className="module-info">
-                                                       <h4>Business Management Modules</h4>
+                                                       <h4>{t("admissionsExtra.breadBusiness")}</h4>
                                                        <hr className="module-divider" />
-                                                       <Link to="/admissions/business-management" className="module-link" style={{ textDecoration: 'none' }}>See more →</Link>
+                                                       <Link to="/admissions/business-management" className="module-link" style={{ textDecoration: 'none' }}>{t("common.seeMore")} →</Link>
                                                   </div>
                                              </div>
                                         </div>
@@ -98,30 +100,18 @@ export default function Foundation() {
 
                               {activeTab === "entryRequirements" && (
                                    <div className="content-pane fade-in">
-                                        <h2>Entry requirements</h2>
-                                        <p>
-                                             The following standard University entry requirements will be appropriate for the Foundation Year programme: IELTS Academic (UKVI version) min. overall 5.0, min. 5.0 in all subscores (5,0 in Writing) or the equivalent of either:
-                                        </p>
-                                        <p>
-                                             43-58 – PTE 43-58 in all subscores (29-36 in Writing) 35-45 – TOEFL 16 in all subscores (14 in Writing) B1, B2 Level – CEFR (Common European Framework of Reference) 75-80 scores on Duolingo English Test
-                                        </p>
-                                        <p>
-                                             Please note that University offers a Corinium Language Associates examination (developed on demand to test candidates of the International Agriculture University) for those who don’t have the above-mentioned certificates on a paid basis.
-                                        </p>
+                                        <h2>{t("admissions.tabEntry")}</h2>
+                                        <p style={{whiteSpace:"pre-line"}}>{t("adm.foundEntry")}</p>
                                    </div>
                               )}
 
                               {activeTab === "fees" && (
                                    <div className="content-pane fade-in">
-                                        <h2>Fees</h2>
+                                        <h2>{t("admissions.tabFees")}</h2>
+                                        <p>{t("adm.feeUzbYear")}</p>
+                                        <p>{t("adm.feeIntlYear")}</p>
                                         <p>
-                                             Tuition Fees Uzb 29 900 000 UZS per year
-                                        </p>
-                                        <p>
-                                             Tuition Fees International 3,700 USD per year
-                                        </p>
-                                        <p>
-                                             Duration 1 year – full time
+                                             {t("adm.dur1yr")}
                                         </p>
                                    </div>
                               )}
@@ -129,30 +119,30 @@ export default function Foundation() {
 
                          {/* APPLICATIONS OPEN BOX */}
                          <div className="applications-box">
-                              <h3>Applications for Fall 2026 are now open!</h3>
-                              <button className="apply-btn" onClick={() => window.open('https://iau-admission.tilda.ws', '_blank')}>Start Your Application →</button>
+                              <h3>{t("common.applyFall")}</h3>
+                              <button className="apply-btn" onClick={() => window.open('https://iau-admission.tilda.ws', '_blank')}>{t("common.startApplication")}</button>
                          </div>
                     </div>
 
                     {/* RIGHT SIDEBAR */}
                     <div className="admissions-sidebar">
                          <div className="sidebar-box">
-                              <h3>Admissions</h3>
+                              <h3>{t("admissionsExtra.sidebarTitle")}</h3>
                               <ul className="sidebar-links">
                                    <li>
-                                        <Link to="/admissions/pre-foundation">Pre-Foundation</Link>
+                                        <Link to="/admissions/pre-foundation">{t("admissions.pages.preFoundation")}</Link>
                                    </li>
                                    <li>
-                                        <Link to="/admissions/foundation" className="active-link">Foundation</Link>
+                                        <Link to="/admissions/foundation" className="active-link">{t("admissions.pages.foundation")}</Link>
                                    </li>
                                    <li>
-                                        <Link to="/admissions/undergraduate">Undergraduate</Link>
+                                        <Link to="/admissions/undergraduate">{t("admissions.pages.undergraduate")}</Link>
                                    </li>
                                    <li>
-                                        <Link to="/admissions/postgraduate">Postgraduate</Link>
+                                        <Link to="/admissions/postgraduate">{t("admissions.pages.postgraduate")}</Link>
                                    </li>
                                    <li>
-                                        <Link to="/admissions/phd">PhD and DSc Programmes</Link>
+                                        <Link to="/admissions/phd">{t("admissions.pages.phd")}</Link>
                                    </li>
                               </ul>
                          </div>

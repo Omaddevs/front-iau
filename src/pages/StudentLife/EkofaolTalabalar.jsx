@@ -1,32 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../../i18n/LanguageContext";
 import { IoCalendarOutline, IoChevronForwardOutline } from "react-icons/io5";
 import "./AcademicCalendar.css";
 import "./EkofaolTalabalar.css";
 import bgVideo from "../../all-bg-videos/iau-bg.mp4";
 import { fetchEkofaolNewsList } from "../../api/ecoactiveNewsApi";
 
-const SIDEBAR_LINKS = [
-  { label: "ACADEMIC CALENDAR FOR 2025/2026", href: "/student-life/academic-calendar" },
-  { label: "INTERNATIONAL STUDENTS", href: "/student-life/international-students", hidden: true },
-  { label: "STUDENT HANDBOOK", href: "/student-life/student-handbook" },
-  { label: "PRESENTATION FOR APPLICANTS", href: "/student-life/presentation-for-applicants", hidden: true },
-  { label: "CAREER SERVICES", href: "#", hidden: true },
-  { label: "IAU CLUBS", href: "/student-life/iau-clubs", hidden: true },
-  { label: "STUDENTS CREATIVITY", href: "#", hidden: true },
-  { label: "INTERVIEWS", href: "#", hidden: true },
-  { label: "ECO-ACTIVE STUDENTS", href: "/student-life/ekofaol-talabalar", active: true },
-];
 
 const PAGE_SIZE = 8;
 
 export default function EkofaolTalabalar() {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { t } = useLanguage();
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalCount, setTotalCount] = useState(0);
   const [query, setQuery] = useState("");
+
+  const SIDEBAR_LINKS = [
+    { label: t("nav.academicCalendar"),      href: "/student-life/academic-calendar" },
+    { label: t("nav.internationalStudents"), href: "/student-life/international-students", hidden: true },
+    { label: t("nav.studentHandbook"),       href: "/student-life/student-handbook" },
+    { label: t("nav.presentationApplicants"),href: "/student-life/presentation-for-applicants", hidden: true },
+    { label: t("nav.careerServices"),        href: "#", hidden: true },
+    { label: t("nav.iauClubs"),              href: "/student-life/iau-clubs", hidden: true },
+    { label: t("nav.studentsCreativity"),    href: "#", hidden: true },
+    { label: t("nav.interviews"),            href: "#", hidden: true },
+    { label: t("nav.ecoActiveStudents"),     href: "/student-life/ekofaol-talabalar", active: true },
+  ];
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -45,7 +48,7 @@ export default function EkofaolTalabalar() {
         setNews(data.results || []);
         setTotalCount(data.count || 0);
       } catch (err) {
-        setError(err.message || "Failed to load eco-active students content.");
+        setError(err.message || t("eco.loadError"));
       } finally {
         setLoading(false);
       }
@@ -63,7 +66,7 @@ export default function EkofaolTalabalar() {
         </video>
         <div className="ac-hero-overlay" />
         <div className="ac-hero-content">
-          <h1>Eco-active Students</h1>
+          <h1>{t("eco.heroTitle")}</h1>
         </div>
       </div>
 
@@ -71,8 +74,8 @@ export default function EkofaolTalabalar() {
         <div className="ac-main">
           <section className="eco-head">
             <div className="eco-head-copy">
-              <h2>Eco-active Students</h2>
-              <p>News about ecological events, clean-up days, and green initiatives.</p>
+              <h2>{t("eco.heroTitle")}</h2>
+              <p>{t("x.ecoSubtitle")}</p>
             </div>
             <input
               className="eco-search"
@@ -81,7 +84,7 @@ export default function EkofaolTalabalar() {
                 setQuery(e.target.value);
                 setCurrentPage(1);
               }}
-              placeholder="Search news..."
+              placeholder={t("eco.searchPlaceholder")}
               aria-label="Search news"
             />
           </section>
@@ -119,7 +122,7 @@ export default function EkofaolTalabalar() {
                       </Link>
                       <p>{item.text}</p>
                       <Link to={`/student-life/ekofaol-talabalar/${item.id}`} className="eco-news-more">
-                        See more <IoChevronForwardOutline />
+                        {t("newsPage.readMore")} <IoChevronForwardOutline />
                       </Link>
                     </div>
                   </article>
@@ -155,7 +158,7 @@ export default function EkofaolTalabalar() {
 
         <aside className="ac-sidebar">
           <div className="ac-sidebar-box">
-            <h3>Student life</h3>
+            <h3>{t("studentLife.sidebar.title")}</h3>
             <ul className="ac-sidebar-links">
               {SIDEBAR_LINKS.map((link, i) => (
                 <li key={i} style={{ display: link.hidden ? "none" : "block" }}>

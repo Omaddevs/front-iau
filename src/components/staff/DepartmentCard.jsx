@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import { IoChevronForwardOutline } from "react-icons/io5";
 import "./DepartmentCard.css";
+import { useLanguage } from "../../i18n/LanguageContext";
 
 const AVATAR_FALLBACK = "https://placehold.co/80x80/e2e8f0/94a3b8?text=IAU";
 
 export default function DepartmentCard({ department }) {
+  const { t } = useLanguage();
   const preview = (department.members || []).slice(0, 5);
   const linkId  = department.slug || department.id;
 
@@ -29,7 +31,7 @@ export default function DepartmentCard({ department }) {
           </div>
 
           <span className="sdc-more">
-            See more <IoChevronForwardOutline />
+            {t("common.seeMore")} <IoChevronForwardOutline />
           </span>
         </div>
       </Link>

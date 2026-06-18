@@ -1,22 +1,25 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../../i18n/LanguageContext";
 import "./AcademicCalendar.css";
 import "./PresentationForApplicants.css";
 import bgVideo from "../../all-bg-videos/iau-bg.mp4";
 
-const SIDEBAR_LINKS = [
-  { label: "ACADEMIC CALENDAR FOR 2025/2026", href: "/student-life/academic-calendar" },
-  { label: "INTERNATIONAL STUDENTS", href: "/student-life/international-students", hidden: true },
-  { label: "STUDENT HANDBOOK", href: "/student-life/student-handbook" },
-  { label: "PRESENTATION FOR APPLICANTS", href: "/student-life/presentation-for-applicants", active: true, hidden: true },
-  { label: "CAREER SERVICES", href: "#", hidden: true },
-  { label: "IAU CLUBS", href: "/student-life/iau-clubs", hidden: true },
-  { label: "STUDENTS CREATIVITY", href: "#", hidden: true },
-  { label: "INTERVIEWS", href: "#", hidden: true },
-  { label: "ECO-ACTIVE STUDENTS", href: "/student-life/ekofaol-talabalar" },
-];
-
 export default function PresentationForApplicants() {
+  const { t } = useLanguage();
+
+  const SIDEBAR_LINKS = [
+    { label: t("nav.academicCalendar"),         href: "/student-life/academic-calendar" },
+    { label: t("nav.internationalStudents"),     href: "/student-life/international-students", hidden: true },
+    { label: t("nav.studentHandbook"),           href: "/student-life/student-handbook" },
+    { label: t("nav.presentationApplicants"),    href: "/student-life/presentation-for-applicants", active: true, hidden: true },
+    { label: t("nav.careerServices"),            href: "#", hidden: true },
+    { label: t("nav.iauClubs"),                  href: "/student-life/iau-clubs", hidden: true },
+    { label: t("nav.studentsCreativity"),        href: "#", hidden: true },
+    { label: t("nav.interviews"),                href: "#", hidden: true },
+    { label: t("nav.ecoActiveStudents"),         href: "/student-life/ekofaol-talabalar" },
+  ];
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -29,18 +32,15 @@ export default function PresentationForApplicants() {
         </video>
         <div className="ac-hero-overlay" />
         <div className="ac-hero-content">
-          <h1>Presentation for Applicants</h1>
+          <h1>{t("presentation.heroTitle")}</h1>
         </div>
       </div>
 
       <div className="ac-container">
         <div className="ac-main">
           <section className="pfa-card">
-            <h2>Everything you need before applying</h2>
-            <p>
-              Explore key details about IAU programs, admission requirements, tuition information,
-              campus life, and student support services in one concise presentation.
-            </p>
+            <h2>{t("presentation.subTitle")}</h2>
+            <p>{t("presentation.desc")}</p>
             <div className="pfa-actions">
               <a
                 className="pfa-btn primary"
@@ -48,10 +48,10 @@ export default function PresentationForApplicants() {
                 target="_blank"
                 rel="noreferrer"
               >
-                Open Presentation
+                {t("presentation.openBtn")}
               </a>
               <a className="pfa-btn ghost" href="/contact">
-                Ask Admissions Team
+                {t("presentation.askBtn")}
               </a>
             </div>
           </section>
@@ -62,14 +62,14 @@ export default function PresentationForApplicants() {
               width="100%"
               height="800px"
               className="ac-pdf-iframe"
-              title="Presentation for Applicants"
+              title={t("presentation.heroTitle")}
             />
           </div>
         </div>
 
         <aside className="ac-sidebar">
           <div className="ac-sidebar-box">
-            <h3>Student life</h3>
+            <h3>{t("studentLife.sidebar.title")}</h3>
             <ul className="ac-sidebar-links">
               {SIDEBAR_LINKS.map((link, i) => (
                 <li key={i} style={{ display: link.hidden ? "none" : "block" }}>

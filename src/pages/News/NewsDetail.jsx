@@ -1,6 +1,7 @@
 // src/pages/News/NewsDetail.jsx
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { useLanguage } from "../../i18n/LanguageContext";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -21,6 +22,7 @@ const PLACEHOLDER_IMG = "https://placehold.co/800x450/1a6b3a/ffffff?text=IAU+New
 
 export default function NewsDetail() {
   const { id } = useParams();
+  const { t } = useLanguage();
   const [news, setNews]       = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError]     = useState(null);
@@ -43,7 +45,7 @@ export default function NewsDetail() {
       navigator.share({ title: news?.title, url: window.location.href });
     } else {
       navigator.clipboard.writeText(window.location.href);
-      alert("Link copied to clipboard!");
+      alert(t("common.linkCopied"));
     }
   };
 
@@ -84,12 +86,12 @@ export default function NewsDetail() {
           <div className="nd-bc">
             <Link to="/"><IoHome className="nd-bc-home" /></Link>
             <IoChevronForwardOutline className="nd-bc-sep" />
-            <Link to="/latest-news">News &amp; Events</Link>
+            <Link to="/latest-news">{t("common.newsAndEvents")}</Link>
             <IoChevronForwardOutline className="nd-bc-sep" />
-            <span>News</span>
+            <span>{t("newsDetail.breadNews")}</span>
           </div>
           <h1 className="nd-hero-title">
-            {loading ? "Loading..." : (news?.title ?? "News Not Found")}
+            {loading ? t("common.loading") : (news?.title ?? t("newsPage.heroTitle"))}
           </h1>
         </div>
       </div>
@@ -108,8 +110,8 @@ export default function NewsDetail() {
 
           {error && (
             <div className="nd-error">
-              <p>Failed to load article. Please try again.</p>
-              <Link to="/latest-news">← Back to News</Link>
+              <p>{t("common.failedToLoad")}</p>
+              <Link to="/latest-news">{t("common.backToNews")}</Link>
             </div>
           )}
 
@@ -126,7 +128,7 @@ export default function NewsDetail() {
                   </span>
                 </div>
                 <button className="nd-share" onClick={handleShare}>
-                  <IoShareSocialOutline /> Share
+                  <IoShareSocialOutline /> {t("common.share")}
                 </button>
               </div>
 
@@ -199,8 +201,8 @@ export default function NewsDetail() {
 
           {!loading && !error && !news && (
             <div className="nd-error">
-              <p>News article not found.</p>
-              <Link to="/latest-news">← Back to News</Link>
+              <p>{t("common.noData")}</p>
+              <Link to="/latest-news">{t("common.backToNews")}</Link>
             </div>
           )}
         </div>
@@ -208,32 +210,32 @@ export default function NewsDetail() {
         {/* RIGHT SIDEBAR */}
         <aside className="nd-sidebar">
           <div className="nd-sb-menu">
-            <div className="nd-sb-title">News &amp; Events</div>
+            <div className="nd-sb-title">{t("common.newsAndEvents")}</div>
             <ul>
-              <li><Link to="/latest-news" className="active">News</Link></li>
-              <li><Link to="#">Upcoming Events</Link></li>
+              <li><Link to="/latest-news" className="active">{t("newsDetail.breadNews")}</Link></li>
+              <li><Link to="/events">{t("common.upcomingEvents")}</Link></li>
             </ul>
           </div>
 
           <div className="nd-sb-menu nd-sb-categories">
-            <div className="nd-sb-title">Categories</div>
+            <div className="nd-sb-title">{t("newsDetail.categories")}</div>
             <ul className="nd-cat-list">
               {[
-                "Events",
-                "Announcements",
-                "Research",
-                "Student Life",
-                "Partnerships",
-                "International",
-                "Sports",
-              ].map((catName) => {
+                { key: "catEvents",        name: t("newsDetail.catEvents") },
+                { key: "catAnnouncements", name: t("newsDetail.catAnnouncements") },
+                { key: "catResearch",      name: t("newsDetail.catResearch") },
+                { key: "catStudentLife",   name: t("newsDetail.catStudentLife") },
+                { key: "catPartnerships",  name: t("newsDetail.catPartnerships") },
+                { key: "catInternational", name: t("newsDetail.catInternational") },
+                { key: "catSports",        name: t("newsDetail.catSports") },
+              ].map(({ key, name }) => {
                 const isActive = news?.categories?.some(
-                  (c) => c.name.toLowerCase() === catName.toLowerCase()
+                  (c) => c.name.toLowerCase() === key.replace("cat","").toLowerCase()
                 );
                 return (
-                  <li key={catName}>
+                  <li key={key}>
                     <div className={`nd-cat-item ${isActive ? "active" : ""}`}>
-                      {catName}
+                      {name}
                     </div>
                   </li>
                 );

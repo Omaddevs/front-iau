@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../../i18n/LanguageContext";
 import "./ResearchProjects.css";
 import "./ScientificCouncil.css";
 import img1 from "../../research-images/3.png";
@@ -8,6 +9,48 @@ import bgVideo from "../../all-bg-videos/iau-bg.mp4";
 
 export default function ResearchProjects() {
      const [selectedProject, setSelectedProject] = useState(null);
+     const { t } = useLanguage();
+
+     const partners1 = [
+          "U.Alikhanov atyndagy kokshetau memlekettik universiteti - Kazakistan",
+          "Universidade Portucalense Infante D Henrique - Portugal",
+          "Hochschule Wismar - Germany",
+          "North Kazakhstan State University Named After Manash Kozybayev - Kazakistan",
+          "D.Serikbayev East Kazakhstan Technical University – Kazakistan",
+          "Kazakh academy of Sport and Tourism - Kazakistan",
+          "International Agriculture University - Uzbekistan",
+          "Silk Road International University Of Tourism And Cultural Heritage - Uzbekistan",
+          "Nukus State Technical University - Uzbekistan",
+          "Chamber of Entrepreneurs of Akmola region Atameken – Kazakistan",
+          "Association of Women Enretpreneurs - Uzbekistan",
+     ];
+     const partners2 = [
+          "Universitat Politecnica De Valencia (UPV), Spain",
+          "Universita Degli Studi Di Cassino E Del Lazio Meridionale (Unicas) - Italy",
+          "University of Cyprus (UCY), Cyprus",
+          "Sh.U.Alikhanov atyndagy Kokshetau Memlekettik Universiteti (KOKSU) – Kazakistan",
+          "Non commercial Joint Stock Company Kazakh National university Names after Al-farabi (KAZNU) – Kazakistan",
+          "Institution Khoja Akhmet Yassawi International Kazakh Turkish University (AYU) - Kazakistan",
+          "The Regional Environmental Centre For Central Asia-Association (CAREC) - Kazakistan",
+          "Ministry of Education and Science (MSHERK) - Kazakistan",
+          "Fargona Politexnika Instituti (FPI) Uzbekistan",
+          "Toshkent irrigasiya va qishloq xo‘jaligini mexanizatsiyalash Muhandislari instituti (TIIAME-NRU) – Uzbekistan",
+          "Toshkent irrigatsiya va qishloq xojaligini mexanizatsiyalash muhandislari instituti milliy tadqiqot universiteti buxoro tabiiy resurslarni (BINRM-TIIAME) - Uzbekistan",
+          "Buxoro davlat universiteti (BSU) - Uzbekistan",
+          "International Agriculture University (IAU) - Uzbekistan",
+          "Ministry of Higher Education, Science and Innovation of the Republic of Uzbekistan (MHESIRU) – Uzbekistan",
+     ];
+
+     const CoordinatorBlock = () => (
+          <div style={{ marginTop: "20px" }}>
+               <p style={{ marginBottom: "5px" }}><strong>{t("adm.rpCoordinator")}</strong> Baxtiyorjon Abdusattorov</p>
+               <ul style={{ listStyleType: "none", paddingLeft: 0, marginTop: 0 }}>
+                    <li><b>{t("adm.rpPosition")}</b> {t("x.headOfDeptResearch")}.</li>
+                    <li><b>{t("adm.rpPhone")}</b> +998 91 344 54 42; +998 55 517 0071;</li>
+                    <li><b>{t("adm.rpEmail")}</b> <a href="mailto:Bakhtiyor.Abdusattarov@rau.ac.uk">Bakhtiyor.Abdusattarov@rau.ac.uk</a></li>
+               </ul>
+          </div>
+     );
 
      const projects = [
           {
@@ -15,52 +58,24 @@ export default function ResearchProjects() {
                image: img1,
                description: (
                     <div className="rp-project-details">
-                         <h4>Empowering Women through the Development and Implementation of Rural Tourism Entrepreneurship in Kazakhstan and Uzbekistan</h4>
-                         <p><strong>Project goal:</strong> aims to empower rural women in Kazakhstan and Uzbekistan by developing and implementing rural tourism entrepreneurship courses. The project seeks to equip women and tourism students with essential entrepreneurial, digital, and tourism-related skills, enabling them to create sustainable income opportunities, increase employment, and support inclusive economic growth in rural communities.</p>
-                         <p><strong>Tasks of the project:</strong></p>
+                         <h4>{t("adm.rp1Title")}</h4>
+                         <p><strong>{t("adm.rpGoal")}</strong> {t("adm.rp1Goal")}</p>
+                         <p><strong>{t("adm.rpTasks")}</strong></p>
                          <ul>
-                              <li>Project management and coordination</li>
-                              <li>Staff capacity building.</li>
-                              <li>Designing course on Rural tourism entrepreneurship including 4 modules for two target groups</li>
-                              <li>Students enrolment and course implementation.</li>
-                              <li>Quality Plan: Evaluation and Improvement.</li>
-                              <li>Dissemination & Exploitation</li>
+                              {t("adm.rp1Tasks").map((item, i) => <li key={i}>{item}</li>)}
                          </ul>
-                         <p><strong>Expected results and effect of the project:</strong></p>
+                         <p><strong>{t("adm.rpResults")}</strong></p>
                          <ul>
-                              <li>Improved skills and capacities of rural women and tourism students through tailored training modules in rural tourism entrepreneurship, digital tools, and business development.</li>
-                              <li>Increased employment and self-employment opportunities for rural women by supporting them in creating and managing tourism-related micro-businesses and services.</li>
-                              <li>Development and implementation of a structured rural tourism entrepreneurship course, including practical modules adapted to the needs of two target groups: university students and self-employed women.</li>
-                              <li>Strengthened role of universities in supporting local development through entrepreneurship education, mentorship, and collaboration with stakeholders.</li>
-                              <li>Enhanced quality and attractiveness of rural tourism products and services, promoting local culture, traditions, handicrafts, and rural lifestyles as authentic tourism experiences.</li>
-                              <li>Reduction of social and economic inequalities by improving women’s access to education, training, and income-generating activities in rural areas.</li>
-                              <li>Contribution to sustainable tourism development aligned with the UN Sustainable Development Goals, particularly SDG 4 (Quality Education), SDG 5 (Gender Equality), and SDG 8 (Decent Work and Economic Growth).</li>
+                              {t("adm.rp1Results").map((item, i) => <li key={i}>{item}</li>)}
                          </ul>
-                         <p><strong>Partner Universities:</strong></p>
+                         <p><strong>{t("adm.rpPartners")}</strong></p>
                          <ol>
-                              <li>U.Alikhanov atyndagy kokshetau memlekettik universiteti - Kazakistan</li>
-                              <li>Universidade Portucalense Infante D Henrique - Portugal</li>
-                              <li>Hochschule Wismar - Germany</li>
-                              <li>North Kazakhstan State University Named After Manash Kozybayev - Kazakistan</li>
-                              <li>D.Serikbayev East Kazakhstan Technical University – Kazakistan</li>
-                              <li>Kazakh academy of Sport and Tourism - Kazakistan</li>
-                              <li>International Agriculture University - Uzbekistan</li>
-                              <li>Silk Road International University Of Tourism And Cultural Heritage - Uzbekistan</li>
-                              <li>Nukus State Technical University - Uzbekistan</li>
-                              <li>Chamber of Entrepreneurs of Akmola region Atameken – Kazakistan</li>
-                              <li>Association of Women Enretpreneurs - Uzbekistan</li>
+                              {partners1.map((item, i) => <li key={i}>{item}</li>)}
                          </ol>
                          <br />
-                         <p><strong>Period of the project:</strong> 01.11.2025 – 31.10.2028.</p>
-                         <p><strong>Total cost of the project:</strong> 397 788.89 Euro</p>
-                         <div style={{ marginTop: "20px" }}>
-                              <p style={{ marginBottom: "5px" }}><strong>Coordinator:</strong> Baxtiyorjon Abdusattorov</p>
-                              <ul style={{ listStyleType: "none", paddingLeft: 0, marginTop: 0 }}>
-                                   <li><b>Position:</b> Head of Department of Master’s and Scientific Research.</li>
-                                   <li><b>Phone:</b> +998 91 344 54 42; +998 55 517 0071;</li>
-                                   <li><b>Email:</b> <a href="mailto:Bakhtiyor.Abdusattarov@rau.ac.uk">Bakhtiyor.Abdusattarov@rau.ac.uk</a></li>
-                              </ul>
-                         </div>
+                         <p><strong>{t("adm.rpPeriod")}</strong> 01.11.2025 – 31.10.2028.</p>
+                         <p><strong>{t("adm.rpCost")}</strong> 397 788.89 Euro</p>
+                         <CoordinatorBlock />
                     </div>
                )
           },
@@ -69,52 +84,21 @@ export default function ResearchProjects() {
                image: img2,
                description: (
                     <div className="rp-project-details">
-                         <h4>Land management, Environment & Solid-waste: inside education and business in Central Asia</h4>
-                         <p><strong>Project goal:</strong> to strengthen the capacity of higher education institutions in Kazakhstan and Uzbekistan by developing and implementing innovative micro-credentials and digital learning tools in the field of Sustainable Land Management (SLM). The project aims to modernize BSc and MSc educational programmes, create an integrated online SLM repository, and establish a regional hub and learning incubator that connects universities with regulators and industry needs, supporting green transition and digital transformation in Central Asia.</p>
-                         <p><strong>Tasks of the project:</strong></p>
+                         <h4>{t("adm.rp2Title")}</h4>
+                         <p><strong>{t("adm.rpGoal")}</strong> {t("adm.rp2Goal")}</p>
+                         <p><strong>{t("adm.rpTasks")}</strong></p>
                          <ol>
-                              <li>To ensure that decisions are taken on a basis of parity, the partners will establish a governance structure that includes men and women equally as representatives of the associated partners.</li>
-                              <li>To develop the Project Benchmarking Procedure and establish the performance indicators.</li>
-                              <li>To ensure that all activities of the project are compliant with the approved grant and the contractual requirements, as well as to facilitate that the project objectives are fulfilled at the highest quality and in the most effective ways.</li>
-                              <li>To have an objective perspective of an external evaluator on project implementation, progress and impact, in order to provide the participating institutions with impartial monitoring and evaluation of their activities.</li>
+                              {t("adm.rp2Tasks").map((item, i) => <li key={i}>{item}</li>)}
                          </ol>
-                         <p><strong>Expected results and effect of the project:</strong></p>
+                         <p><strong>{t("adm.rpResults")}</strong></p>
                          <ol>
-                              <li>Creation of a Sustainable Land Management (SLM) Hub in Kazakhstan and Uzbekistan, bringing together universities and key stakeholders to strengthen regional cooperation and knowledge exchange.</li>
-                              <li>Development and implementation of innovative micro-credentials on SLM, ensuring flexible and up-to-date training opportunities aligned with international standards and labour market demands.</li>
-                              <li>Production of digital didactic tools and online educational resources to support BSc and MSc programmes, enhancing access to high-quality learning materials and improving digital teaching capacities.</li>
-                              <li>Establishment of a Single Online SLM Repository (Toolbox) that integrates all training content and supports long-term use, replication, and sustainability of project outputs.</li>
-                              <li>Development of a Pilot Future Learning Incubator, applying innovative STEHEAM-based teaching approaches to engage future students and promote forward-looking learning towards 2030.</li>
-                              <li>Improved alignment between universities, regulators, and industries, ensuring that graduates gain relevant competences and that educational programmes respond to real policy and market needs.</li>
-                              <li>Contribution to the European Green Deal and sustainability goals, promoting environmentally responsible land management and supporting climate resilience in Central Asia.</li>
-                              <li>Strengthened digital transformation of HEIs, enhancing institutional readiness for online and blended learning, and improving the quality and efficiency of education delivery.</li>
-                              <li>Long-term impact on sustainable development and environmental protection, by preparing a new generation of skilled professionals capable of supporting smart, sustainable, and inclusive growth in the region.</li>
+                              {t("adm.rp2Results").map((item, i) => <li key={i}>{item}</li>)}
                          </ol>
-                         <p><strong>Partner Universities:</strong></p>
+                         <p><strong>{t("adm.rpPartners")}</strong></p>
                          <ol>
-                              <li>Universitat Politecnica De Valencia (UPV), Spain</li>
-                              <li>Universita Degli Studi Di Cassino E Del Lazio Meridionale (Unicas) - Italy</li>
-                              <li>University of Cyprus (UCY), Cyprus</li>
-                              <li>Sh.U.Alikhanov atyndagy Kokshetau Memlekettik Universiteti (KOKSU) – Kazakistan</li>
-                              <li>Non commercial Joint Stock Company Kazakh National university Names after Al-farabi (KAZNU) – Kazakistan</li>
-                              <li>Institution Khoja Akhmet Yassawi International Kazakh Turkish University (AYU) - Kazakistan</li>
-                              <li>The Regional Environmental Centre For Central Asia-Association (CAREC) - Kazakistan</li>
-                              <li>Ministry of Education and Science (MSHERK) - Kazakistan</li>
-                              <li>Fargona Politexnika Instituti (FPI) Uzbekistan</li>
-                              <li>Toshkent irrigasiya va qishloq xo‘jaligini mexanizatsiyalash Muhandislari instituti (TIIAME-NRU) – Uzbekistan</li>
-                              <li>Toshkent irrigatsiya va qishloq xojaligini mexanizatsiyalash muhandislari instituti milliy tadqiqot universiteti buxoro tabiiy resurslarni (BINRM-TIIAME) - Uzbekistan</li>
-                              <li>Buxoro davlat universiteti (BSU) - Uzbekistan</li>
-                              <li>International Agriculture University (IAU) - Uzbekistan</li>
-                              <li>Ministry of Higher Education, Science and Innovation of the Republic of Uzbekistan (MHESIRU) – Uzbekistan</li>
+                              {partners2.map((item, i) => <li key={i}>{item}</li>)}
                          </ol>
-                         <div style={{ marginTop: "20px" }}>
-                              <p style={{ marginBottom: "5px" }}><strong>Coordinator:</strong> Baxtiyorjon Abdusattorov</p>
-                              <ul style={{ listStyleType: "none", paddingLeft: 0, marginTop: 0 }}>
-                                   <li><b>Position:</b> Head of Department of Master’s and Scientific Research.</li>
-                                   <li><b>Phone:</b> +998 91 344 54 42; +998 55 517 0071;</li>
-                                   <li><b>Email:</b> <a href="mailto:Bakhtiyor.Abdusattarov@rau.ac.uk">Bakhtiyor.Abdusattarov@rau.ac.uk</a></li>
-                              </ul>
-                         </div>
+                         <CoordinatorBlock />
                     </div>
                )
           }
@@ -138,7 +122,7 @@ export default function ResearchProjects() {
                     </video>
                     <div className="sc-hero-overlay"></div>
                     <div className="sc-hero-content">
-                         <h1 className="sc-title">Research Projects</h1>
+                         <h1 className="sc-title">{t("research.heroResearchProjects")}</h1>
                     </div>
                </div>
 
@@ -146,7 +130,7 @@ export default function ResearchProjects() {
                     <div className="sc-main">
                          <div className="sc-tabs-container">
                               <div className="sc-tabs">
-                                   <div className="sc-tab active">Research Projects</div>
+                                   <div className="sc-tab active">{t("x.projectsTab")}</div>
                               </div>
                          </div>
 
@@ -160,35 +144,33 @@ export default function ResearchProjects() {
                                         <div className="rp-card-content">
                                              <h3 className="rp-card-title">{project.title}</h3>
                                              <hr className="rp-divider" />
-                                             <button className="rp-link">See more &rarr;</button>
+                                             <button className="rp-link">{t("common.seeMore")} &rarr;</button>
                                         </div>
                                    </div>
                               ))}
                          </div>
 
                          <div className="rp-applications-box" style={{ marginTop: "40px" }}>
-                              <h3>Applications for Fall 2026 are now open!</h3>
-                              <button className="rp-apply-btn" onClick={() => window.open("https://iau-admission.tilda.ws", "_blank")}>
-                                   Start Your Application &rarr;
-                              </button>
+                              <h3>{t("common.applyFall")}</h3>
+                              <button className="rp-apply-btn" onClick={() => window.open("https://iau-admission.tilda.ws", "_blank")}>{t("common.startApplication")}</button>
                          </div>
                     </div>
 
                     <aside className="sc-sidebar">
                          <div className="sc-sidebar-box">
-                              <h4 className="sc-sidebar-title">Research</h4>
+                              <h4 className="sc-sidebar-title">{t("researchExtra.sidebarResearch")}</h4>
                               <ul className="sc-sidebar-menu">
                                    <li>
-                                        <Link to="/research/scientific-council">IAU Scientific council</Link>
+                                        <Link to="/research/scientific-council">{t("research.heroScientificCouncil")}</Link>
                                    </li>
                                    <li className="active">
-                                        <Link to="/research/research-projects">Research projects</Link>
+                                        <Link to="/research/research-projects">{t("research.heroResearchProjects")}</Link>
                                    </li>
                                    <li>
-                                        <Link to="/research/research-publication">Research publication</Link>
+                                        <Link to="/research/research-publication">{t("research.heroResearchPublication")}</Link>
                                    </li>
                                    <li>
-                                        <Link to="/research/gucae">German-Uzbek Chain on Central Asian Agricultural Economics (GUCAE)</Link>
+                                        <Link to="/research/gucae">{t("researchExtra.gucaeTitle")}</Link>
                                    </li>
                               </ul>
                          </div>

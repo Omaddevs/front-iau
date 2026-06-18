@@ -1,24 +1,25 @@
 import { useEffect, useState } from "react";
 import { Link, Navigate, useParams, useLocation } from "react-router-dom";
+import { useLanguage } from "../../i18n/LanguageContext";
 import StaffCard from "../../components/staff/StaffCard";
 import { fetchDepartment } from "../../api/staffApi";
 import "./DepartmentCommunity.css";
 
-const teamMenu = [
-  { label: "University Staff",      href: "/staff" },
-  { label: "Executive",             href: "/staff/rectorate" },
-  { label: "Deans",                 href: "/staff/deans" },
-  { label: "Heads of Departments",  href: "/staff/heads" },
-  { label: "Academic Staff",        href: "/staff/academic-staff" },
-];
-
 export default function DepartmentCommunity() {
   const { deptId } = useParams();
   const location   = useLocation();
+  const { t } = useLanguage();
 
   const [department, setDepartment] = useState(null);
   const [loading, setLoading]       = useState(true);
   const [notFound, setNotFound]     = useState(false);
+
+  const teamMenu = [
+    { label: t("dept.universityStaff"),   href: "/staff" },
+    { label: t("dept.academicCommunity"), href: "/staff/rectorate" },
+    { label: t("dept.otherOrgs"),         href: "/staff/deans" },
+    { label: t("dept.universityStructure"),href: "/staff/heads" },
+  ];
 
   useEffect(() => {
     setLoading(true);
@@ -48,8 +49,7 @@ export default function DepartmentCommunity() {
 
               {!loading && department && (
                 <>
-                  <p className="dcp-subtitle">{department.title}</p>
-                  <h1 className="dcp-title">Department community</h1>
+                  <h1 className="dcp-title">{department.title}</h1>
                   <div className="dcp-grid">
                     {department.members.map((member) => (
                       <StaffCard
@@ -64,7 +64,7 @@ export default function DepartmentCommunity() {
 
             <aside className="dcp-side">
               <div className="dcp-sideCard">
-                <h2 className="dcp-sideTitle">Our team</h2>
+                <h2 className="dcp-sideTitle">{t("dept.ourTeam")}</h2>
                 {teamMenu.map((item) => (
                   <Link
                     key={item.label}

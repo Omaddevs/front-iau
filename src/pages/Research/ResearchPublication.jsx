@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../../i18n/LanguageContext";
 import "./ResearchProjects.css";
 import "./ScientificCouncil.css";
 import bgVideo from "../../all-bg-videos/iau-bg.mp4";
 
 export default function ResearchPublication() {
      const [openPubYear, setOpenPubYear] = useState(null);
+     const { t } = useLanguage();
 
      const togglePubYear = (year) => {
           setOpenPubYear(openPubYear === year ? null : year);
@@ -71,7 +73,7 @@ export default function ResearchPublication() {
                year: "2023",
                items: [
                     { text: "Neil R. et al. (2023). Metabolomics reveals the response of hydroprimed maize to mitigate the impact of soil salinization. Front. Plant Sci.", link: "https://doi:10.3389/fpls.2023.1109460" },
-                    { text: "Neil R. et al. (2023). Improving farming practice through localized land tenure reform: a study of the “Three Rights Separation Reform” implemented in a Shanghai suburb, China. Geografi sk Tidsskrift-Danish Journal of Geography.", link: "https://doi.org/10.1080/00167223.2023.2213741" },
+                    { text: "Neil R. et al. (2023). Improving farming practice through localized land tenure reform: a study of the 'Three Rights Separation Reform' implemented in a Shanghai suburb, China. Geografi sk Tidsskrift-Danish Journal of Geography.", link: "https://doi.org/10.1080/00167223.2023.2213741" },
                     { text: "Primov A. et al. (2023). Crop Diversification in the Aral Sea Region: Long-Term Situation Analysis. Sustainability.", link: "https://doi.org/10.3390/su151310221" },
                     { text: "Egamberdieva D. et al. (2023). Bacterial Bioprotectants: Biocontrol Traits and Induced Resistance to Phytopathogens. Microbiol. Res.", link: "https://doi.org/10.3390/microbiolres14020049" }
                ]
@@ -86,7 +88,7 @@ export default function ResearchPublication() {
                     </video>
                     <div className="sc-hero-overlay"></div>
                     <div className="sc-hero-content">
-                         <h1 className="sc-title">Research Publication</h1>
+                         <h1 className="sc-title">{t("research.heroResearchPublication")}</h1>
                     </div>
                </div>
 
@@ -94,7 +96,7 @@ export default function ResearchPublication() {
                     <div className="sc-main">
                          <div className="sc-tabs-container">
                               <div className="sc-tabs">
-                                   <div className="sc-tab active">Publications</div>
+                                   <div className="sc-tab active">{t("x.publicationsTab")}</div>
                               </div>
                          </div>
 
@@ -126,19 +128,19 @@ export default function ResearchPublication() {
 
                     <aside className="sc-sidebar">
                          <div className="sc-sidebar-box">
-                              <h4 className="sc-sidebar-title">Research</h4>
+                              <h4 className="sc-sidebar-title">{t("researchExtra.sidebarResearch")}</h4>
                               <ul className="sc-sidebar-menu">
                                    <li>
-                                        <Link to="/research/scientific-council">IAU Scientific council</Link>
+                                        <Link to="/research/scientific-council">{t("research.heroScientificCouncil")}</Link>
                                    </li>
                                    <li>
-                                        <Link to="/research/research-projects">Research projects</Link>
+                                        <Link to="/research/research-projects">{t("research.heroResearchProjects")}</Link>
                                    </li>
                                    <li className="active">
-                                        <Link to="/research/research-publication">Research publication</Link>
+                                        <Link to="/research/research-publication">{t("research.heroResearchPublication")}</Link>
                                    </li>
                                    <li>
-                                        <Link to="/research/gucae">German-Uzbek Chain on Central Asian Agricultural Economics (GUCAE)</Link>
+                                        <Link to="/research/gucae">{t("researchExtra.gucaeTitle")}</Link>
                                    </li>
                               </ul>
                          </div>

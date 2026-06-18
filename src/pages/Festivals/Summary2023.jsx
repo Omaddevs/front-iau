@@ -1,3 +1,4 @@
+import { useLanguage } from "../../i18n/LanguageContext";
 // src/pages/Festivals/Summary2023.jsx
 import React, { useEffect } from "react";
 import "./Summary2025.css"; // Reusing the same styling for consistency
@@ -13,6 +14,7 @@ import img7 from "../../festivals-images/festival-2023-image7.jpg";
 import img8 from "../../festivals-images/festival-2023-image8.jpg";
 
 const Summary2023 = () => {
+    const { t } = useLanguage();
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -22,11 +24,11 @@ const Summary2023 = () => {
     return (
         <div className="summary-page">
             <div className="summary-banner">
-                <h1>Life Science Festival 2023</h1>
+                <h1>{t("festivals.heroSummary2023")}</h1>
             </div>
 
             <div className="summary-content">
-                <h2>Summary</h2>
+                <h2>{t("x.summary")}</h2>
                 
                 <div className="summary-grid">
                     {images.map((img, index) => (
@@ -37,8 +39,7 @@ const Summary2023 = () => {
                 </div>
 
                 <div className="download-btn-container">
-                    <button className="download-btn">
-                        Download <IoChevronForwardOutline />
+                    <button className="download-btn">{t("x.download")} <IoChevronForwardOutline />
                     </button>
                 </div>
             </div>

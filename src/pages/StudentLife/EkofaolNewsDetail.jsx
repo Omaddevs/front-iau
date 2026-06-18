@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
+import { useLanguage } from "../../i18n/LanguageContext";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -47,6 +48,7 @@ function samePath(a, b) {
 
 export default function EkofaolNewsDetail() {
   const { id } = useParams();
+  const { t } = useLanguage();
   const [news, setNews] = React.useState(null);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(null);
@@ -94,17 +96,17 @@ export default function EkofaolNewsDetail() {
               <IoHome />
             </Link>
             <IoChevronForwardOutline className="eco-nd-bc-sep" />
-            <Link to="/student-life/ekofaol-talabalar">Eco-active Students</Link>
+            <Link to="/student-life/ekofaol-talabalar">{t("eco.breadEco")}</Link>
             <IoChevronForwardOutline className="eco-nd-bc-sep" />
-            <span>Article</span>
+            <span>{t("eco.breadArticle")}</span>
           </div>
-          <h1 className="eco-nd-hero-title">{loading ? "Loading..." : news?.title || "Article not found"}</h1>
+          <h1 className="eco-nd-hero-title">{loading ? t("common.loading") : news?.title || t("common.noData")}</h1>
         </div>
       </div>
 
       <div className="eco-nd-body">
         <div className="eco-nd-left">
-          {loading && <div className="eco-nd-loading">Loading...</div>}
+          {loading && <div className="eco-nd-loading">{t("common.loading")}</div>}
           {error && <div className="eco-nd-error">{error}</div>}
           {!loading && !error && news && (
             <>
@@ -139,12 +141,12 @@ export default function EkofaolNewsDetail() {
                 </div>
                 <Link to="/student-life/ekofaol-talabalar" className="eco-nd-back">
                   <IoChevronForwardOutline className="eco-nd-back-icon" />
-                  Back to Eco-active Students
+                  {t("eco.backToEco")}
                 </Link>
               </div>
               {additional.length > 0 && (
                 <section className="eco-nd-gallery-section" aria-label="Additional photos">
-                  <h2 className="eco-nd-gallery-title">Photo gallery</h2>
+                  <h2 className="eco-nd-gallery-title">{t("eco.photoGallery")}</h2>
                   <div className="eco-nd-gallery">
                     {additional.length > 4 ? (
                       <Swiper
@@ -201,11 +203,11 @@ export default function EkofaolNewsDetail() {
 
         <aside className="eco-nd-sidebar">
           <div className="eco-nd-sb-menu">
-            <div className="eco-nd-sb-title">Eco-active Students</div>
+            <div className="eco-nd-sb-title">{t("eco.heroTitle")}</div>
             <ul>
               <li>
                 <Link to="/student-life/ekofaol-talabalar" className="active">
-                  News
+                  {t("newsDetail.breadNews")}
                 </Link>
               </li>
             </ul>

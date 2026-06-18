@@ -1,6 +1,7 @@
 // src/pages/News/LatestNews.jsx
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../../i18n/LanguageContext";
 import "./LatestNews.css";
 import { IoCalendarOutline, IoEyeOutline, IoChevronForwardOutline } from "react-icons/io5";
 import bgVideo from "../../all-bg-videos/iau-bg.mp4";
@@ -19,6 +20,7 @@ export default function LatestNews() {
   const [loading, setLoading]         = useState(true);
   const [error, setError]             = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
+  const { t } = useLanguage();
   const [activeCategoryId, setActiveCategoryId] = useState(null);
   const [totalCount, setTotalCount]   = useState(0);
   const [categories, setCategories]   = useState(BASE_CATEGORIES);
@@ -78,7 +80,7 @@ export default function LatestNews() {
         </video>
         <div className="news-hero-overlay dark-gradient" />
         <div className="news-hero-content">
-          <h1>News</h1>
+          <h1>{t("newsPage.heroTitle")}</h1>
         </div>
       </section>
 
@@ -106,14 +108,14 @@ export default function LatestNews() {
 
           {error && (
             <div className="news-error">
-              <p>Failed to load news. Please make sure the backend is running.</p>
-              <button onClick={() => setCurrentPage(1)}>Retry</button>
+              <p>{t("common.failedToLoad")}</p>
+              <button onClick={() => setCurrentPage(1)}>{t("common.retry")}</button>
             </div>
           )}
 
           {!loading && !error && news.length === 0 && (
             <div className="news-error">
-              <p>No news articles found.</p>
+              <p>{t("newsPage.noNews")}</p>
             </div>
           )}
 

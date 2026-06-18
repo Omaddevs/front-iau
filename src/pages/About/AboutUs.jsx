@@ -3,6 +3,7 @@ import "./AboutUs.css";
 
 import { FaGraduationCap, FaUserTie, FaBuilding, FaBookOpen, FaPlay } from "react-icons/fa";
 import { IoArrowForwardOutline, IoClose } from "react-icons/io5";
+import { useLanguage } from "../../i18n/LanguageContext";
 
 import cityImg from "../../more-about-us-images/about-city.png";
 import videoCoverImg from "../../more-about-us-images/iau-video-image.png";
@@ -11,6 +12,7 @@ import bgVideo from "../../all-bg-videos/iau-bg.mp4";
 
 export default function AboutUs() {
      const [isVideoOpen, setIsVideoOpen] = React.useState(false);
+     const { t } = useLanguage();
 
      return (
           <div className="about-page">
@@ -20,7 +22,7 @@ export default function AboutUs() {
                          <source src={bgVideo} type="video/mp4" />
                     </video>
                     <div className="about-hero-overlay"></div>
-                    <h1 className="about-title">About Us</h1>
+                    <h1 className="about-title">{t("about.heroTitle")}</h1>
                </div>
 
                <div className="about-container">
@@ -29,10 +31,8 @@ export default function AboutUs() {
                     <div className="about-top-grid">
                          {/* About University */}
                          <div className="about-uni-card">
-                              <h2>About University</h2>
-                              <p>
-                                   In accordance with Resolution No. PQ-237 of the President of the Republic of Uzbekistan dated 7 May 2022 ‘On Measures for the Establishment of the International Agriculture University’, the International Agriculture University was founded in 2022 in cooperation with the Royal Agricultural University of the United Kingdom.
-                              </p>
+                              <h2>{t("about.aboutUniversity")}</h2>
+                              <p>{t("about.aboutDesc")}</p>
                               {/* <button className="about-btn">
                                    See programs <IoArrowForwardOutline />
                               </button> */}
@@ -58,28 +58,28 @@ export default function AboutUs() {
                          <div className="about-stat-card stat-teal">
                               <FaGraduationCap className="stat-icon-top" />
                               <h3>900+</h3>
-                              <p>Students</p>
+                              <p>{t("about.students")}</p>
                               <FaGraduationCap className="stat-icon-bg" />
                          </div>
 
                          <div className="about-stat-card stat-blue">
                               <FaUserTie className="stat-icon-top" />
                               <h3>100+</h3>
-                              <p>Staff</p>
+                              <p>{t("about.staff")}</p>
                               <FaUserTie className="stat-icon-bg" />
                          </div>
 
                          <div className="about-stat-card stat-green">
                               <FaBuilding className="stat-icon-top" />
                               <h3>2</h3>
-                              <p>Faculties</p>
+                              <p>{t("about.faculties")}</p>
                               <FaBuilding className="stat-icon-bg" />
                          </div>
 
                          <div className="about-stat-card stat-indigo">
                               <FaBookOpen className="stat-icon-top" />
                               <h3>13</h3>
-                              <p>Programs</p>
+                              <p>{t("about.programs")}</p>
                               <FaBookOpen className="stat-icon-bg" />
                          </div>
 

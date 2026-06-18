@@ -12,12 +12,14 @@ import {
 import heroBgVid from "../../all-bg-videos/iau-bg.mp4";
 import { fetchEventDetail } from "../../api/eventsApi";
 import "./EventDetail.css";
+import { useLanguage } from "../../i18n/LanguageContext";
 
 const PLACEHOLDER = "https://placehold.co/900x450/1a5db5/ffffff?text=IAU+Events";
 
 export default function EventDetail() {
   const { id } = useParams();
-  const [event, setEvent]     = useState(null);
+  const [event, setEvent] = useState(null);
+  const { t } = useLanguage();
   const [loading, setLoading] = useState(true);
   const [error, setError]     = useState(null);
 
@@ -37,7 +39,7 @@ export default function EventDetail() {
       navigator.share({ title: event?.title, url: window.location.href });
     } else {
       navigator.clipboard.writeText(window.location.href);
-      alert("Link copied!");
+      alert(t("common.linkCopied"));
     }
   };
 
@@ -58,12 +60,12 @@ export default function EventDetail() {
           <div className="nd-bc">
             <Link to="/"><IoHome className="nd-bc-home" /></Link>
             <IoChevronForwardOutline className="nd-bc-sep" />
-            <Link to="/events">News &amp; Events</Link>
+            <Link to="/events">{t("common.newsAndEvents")}</Link>
             <IoChevronForwardOutline className="nd-bc-sep" />
-            <span>{event?.is_upcoming ? "Upcoming Events" : "Previous Events"}</span>
+            <span>{event?.is_upcoming ? t("common.upcomingEvents") : t("common.previousEvents")}</span>
           </div>
           <h1 className="nd-hero-title">
-            {loading ? "Loading..." : (event?.title ?? "Event Not Found")}
+            {loading ? t("common.loading") : (event?.title ?? t("eventsPage.heroTitle"))}
           </h1>
         </div>
       </div>
@@ -80,8 +82,8 @@ export default function EventDetail() {
 
           {error && (
             <div className="nd-error">
-              <p>Failed to load event. Please try again.</p>
-              <Link to="/events">← Back to Events</Link>
+              <p>{t("common.failedToLoad")}</p>
+              <Link to="/events">{t("common.backToEvents")}</Link>
             </div>
           )}
 
@@ -103,7 +105,7 @@ export default function EventDetail() {
                   </span>
                 </div>
                 <button className="nd-share" onClick={handleShare}>
-                  <IoShareSocialOutline /> Share
+                  <IoShareSocialOutline /> {t("common.share")}
                 </button>
               </div>
 
@@ -120,23 +122,23 @@ export default function EventDetail() {
               <div className="ed-info-card">
                 <div className="ed-info-row">
                   <div className="ed-info-item">
-                    <span className="ed-info-label"><IoCalendarOutline /> Date</span>
+                    <span className="ed-info-label"><IoCalendarOutline /> {t("contact.workingHours").split(":")[0]}</span>
                     <span className="ed-info-value">{dateLabel}</span>
                   </div>
                   {event.time && (
                     <div className="ed-info-item">
-                      <span className="ed-info-label"><IoTimeOutline /> Time</span>
+                      <span className="ed-info-label"><IoTimeOutline /></span>
                       <span className="ed-info-value">{event.time}</span>
                     </div>
                   )}
                   <div className="ed-info-item">
-                    <span className="ed-info-label"><IoLocationOutline /> Location</span>
+                    <span className="ed-info-label"><IoLocationOutline /></span>
                     <span className="ed-info-value">{event.location}</span>
                   </div>
                   <div className="ed-info-item">
-                    <span className="ed-info-label">Status</span>
+                    <span className="ed-info-label"></span>
                     <span className={`ed-badge ${event.is_upcoming ? "ed-badge--upcoming" : "ed-badge--past"}`}>
-                      {event.is_upcoming ? "Upcoming" : "Past Event"}
+                      {event.is_upcoming ? t("common.upcomingEvents") : t("common.previousEvents")}
                     </span>
                   </div>
                 </div>
@@ -153,7 +155,7 @@ export default function EventDetail() {
 
               {!event.description && (
                 <div className="nd-article">
-                  <p>No additional details available for this event.</p>
+                  <p>{t("x.eventNoDetails")}</p>
                 </div>
               )}
             </>
@@ -161,8 +163,8 @@ export default function EventDetail() {
 
           {!loading && !error && !event && (
             <div className="nd-error">
-              <p>Event not found.</p>
-              <Link to="/events">← Back to Events</Link>
+              <p>{t("common.noData")}</p>
+              <Link to="/events">{t("common.backToEvents")}</Link>
             </div>
           )}
         </div>
@@ -170,14 +172,14 @@ export default function EventDetail() {
         {/* RIGHT SIDEBAR */}
         <aside className="nd-sidebar">
           <div className="nd-sb-menu">
-            <div className="nd-sb-title">News &amp; Events</div>
+            <div className="nd-sb-title">{t("common.newsAndEvents")}</div>
             <ul>
               <li>
                 <Link
                   to="/events"
                   className={event?.is_upcoming !== false ? "active" : ""}
                 >
-                  Upcoming Events
+                  {t("common.upcomingEvents")}
                 </Link>
               </li>
               <li>
@@ -185,10 +187,10 @@ export default function EventDetail() {
                   to="/events?tab=previous"
                   className={event?.is_upcoming === false ? "active" : ""}
                 >
-                  Previous Events
+                  {t("common.previousEvents")}
                 </Link>
               </li>
-              <li><Link to="/latest-news">Latest News</Link></li>
+              <li><Link to="/latest-news">{t("nav.latestNews")}</Link></li>
             </ul>
           </div>
 
