@@ -1,0 +1,424 @@
+.hta-roadmap {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ── Intro ─────────────────────────────────────────────────── */
+.hta-intro {
+  background: linear-gradient(135deg, #0f3d4a 0%, #1a6b3a 55%, #2d8a5e 100%);
+  border-radius: 16px;
+  padding: 36px 40px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.hta-intro::after {
+  content: "";
+  position: absolute;
+  top: -40%;
+  right: -8%;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  pointer-events: none;
+}
+
+.hta-intro-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.hta-intro h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 12px;
+  max-width: 640px;
+  line-height: 1.25;
+}
+
+.hta-intro > p {
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0;
+  max-width: 680px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hta-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 28px;
+}
+
+.hta-stats article {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 12px;
+  padding: 18px 20px;
+  backdrop-filter: blur(4px);
+}
+
+.hta-stats strong {
+  display: block;
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.hta-stats span {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+/* ── Timeline ──────────────────────────────────────────────── */
+.hta-timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 8px 0 8px 8px;
+}
+
+.hta-timeline-track {
+  position: absolute;
+  left: 35px;
+  top: 24px;
+  bottom: 24px;
+  width: 3px;
+  background: linear-gradient(
+    to bottom,
+    #1a6b3a 0%,
+    #2b6cb0 45%,
+    #1a6b3a 100%
+  );
+  border-radius: 999px;
+  opacity: 0.35;
+}
+
+.hta-step {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 20px;
+  padding: 0 0 28px;
+  animation: htaFadeUp 0.5s ease both;
+  animation-delay: var(--hta-delay, 0s);
+}
+
+@keyframes htaFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hta-step:last-child {
+  padding-bottom: 0;
+}
+
+.hta-step-marker {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.hta-step-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid #1a6b3a;
+  color: #1a6b3a;
+  font-size: 13px;
+  font-weight: 800;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 14px rgba(26, 107, 58, 0.2);
+}
+
+.hta-step-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #f0faf4;
+  color: #1a6b3a;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+}
+
+.hta-step-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 24px 28px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid #edf2f7;
+  transition: box-shadow 0.25s, border-color 0.25s, transform 0.25s;
+}
+
+.hta-step:hover .hta-step-card {
+  border-color: rgba(26, 107, 58, 0.25);
+  box-shadow: 0 8px 28px rgba(26, 107, 58, 0.1);
+  transform: translateY(-2px);
+}
+
+.hta-step--cta .hta-step-num {
+  border-color: #2b6cb0;
+  color: #2b6cb0;
+  background: linear-gradient(135deg, #ebf4ff, #fff);
+}
+
+.hta-step--cta .hta-step-icon {
+  background: #ebf8ff;
+  color: #2b6cb0;
+}
+
+.hta-step--cta .hta-step-card {
+  border-left: 4px solid #2b6cb0;
+  background: linear-gradient(135deg, #f8fbff 0%, #fff 60%);
+}
+
+.hta-step-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.hta-step-head h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0;
+}
+
+.hta-step-phase {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #1a6b3a;
+  background: #f0faf4;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.hta-step-card > p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #4a5568;
+  margin: 0 0 14px;
+}
+
+.hta-doc-list {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 16px;
+}
+
+.hta-doc-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: #2d3748;
+  line-height: 1.45;
+}
+
+.hta-doc-list svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #1a6b3a;
+  font-size: 16px;
+}
+
+.hta-step-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a6b3a;
+  text-decoration: none;
+  transition: gap 0.2s, color 0.2s;
+}
+
+.hta-step-link:hover {
+  color: #14532d;
+  gap: 10px;
+}
+
+.hta-step-link--primary {
+  background: #2b6cb0;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  margin-top: 4px;
+}
+
+.hta-step-link--primary:hover {
+  background: #2c5282;
+  color: #fff;
+}
+
+/* ── Help & CTA ────────────────────────────────────────────── */
+.hta-help {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.hta-help-card,
+.hta-cta-card {
+  border-radius: 14px;
+  padding: 28px 32px;
+}
+
+.hta-help-card {
+  background: #fff;
+  border: 1px solid #edf2f7;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.hta-help-card h3,
+.hta-cta-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+
+.hta-help-card p,
+.hta-cta-card p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #4a5568;
+  margin: 0 0 16px;
+}
+
+.hta-help-contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hta-help-contacts a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2b6cb0;
+  text-decoration: none;
+}
+
+.hta-help-contacts a:hover {
+  text-decoration: underline;
+}
+
+.hta-cta-card {
+  background: linear-gradient(135deg, #1a6b3a, #2d8a5e);
+  color: #fff;
+}
+
+.hta-cta-card h3 {
+  color: #fff;
+}
+
+.hta-cta-card p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hta-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  color: #1a6b3a;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 12px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.hta-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .hta-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .hta-help {
+    grid-template-columns: 1fr;
+  }
+
+  .hta-doc-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .hta-intro {
+    padding: 28px 24px;
+  }
+
+  .hta-intro h2 {
+    font-size: 22px;
+  }
+
+  .hta-step {
+    grid-template-columns: 56px 1fr;
+    gap: 14px;
+  }
+
+  .hta-timeline-track {
+    left: 27px;
+  }
+
+  .hta-step-num {
+    width: 34px;
+    height: 34px;
+    font-size: 11px;
+  }
+
+  .hta-step-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 15px;
+  }
+
+  .hta-step-card {
+    padding: 18px 20px;
+  }
+
+  .hta-step-head h3 {
+    font-size: 16px;
+  }
+}

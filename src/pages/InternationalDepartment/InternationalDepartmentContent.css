@@ -1,0 +1,562 @@
+.icd-content {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ── Intro ─────────────────────────────────────────────────── */
+.icd-intro,
+.icd-faq-intro,
+.icd-placeholder {
+  background: linear-gradient(135deg, #0f3d4a 0%, #1a6b3a 55%, #2d8a5e 100%);
+  border-radius: 16px;
+  padding: 36px 40px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.icd-intro::after,
+.icd-faq-intro::after,
+.icd-placeholder::after {
+  content: "";
+  position: absolute;
+  top: -35%;
+  right: -6%;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  pointer-events: none;
+}
+
+.icd-intro-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.icd-intro h2,
+.icd-faq-intro h2,
+.icd-placeholder h2 {
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  margin: 0 0 16px;
+  line-height: 1.3;
+  max-width: 720px;
+}
+
+.icd-intro p,
+.icd-faq-intro p,
+.icd-placeholder p {
+  font-size: 15px;
+  line-height: 1.75;
+  margin: 0 0 14px;
+  max-width: 780px;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.icd-intro p:last-child,
+.icd-faq-intro p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Missions ──────────────────────────────────────────────── */
+.icd-missions h3,
+.icd-staff-head h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0 0 8px;
+}
+
+.icd-staff-head p {
+  font-size: 14px;
+  color: #4a5568;
+  margin: 0 0 18px;
+  line-height: 1.6;
+}
+
+.icd-missions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.icd-mission-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 22px 22px 20px;
+  position: relative;
+  box-shadow: 0 4px 18px rgba(10, 31, 56, 0.06);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.icd-mission-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(26, 107, 58, 0.12);
+}
+
+.icd-mission-num {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  font-size: 28px;
+  font-weight: 800;
+  color: rgba(26, 107, 58, 0.12);
+  line-height: 1;
+}
+
+.icd-mission-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a6b3a, #38b2ac);
+  color: #fff;
+  font-size: 22px;
+  margin-bottom: 14px;
+}
+
+.icd-mission-card h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0 0 8px;
+  line-height: 1.35;
+  padding-right: 36px;
+}
+
+.icd-mission-card p {
+  font-size: 13px;
+  line-height: 1.65;
+  color: #4a5568;
+  margin: 0;
+}
+
+.icd-mission-card:nth-child(5) {
+  grid-column: 1 / -1;
+  max-width: 100%;
+}
+
+/* ── Staff table ───────────────────────────────────────────── */
+.icd-staff {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 28px 28px 24px;
+  box-shadow: 0 4px 20px rgba(10, 31, 56, 0.06);
+}
+
+.icd-staff-table-wrap {
+  overflow-x: auto;
+}
+
+.icd-staff-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.icd-staff-table th {
+  text-align: left;
+  padding: 12px 14px;
+  background: linear-gradient(135deg, #1a6b3a 0%, #2c5282 100%);
+  color: #fff;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.icd-staff-table th:first-child {
+  border-radius: 10px 0 0 0;
+}
+
+.icd-staff-table th.icd-col-photo {
+  width: 88px;
+  text-align: center;
+}
+
+.icd-col-photo {
+  width: 88px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.icd-staff-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  border: 3px solid #e2e8f0;
+  box-shadow: 0 4px 14px rgba(10, 31, 56, 0.1);
+  display: block;
+  margin: 0 auto;
+  background: #edf2f7;
+}
+
+.icd-staff-avatar--card {
+  width: 80px;
+  height: 80px;
+  margin: 0 0 14px;
+}
+
+.icd-staff-avatar--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a6b3a 0%, #2c5282 100%);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.icd-staff-avatar--placeholder svg {
+  font-size: 28px;
+  opacity: 0.9;
+}
+
+.icd-staff-table th:last-child {
+  border-radius: 0 10px 0 0;
+}
+
+.icd-staff-table td {
+  padding: 16px 14px;
+  border-bottom: 1px solid #edf2f7;
+  vertical-align: top;
+  color: #2d3748;
+  line-height: 1.55;
+}
+
+.icd-staff-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.icd-staff-table tbody tr:hover td {
+  background: #f7fafc;
+}
+
+.icd-contact-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #2c5282;
+  text-decoration: none;
+  font-size: 13px;
+  margin-bottom: 6px;
+  word-break: break-all;
+}
+
+.icd-contact-link:last-child {
+  margin-bottom: 0;
+}
+
+.icd-contact-link:hover {
+  color: #1a6b3a;
+}
+
+.icd-hours {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #4a5568;
+  white-space: nowrap;
+}
+
+.icd-staff-cards {
+  display: none;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.icd-staff-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 18px;
+  background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.icd-staff-card-role {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1a6b3a;
+  margin: 0 0 6px;
+  line-height: 1.4;
+}
+
+.icd-staff-card h4 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0 0 12px;
+}
+
+/* ── Reference CTA ─────────────────────────────────────────── */
+.icd-reference {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  padding: 24px 28px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ebf8ff 0%, #e6fffa 100%);
+  border: 1px solid #bee3f8;
+}
+
+.icd-reference h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0 0 6px;
+}
+
+.icd-reference p {
+  font-size: 14px;
+  color: #4a5568;
+  margin: 0;
+  line-height: 1.55;
+  max-width: 520px;
+}
+
+.icd-reference-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #1a6b3a 0%, #2c5282 100%);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 6px 18px rgba(26, 107, 58, 0.25);
+}
+
+.icd-reference-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(44, 82, 130, 0.3);
+  color: #fff;
+}
+
+/* ── Career services ─────────────────────────────────────────── */
+.icd-career-intro {
+  background: linear-gradient(135deg, #1a365d 0%, #2c5282 45%, #1a6b3a 100%);
+}
+
+.icd-services-head h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0 0 8px;
+}
+
+.icd-services-head p {
+  font-size: 14px;
+  color: #4a5568;
+  margin: 0 0 18px;
+  line-height: 1.6;
+}
+
+.icd-services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.icd-service-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 22px 22px 20px;
+  box-shadow: 0 4px 18px rgba(10, 31, 56, 0.06);
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.icd-service-card:hover {
+  transform: translateY(-2px);
+  border-color: #bee3f8;
+  box-shadow: 0 10px 28px rgba(44, 82, 130, 0.12);
+}
+
+.icd-service-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #2c5282, #38b2ac);
+  color: #fff;
+  font-size: 22px;
+  margin-bottom: 14px;
+}
+
+.icd-service-card h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0 0 8px;
+  line-height: 1.35;
+}
+
+.icd-service-card p {
+  font-size: 13px;
+  line-height: 1.65;
+  color: #4a5568;
+  margin: 0;
+}
+
+.icd-career-cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.icd-reference-btn svg {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.icd-career-cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 20px;
+  border-radius: 999px;
+  border: 2px solid #2c5282;
+  color: #2c5282;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.icd-career-cta-secondary:hover {
+  background: #2c5282;
+  color: #fff;
+}
+
+/* ── FAQ ───────────────────────────────────────────────────── */
+.icd-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.icd-faq-item {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(10, 31, 56, 0.05);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.icd-faq-item.open {
+  border-color: #38b2ac;
+  box-shadow: 0 6px 22px rgba(56, 178, 172, 0.15);
+}
+
+.icd-faq-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 22px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a202c;
+  line-height: 1.45;
+}
+
+.icd-faq-trigger:hover {
+  background: #f7fafc;
+}
+
+.icd-faq-chevron {
+  flex-shrink: 0;
+  font-size: 18px;
+  color: #1a6b3a;
+  transition: transform 0.25s;
+}
+
+.icd-faq-item.open .icd-faq-chevron {
+  transform: rotate(180deg);
+}
+
+.icd-faq-answer {
+  padding: 0 22px 20px;
+  border-top: 1px solid #edf2f7;
+}
+
+.icd-faq-answer p {
+  font-size: 14px;
+  line-height: 1.75;
+  color: #4a5568;
+  margin: 16px 0 0;
+}
+
+@media (max-width: 900px) {
+  .icd-missions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .icd-mission-card:nth-child(5) {
+    grid-column: auto;
+  }
+
+  .icd-services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .icd-staff-table-wrap {
+    display: none;
+  }
+
+  .icd-staff-cards {
+    display: flex;
+  }
+}
+
+@media (max-width: 640px) {
+  .icd-intro,
+  .icd-faq-intro,
+  .icd-placeholder {
+    padding: 28px 22px;
+  }
+
+  .icd-staff {
+    padding: 22px 18px;
+  }
+
+  .icd-reference {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

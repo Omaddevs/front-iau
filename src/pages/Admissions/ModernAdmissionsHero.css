@@ -1,0 +1,185 @@
+/* Matches Latest News / Events hero: height, gradient opacity, logo watermark */
+
+.admissions-page.ug-track--uzbek .admissions-hero,
+.admissions-page.ug-track--english .admissions-hero,
+.admissions-page.ug-track--russian .admissions-hero,
+.pd-page .admissions-hero.pd-hero {
+  height: 220px;
+  min-height: 220px;
+  padding: 0;
+  align-items: center;
+}
+
+.admissions-page.ug-track--uzbek .admissions-hero,
+.admissions-page.ug-track--english .admissions-hero,
+.admissions-page.ug-track--russian .admissions-hero {
+  height: 240px;
+  min-height: 240px;
+}
+
+.admissions-page[class*="ug-track--"] .hero-overlay,
+.pd-page .hero-overlay {
+  background: transparent !important;
+}
+
+.admissions-page.ug-track--uzbek .admissions-hero::after,
+.admissions-page.ug-track--english .admissions-hero::after,
+.admissions-page.ug-track--russian .admissions-hero::after,
+.pd-page .admissions-hero::after {
+  background: linear-gradient(
+    rgba(10, 31, 56, 0.3),
+    rgba(10, 31, 56, 0.88)
+  ) !important;
+  z-index: 2;
+}
+
+.admissions-page[class*="ug-track--"] .admissions-hero::before,
+.pd-page .admissions-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: url("../../images/navbarLogo.PNG") center center / min(480px, 72%) no-repeat;
+  opacity: 0.14;
+  pointer-events: none;
+}
+
+.admissions-page[class*="ug-track--"] .admissions-hero-content,
+.pd-page .admissions-hero-content {
+  position: relative;
+  z-index: 4;
+  padding: 0 24px;
+  width: 100%;
+}
+
+.admissions-page[class*="ug-track--"] .admissions-hero-content h1,
+.pd-page .admissions-hero-content h1 {
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+  margin: 0 auto;
+  max-width: 920px;
+}
+
+.admissions-page[class*="ug-track--"] .breadcrumbs,
+.pd-page .breadcrumbs {
+  font-size: 12px;
+  line-height: 1.45;
+  margin-bottom: 10px;
+  gap: 6px;
+}
+
+.admissions-page[class*="ug-track--"] .ug-hero-subtitle {
+  margin: 8px auto 0;
+  font-size: 14px;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.88);
+  font-weight: 400;
+  max-width: 640px;
+}
+
+@media (max-width: 900px) {
+  .admissions-page.ug-track--uzbek .admissions-hero,
+  .admissions-page.ug-track--english .admissions-hero,
+  .admissions-page.ug-track--russian .admissions-hero {
+    height: 220px;
+    min-height: 220px;
+  }
+
+  .pd-page .admissions-hero.pd-hero {
+    height: 200px;
+    min-height: 200px;
+  }
+
+  .admissions-page[class*="ug-track--"] .admissions-hero-content h1,
+  .pd-page .admissions-hero-content h1 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .admissions-page.ug-track--uzbek .admissions-hero,
+  .admissions-page.ug-track--english .admissions-hero,
+  .admissions-page.ug-track--russian .admissions-hero,
+  .pd-page .admissions-hero.pd-hero {
+    height: 180px;
+    min-height: 180px;
+  }
+
+  .admissions-page[class*="ug-track--"] .admissions-hero::before,
+  .pd-page .admissions-hero::before {
+    background-size: min(360px, 88%);
+    opacity: 0.12;
+  }
+
+  .admissions-page[class*="ug-track--"] .admissions-hero-content,
+  .pd-page .admissions-hero-content {
+    padding: 0 20px;
+  }
+
+  .admissions-page[class*="ug-track--"] .admissions-hero-content h1,
+  .pd-page .admissions-hero-content h1 {
+    font-size: 22px;
+  }
+
+  .admissions-page[class*="ug-track--"] .breadcrumbs,
+  .pd-page .breadcrumbs {
+    font-size: 11px;
+    margin-bottom: 8px;
+  }
+
+  .admissions-page[class*="ug-track--"] .ug-hero-subtitle {
+    display: none;
+  }
+}
+
+/* How to Apply hub page hero */
+.admissions-page.hta-page .hta-hero {
+  height: 220px;
+  min-height: 220px;
+  padding: 0;
+}
+
+.admissions-page.hta-page .hta-hero .hero-overlay {
+  background: transparent !important;
+}
+
+.admissions-page.hta-page .hta-hero::after {
+  background: linear-gradient(
+    rgba(10, 31, 56, 0.3),
+    rgba(10, 31, 56, 0.88)
+  ) !important;
+  z-index: 2;
+}
+
+.admissions-page.hta-page .hta-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: url("../../images/navbarLogo.PNG") center center / min(480px, 72%) no-repeat;
+  opacity: 0.14;
+  pointer-events: none;
+}
+
+.admissions-page.hta-page .admissions-hero-content {
+  z-index: 4;
+}
+
+.admissions-page.hta-page .admissions-hero-content h1 {
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 600px) {
+  .admissions-page.hta-page .hta-hero {
+    height: 180px;
+    min-height: 180px;
+  }
+
+  .admissions-page.hta-page .admissions-hero-content h1 {
+    font-size: 22px;
+  }
+}

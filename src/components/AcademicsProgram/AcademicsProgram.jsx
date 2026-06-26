@@ -18,7 +18,7 @@ export default function AcademicsProgram() {
   const programCards = [
     { title: t("academics.preFoundation"), icon: <IoSchoolOutline />, link: "/admissions/pre-foundation" },
     { title: t("academics.foundation"),    icon: <IoRibbonOutline />, link: "/admissions/foundation" },
-    { title: t("academics.undergraduate"), icon: <IoFlaskOutline />,  link: "/admissions/undergraduate" },
+    { title: t("academics.undergraduate"), icon: <IoFlaskOutline />,  link: "/admissions/undergraduate/english" },
     { title: t("academics.postgraduate"),  icon: <IoBookOutline />,   link: "/admissions/postgraduate" },
   ];
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./AdmissionsShared.css";
 import "./Agri.css";
+import AdmissionsBreadcrumbs from "./AdmissionsBreadcrumbs";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../i18n/LanguageContext";
 import bgVideo from "../../all-bg-videos/iau-bg.mp4";
@@ -25,15 +26,12 @@ export default function BusinessManagementModules() {
                     </video>
                     <div className="hero-overlay"></div>
                     <div className="admissions-hero-content">
-                         <div className="breadcrumbs">
-                              <Link to="/">🏠</Link>
-                              <span className="separator">&gt;</span>
-                              <span>{t("admissions.breadAdmissions")}</span>
-                              <span className="separator">&gt;</span>
-                              <Link to="/admissions/foundation">{t("admissions.pages.foundation")}</Link>
-                              <span className="separator">&gt;</span>
-                              <span className="current">{t("admissionsExtra.breadBusiness")}</span>
-                         </div>
+                         <AdmissionsBreadcrumbs
+                              items={[
+                                   { label: t("admissions.pages.foundation"), to: "/admissions/foundation" },
+                                   { label: t("admissionsExtra.breadBusiness"), current: true },
+                              ]}
+                         />
                          <h1>{t("admissions.pages.business")}</h1>
                     </div>
                </div>

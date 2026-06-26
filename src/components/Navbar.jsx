@@ -18,12 +18,14 @@ import {
 import { FaTelegramPlane } from "react-icons/fa";
 import navbarLogo from "../images/navbarLogo.PNG";
 import { useLanguage } from "../i18n/LanguageContext";
+import { UNDERGRADUATE_TRACKS } from "../pages/Admissions/undergraduateTracks";
 
 export default function Navbar() {
     const [scrolled, setScrolled]   = useState(false);
     const [langOpen, setLangOpen]   = useState(false);
     const [openDD, setOpenDD]       = useState(null);
     const [openSubDD, setOpenSubDD] = useState(null);
+    const [openFestSubDD, setOpenFestSubDD] = useState(null);
     const [mobileOpen, setMobileOpen] = useState(false);
     const [a11yActive, setA11yActive] = useState(false);
     const { lang, setLang, t } = useLanguage();
@@ -76,6 +78,7 @@ export default function Navbar() {
                 setLangOpen(false);
                 setOpenDD(null);
                 setOpenSubDD(null);
+                setOpenFestSubDD(null);
             }
         };
         document.addEventListener("mousedown", onDoc);
@@ -112,45 +115,60 @@ export default function Navbar() {
                 "INTERVIEWS",
                 "ECO-ACTIVE STUDENTS",
             ],
-            admissions: ["IAU SCIENTIFIC COUNCIL", "RESEARCH PROJECTS", "RESEARCH PUBLICATION", "GERMAN-UZBEK CHAIN ON CENTRAL ASIAN AGRICULTURAL ECONOMICS (GUCAE)"],
+            admissionsHub: [
+                "HOW TO APPLY",
+                "TUITION FEES",
+                "OPEN DAYS AT IAU",
+            ],
+            researchMenu: ["IAU SCIENTIFIC COUNCIL", "RESEARCH PROJECTS", "RESEARCH PUBLICATION", "GERMAN-UZBEK CHAIN ON CENTRAL ASIAN AGRICULTURAL ECONOMICS (GUCAE)"],
             life: {
-                title: "LIFE SCIENCE FESTIVAL",
                 items: [
                     {
-                        name: "LIFE SCIENCE FESTIVAL - 2025",
-                        subItems: [
-                            "SUMMARY OF EVENT 2025",
-                            // "PHOTO GALLERY 2025",
-                            // "PRESS RELEASE 2025"
-                        ]
+                        name: "INTERNATIONAL COOPERATION DEPARTMENT",
+                        type: "link",
+                        path: "/international-department/cooperation",
                     },
                     {
-                        name: "LIFE SCIENCE FESTIVAL - 2024",
-                        subItems: [
-                            "SUMMARY OF EVENT 2024",
-                            // "PHOTO GALLERY 2024",
-                            // "PRESS RELEASE 2024"
-                        ]
+                        name: "FESTIVALS",
+                        type: "group",
+                        items: [
+                            {
+                                name: "LIFE SCIENCE FESTIVAL - 2025",
+                                subItems: ["SUMMARY OF EVENT 2025"],
+                            },
+                            {
+                                name: "LIFE SCIENCE FESTIVAL - 2024",
+                                subItems: ["SUMMARY OF EVENT 2024"],
+                            },
+                            {
+                                name: "LIFE SCIENCE FESTIVAL - 2023",
+                                subItems: ["SUMMARY OF EVENT 2023"],
+                            },
+                            {
+                                name: "22 REASONS TO ATTEND",
+                                subItems: [],
+                            },
+                        ],
                     },
                     {
-                        name: "LIFE SCIENCE FESTIVAL - 2023",
-                        subItems: [
-                            "SUMMARY OF EVENT 2023",
-                            // "PHOTO GALLERY 2023",
-                            // "PRESS RELEASE 2023"
-                        ]
+                        name: "CAREER SERVICES CENTER",
+                        type: "link",
+                        path: "/international-department/career-services",
                     },
                     {
-                        name: "22 REASONS TO ATTEND",
-                        subItems: []
+                        name: "FAO ELEARNING ACADEMY",
+                        type: "link",
+                        path: "https://elearning.fao.org/",
+                        external: true,
                     },
-                    // {
-                    //     name: "FREQUENTLY ASKED QUESTIONS",
-                    //     subItems: []
-                    // }
-                ]
+                    {
+                        name: "FAQ",
+                        type: "link",
+                        path: "/international-department/faq",
+                    },
+                ],
             },
-            news: ["ABOUT UNIVERSITY", "OUR STAFF"],
+            news: ["ABOUT UNIVERSITY", "OUR STAFF", "CONTACT"],
         }),
         []
     );
@@ -171,6 +189,9 @@ export default function Navbar() {
         "UNDERGRADUATE": nl("undergraduate"),
         "POSTGRADUATE": nl("postgraduate"),
         "PhD AND DSc PROGRAMMES": nl("phdDsc"),
+        "HOW TO APPLY": nl("howToApply"),
+        "TUITION FEES": nl("tuitionFees"),
+        "OPEN DAYS AT IAU": nl("openDaysAtIau"),
         "ACADEMIC CALENDAR FOR 2025/2026": nl("academicCalendar"),
         "INTERNATIONAL STUDENTS": nl("internationalStudents"),
         "STUDENT HANDBOOK": nl("studentHandbook"),
@@ -184,6 +205,11 @@ export default function Navbar() {
         "RESEARCH PROJECTS": nl("researchProjects"),
         "RESEARCH PUBLICATION": nl("researchPublication"),
         "GERMAN-UZBEK CHAIN ON CENTRAL ASIAN AGRICULTURAL ECONOMICS (GUCAE)": nl("gucae"),
+        "INTERNATIONAL COOPERATION DEPARTMENT": nl("internationalCooperationDepartment"),
+        "CAREER SERVICES CENTER": nl("careerServicesCenter"),
+        "FAO ELEARNING ACADEMY": nl("faoElearningAcademy"),
+        "FAQ": nl("faqMenu"),
+        "FESTIVALS": nl("festivals"),
         "LIFE SCIENCE FESTIVAL": nl("lifeScienceFestival"),
         "LIFE SCIENCE FESTIVAL - 2025": nl("festival2025"),
         "LIFE SCIENCE FESTIVAL - 2024": nl("festival2024"),
@@ -194,13 +220,49 @@ export default function Navbar() {
         "22 REASONS TO ATTEND": nl("reasons22"),
         "ABOUT UNIVERSITY": nl("aboutUniversity"),
         "OUR STAFF": nl("staffMenu"),
+        "CONTACT": nl("contact"),
+        "UZBEK": t("admissions.trackUzbek"),
+        "ENGLISH": t("admissions.trackEnglish"),
+        "RUSSIAN": t("admissions.trackRussian"),
     };
     const nL = (x) => navLabels[x] || x;
+
+    const admissionsHubRoutes = {
+        "HOW TO APPLY": "/admissions/how-to-apply",
+        "TUITION FEES": "/admissions/tuition-fees",
+        "OPEN DAYS AT IAU": "/admissions/open-days",
+    };
 
     const closeAll = () => {
         setLangOpen(false);
         setOpenDD(null);
         setOpenSubDD(null);
+        setOpenFestSubDD(null);
+    };
+
+    const navigateIntlLink = (item) => {
+        closeAll();
+        if (item.external || item.path?.startsWith("http")) {
+            window.open(item.path, "_blank", "noopener,noreferrer");
+            return;
+        }
+        navigate(item.path);
+    };
+
+    const navigateFestivalSummary = (subItem) => {
+        closeAll();
+        if (subItem === "SUMMARY OF EVENT 2025") navigate("/festivals/summary-2025");
+        if (subItem === "SUMMARY OF EVENT 2024") navigate("/festivals/summary-2024");
+        if (subItem === "SUMMARY OF EVENT 2023") navigate("/festivals/summary-2023");
+    };
+
+    const navigateFestivalLeaf = (name) => {
+        if (name === "22 REASONS TO ATTEND") {
+            closeAll();
+            navigate("/festivals/22-reasons");
+            return true;
+        }
+        return false;
     };
 
     const goStaff = () => {
@@ -219,6 +281,7 @@ export default function Navbar() {
     const isContactPage = location.pathname === "/contact";
 
     const isFestivalsPage = location.pathname.startsWith("/festivals");
+    const isInternationalDeptPage = location.pathname.startsWith("/international-department");
     const isAcademicCalendarPage = location.pathname.startsWith("/student-life/academic-calendar");
     const isStudentHandbookPage = location.pathname.startsWith("/student-life/student-handbook");
     const isPresentationApplicantsPage = location.pathname.startsWith("/student-life/presentation-for-applicants");
@@ -229,7 +292,7 @@ export default function Navbar() {
     const isNewsDetailPage = location.pathname.startsWith("/news/");
     const isEventsPage = location.pathname.startsWith("/events");
     const solidWhiteMode =
-        isStaffListPage || isStaffDetailPage || isLegacyStaffPage || isAdmissionsPage || isScientificCouncilPage || isResearchProjectsPage || isGucaePage || isAboutPage || isContactPage || isFestivalsPage || isAcademicCalendarPage || isStudentHandbookPage || isPresentationApplicantsPage || isIauClubsPage || isInternationalStudentsPage || isEkofaolTalabalarPage || isLatestNewsPage || isNewsDetailPage || isEventsPage;
+        isStaffListPage || isStaffDetailPage || isLegacyStaffPage || isAdmissionsPage || isScientificCouncilPage || isResearchProjectsPage || isGucaePage || isAboutPage || isContactPage || isFestivalsPage || isInternationalDeptPage || isAcademicCalendarPage || isStudentHandbookPage || isPresentationApplicantsPage || isIauClubsPage || isInternationalStudentsPage || isEkofaolTalabalarPage || isLatestNewsPage || isNewsDetailPage || isEventsPage;
 
     return (
         <header
@@ -399,17 +462,34 @@ export default function Navbar() {
                                         }
                                         if (x === "UNDERGRADUATE") {
                                             return (
-                                                <button
-                                                    key={nL(x)}
-                                                    type="button"
-                                                    className="navx-ddAction"
-                                                    onClick={() => {
-                                                        closeAll();
-                                                        navigate("/admissions/undergraduate");
-                                                    }}
-                                                >
-                                                    {nL(x)}
-                                                </button>
+                                                <div key={nL(x)} className={`navx-ddSubMenuContainer ${openSubDD === "UNDERGRADUATE" ? "open" : ""}`}>
+                                                    <a
+                                                        href="#"
+                                                        onClick={(e) => {
+                                                            e.preventDefault();
+                                                            setOpenSubDD((prev) => (prev === "UNDERGRADUATE" ? null : "UNDERGRADUATE"));
+                                                        }}
+                                                        className="navx-ddAction"
+                                                    >
+                                                        {nL(x)}{" "}
+                                                        <IoChevronForwardOutline className={`navx-subChev ${openSubDD === "UNDERGRADUATE" ? "open" : ""}`} />
+                                                    </a>
+                                                    <div className="navx-ddSubMenu">
+                                                        {UNDERGRADUATE_TRACKS.map((track) => (
+                                                            <button
+                                                                key={track.id}
+                                                                type="button"
+                                                                className="navx-subItemBtn"
+                                                                onClick={() => {
+                                                                    closeAll();
+                                                                    navigate(track.path);
+                                                                }}
+                                                            >
+                                                                {t(`admissions.${track.labelKey}`)}
+                                                            </button>
+                                                        ))}
+                                                    </div>
+                                                </div>
                                             );
                                         }
                                         if (x === "POSTGRADUATE") {
@@ -448,6 +528,33 @@ export default function Navbar() {
                                             </a>
                                         );
                                     })}
+                                </div>
+                            </div>
+
+                            <div className={`navx-dd ${openDD === "admissionsHub" ? "open" : ""}`}>
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        setLangOpen(false);
+                                        setOpenDD((v) => (v === "admissionsHub" ? null : "admissionsHub"));
+                                    }}
+                                >
+                                    {t("nav.admissions")} <IoChevronDownOutline />
+                                </button>
+                                <div className="navx-ddMenu">
+                                    {dropdowns.admissionsHub.map((x) => (
+                                        <button
+                                            key={nL(x)}
+                                            type="button"
+                                            className="navx-ddAction"
+                                            onClick={() => {
+                                                closeAll();
+                                                navigate(admissionsHubRoutes[x]);
+                                            }}
+                                        >
+                                            {nL(x)}
+                                        </button>
+                                    ))}
                                 </div>
                             </div>
 
@@ -546,19 +653,19 @@ export default function Navbar() {
                             </div>
 
                             <div
-                                className={`navx-dd ${openDD === "admissions" ? "open" : ""}`}
+                                className={`navx-dd ${openDD === "researchMenu" ? "open" : ""}`}
                             >
                                 <button
                                     type="button"
                                     onClick={() => {
                                         setLangOpen(false);
-                                        setOpenDD((v) => (v === "admissions" ? null : "admissions"));
+                                        setOpenDD((v) => (v === "researchMenu" ? null : "researchMenu"));
                                     }}
                                 >
                                     {t("nav.research")} <IoChevronDownOutline />
                                 </button>
                                 <div className="navx-ddMenu">
-                                    {dropdowns.admissions.map((x) => {
+                                    {dropdowns.researchMenu.map((x) => {
                                         if (x === "IAU SCIENTIFIC COUNCIL") {
                                             return (
                                                 <button
@@ -634,55 +741,96 @@ export default function Navbar() {
                                     onClick={() => {
                                         setLangOpen(false);
                                         setOpenDD((v) => (v === "life" ? null : "life"));
-                                        if (openDD === "life") setOpenSubDD(null);
+                                        if (openDD === "life") {
+                                            setOpenSubDD(null);
+                                            setOpenFestSubDD(null);
+                                        }
                                     }}
                                 >
-                                    {t("nav.festivals")} <IoChevronDownOutline />
+                                    {t("nav.internationalDepartment")} <IoChevronDownOutline />
                                 </button>
-                                <div className="navx-ddMenu navx-festivals-menu">
-                                    {dropdowns.life.items.map((x) => (
-                                        <div key={nL(x.name)} className={`navx-ddSubMenuContainer ${openSubDD === x.name ? "open" : ""}`}>
-                                            <a href="#" onClick={(e) => {
-                                                e.preventDefault();
-                                                if (x.subItems && x.subItems.length === 0) {
-                                                    if (x.name === "FREQUENTLY ASKED QUESTIONS") {
-                                                        closeAll();
-                                                        navigate("/festivals/faq");
-                                                    } else if (x.name === "22 REASONS TO ATTEND") {
-                                                        closeAll();
-                                                        navigate("/festivals/22-reasons");
-                                                    } else {
-                                                        setOpenDD(null);
-                                                        setOpenSubDD(null);
-                                                    }
-                                                } else {
-                                                    setOpenSubDD(prev => prev === x.name ? null : x.name);
-                                                }
-                                            }} className="navx-ddAction">
-                                                {nL(x.name)} {x.subItems && x.subItems.length > 0 && <IoChevronForwardOutline className={`navx-subChev ${openSubDD === x.name ? "open" : ""}`} />}
-                                            </a>
-                                            {x.subItems && x.subItems.length > 0 && (
-                                                <div className="navx-ddSubMenu">
-                                                    {x.subItems.map(subItem => (
-                                                        <button key={nL(subItem)} className="navx-subItemBtn" onClick={() => {
-                                                            closeAll();
-                                                            if (subItem === "SUMMARY OF EVENT 2025") {
-                                                                navigate("/festivals/summary-2025");
-                                                            }
-                                                            if (subItem === "SUMMARY OF EVENT 2024") {
-                                                                navigate("/festivals/summary-2024");
-                                                            }
-                                                            if (subItem === "SUMMARY OF EVENT 2023") {
-                                                                navigate("/festivals/summary-2023");
-                                                            }
-                                                        }}>
-                                                            {nL(subItem)}
-                                                        </button>
-                                                    ))}
-                                                </div>
-                                            )}
-                                        </div>
-                                    ))}
+                                <div className="navx-ddMenu navx-intl-menu">
+                                    {dropdowns.life.items.map((item) => {
+                                        if (item.type === "link") {
+                                            return (
+                                                <button
+                                                    key={item.name}
+                                                    type="button"
+                                                    className="navx-ddAction navx-intl-link"
+                                                    onClick={() => navigateIntlLink(item)}
+                                                >
+                                                    {nL(item.name)}
+                                                </button>
+                                            );
+                                        }
+
+                                        if (item.type !== "group") return null;
+
+                                        return (
+                                            <div
+                                                key={item.name}
+                                                className={`navx-ddSubMenuContainer ${openSubDD === item.name ? "open" : ""}`}
+                                            >
+                                                <a
+                                                    href="#"
+                                                    onClick={(e) => {
+                                                        e.preventDefault();
+                                                        setOpenFestSubDD(null);
+                                                        setOpenSubDD((prev) => (prev === item.name ? null : item.name));
+                                                    }}
+                                                    className="navx-ddAction"
+                                                >
+                                                    {nL(item.name)}{" "}
+                                                    <IoChevronForwardOutline className={`navx-subChev ${openSubDD === item.name ? "open" : ""}`} />
+                                                </a>
+                                                {item.items && (
+                                                    <div className="navx-ddSubMenu">
+                                                        {item.items.map((x) => (
+                                                            <div
+                                                                key={nL(x.name)}
+                                                                className={`navx-ddSubMenuContainer ${openFestSubDD === x.name ? "open" : ""}`}
+                                                            >
+                                                                <a
+                                                                    href="#"
+                                                                    onClick={(e) => {
+                                                                        e.preventDefault();
+                                                                        if (x.subItems && x.subItems.length === 0) {
+                                                                            if (!navigateFestivalLeaf(x.name)) {
+                                                                                setOpenDD(null);
+                                                                                setOpenSubDD(null);
+                                                                                setOpenFestSubDD(null);
+                                                                            }
+                                                                        } else {
+                                                                            setOpenFestSubDD((prev) => (prev === x.name ? null : x.name));
+                                                                        }
+                                                                    }}
+                                                                    className="navx-ddAction"
+                                                                >
+                                                                    {nL(x.name)}{" "}
+                                                                    {x.subItems && x.subItems.length > 0 && (
+                                                                        <IoChevronForwardOutline className={`navx-subChev ${openFestSubDD === x.name ? "open" : ""}`} />
+                                                                    )}
+                                                                </a>
+                                                                {x.subItems && x.subItems.length > 0 && (
+                                                                    <div className="navx-ddSubMenu">
+                                                                        {x.subItems.map((subItem) => (
+                                                                            <button
+                                                                                key={nL(subItem)}
+                                                                                className="navx-subItemBtn"
+                                                                                onClick={() => navigateFestivalSummary(subItem)}
+                                                                            >
+                                                                                {nL(subItem)}
+                                                                            </button>
+                                                                        ))}
+                                                                    </div>
+                                                                )}
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                )}
+                                            </div>
+                                        );
+                                    })}
                                 </div>
                             </div>
 
@@ -726,6 +874,21 @@ export default function Navbar() {
                                                 </button>
                                             );
                                         }
+                                        if (x === "CONTACT") {
+                                            return (
+                                                <button
+                                                    key={nL(x)}
+                                                    type="button"
+                                                    className="navx-ddAction"
+                                                    onClick={() => {
+                                                        closeAll();
+                                                        navigate("/contact");
+                                                    }}
+                                                >
+                                                    {nL(x)}
+                                                </button>
+                                            );
+                                        }
 
                                         return (
                                             <a key={nL(x)} href="#" onClick={() => setOpenDD(null)}>
@@ -738,9 +901,6 @@ export default function Navbar() {
 
                             <button className="navx-link" style={{ background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit' }} onClick={() => { setOpenDD(null); navigate("/latest-news"); }}>
                                 {t("nav.latestNews")}
-                            </button>
-                            <button className="navx-link" style={{ background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit' }} onClick={() => { setOpenDD(null); navigate("/contact"); }}>
-                                {t("nav.contact")}
                             </button>
                         </div>
 
@@ -829,17 +989,24 @@ export default function Navbar() {
                                     }
                                     if (x === "UNDERGRADUATE") {
                                         return (
-                                            <button
-                                                key={nL(x)}
-                                                type="button"
-                                                className="navx-mDDbtn"
-                                                onClick={() => {
-                                                    setMobileOpen(false);
-                                                    navigate("/admissions/undergraduate");
-                                                }}
-                                            >
-                                                {nL(x)}
-                                            </button>
+                                            <details key={nL(x)} className="navx-mNested">
+                                                <summary>{nL(x)}</summary>
+                                                <div className="navx-mDD navx-mDD--nested">
+                                                    {UNDERGRADUATE_TRACKS.map((track) => (
+                                                        <button
+                                                            key={track.id}
+                                                            type="button"
+                                                            className="navx-mDDbtn"
+                                                            onClick={() => {
+                                                                setMobileOpen(false);
+                                                                navigate(track.path);
+                                                            }}
+                                                        >
+                                                            {t(`admissions.${track.labelKey}`)}
+                                                        </button>
+                                                    ))}
+                                                </div>
+                                            </details>
                                         );
                                     }
                                     if (x === "POSTGRADUATE") {
@@ -878,6 +1045,27 @@ export default function Navbar() {
                                         </a>
                                     );
                                 })}
+                            </div>
+                        </details>
+
+                        <details>
+                            <summary>
+                                {t("nav.admissions")} <IoChevronDownOutline />
+                            </summary>
+                            <div className="navx-mDD">
+                                {dropdowns.admissionsHub.map((x) => (
+                                    <button
+                                        key={nL(x)}
+                                        type="button"
+                                        className="navx-mDDbtn"
+                                        onClick={() => {
+                                            setMobileOpen(false);
+                                            navigate(admissionsHubRoutes[x]);
+                                        }}
+                                    >
+                                        {nL(x)}
+                                    </button>
+                                ))}
                             </div>
                         </details>
 
@@ -974,7 +1162,7 @@ export default function Navbar() {
                                 {t("nav.research")} <IoChevronDownOutline />
                             </summary>
                             <div className="navx-mDD">
-                                {dropdowns.admissions.map((x) => {
+                                {dropdowns.researchMenu.map((x) => {
                                     if (x === "IAU SCIENTIFIC COUNCIL") {
                                         return (
                                             <button
@@ -1046,66 +1234,80 @@ export default function Navbar() {
 
                         <details>
                             <summary>
-                                {t("nav.festivals")} <IoChevronDownOutline />
+                                {t("nav.internationalDepartment")} <IoChevronDownOutline />
                             </summary>
-                            <div className="navx-mDD">
-                                {dropdowns.life.items.map((x) => (
-                                    x.name === "FREQUENTLY ASKED QUESTIONS" ? (
-                                        <button
-                                            key={nL(x.name)}
-                                            className="navx-mSubBtn navx-mSubBtn--full"
-                                            onClick={() => {
-                                                setMobileOpen(false);
-                                                navigate("/festivals/faq");
-                                            }}
-                                        >
-                                            {nL(x.name)}
-                                        </button>
-                                    ) : x.name === "22 REASONS TO ATTEND" ? (
-                                        <button
-                                            key={nL(x.name)}
-                                            className="navx-mSubBtn navx-mSubBtn--full"
-                                            onClick={() => {
-                                                setMobileOpen(false);
-                                                navigate("/festivals/22-reasons");
-                                            }}
-                                        >
-                                            {nL(x.name)}
-                                        </button>
-                                    ) : (
-                                        <details key={nL(x.name)} className="navx-mSubDetails">
+                            <div className="navx-mDD navx-mIntl">
+                                {dropdowns.life.items.map((item) => {
+                                    if (item.type === "link") {
+                                        return (
+                                            <button
+                                                key={item.name}
+                                                type="button"
+                                                className="navx-mSubBtn navx-mSubBtn--full"
+                                                onClick={() => {
+                                                    setMobileOpen(false);
+                                                    navigateIntlLink(item);
+                                                }}
+                                            >
+                                                {nL(item.name)}
+                                            </button>
+                                        );
+                                    }
+
+                                    if (item.type !== "group") return null;
+
+                                    return (
+                                        <details key={item.name} className="navx-mSubDetails">
                                             <summary>
-                                                {nL(x.name)} {x.subItems && x.subItems.length > 0 && <IoChevronDownOutline />}
+                                                {nL(item.name)} <IoChevronDownOutline />
                                             </summary>
-                                            {x.subItems && x.subItems.length > 0 && (
-                                                <div className="navx-mSubDD">
-                                                    {x.subItems.map(subItem => (
-                                                        <button key={nL(subItem)} className="navx-mSubBtn" onClick={() => {
-                                                            setMobileOpen(false);
-                                                            if (subItem === "SUMMARY OF EVENT 2025") {
-                                                                navigate("/festivals/summary-2025");
-                                                            }
-                                                            if (subItem === "SUMMARY OF EVENT 2024") {
-                                                                navigate("/festivals/summary-2024");
-                                                            }
-                                                            if (subItem === "SUMMARY OF EVENT 2023") {
-                                                                navigate("/festivals/summary-2023");
-                                                            }
-                                                        }}>
-                                                            {nL(subItem)}
+                                            <div className="navx-mSubDD">
+                                                {item.items?.map((x) => (
+                                                    x.subItems && x.subItems.length === 0 ? (
+                                                        <button
+                                                            key={nL(x.name)}
+                                                            className="navx-mSubBtn navx-mSubBtn--full"
+                                                            onClick={() => {
+                                                                setMobileOpen(false);
+                                                                navigateFestivalLeaf(x.name);
+                                                            }}
+                                                        >
+                                                            {nL(x.name)}
                                                         </button>
-                                                    ))}
-                                                </div>
-                                            )}
+                                                    ) : (
+                                                        <details key={nL(x.name)} className="navx-mSubDetails">
+                                                            <summary>
+                                                                {nL(x.name)} <IoChevronDownOutline />
+                                                            </summary>
+                                                            {x.subItems && x.subItems.length > 0 && (
+                                                                <div className="navx-mSubDD">
+                                                                    {x.subItems.map((subItem) => (
+                                                                        <button
+                                                                            key={nL(subItem)}
+                                                                            className="navx-mSubBtn"
+                                                                            onClick={() => {
+                                                                                setMobileOpen(false);
+                                                                                navigateFestivalSummary(subItem);
+                                                                            }}
+                                                                        >
+                                                                            {nL(subItem)}
+                                                                        </button>
+                                                                    ))}
+                                                                </div>
+                                                            )}
+                                                        </details>
+                                                    )
+                                                ))}
+                                            </div>
                                         </details>
-                                    )
-                                ))}
+                                    );
+                                })}
                             </div>
                         </details>
 
                         <details>
                             <summary>
-                                About Us <IoChevronDownOutline />
+                                {t("nav.about")} <IoChevronDownOutline />
                             </summary>
                             <div className="navx-mDD">
                                 {dropdowns.news.map((x) => {
@@ -1136,6 +1338,21 @@ export default function Navbar() {
                                             </button>
                                         );
                                     }
+                                    if (x === "CONTACT") {
+                                        return (
+                                            <button
+                                                key={nL(x)}
+                                                type="button"
+                                                className="navx-mDDbtn"
+                                                onClick={() => {
+                                                    setMobileOpen(false);
+                                                    navigate("/contact");
+                                                }}
+                                            >
+                                                {nL(x)}
+                                            </button>
+                                        );
+                                    }
                                     return (
                                         <a key={nL(x)} href="#" onClick={() => setMobileOpen(false)}>
                                             {nL(x)}
@@ -1147,9 +1364,6 @@ export default function Navbar() {
 
                         <button className="navx-mLink" style={{ background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', fontFamily: 'inherit' }} onClick={() => { setMobileOpen(false); navigate("/latest-news"); }}>
                             {t("nav.latestNews")}
-                        </button>
-                        <button className="navx-mLink" style={{ background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', fontFamily: 'inherit' }} onClick={() => { setMobileOpen(false); navigate("/contact"); }}>
-                            {t("nav.contact")}
                         </button>
                     </div>
 

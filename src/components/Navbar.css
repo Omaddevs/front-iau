@@ -540,6 +540,31 @@
   background: rgba(255, 255, 255, .08);
 }
 
+/* International Department menu */
+.navx-intl-menu {
+  min-width: 300px;
+  padding: 8px;
+}
+
+.navx-intl-menu .navx-intl-link,
+.navx-intl-menu .navx-ddSubMenuContainer > .navx-ddAction {
+  padding: 10px 12px;
+  min-height: 0;
+  line-height: 1.35;
+}
+
+.navx-intl-menu .navx-ddSubMenuContainer {
+  min-height: 0;
+}
+
+.navx-intl-menu .navx-ddSubMenuContainer:not(.open) > .navx-ddSubMenu {
+  display: none !important;
+}
+
+.navx-intl-link {
+  width: 100%;
+}
+
 /* right apply */
 .navx-cta {
   min-width: 170px;
@@ -882,6 +907,30 @@
 .navx-subItemBtn:hover,
 .navx-mSubBtn:hover {
   background: rgba(255, 255, 255, .08);
+}
+
+.navx-mNested {
+  border: 1px solid rgba(255, 255, 255, .12);
+  background: rgba(255, 255, 255, .08);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.navx-mNested summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 10px 12px;
+  color: rgba(255, 255, 255, .92);
+  font-weight: 800;
+  font-size: 15px;
+}
+
+.navx-mNested summary::-webkit-details-marker {
+  display: none;
+}
+
+.navx-mDD--nested {
+  padding: 4px 12px 12px;
 }
 
 .navx-subItemBtn {

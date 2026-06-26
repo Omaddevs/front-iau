@@ -24,12 +24,16 @@ export function LanguageProvider({ children }) {
 
   const t = (key) => {
     const keys = key.split(".");
-    let val = translations[lang];
-    for (const k of keys) {
-      if (val == null) return key;
-      val = val[k];
-    }
-    return val ?? translations["en"][key] ?? key;
+    const resolve = (root) => {
+      let val = root;
+      for (const k of keys) {
+        if (val == null) return null;
+        val = val[k];
+      }
+      return val ?? null;
+    };
+
+    return resolve(translations[lang]) ?? resolve(translations.en) ?? key;
   };
 
   return (

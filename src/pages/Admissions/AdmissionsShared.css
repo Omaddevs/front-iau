@@ -23,6 +23,21 @@
      overflow: hidden;
 }
 
+/* Matn o'qilishi uchun video ustidagi qoraytiruvchi qatlam */
+.admissions-hero::after {
+     content: "";
+     position: absolute;
+     inset: 0;
+     background: linear-gradient(
+          to bottom,
+          rgba(12, 22, 40, 0.5) 0%,
+          rgba(14, 26, 44, 0.5) 48%,
+          rgba(10, 20, 36, 0.5) 100%
+     );
+     z-index: 2;
+     pointer-events: none;
+}
+
 .admissions-hero-video,
 .admissions-hero-img {
      position: absolute;
@@ -50,34 +65,52 @@
      z-index: 3;
      color: white;
      text-align: center;
+     padding: 0 20px;
+     width: 100%;
 }
 
+.breadcrumb,
 .breadcrumbs {
      font-size: 14px;
-     margin-bottom: 15px;
+     margin-bottom: 14px;
      display: flex;
      align-items: center;
      justify-content: center;
+     flex-wrap: wrap;
      gap: 8px;
+     text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
 }
 
+.breadcrumb a,
 .breadcrumbs a {
-     color: white;
+     color: #ffffff;
      text-decoration: none;
+     transition: color 0.2s;
 }
 
+.breadcrumb a:hover,
+.breadcrumbs a:hover {
+     color: #c7f0e9;
+     text-decoration: underline;
+}
+
+.breadcrumb span,
+.breadcrumbs span,
 .breadcrumbs .separator {
-     color: rgba(255, 255, 255, 0.6);
+     color: rgba(255, 255, 255, 0.75);
 }
 
+.breadcrumb .current,
 .breadcrumbs .current {
-     color: rgba(255, 255, 255, 0.8);
+     color: #ffffff;
+     font-weight: 600;
 }
 
 .admissions-hero-content h1 {
      font-size: 42px;
-     font-weight: 600;
+     font-weight: 700;
      margin: 0;
+     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
 }
 
 /* MAIN CONTAINER (Left & Right) */
@@ -261,6 +294,35 @@
      bottom: 14px;
      width: 3px;
      background-color: #38b2ac;
+}
+
+.sidebar-sub-links {
+     list-style: none;
+     margin: 0;
+     padding: 0 0 8px 16px;
+}
+
+.sidebar-sub-links li {
+     border-bottom: none;
+}
+
+.sidebar-sub-links a {
+     padding: 8px 0;
+     font-size: 14px;
+     font-weight: 600;
+     letter-spacing: 0.02em;
+}
+
+.sidebar-sub-links a.active-link::before {
+     display: none;
+}
+
+.sidebar-section-label {
+     display: block;
+     padding: 14px 0 6px;
+     color: #38b2ac;
+     font-size: 15px;
+     font-weight: 700;
 }
 
 /* MODULE CARDS FOR FOUNDATION */

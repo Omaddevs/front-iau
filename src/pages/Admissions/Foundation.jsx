@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./AdmissionsShared.css";
+import AdmissionsBreadcrumbs from "./AdmissionsBreadcrumbs";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../i18n/LanguageContext";
 import heroImg from "../../images/campus.PNG";
@@ -26,13 +27,9 @@ export default function Foundation() {
                     </video>
                     <div className="hero-overlay"></div>
                     <div className="admissions-hero-content">
-                         <div className="breadcrumbs">
-                              <Link to="/">🏠</Link>
-                              <span className="separator">&gt;</span>
-                              <span>{t("admissions.breadAdmissions")}</span>
-                              <span className="separator">&gt;</span>
-                              <span className="current">{t("admissions.pages.foundation")}</span>
-                         </div>
+                         <AdmissionsBreadcrumbs
+                              items={[{ label: t("admissions.pages.foundation"), current: true }]}
+                         />
                          <h1>{t("admissions.pages.foundation")}</h1>
                     </div>
                </div>

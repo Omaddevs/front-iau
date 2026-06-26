@@ -1,0 +1,104 @@
+.iau-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  z-index: 100000050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  pointer-events: auto;
+  overflow: hidden;
+}
+
+.iau-loader__video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  object-position: center center;
+  pointer-events: none;
+  user-select: none;
+  opacity: 1;
+  transition: opacity 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity;
+}
+
+.iau-loader--exit {
+  pointer-events: none;
+  background: transparent;
+}
+
+.iau-loader--exit .iau-loader__video {
+  opacity: 0;
+  transition: opacity 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.iau-loader__fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: #071018;
+}
+
+.iau-loader__spinner {
+  width: 44px;
+  height: 44px;
+  border: 3px solid rgba(255, 255, 255, 0.18);
+  border-top-color: #21af8f;
+  border-radius: 50%;
+  animation: iau-loader-spin 0.8s linear infinite;
+}
+
+@keyframes iau-loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.iau-app-shell {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.iau-app-shell--booting {
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Boot tugaguncha kontent yashirin turadi; loader fade bo'la boshlaganda
+   ostidan silliq (fade + ozgina kattalashuv) paydo bo'ladi. */
+.iau-app-shell--hidden {
+  opacity: 0;
+  transform: scale(1.015);
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .iau-app-shell {
+    transition: opacity 0.3s ease;
+    transform: none;
+  }
+  .iau-app-shell--hidden {
+    transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .iau-loader__video {
+    object-fit: cover;
+  }
+}

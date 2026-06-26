@@ -1,0 +1,52 @@
+.intl-dept-page {
+  background-color: #f7f9fc;
+}
+
+.intl-dept-hero {
+  height: 240px;
+  min-height: 240px;
+}
+
+.intl-dept-hero::after {
+  background: linear-gradient(
+    rgba(10, 31, 56, 0.3),
+    rgba(10, 31, 56, 0.88)
+  ) !important;
+}
+
+.intl-dept-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: url("../../images/navbarLogo.PNG") center center / min(480px, 72%) no-repeat;
+  opacity: 0.14;
+  pointer-events: none;
+}
+
+.intl-dept-hero .admissions-hero-content {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  max-width: 100%;
+  padding: 0 24px;
+}
+
+.intl-dept-hero .admissions-hero-content h1 {
+  font-size: clamp(1.35rem, 3vw, 2rem);
+  line-height: 1.25;
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.intl-dept-hero .breadcrumbs {
+  justify-content: center;
+  width: 100%;
+}

@@ -4,7 +4,9 @@
 
 .hero {
   position: relative;
+  width: 100%;
   min-height: 100vh;
+  min-height: 100dvh;
   overflow: hidden;
   margin-top: -160px;
   padding-top: 160px;
@@ -14,36 +16,39 @@
   position: absolute;
   inset: 0;
   z-index: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 .hero-bg-image {
-  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
   height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
   object-fit: cover;
-  object-position: center;
+  object-position: center center;
   pointer-events: none;
-}
-
-@media (min-width: 1920px) and (min-height: 1000px) {
-  .hero-bg-image {
-    width: 1920px;
-    height: 1080px;
-  }
-
-  .hero-overlay {
-    width: 1920px;
-    height: 1080px;
-  }
+  filter: brightness(0.88) saturate(0.97) contrast(1.01);
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(to bottom,
-      rgba(0, 0, 0, 0.35) 0%,
-      rgba(0, 0, 0, 0.2) 44%,
-      rgba(0, 0, 0, 0.1) 100%);
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(12, 22, 40, 0.5) 0%,
+    rgba(14, 26, 44, 0.5) 48%,
+    rgba(10, 20, 36, 0.5) 100%
+  );
 }
 
 /* Ribbons side images */
@@ -87,7 +92,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 22px;
+  gap: 32px;
   text-align: center;
 }
 
@@ -109,19 +114,29 @@
 }
 
 .hero-btn {
-  height: 46px;
-  padding: 0 20px;
-  border-radius: 14px;
+  min-height: 56px;
+  padding: 16px 36px;
+  border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.25);
   background: linear-gradient(135deg, rgba(61, 121, 184, 0.95), rgba(33, 175, 143, 0.95));
   color: #fff;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 12px;
   cursor: pointer;
   transition: 0.2s ease;
-  font-weight: 500;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
   box-shadow: 0 8px 24px rgba(33, 175, 143, 0.3);
+}
+
+.hero-btn svg {
+  font-size: 20px;
+  flex-shrink: 0;
 }
 
 .hero-btn:hover {
@@ -166,6 +181,13 @@
 
 .hero-swiper .swiper-slide {
   height: auto;
+  display: flex;
+  align-items: stretch;
+  text-align: left;
+}
+
+.hero-swiper .swiper-slide .hero-card {
+  width: 100%;
 }
 
 .hero-card {
@@ -177,6 +199,7 @@
   padding: 16px;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 12px;
   box-shadow: 0 22px 60px rgba(0, 0, 0, 0.25);
   border: 1px solid rgba(255, 255, 255, 0.14);
@@ -201,22 +224,48 @@
   border: 1px solid rgba(255, 255, 255, 0.18);
   font-size: 22px;
   flex: 0 0 46px;
+  align-self: center;
 }
 
 .hero-card-txt {
   min-width: 0;
+  flex: 1 1 auto;
+  text-align: left;
+  align-self: center;
 }
 
 .hero-card-title {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 800;
   letter-spacing: 0.2px;
+  line-height: 1.28;
+  text-align: left;
 }
 
 .hero-card-sub {
-  margin-top: 4px;
+  margin-top: 5px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.82);
+  text-align: left;
+}
+
+[data-lang="ru"] .hero-card-title,
+[data-lang="uz"] .hero-card-title {
+  font-size: 16px;
+  line-height: 1.32;
+}
+
+[data-lang="ru"] .hero-card-sub,
+[data-lang="uz"] .hero-card-sub {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.45;
+}
+
+[data-lang="ru"] .hero-card,
+[data-lang="uz"] .hero-card {
+  min-height: 120px;
+  padding: 16px;
 }
 
 .hero-card-arrow {
@@ -225,6 +274,8 @@
   display: grid;
   place-items: center;
   opacity: 0.8;
+  flex: 0 0 auto;
+  align-self: center;
 }
 
 .hero-card.teal {
@@ -256,7 +307,17 @@
 
   .hero-content {
     min-height: calc(100vh - 160px);
-    gap: 16px;
+    gap: 24px;
+  }
+
+  .hero-btn {
+    min-height: 52px;
+    padding: 14px 30px;
+    font-size: 17px;
+  }
+
+  .hero-btn svg {
+    font-size: 19px;
   }
 
   .hero-title-center {
@@ -276,6 +337,17 @@
 
   .hero-title-center {
     font-size: clamp(28px, 9vw, 36px);
+  }
+
+  .hero-btn {
+    min-height: 48px;
+    padding: 12px 26px;
+    font-size: 16px;
+    gap: 10px;
+  }
+
+  .hero-btn svg {
+    font-size: 18px;
   }
 
   .hero-card {

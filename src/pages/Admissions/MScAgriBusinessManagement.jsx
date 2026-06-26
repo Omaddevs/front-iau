@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./AdmissionsShared.css";
 import "./Agri.css";
+import AdmissionsBreadcrumbs from "./AdmissionsBreadcrumbs";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../../i18n/LanguageContext";
 import bgVideo from "../../all-bg-videos/iau-bg.mp4";
@@ -25,15 +26,12 @@ export default function MScAgriBusinessManagement() {
                     </video>
                     <div className="hero-overlay"></div>
                     <div className="admissions-hero-content">
-                         <div className="breadcrumbs">
-                              <Link to="/">🏠</Link>
-                              <span className="separator">&gt;</span>
-                              <span>{t("admissions.breadAdmissions")}</span>
-                              <span className="separator">&gt;</span>
-                              <Link to="/admissions/postgraduate">{t("admissions.pages.postgraduate")}</Link>
-                              <span className="separator">&gt;</span>
-                              <span className="current">MSc Agri-Business Management</span>
-                         </div>
+                         <AdmissionsBreadcrumbs
+                              items={[
+                                   { label: t("admissions.pages.postgraduate"), to: "/admissions/postgraduate" },
+                                   { label: t("admissions.pages.mscAgriBusiness"), current: true },
+                              ]}
+                         />
                          <h1>{t("admissions.pages.mscAgriBusiness")}</h1>
                     </div>
                </div>

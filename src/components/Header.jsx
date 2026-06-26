@@ -41,16 +41,6 @@ const fadeUp = {
   },
 };
 
-const fadeDown = {
-  hidden: { opacity: 0, y: -18, filter: "blur(10px)" },
-  show: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.85, ease: easePro },
-  },
-};
-
 const btnPop = {
   hidden: { opacity: 0, y: 22, scale: 0.98, filter: "blur(8px)" },
   show: {
@@ -88,7 +78,7 @@ export default function Header() {
       sub: t("header.cards.undergraduate.sub"),
       icon: <IoSchoolOutline />,
       tone: "green",
-      link: "/admissions/undergraduate",
+      link: "/admissions/undergraduate/english",
     },
     {
       title: t("header.cards.postgraduate.title"),
@@ -110,13 +100,13 @@ export default function Header() {
     <motion.section
       className="hero"
       variants={pageStagger}
-      initial="hidden"
-      animate="show"
+      initial={false}
+      animate={false}
     >
       <img src={leftRibbon} alt="Left Ribbon" className="hero-ribbon hero-ribbon-left" />
       <img src={rightRibbon} alt="Right Ribbon" className="hero-ribbon hero-ribbon-right" />
 
-      <motion.div className="hero-bg" variants={fadeDown}>
+      <div className="hero-bg">
         <video
           autoPlay
           loop
@@ -126,18 +116,13 @@ export default function Header() {
         >
           <source src={HeroVideo} type="video/mp4" />
         </video>
-      </motion.div>
+      </div>
 
-      <motion.div
-        className="hero-overlay"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.0, ease: easePro }}
-      />
+      <div className="hero-overlay" aria-hidden="true" />
 
       <div className="hero-container">
         <div className="hero-content">
-          <motion.h1 className="hero-title-center" variants={fadeUp}>
+          <motion.h1 className="hero-title-center" initial={false} animate={false}>
             {t("x.heroLine1")}<br></br> <span style={{ color: "#F9F8F3", WebkitTextFillColor: "#F9F8F3" }}>{t("x.heroLine2")}</span>
           </motion.h1>
 
@@ -145,7 +130,8 @@ export default function Header() {
             <motion.button
               className="hero-btn"
               type="button"
-              variants={btnPop}
+              initial={false}
+              animate={false}
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.98 }}
               transition={{ duration: 0.18 }}
@@ -161,13 +147,13 @@ export default function Header() {
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.98 }}
               transition={{ duration: 0.18 }}
-              onClick={() => navigate('/admissions/undergraduate')}
+              onClick={() => navigate('/admissions/undergraduate/english')}
             >
               {t("header.applyNow")} <IoArrowForwardOutline />
             </motion.button> */}
           </div>
 
-          <motion.div className="hero-stack-carousel" variants={fadeUp}>
+          <motion.div className="hero-stack-carousel" initial={false} animate={false}>
             <Swiper
               modules={[Autoplay]}
               spaceBetween={14}
