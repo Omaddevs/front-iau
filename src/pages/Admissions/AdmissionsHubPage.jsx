@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link, Navigate } from "react-router-dom";
 import AdmissionsBreadcrumbs from "./AdmissionsBreadcrumbs";
 import HowToApplyRoadmap from "./HowToApplyRoadmap";
+import AdmissionResultsContent from "./AdmissionResultsContent";
 import OfferHolderGuideRoadmap from "./OfferHolderGuideRoadmap";
 import TuitionFeesRoadmap from "./TuitionFeesRoadmap";
 import OpenDaysRoadmap from "./OpenDaysRoadmap";
@@ -13,6 +14,7 @@ import bgVideo from "../../all-bg-videos/iau-bg.mp4";
 
 const ROADMAP_PAGES = {
   "how-to-apply": HowToApplyRoadmap,
+  "admission-results-2026": AdmissionResultsContent,
   "offer-holder-guide": OfferHolderGuideRoadmap,
   "tuition-fees": TuitionFeesRoadmap,
   "open-days": OpenDaysRoadmap,
@@ -33,7 +35,7 @@ export default function AdmissionsHubPage({ pageId }) {
   }
 
   return (
-    <div className={`admissions-page ${hasRoadmap ? "hta-page" : ""}`}>
+    <div className={`admissions-page ${hasRoadmap ? "hta-page" : ""} ${page.id === "admission-results-2026" ? "admissions-page--results" : ""}`}>
       <div className={`admissions-hero ${hasRoadmap ? "hta-hero" : ""}`}>
         <video className="admissions-hero-video" autoPlay loop muted playsInline>
           <source src={bgVideo} type="video/mp4" />
@@ -47,7 +49,7 @@ export default function AdmissionsHubPage({ pageId }) {
         </div>
       </div>
 
-      <div className="admissions-container">
+      <div className={`admissions-container ${page.id === "admission-results-2026" ? "admissions-container--wide" : ""}`}>
         <div className="admissions-main">
           {RoadmapContent ? (
             <RoadmapContent />
@@ -62,6 +64,7 @@ export default function AdmissionsHubPage({ pageId }) {
           )}
         </div>
 
+        {page.id !== "admission-results-2026" && (
         <aside className="admissions-sidebar">
           <div className="sidebar-box">
             <h3>{t("admissionsHub.sidebarTitle")}</h3>
@@ -79,6 +82,7 @@ export default function AdmissionsHubPage({ pageId }) {
             </ul>
           </div>
         </aside>
+        )}
       </div>
     </div>
   );

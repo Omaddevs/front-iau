@@ -81,6 +81,7 @@ function AppRoutes() {
       <Route path="/staff/:deptId" element={<DepartmentCommunity />} />
       <Route path="/admissions" element={<Navigate to="/admissions/how-to-apply" replace />} />
       <Route path="/admissions/how-to-apply" element={<AdmissionsHubPage pageId="how-to-apply" />} />
+      <Route path="/admissions/admission-results-2026" element={<AdmissionsHubPage pageId="admission-results-2026" />} />
       <Route path="/admissions/offer-holder-guide" element={<AdmissionsHubPage pageId="offer-holder-guide" />} />
       <Route path="/admissions/tuition-fees" element={<AdmissionsHubPage pageId="tuition-fees" />} />
       <Route path="/admissions/open-days" element={<AdmissionsHubPage pageId="open-days" />} />

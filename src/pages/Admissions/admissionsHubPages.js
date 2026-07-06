@@ -7,6 +7,13 @@ export const ADMISSIONS_HUB_PAGES = [
     path: "/admissions/how-to-apply",
   },
   {
+    id: "admission-results-2026",
+    navKey: "ADMISSION RESULTS 2026/2027",
+    titleKey: "admissionResults2026",
+    bodyKey: "admissionResults2026Body",
+    path: "/admissions/admission-results-2026",
+  },
+  {
     id: "offer-holder-guide",
     navKey: "OFFER HOLDER GUIDE",
     titleKey: "offerHolderGuide",

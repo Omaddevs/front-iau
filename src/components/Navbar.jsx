@@ -117,6 +117,7 @@ export default function Navbar() {
             ],
             admissionsHub: [
                 "HOW TO APPLY",
+                "ADMISSION RESULTS 2026/2027",
                 "TUITION FEES",
                 "OPEN DAYS AT IAU",
             ],
@@ -190,6 +191,7 @@ export default function Navbar() {
         "POSTGRADUATE": nl("postgraduate"),
         "PhD AND DSc PROGRAMMES": nl("phdDsc"),
         "HOW TO APPLY": nl("howToApply"),
+        "ADMISSION RESULTS 2026/2027": nl("admissionResults2026"),
         "TUITION FEES": nl("tuitionFees"),
         "OPEN DAYS AT IAU": nl("openDaysAtIau"),
         "ACADEMIC CALENDAR FOR 2025/2026": nl("academicCalendar"),
@@ -229,6 +231,7 @@ export default function Navbar() {
 
     const admissionsHubRoutes = {
         "HOW TO APPLY": "/admissions/how-to-apply",
+        "ADMISSION RESULTS 2026/2027": "/admissions/admission-results-2026",
         "TUITION FEES": "/admissions/tuition-fees",
         "OPEN DAYS AT IAU": "/admissions/open-days",
     };
