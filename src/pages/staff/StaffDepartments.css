@@ -15,12 +15,8 @@
   display: flex;
   align-items: center;
   background:
-    radial-gradient(circle at 84% -20%, color-mix(in srgb, var(--r-9, #c0d2e9) 30%, transparent) 0 55%, transparent 56%),
-    linear-gradient(
-      135deg,
-      color-mix(in srgb, var(--r-4, #2c5489) 86%, black),
-      color-mix(in srgb, var(--r-3, #2d6752) 80%, black)
-    );
+    radial-gradient(circle at 84% -20%, rgba(192, 210, 233, 0.3) 0 55%, transparent 56%),
+    linear-gradient(135deg, #5a85b8 0%, #416ea5 55%, #355f8f 100%);
 }
 
 .sdp-hero::after {

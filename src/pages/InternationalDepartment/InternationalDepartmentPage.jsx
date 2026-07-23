@@ -4,6 +4,7 @@ import { useLanguage } from "../../i18n/LanguageContext";
 import CooperationDepartmentContent from "./CooperationDepartmentContent";
 import InternationalFaqContent from "./InternationalFaqContent";
 import CareerServicesContent from "./CareerServicesContent";
+import FaoElearningContent from "./FaoElearningContent";
 import InternationalDeptBreadcrumbs from "./InternationalDeptBreadcrumbs";
 import { getIntlDeptPage, INTL_DEPT_PAGES } from "./internationalDeptPages";
 import "../Admissions/AdmissionsShared.css";
@@ -14,6 +15,7 @@ import bgVideo from "../../all-bg-videos/iau-bg.mp4";
 const PAGE_CONTENT = {
   cooperation: CooperationDepartmentContent,
   "career-services": CareerServicesContent,
+  "fao-elearning-academy": FaoElearningContent,
   faq: InternationalFaqContent,
 };
 

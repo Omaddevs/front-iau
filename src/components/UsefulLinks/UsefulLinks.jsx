@@ -12,6 +12,7 @@ import eduImg from "../../partners/oliy-talim.png";
 import rauImg from "../../images/rau-right.png";
 import tezkorImg from "../../images/tezkorquiz-logo.webp";
 import canvaImg from "../../images/canva-logo.svg";
+import faoImg from "../../images/fao-elearning-academy.png";
 
 // A custom SVG icon for the paperclip (attachement) since standard React Icons (IoAttachOutline, IoLinkOutline) works,
 // but the design specifically uses a paperclip-like icon
@@ -81,6 +82,14 @@ const UsefulLinks = () => {
       urlLabel: "canva.com",
       url: "https://www.canva.com",
       img: canvaImg,
+    },
+    {
+      id: 7,
+      type: "fao",
+      title: t("usefulLinks.links.fao"),
+      urlLabel: "elearning.fao.org",
+      url: "https://elearning.fao.org/",
+      img: faoImg,
     },
   ];
 

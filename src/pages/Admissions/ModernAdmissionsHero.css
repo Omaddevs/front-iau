@@ -1,11 +1,11 @@
-/* Matches Latest News / Events hero: height, gradient opacity, logo watermark */
+/* Matches Latest News / Events hero: height + blue gradient wash */
 
 .admissions-page.ug-track--uzbek .admissions-hero,
 .admissions-page.ug-track--english .admissions-hero,
 .admissions-page.ug-track--russian .admissions-hero,
 .pd-page .admissions-hero.pd-hero {
-  height: 220px;
-  min-height: 220px;
+  height: 250px;
+  min-height: 250px;
   padding: 0;
   align-items: center;
 }
@@ -13,8 +13,8 @@
 .admissions-page.ug-track--uzbek .admissions-hero,
 .admissions-page.ug-track--english .admissions-hero,
 .admissions-page.ug-track--russian .admissions-hero {
-  height: 240px;
-  min-height: 240px;
+  height: 250px;
+  min-height: 250px;
 }
 
 .admissions-page[class*="ug-track--"] .hero-overlay,
@@ -27,21 +27,12 @@
 .admissions-page.ug-track--russian .admissions-hero::after,
 .pd-page .admissions-hero::after {
   background: linear-gradient(
-    rgba(10, 31, 56, 0.3),
-    rgba(10, 31, 56, 0.88)
+    160deg,
+    rgba(65, 110, 165, 0.48) 0%,
+    rgba(65, 110, 165, 0.64) 45%,
+    rgba(65, 110, 165, 0.8) 100%
   ) !important;
   z-index: 2;
-}
-
-.admissions-page[class*="ug-track--"] .admissions-hero::before,
-.pd-page .admissions-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background: url("../../images/navbarLogo.PNG") center center / min(480px, 72%) no-repeat;
-  opacity: 0.14;
-  pointer-events: none;
 }
 
 .admissions-page[class*="ug-track--"] .admissions-hero-content,
@@ -107,12 +98,6 @@
     min-height: 180px;
   }
 
-  .admissions-page[class*="ug-track--"] .admissions-hero::before,
-  .pd-page .admissions-hero::before {
-    background-size: min(360px, 88%);
-    opacity: 0.12;
-  }
-
   .admissions-page[class*="ug-track--"] .admissions-hero-content,
   .pd-page .admissions-hero-content {
     padding: 0 20px;
@@ -136,8 +121,8 @@
 
 /* How to Apply hub page hero */
 .admissions-page.hta-page .hta-hero {
-  height: 220px;
-  min-height: 220px;
+  height: 250px;
+  min-height: 250px;
   padding: 0;
 }
 
@@ -147,20 +132,12 @@
 
 .admissions-page.hta-page .hta-hero::after {
   background: linear-gradient(
-    rgba(10, 31, 56, 0.3),
-    rgba(10, 31, 56, 0.88)
+    160deg,
+    rgba(65, 110, 165, 0.48) 0%,
+    rgba(65, 110, 165, 0.64) 45%,
+    rgba(65, 110, 165, 0.8) 100%
   ) !important;
   z-index: 2;
-}
-
-.admissions-page.hta-page .hta-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background: url("../../images/navbarLogo.PNG") center center / min(480px, 72%) no-repeat;
-  opacity: 0.14;
-  pointer-events: none;
 }
 
 .admissions-page.hta-page .admissions-hero-content {

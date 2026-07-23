@@ -3,25 +3,17 @@
 }
 
 .intl-dept-hero {
-  height: 240px;
-  min-height: 240px;
+  height: 250px;
+  min-height: 250px;
 }
 
 .intl-dept-hero::after {
   background: linear-gradient(
-    rgba(10, 31, 56, 0.3),
-    rgba(10, 31, 56, 0.88)
+    160deg,
+    rgba(65, 110, 165, 0.48) 0%,
+    rgba(65, 110, 165, 0.64) 45%,
+    rgba(65, 110, 165, 0.8) 100%
   ) !important;
-}
-
-.intl-dept-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background: url("../../images/navbarLogo.PNG") center center / min(480px, 72%) no-repeat;
-  opacity: 0.14;
-  pointer-events: none;
 }
 
 .intl-dept-hero .admissions-hero-content {

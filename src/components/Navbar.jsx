@@ -159,8 +159,7 @@ export default function Navbar() {
                     {
                         name: "FAO ELEARNING ACADEMY",
                         type: "link",
-                        path: "https://elearning.fao.org/",
-                        external: true,
+                        path: "/international-department/fao-elearning-academy",
                     },
                     {
                         name: "FAQ",

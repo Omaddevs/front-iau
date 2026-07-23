@@ -96,6 +96,12 @@
   object-fit: contain;
 }
 
+.useful-img.fao {
+  max-width: 200px;
+  max-height: 66px;
+  object-fit: contain;
+}
+
 .useful-card-title {
   font-size: 14px;
   font-weight: 600;

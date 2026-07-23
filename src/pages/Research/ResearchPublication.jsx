@@ -21,7 +21,10 @@ export default function ResearchPublication() {
                     { text: "Alimov J. et al. (2026). Shifting drivers of holocene fire regimes in Uzbekistan: From natural factors to anthropogenic impact.", link: "https://doi.org/10.1016/j.ancene.2026.100531" },
                     { text: "Alimov J. et al. (2026). BrGDGT-based palaeothermometer in drylands: the necessity to constrain aridity and salinity as confounding factors to ensure the robustness of calibrations.", link: "https://doi.org/10.5194/bg-23-1013-2026" },
                     { text: "Alimov J. et al. (2026). Mid-Holocene wet optimum and Early-Late Holocene arid phases shaped steppe-forest vegetation and human societies of Uzbekistan: Multi-proxy evidence from Lake Fazilman.", link: "https://doi.org/10.1016/j.catena.2025.109759" },
-                    { text: "Primov A. (2026). Assessing the current state of food security in Uzbekistan: trends, challenges, and policy implications. Working paper.", link: "https://hdl.handle.net/10419/334548" }
+                    { text: "Primov A. (2026). Assessing the current state of food security in Uzbekistan: trends, challenges, and policy implications. Working paper.", link: "https://hdl.handle.net/10419/334548" },
+                    { text: "Asamov R. et al. (2026). Management strategies for climate adaptation in sustainable agriculture and food security.", link: "https://doi.org/10.5281/zenodo.12426510" },
+                    { text: "Asamov R. et al. (2026). The effectiveness of the management of state agricultural institutions in the context of global integration.", link: "https://doi.org/10.5281/zenodo.12426784" },
+                    { text: "Primov A. (2026). Assessing the impact of information and communication technologies and climate change interactions on vegetable production: evidence from Central Asia.", link: "https://doi.org/10.1007/s10668-026-07899-w" }
                ]
           },
           {

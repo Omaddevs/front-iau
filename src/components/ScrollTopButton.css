@@ -1,0 +1,36 @@
+.app-scroll-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a6b3a 0%, #2c5282 100%);
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(10, 31, 56, 0.3);
+  cursor: pointer;
+  z-index: 1200;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.app-scroll-top:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 26px rgba(10, 31, 56, 0.35);
+}
+
+.app-scroll-top svg {
+  font-size: 24px;
+}
+
+@media (max-width: 900px) {
+  .app-scroll-top {
+    right: 16px;
+    bottom: 16px;
+    width: 44px;
+    height: 44px;
+  }
+}

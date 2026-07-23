@@ -17,6 +17,7 @@ import PartnersSection from "./components/PartnersSection";
 import UsefulLinks from "./components/UsefulLinks/UsefulLinks";
 import SocialNetworks from "./components/SocialNetworks";
 import Footer from "./components/Footer";
+import ScrollTopButton from "./components/ScrollTopButton";
 
 const StaffDepartments = lazy(() => import("./pages/staff/StaffDepartments"));
 const DepartmentCommunity = lazy(() => import("./pages/staff/DepartmentCommunity"));
@@ -109,6 +110,7 @@ function AppRoutes() {
       <Route path="/festivals/22-reasons" element={<Reasons22 />} />
       <Route path="/international-department/cooperation" element={<InternationalDepartmentPage pageId="cooperation" />} />
       <Route path="/international-department/career-services" element={<InternationalDepartmentPage pageId="career-services" />} />
+      <Route path="/international-department/fao-elearning-academy" element={<InternationalDepartmentPage pageId="fao-elearning-academy" />} />
       <Route path="/international-department/faq" element={<InternationalDepartmentPage pageId="faq" />} />
       <Route path="/student-life/academic-calendar" element={<AcademicCalendar />} />
       <Route path="/student-life/student-handbook" element={<StudentHandbook />} />
@@ -153,6 +155,7 @@ export default function App() {
         <SocialNetworks />
         <Footer />
       </div>
+      <ScrollTopButton />
 
       {showLoader && (
         <LoadingScreen

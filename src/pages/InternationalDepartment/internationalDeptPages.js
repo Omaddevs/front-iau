@@ -12,6 +12,11 @@ export const INTL_DEPT_PAGES = [
     titleKey: "careerServicesCenter",
   },
   {
+    id: "fao-elearning-academy",
+    path: "/international-department/fao-elearning-academy",
+    titleKey: "faoElearningAcademy",
+  },
+  {
     id: "faq",
     path: "/international-department/faq",
     titleKey: "faqMenu",

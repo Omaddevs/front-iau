@@ -1,10 +1,14 @@
-/* PAGE LAYOUT */
+/* IAU brand palette (university-approved)
+   Dark Spring Green #1D5E3D | Blue Yonder #416EA5 | Ocean Green #56B67D | Rajah #FFDF58 */
 .admissions-page {
+     --iau-dark-green: #1d5e3d;
+     --iau-blue-yonder: #416ea5;
+     --iau-ocean-green: #56b67d;
+     --iau-rajah: #ffdf58;
      background-color: #f7f9fc;
      min-height: 100vh;
      padding-bottom: 80px;
      background-image: url('../../images/stamps_pattern.png');
-     /* Replace with actual background pattern if we have one */
      background-repeat: no-repeat;
      background-position: center;
      background-attachment: fixed;
@@ -19,20 +23,19 @@
      align-items: center;
      justify-content: center;
      margin-top: 80px;
-     /* Offset for fixed navbar */
      overflow: hidden;
 }
 
-/* Matn o'qilishi uchun video ustidagi qoraytiruvchi qatlam */
+/* Soft brand wash — Blue Yonder only for readable white text */
 .admissions-hero::after {
      content: "";
      position: absolute;
      inset: 0;
      background: linear-gradient(
-          to bottom,
-          rgba(12, 22, 40, 0.5) 0%,
-          rgba(14, 26, 44, 0.5) 48%,
-          rgba(10, 20, 36, 0.5) 100%
+          160deg,
+          rgba(65, 110, 165, 0.48) 0%,
+          rgba(65, 110, 165, 0.62) 45%,
+          rgba(65, 110, 165, 0.78) 100%
      );
      z-index: 2;
      pointer-events: none;
@@ -46,6 +49,7 @@
      width: 100%;
      height: 100%;
      object-fit: cover;
+     object-position: center center;
      z-index: 1;
 }
 
@@ -55,8 +59,7 @@
      left: 0;
      width: 100%;
      height: 100%;
-     background-color: rgba(20, 36, 60, 0.7);
-     /* Deep blue overlay */
+     background: transparent;
      z-index: 2;
 }
 
@@ -90,7 +93,7 @@
 
 .breadcrumb a:hover,
 .breadcrumbs a:hover {
-     color: #c7f0e9;
+     color: var(--iau-rajah, #ffdf58);
      text-decoration: underline;
 }
 
@@ -215,19 +218,19 @@
 }
 
 .apply-btn {
-     background-color: #38b2ac;
-     /* Teal */
+     background: #416ea5;
      color: white;
      border: none;
      padding: 12px 24px;
-     border-radius: 6px;
+     border-radius: 8px;
      font-size: 16px;
      cursor: pointer;
-     transition: background-color 0.2s;
+     transition: filter 0.2s, transform 0.2s;
 }
 
 .apply-btn:hover {
-     background-color: #319795;
+     filter: brightness(1.08);
+     transform: translateY(-1px);
 }
 
 /* RIGHT SIDEBAR */
@@ -279,11 +282,11 @@
 }
 
 .sidebar-links a:hover {
-     color: #38b2ac;
+     color: var(--iau-blue-yonder, #416ea5);
 }
 
 .sidebar-links a.active-link {
-     color: #38b2ac;
+     color: var(--iau-blue-yonder, #416ea5);
 }
 
 .sidebar-links a.active-link::before {
@@ -293,7 +296,7 @@
      top: 14px;
      bottom: 14px;
      width: 3px;
-     background-color: #38b2ac;
+     background-color: var(--iau-blue-yonder, #416ea5);
 }
 
 .sidebar-sub-links {
@@ -320,7 +323,7 @@
 .sidebar-section-label {
      display: block;
      padding: 14px 0 6px;
-     color: #38b2ac;
+     color: var(--iau-blue-yonder, #416ea5);
      font-size: 15px;
      font-weight: 700;
 }

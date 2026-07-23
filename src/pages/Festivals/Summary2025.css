@@ -6,12 +6,20 @@
 
 .summary-banner {
   height: 250px;
-  background: linear-gradient(rgba(1, 33, 67, 0.8), rgba(1, 33, 67, 0.8)), url('../../images/campus.PNG');
+  width: 100%;
+  background: linear-gradient(
+      160deg,
+      rgba(65, 110, 165, 0.55) 0%,
+      rgba(65, 110, 165, 0.7) 45%,
+      rgba(65, 110, 165, 0.82) 100%
+    ),
+    url('../../images/campus.PNG');
   background-size: cover;
-  background-position: center;
+  background-position: center center;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 80px;
 }
 
 .summary-banner h1 {
