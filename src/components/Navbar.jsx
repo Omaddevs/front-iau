@@ -168,7 +168,7 @@ export default function Navbar() {
                     },
                 ],
             },
-            news: ["ABOUT UNIVERSITY", "OUR STAFF", "CONTACT"],
+            news: ["ABOUT UNIVERSITY", "OUR STAFF", "VACANCIES", "CONTACT"],
         }),
         []
     );
@@ -221,6 +221,7 @@ export default function Navbar() {
         "22 REASONS TO ATTEND": nl("reasons22"),
         "ABOUT UNIVERSITY": nl("aboutUniversity"),
         "OUR STAFF": nl("staffMenu"),
+        "VACANCIES": nl("vacancies"),
         "CONTACT": nl("contact"),
         "UZBEK": t("admissions.trackUzbek"),
         "ENGLISH": t("admissions.trackEnglish"),
@@ -273,6 +274,12 @@ export default function Navbar() {
         navigate("/staff");
     };
 
+    const goVacancies = () => {
+        closeAll();
+        setMobileOpen(false);
+        navigate("/vacancies");
+    };
+
     const isScientificCouncilPage = location.pathname.startsWith("/research/scientific-council");
     const isResearchProjectsPage =
         location.pathname.startsWith("/research/research-projects") ||
@@ -293,8 +300,9 @@ export default function Navbar() {
     const isLatestNewsPage = location.pathname.startsWith("/latest-news");
     const isNewsDetailPage = location.pathname.startsWith("/news/");
     const isEventsPage = location.pathname.startsWith("/events");
+    const isVacanciesPage = location.pathname.startsWith("/vacancies");
     const solidWhiteMode =
-        isStaffListPage || isStaffDetailPage || isLegacyStaffPage || isAdmissionsPage || isScientificCouncilPage || isResearchProjectsPage || isGucaePage || isAboutPage || isContactPage || isFestivalsPage || isInternationalDeptPage || isAcademicCalendarPage || isStudentHandbookPage || isPresentationApplicantsPage || isIauClubsPage || isInternationalStudentsPage || isEkofaolTalabalarPage || isLatestNewsPage || isNewsDetailPage || isEventsPage;
+        isStaffListPage || isStaffDetailPage || isLegacyStaffPage || isAdmissionsPage || isScientificCouncilPage || isResearchProjectsPage || isGucaePage || isAboutPage || isContactPage || isFestivalsPage || isInternationalDeptPage || isAcademicCalendarPage || isStudentHandbookPage || isPresentationApplicantsPage || isIauClubsPage || isInternationalStudentsPage || isEkofaolTalabalarPage || isLatestNewsPage || isNewsDetailPage || isEventsPage || isVacanciesPage;
 
     return (
         <header
@@ -876,6 +884,18 @@ export default function Navbar() {
                                                 </button>
                                             );
                                         }
+                                        if (x === "VACANCIES") {
+                                            return (
+                                                <button
+                                                    key={nL(x)}
+                                                    type="button"
+                                                    className="navx-ddAction"
+                                                    onClick={goVacancies}
+                                                >
+                                                    {nL(x)}
+                                                </button>
+                                            );
+                                        }
                                         if (x === "CONTACT") {
                                             return (
                                                 <button
@@ -1335,6 +1355,18 @@ export default function Navbar() {
                                                 type="button"
                                                 className="navx-mDDbtn"
                                                 onClick={goStaff}
+                                            >
+                                                {nL(x)}
+                                            </button>
+                                        );
+                                    }
+                                    if (x === "VACANCIES") {
+                                        return (
+                                            <button
+                                                key={nL(x)}
+                                                type="button"
+                                                className="navx-mDDbtn"
+                                                onClick={goVacancies}
                                             >
                                                 {nL(x)}
                                             </button>

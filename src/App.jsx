@@ -57,6 +57,8 @@ const LatestNews = lazy(() => import("./pages/News/LatestNews"));
 const NewsDetail = lazy(() => import("./pages/News/NewsDetail"));
 const AllEvents = lazy(() => import("./pages/Events/AllEvents"));
 const EventDetail = lazy(() => import("./pages/Events/EventDetail"));
+const Vacancies = lazy(() => import("./pages/Vacancies/Vacancies"));
+const VacancyDetail = lazy(() => import("./pages/Vacancies/VacancyDetail"));
 
 function Home() {
   return (
@@ -123,6 +125,9 @@ function AppRoutes() {
       <Route path="/news/:id" element={<NewsDetail />} />
       <Route path="/events" element={<AllEvents />} />
       <Route path="/events/:id" element={<EventDetail />} />
+      <Route path="/vacancies" element={<Vacancies />} />
+      <Route path="/vacancies/:id" element={<VacancyDetail />} />
+      <Route path="/admin/*" element={<Navigate to="/" replace />} />
       <Route path="/our-staff" element={<Navigate to="/staff" replace />} />
       <Route path="/department-community" element={<Navigate to="/staff" replace />} />
     </Routes>

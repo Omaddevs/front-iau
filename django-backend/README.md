@@ -16,8 +16,11 @@ python manage.py runserver 8000
 
 - Admin URL: `http://localhost:8000/admin/`
 - Add posts from **Ekofaol news**
+- Add jobs from **Vacancies** (same as News)
 
 ## API
 
 - `GET /api/ekofaol-news/`
 - `GET /api/ekofaol-news/<id>/`
+- `GET /api/vacancies/`
+- `GET /api/vacancies/<id>/`

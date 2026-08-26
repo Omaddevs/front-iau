@@ -1,0 +1,36 @@
+[
+  {
+    "id": "vac-lecturer-agri",
+    "title": "Lecturer in Sustainable Agriculture",
+    "department": "Faculty of Agriculture",
+    "employmentType": "fullTime",
+    "location": "Kibray, Tashkent region",
+    "deadline": "2026-10-15",
+    "date": "2026-08-20",
+    "summary": "IAU is seeking a lecturer to teach undergraduate modules in sustainable agriculture and support research across the faculty.",
+    "description": "The International Agriculture University invites applications for a Lecturer in Sustainable Agriculture. The successful candidate will deliver lectures and seminars, supervise student projects, and contribute to curriculum development in line with IAU’s science-based, practice-oriented mission.\n\nYou will work closely with faculty colleagues and international partners, including the Royal Agricultural University (UK), to strengthen teaching quality and applied research.",
+    "requirements": "PhD or Master’s degree in agriculture, agronomy, or a closely related field.\nTeaching experience at university level is an advantage.\nEnglish language proficiency sufficient for teaching.\nCommitment to student-centred, practice-oriented education.",
+    "applyEmail": "info@iau.uz",
+    "isPublished": true,
+    "views": 15,
+    "createdAt": "2026-08-20T09:00:00.000Z",
+    "updatedAt": "2026-08-24T11:38:35.205Z"
+  },
+  {
+    "id": "vac-hr-specialist",
+    "title": "HR Specialist",
+    "department": "Administrative and Support Staff",
+    "employmentType": "fullTime",
+    "location": "Kibray, Tashkent region",
+    "deadline": "2026-09-30",
+    "date": "2026-08-18",
+    "summary": "Join the university administration team to support recruitment, staff records, and day-to-day HR processes.",
+    "description": "IAU is looking for an HR Specialist to support recruitment, onboarding, and personnel administration. The role includes coordinating vacancy announcements, maintaining staff records, and assisting departments with HR procedures.\n\nThis is an opportunity to work in an international academic environment and contribute to a growing university team.",
+    "requirements": "Higher education in HR, management, or a related field.\nExperience in human resources or office administration.\nStrong communication skills in Uzbek and Russian; English is an advantage.\nConfidence with MS Office and document management.",
+    "applyEmail": "info@iau.uz",
+    "isPublished": true,
+    "views": 8,
+    "createdAt": "2026-08-18T09:00:00.000Z",
+    "updatedAt": "2026-08-18T09:00:00.000Z"
+  }
+]

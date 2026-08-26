@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const DATA_FILE = path.resolve(__dirname, "../data/ecoactive-posts.json");
+const VACANCIES_FILE = path.resolve(__dirname, "../data/vacancies.json");
 
 const app = express();
 const PORT = process.env.PORT || 4001;
@@ -212,6 +213,66 @@ app.delete("/api/ecoactive/posts/:id", async (req, res) => {
     res.status(204).end();
   } catch {
     res.status(500).json({ error: "Could not delete ecoactive post." });
+  }
+});
+
+async function readVacancies() {
+  try {
+    const raw = await fs.readFile(VACANCIES_FILE, "utf8");
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (error) {
+    if (error.code === "ENOENT") return [];
+    throw error;
+  }
+}
+
+async function writeVacancies(vacancies) {
+  const sorted = [...vacancies].sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
+  await fs.writeFile(VACANCIES_FILE, JSON.stringify(sorted, null, 2), "utf8");
+  return sorted;
+}
+
+app.get("/api/vacancies/", async (req, res) => {
+  try {
+    const vacancies = await readVacancies();
+    const search = String(req.query.search || "").toLowerCase().trim();
+    const page = Math.max(1, Number(req.query.page || 1));
+    const pageSize = Math.max(1, Number(req.query.page_size || 12));
+
+    let result = vacancies.filter((item) => item.isPublished !== false);
+    if (search) {
+      result = result.filter((item) =>
+        [item.title, item.department, item.summary, item.description]
+          .join(" ")
+          .toLowerCase()
+          .includes(search)
+      );
+    }
+
+    const count = result.length;
+    const start = (page - 1) * pageSize;
+    res.json({ count, results: result.slice(start, start + pageSize) });
+  } catch {
+    res.status(500).json({ error: "Could not read vacancies." });
+  }
+});
+
+app.get("/api/vacancies/:id/", async (req, res) => {
+  try {
+    const vacancies = await readVacancies();
+    const idx = vacancies.findIndex((item) => String(item.id) === String(req.params.id));
+    if (idx < 0) return res.status(404).json({ error: "Vacancy not found." });
+    if (vacancies[idx].isPublished === false) {
+      return res.status(404).json({ error: "Vacancy not found." });
+    }
+
+    vacancies[idx].views = Number(vacancies[idx].views || 0) + 1;
+    vacancies[idx].updatedAt = new Date().toISOString();
+    await writeVacancies(vacancies);
+    res.json(vacancies[idx]);
+  } catch {
+    res.status(500).json({ error: "Could not read vacancy." });
   }
 });
 
