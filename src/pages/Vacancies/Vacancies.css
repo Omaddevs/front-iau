@@ -109,34 +109,14 @@
   line-height: 1.55;
 }
 
-.vac-list {
-  display: grid;
-  gap: 16px;
-}
-
-.vac-card {
-  background: #fff;
-  border: 1px solid rgba(11, 18, 32, 0.08);
-  border-radius: 16px;
-  padding: 22px 24px;
-  box-shadow: 0 10px 28px rgba(11, 18, 32, 0.06);
-}
-
-.vac-card-top {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
-}
-
-.vac-status,
-.vac-type {
+.vac-status {
   display: inline-flex;
   align-items: center;
   border-radius: 999px;
   padding: 4px 10px;
   font-size: 12px;
   font-weight: 700;
+  flex-shrink: 0;
 }
 
 .vac-status.is-open {
@@ -147,56 +127,6 @@
 .vac-status.is-closed {
   background: #f1f5f9;
   color: #64748b;
-}
-
-.vac-type {
-  background: color-mix(in srgb, var(--brand-blue, #3e74c9) 12%, white);
-  color: var(--r-4, #2c5489);
-}
-
-.vac-card h3 {
-  margin: 0 0 8px;
-  font-size: 22px;
-  font-weight: 800;
-}
-
-.vac-card h3 a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.vac-card h3 a:hover {
-  color: var(--brand-blue, #3e74c9);
-}
-
-.vac-card p {
-  margin: 0 0 14px;
-  color: color-mix(in srgb, var(--nav-ink, #0b1220) 72%, white);
-  line-height: 1.55;
-}
-
-.vac-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-bottom: 16px;
-  color: #4a5568;
-  font-size: 14px;
-}
-
-.vac-meta span {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.vac-more {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--brand-green, #3f8f6c);
-  font-weight: 700;
-  text-decoration: none;
 }
 
 .vac-sideCard {
@@ -471,5 +401,167 @@
 
   .vd-meta-box {
     grid-template-columns: 1fr;
+  }
+}
+
+/* ── Accordion vacancy list ─────────────────────────────────────────── */
+
+.vac-acc-list {
+  display: grid;
+  gap: 14px;
+}
+
+.vac-acc-card {
+  background: #fff;
+  border: 1px solid rgba(11, 18, 32, 0.08);
+  border-radius: 16px;
+  box-shadow: 0 10px 28px rgba(11, 18, 32, 0.05);
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.vac-acc-card.is-open {
+  border-color: color-mix(in srgb, var(--brand-green, #3f8f6c) 35%, white);
+  box-shadow: 0 14px 34px rgba(11, 18, 32, 0.09);
+}
+
+.vac-acc-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 22px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+}
+
+.vac-acc-icon {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--brand-blue, #3e74c9) 12%, white);
+  color: var(--brand-blue, #3e74c9);
+  font-size: 19px;
+}
+
+.vac-acc-titleWrap {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.vac-acc-title {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--nav-ink, #0b1220);
+}
+
+.vac-acc-subtitle {
+  font-size: 13px;
+  color: #64748b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.vac-acc-chevron {
+  flex-shrink: 0;
+  font-size: 18px;
+  color: #94a3b8;
+  transition: transform 0.25s ease;
+}
+
+.vac-acc-card.is-open .vac-acc-chevron {
+  transform: rotate(180deg);
+  color: var(--brand-green, #3f8f6c);
+}
+
+.vac-acc-body-wrap {
+  overflow: hidden;
+}
+
+.vac-acc-body {
+  padding: 4px 22px 26px;
+  border-top: 1px solid rgba(11, 18, 32, 0.06);
+  padding-top: 20px;
+}
+
+.vac-acc-meta {
+  margin-top: 0;
+}
+
+.vac-acc-loading {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
+}
+
+.vac-acc-more {
+  display: inline-flex;
+  align-items: center;
+  color: var(--brand-blue, #3e74c9);
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  padding: 12px 4px;
+}
+
+.vac-acc-more:hover {
+  text-decoration: underline;
+}
+
+/* ── Rich text (vacancy description markdown-lite) ─────────────────── */
+
+.vac-rt-h3 {
+  margin: 24px 0 10px;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--brand-blue, #3e74c9);
+  padding-left: 12px;
+  border-left: 4px solid var(--brand-green, #3f8f6c);
+}
+
+.vac-rt-p {
+  margin: 0 0 14px;
+  line-height: 1.7;
+  color: #334155;
+}
+
+.vac-rt-list {
+  margin: 0 0 14px;
+  padding-left: 20px;
+  display: grid;
+  gap: 8px;
+}
+
+.vac-rt-list li {
+  line-height: 1.65;
+  color: #334155;
+}
+
+.vac-rt-list li::marker {
+  color: var(--brand-green, #3f8f6c);
+}
+
+@media (max-width: 640px) {
+  .vac-acc-header {
+    padding: 14px 16px;
+    gap: 10px;
+  }
+
+  .vac-acc-body {
+    padding: 16px 16px 22px;
+  }
+
+  .vac-acc-subtitle {
+    display: none;
   }
 }

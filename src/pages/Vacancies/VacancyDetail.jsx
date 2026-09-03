@@ -10,12 +10,13 @@ import {
   IoCloseCircleOutline,
 } from "react-icons/io5";
 import { FaTelegramPlane } from "react-icons/fa";
-
-const DEFAULT_TELEGRAM_LINK = "https://t.me/iau_uz";
 import bgVideo from "../../all-bg-videos/iau-bg.mp4";
 import { fetchVacancyDetail, submitVacancyApplication } from "../../api/vacanciesApi";
+import { renderRichText, renderInlineBold } from "./richText";
 import "../News/NewsDetail.css";
 import "./Vacancies.css";
+
+const DEFAULT_TELEGRAM_LINK = "https://t.me/iau_uz";
 
 function splitLines(text) {
   return String(text || "")
@@ -52,7 +53,6 @@ export default function VacancyDetail() {
       .finally(() => setLoading(false));
   }, [id]);
 
-  const paragraphs = splitLines(item?.description);
   const requirements = splitLines(item?.requirements);
   const open = item?.isOpen !== false;
 
@@ -147,18 +147,16 @@ export default function VacancyDetail() {
                 </div>
               </div>
 
-              <div className="nd-article vd-section">
-                {paragraphs.map((paragraph, index) => (
-                  <p key={index}>{paragraph}</p>
-                ))}
+              <div className="nd-article vd-section vac-rt">
+                {renderRichText(item.description)}
               </div>
 
               {requirements.length > 0 && (
                 <div className="vd-section">
                   <h2>{t("vacancies.requirements")}</h2>
-                  <ul>
-                    {requirements.map((line) => (
-                      <li key={line}>{line}</li>
+                  <ul className="vac-rt-list">
+                    {requirements.map((line, index) => (
+                      <li key={index}>{renderInlineBold(line, `req-${index}`)}</li>
                     ))}
                   </ul>
                 </div>
