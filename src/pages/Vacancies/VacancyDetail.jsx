@@ -9,6 +9,9 @@ import {
   IoCheckmarkCircleOutline,
   IoCloseCircleOutline,
 } from "react-icons/io5";
+import { FaTelegramPlane } from "react-icons/fa";
+
+const DEFAULT_TELEGRAM_LINK = "https://t.me/iau_uz";
 import bgVideo from "../../all-bg-videos/iau-bg.mp4";
 import { fetchVacancyDetail, submitVacancyApplication } from "../../api/vacanciesApi";
 import "../News/NewsDetail.css";
@@ -176,11 +179,21 @@ export default function VacancyDetail() {
                   <>
                     <p>{t("vacancies.applyHint")}</p>
 
-                    {!showForm && (
-                      <button type="button" className="vd-apply" onClick={() => setShowForm(true)}>
-                        <IoMailOutline /> {t("vacancies.applyNow")}
-                      </button>
-                    )}
+                    <div className="vd-apply-actions">
+                      {!showForm && (
+                        <button type="button" className="vd-apply" onClick={() => setShowForm(true)}>
+                          <IoMailOutline /> {t("vacancies.applyNow")}
+                        </button>
+                      )}
+                      <a
+                        className="vd-telegram"
+                        href={item.telegramLink || DEFAULT_TELEGRAM_LINK}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <FaTelegramPlane /> {t("vacancies.applyTelegram")}
+                      </a>
+                    </div>
 
                     {showForm && (
                       <form className="vac-apply-form" onSubmit={handleSubmit}>

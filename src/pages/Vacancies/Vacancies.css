@@ -315,6 +315,34 @@
   cursor: not-allowed;
 }
 
+.vd-apply-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.vd-telegram {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  background: #229ed9;
+  color: #fff;
+  text-decoration: none;
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 20px;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.vd-telegram:hover {
+  background: #1c86ba;
+}
+
 .vac-filled-banner,
 .vac-success-banner {
   display: flex;
