@@ -12,7 +12,7 @@ import {
 import { FaTelegramPlane } from "react-icons/fa";
 import bgVideo from "../../all-bg-videos/iau-bg.mp4";
 import { fetchVacancyDetail, submitVacancyApplication } from "../../api/vacanciesApi";
-import { renderRichText, renderInlineBold } from "./richText";
+import { renderRichText, renderInlineBold, stripBulletPrefix } from "./richText";
 import "../News/NewsDetail.css";
 import "./Vacancies.css";
 
@@ -142,8 +142,8 @@ export default function VacancyDetail() {
                   <strong>{item.location || "—"}</strong>
                 </div>
                 <div className="vd-meta-item">
-                  <span>{t("vacancies.published")}</span>
-                  <strong>{item.date || "—"}</strong>
+                  <span>{t("vacancies.deadline")}</span>
+                  <strong>{item.deadline || "—"}</strong>
                 </div>
               </div>
 
@@ -156,7 +156,7 @@ export default function VacancyDetail() {
                   <h2>{t("vacancies.requirements")}</h2>
                   <ul className="vac-rt-list">
                     {requirements.map((line, index) => (
-                      <li key={index}>{renderInlineBold(line, `req-${index}`)}</li>
+                      <li key={index}>{renderInlineBold(stripBulletPrefix(line), `req-${index}`)}</li>
                     ))}
                   </ul>
                 </div>

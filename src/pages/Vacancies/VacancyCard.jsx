@@ -13,7 +13,7 @@ import {
 import { FaTelegramPlane } from "react-icons/fa";
 import { useLanguage } from "../../i18n/LanguageContext";
 import { fetchVacancyDetail, submitVacancyApplication } from "../../api/vacanciesApi";
-import { renderRichText, renderInlineBold } from "./richText";
+import { renderRichText, renderInlineBold, stripBulletPrefix } from "./richText";
 
 const DEFAULT_TELEGRAM_LINK = "https://t.me/iau_uz";
 
@@ -143,7 +143,7 @@ export default function VacancyCard({ item }) {
                       <h3 className="vac-rt-h3">{t("vacancies.requirements")}</h3>
                       <ul className="vac-rt-list">
                         {requirements.map((line, index) => (
-                          <li key={index}>{renderInlineBold(line, `req-${index}`)}</li>
+                          <li key={index}>{renderInlineBold(stripBulletPrefix(line), `req-${index}`)}</li>
                         ))}
                       </ul>
                     </div>

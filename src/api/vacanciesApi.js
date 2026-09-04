@@ -22,7 +22,7 @@ async function requestJson(urls) {
 
 function vacancyUrls(path, query = "") {
   const suffix = `${path}${query}`;
-  return [`${SECONDARY_BASE_URL}${suffix}`, `${BASE_URL}${suffix}`];
+  return [`${BASE_URL}${suffix}`, `${SECONDARY_BASE_URL}${suffix}`];
 }
 
 export async function fetchVacanciesList(params = {}) {

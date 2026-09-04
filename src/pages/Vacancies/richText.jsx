@@ -36,9 +36,9 @@ export function renderRichText(text) {
           {parseInlineBold(line.slice(3).trim(), `h-${idx}`)}
         </h3>
       );
-    } else if (line.startsWith("- ") || line.startsWith("• ")) {
+    } else if (/^[-•]\s+/.test(line)) {
       if (!currentList) currentList = [];
-      currentList.push(line.slice(2).trim());
+      currentList.push(line.replace(/^[-•]\s+/, "").trim());
     } else {
       flushList();
       blocks.push(
@@ -55,4 +55,8 @@ export function renderRichText(text) {
 
 export function renderInlineBold(text, keyPrefix = "inline") {
   return parseInlineBold(text, keyPrefix);
+}
+
+export function stripBulletPrefix(text) {
+  return String(text || "").replace(/^[-•]\s+/, "").trim();
 }
