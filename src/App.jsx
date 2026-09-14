@@ -46,6 +46,7 @@ const Summary2024 = lazy(() => import("./pages/Festivals/Summary2024"));
 const Summary2023 = lazy(() => import("./pages/Festivals/Summary2023"));
 const Reasons22 = lazy(() => import("./pages/Festivals/Reasons22"));
 const InternationalDepartmentPage = lazy(() => import("./pages/InternationalDepartment/InternationalDepartmentPage"));
+const KelajakkaQadamProgramPage = lazy(() => import("./pages/InternationalDepartment/KelajakkaQadamProgramPage"));
 const AcademicCalendar = lazy(() => import("./pages/StudentLife/AcademicCalendar"));
 const StudentHandbook = lazy(() => import("./pages/StudentLife/StudentHandbook"));
 const IauClubs = lazy(() => import("./pages/StudentLife/IauClubs"));
@@ -112,6 +113,7 @@ function AppRoutes() {
       <Route path="/festivals/22-reasons" element={<Reasons22 />} />
       <Route path="/international-department/cooperation" element={<InternationalDepartmentPage pageId="cooperation" />} />
       <Route path="/international-department/career-services" element={<InternationalDepartmentPage pageId="career-services" />} />
+      <Route path="/international-department/career-services/kelajakka-qadam/tadbirkorlikka-ilk-qadam" element={<KelajakkaQadamProgramPage />} />
       <Route path="/international-department/fao-elearning-academy" element={<InternationalDepartmentPage pageId="fao-elearning-academy" />} />
       <Route path="/international-department/faq" element={<InternationalDepartmentPage pageId="faq" />} />
       <Route path="/student-life/academic-calendar" element={<AcademicCalendar />} />

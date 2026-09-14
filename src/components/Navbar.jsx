@@ -105,7 +105,7 @@ export default function Navbar() {
                 "PhD AND DSc PROGRAMMES",
             ],
             research: [
-                "ACADEMIC CALENDAR FOR 2025/2026",
+                "ACADEMIC CALENDAR FOR 2026/2027",
                 "INTERNATIONAL STUDENTS",
                 "STUDENT HANDBOOK",
                 "PRESENTATION FOR APPLICANTS",
@@ -153,8 +153,10 @@ export default function Navbar() {
                     },
                     {
                         name: "CAREER SERVICES CENTER",
-                        type: "link",
-                        path: "/international-department/career-services",
+                        type: "group",
+                        items: [
+                            { name: "TADBIRKORLIKKA ILK QADAM", path: "/international-department/career-services/kelajakka-qadam/tadbirkorlikka-ilk-qadam" },
+                        ],
                     },
                     {
                         name: "FAO ELEARNING ACADEMY",
@@ -193,7 +195,7 @@ export default function Navbar() {
         "ADMISSION RESULTS 2026/2027": nl("admissionResults2026"),
         "TUITION FEES": nl("tuitionFees"),
         "OPEN DAYS AT IAU": nl("openDaysAtIau"),
-        "ACADEMIC CALENDAR FOR 2025/2026": nl("academicCalendar"),
+        "ACADEMIC CALENDAR FOR 2026/2027": nl("academicCalendar"),
         "INTERNATIONAL STUDENTS": nl("internationalStudents"),
         "STUDENT HANDBOOK": nl("studentHandbook"),
         "PRESENTATION FOR APPLICANTS": nl("presentationApplicants"),
@@ -208,6 +210,7 @@ export default function Navbar() {
         "GERMAN-UZBEK CHAIN ON CENTRAL ASIAN AGRICULTURAL ECONOMICS (GUCAE)": nl("gucae"),
         "INTERNATIONAL COOPERATION DEPARTMENT": nl("internationalCooperationDepartment"),
         "CAREER SERVICES CENTER": nl("careerServicesCenter"),
+        "TADBIRKORLIKKA ILK QADAM": nl("kqTadbirkorlikkaIlkQadam"),
         "FAO ELEARNING ACADEMY": nl("faoElearningAcademy"),
         "FAQ": nl("faqMenu"),
         "FESTIVALS": nl("festivals"),
@@ -581,7 +584,7 @@ export default function Navbar() {
                                 <div className="navx-ddMenu">
                                     {dropdowns.research.map((x) => (
                                         hiddenStudentLifeItems.has(x) ? null :
-                                        x === "ACADEMIC CALENDAR FOR 2025/2026" ? (
+                                        x === "ACADEMIC CALENDAR FOR 2026/2027" ? (
                                             <button
                                                 key={nL(x)}
                                                 type="button"
@@ -804,6 +807,10 @@ export default function Navbar() {
                                                                     href="#"
                                                                     onClick={(e) => {
                                                                         e.preventDefault();
+                                                                        if (x.path) {
+                                                                            navigateIntlLink(x);
+                                                                            return;
+                                                                        }
                                                                         if (x.subItems && x.subItems.length === 0) {
                                                                             if (!navigateFestivalLeaf(x.name)) {
                                                                                 setOpenDD(null);
@@ -1098,7 +1105,7 @@ export default function Navbar() {
                             <div className="navx-mDD">
                                     {dropdowns.research.map((x) => (
                                     hiddenStudentLifeItems.has(x) ? null :
-                                    x === "ACADEMIC CALENDAR FOR 2025/2026" ? (
+                                    x === "ACADEMIC CALENDAR FOR 2026/2027" ? (
                                         <button
                                             key={nL(x)}
                                             type="button"
@@ -1285,7 +1292,18 @@ export default function Navbar() {
                                             </summary>
                                             <div className="navx-mSubDD">
                                                 {item.items?.map((x) => (
-                                                    x.subItems && x.subItems.length === 0 ? (
+                                                    x.path ? (
+                                                        <button
+                                                            key={nL(x.name)}
+                                                            className="navx-mSubBtn navx-mSubBtn--full"
+                                                            onClick={() => {
+                                                                setMobileOpen(false);
+                                                                navigateIntlLink(x);
+                                                            }}
+                                                        >
+                                                            {nL(x.name)}
+                                                        </button>
+                                                    ) : x.subItems && x.subItems.length === 0 ? (
                                                         <button
                                                             key={nL(x.name)}
                                                             className="navx-mSubBtn navx-mSubBtn--full"

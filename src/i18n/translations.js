@@ -29,7 +29,7 @@ export const translations = {
       tuitionFees: "Tuition fees",
       openDaysAtIau: "Open days at IAU",
       // Study Process dropdown
-      academicCalendar: "Academic calendar for 2025/2026",
+      academicCalendar: "Academic calendar for 2026/2027",
       internationalStudents: "International students",
       studentHandbook: "Student handbook",
       presentationApplicants: "Presentation for applicants",
@@ -46,6 +46,7 @@ export const translations = {
       // International Department dropdown
       internationalCooperationDepartment: "International Cooperation Department",
       careerServicesCenter: "Career services center",
+      kqTadbirkorlikkaIlkQadam: "First step to entrepreneurship",
       faoElearningAcademy: "FAO eLearning Academy",
       faqMenu: "FAQ",
       lifeScienceFestival: "Life science festival",
@@ -533,6 +534,18 @@ export const translations = {
       ctaSecondary: "How to apply",
     },
 
+    kelajakkaQadam: {
+      sidebarTitle: "Kelajakka qadam",
+      pdfLabel: "PDF document",
+      openNewTab: "Open in new window",
+      downloadPdf: "Download PDF",
+      ctaTitle: "Ready to turn your idea into a project?",
+      ctaText: "Get in touch with National Bank of Uzbekistan for full terms, documents, and the application process.",
+      ctaWebsite: "Visit nbu.uz",
+      ctaPhone: "(78) 148 00 10",
+      poweredBy: "Offered in partnership with National Bank of Uzbekistan (NBU), as part of the \"Kelajak tadbirkori\" project",
+    },
+
     intlFao: {
       badge: "Global learning partner",
       introTitle: "International Agriculture University and FAO eLearning Academy",
@@ -739,13 +752,13 @@ export const translations = {
       heroEkoActive: "Eco-Active Students",
       sidebar: {
         title: "Student life",
-        academicCalendar: "ACADEMIC CALENDAR FOR 2025/2026",
+        academicCalendar: "ACADEMIC CALENDAR FOR 2026/2027",
         studentHandbook: "STUDENT HANDBOOK",
         ecoActiveStudents: "ECO-ACTIVE STUDENTS",
       },
       calendar: {
-        british: "British Academic Calendar 2025-2026",
-        uzbek: "Uzbek Academic Calendar 2025-2026",
+        british: "British Academic Calendar 2026-2027",
+        uzbek: "Uzbek Academic Calendar 2026-2027",
       },
       clubs: {
         searchPlaceholder: "Search clubs...",
@@ -940,7 +953,7 @@ export const translations = {
       quickLinks: "Quick links",
       supportHubs: "Support hubs",
       faqTitle: "Frequently asked questions",
-      linkCalendar: "Academic calendar 2025/26",
+      linkCalendar: "Academic calendar 2026/27",
       linkHandbook: "Handbook & policies",
       linkPdfView: "PDF quick view",
       linkClubs: "Clubs & communities",
@@ -1192,7 +1205,7 @@ export const translations = {
       offerHolderGuide: "Taklif oluvchilar qo'llanmasi",
       tuitionFees: "O'quv to'lovlari",
       openDaysAtIau: "IAU ochiq kunlari",
-      academicCalendar: "2025/2026 o'quv yili taqvimi",
+      academicCalendar: "2026/2027 o'quv yili taqvimi",
       internationalStudents: "Xalqaro talabalar",
       studentHandbook: "Talaba qoʻllanmasi",
       presentationApplicants: "Abituriyentlar uchun taqdimot",
@@ -1207,6 +1220,7 @@ export const translations = {
       gucae: "Markaziy Osiyo qishloq xo'jaligi iqtisodiyoti bo'yicha german-o'zbek zanjiri (GUCAE)",
       internationalCooperationDepartment: "Xalqaro Hamkorlik Bo'limi",
       careerServicesCenter: "Karyera xizmatlari markazi",
+      kqTadbirkorlikkaIlkQadam: "Tadbirkorlikka ilk qadam",
       faoElearningAcademy: "FAO elektron o'quv Akademiyasi",
       faqMenu: "FAQ",
       lifeScienceFestival: "Hayot fanlari festivali",
@@ -1682,6 +1696,18 @@ export const translations = {
       ctaSecondary: "Qanday ariza topshirish",
     },
 
+    kelajakkaQadam: {
+      sidebarTitle: "Kelajakka qadam",
+      pdfLabel: "PDF hujjat",
+      openNewTab: "Yangi oynada ochish",
+      downloadPdf: "PDF yuklab olish",
+      ctaTitle: "O'z g'oyangizni real loyihaga aylantirishga tayyormisiz?",
+      ctaText: "To'liq shartlar, hujjatlar va ariza topshirish tartibi bo'yicha Xalq banki bilan bog'laning.",
+      ctaWebsite: "nbu.uz saytiga o'tish",
+      ctaPhone: "(78) 148 00 10",
+      poweredBy: "Xalq banki (NBU) bilan hamkorlikda, \"Kelajak tadbirkori\" loyihasi doirasida taqdim etiladi",
+    },
+
     intlFao: {
       badge: "Global ta'lim hamkori",
       introTitle: "Xalqaro Agrar Universiteti va FAO eLearning Academy",
@@ -1885,13 +1911,13 @@ export const translations = {
       heroEkoActive: "Ekofaol talabalar",
       sidebar: {
         title: "Talaba hayoti",
-        academicCalendar: "2025/2026 O'QUV YILI TAQVIMI",
+        academicCalendar: "2026/2027 O'QUV YILI TAQVIMI",
         studentHandbook: "TALABA QO'LLANMASI",
         ecoActiveStudents: "EKOFAOL TALABALAR",
       },
       calendar: {
-        british: "Britaniya o'quv yili taqvimi 2025-2026",
-        uzbek: "O'zbek o'quv yili taqvimi 2025-2026",
+        british: "Britaniya o'quv yili taqvimi 2026-2027",
+        uzbek: "O'zbek o'quv yili taqvimi 2026-2027",
       },
       clubs: {
         searchPlaceholder: "Klublarni qidiring...",
@@ -2076,7 +2102,7 @@ export const translations = {
       quickLinks: "Tezkor havolalar",
       supportHubs: "Qo'llab-quvvatlash markazlari",
       faqTitle: "Ko'p so'raladigan savollar",
-      linkCalendar: "O'quv yili taqvimi 2025/26",
+      linkCalendar: "O'quv yili taqvimi 2026/27",
       linkHandbook: "Qo'llanma va qoidalar",
       linkPdfView: "PDF tezkor ko'rish",
       linkClubs: "Klublar va jamoalar",
@@ -2321,7 +2347,7 @@ export const translations = {
       offerHolderGuide: "Руководство для получивших предложение",
       tuitionFees: "Стоимость обучения",
       openDaysAtIau: "Дни открытых дверей в IAU",
-      academicCalendar: "Учебный календарь 2025/2026",
+      academicCalendar: "Учебный календарь 2026/2027",
       internationalStudents: "Иностранные студенты",
       studentHandbook: "Справочник студента",
       presentationApplicants: "Презентация для абитуриентов",
@@ -2336,6 +2362,7 @@ export const translations = {
       gucae: "Германо-узбекская цепочка по сельскохозяйственной экономике Центральной Азии (GUCAE)",
       internationalCooperationDepartment: "Отдел Международного Сотрудничества",
       careerServicesCenter: "Центр карьерных сервисов",
+      kqTadbirkorlikkaIlkQadam: "Первый шаг к предпринимательству",
       faoElearningAcademy: "Академия электронного обучения FAO",
       faqMenu: "FAQ",
       lifeScienceFestival: "Фестиваль наук о жизни",
@@ -2811,6 +2838,18 @@ export const translations = {
       ctaSecondary: "Как подать заявку",
     },
 
+    kelajakkaQadam: {
+      sidebarTitle: "Kelajakka qadam",
+      pdfLabel: "PDF документ",
+      openNewTab: "Открыть в новом окне",
+      downloadPdf: "Скачать PDF",
+      ctaTitle: "Готовы превратить свою идею в проект?",
+      ctaText: "Свяжитесь с Народным банком Узбекистана, чтобы узнать все условия, документы и порядок подачи заявки.",
+      ctaWebsite: "Перейти на nbu.uz",
+      ctaPhone: "(78) 148 00 10",
+      poweredBy: "Реализуется в партнёрстве с Народным банком Узбекистана (NBU) в рамках проекта «Kelajak tadbirkori»",
+    },
+
     intlFao: {
       badge: "Глобальный образовательный партнёр",
       introTitle: "Международный аграрный университет и FAO eLearning Academy",
@@ -3014,13 +3053,13 @@ export const translations = {
       heroEkoActive: "Экоактивные студенты",
       sidebar: {
         title: "Студенческая жизнь",
-        academicCalendar: "УЧЕБНЫЙ КАЛЕНДАРЬ 2025/2026",
+        academicCalendar: "УЧЕБНЫЙ КАЛЕНДАРЬ 2026/2027",
         studentHandbook: "СПРАВОЧНИК СТУДЕНТА",
         ecoActiveStudents: "ЭКОАКТИВНЫЕ СТУДЕНТЫ",
       },
       calendar: {
-        british: "Британский учебный календарь 2025-2026",
-        uzbek: "Узбекский учебный календарь 2025-2026",
+        british: "Британский учебный календарь 2026-2027",
+        uzbek: "Узбекский учебный календарь 2026-2027",
       },
       clubs: {
         searchPlaceholder: "Поиск клубов...",
@@ -3205,7 +3244,7 @@ export const translations = {
       quickLinks: "Быстрые ссылки",
       supportHubs: "Центры поддержки",
       faqTitle: "Часто задаваемые вопросы",
-      linkCalendar: "Учебный календарь 2025/26",
+      linkCalendar: "Учебный календарь 2026/27",
       linkHandbook: "Справочник и политики",
       linkPdfView: "Быстрый просмотр PDF",
       linkClubs: "Клубы и сообщества",

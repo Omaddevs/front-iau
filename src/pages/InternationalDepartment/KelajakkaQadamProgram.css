@@ -1,0 +1,169 @@
+/* ── Kelajakka qadam document page ─────────────────────────── */
+.kq-doc-container {
+  align-items: flex-start;
+}
+
+/* Breadcrumbs inside the hero (InternationalDeptBreadcrumbs is otherwise unstyled here) */
+.kq-doc-page .breadcrumbs {
+  font-size: 14px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+}
+
+.kq-doc-page .breadcrumbs a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.kq-doc-page .breadcrumbs a:hover {
+  color: #ffdf58;
+  text-decoration: underline;
+}
+
+.kq-doc-page .breadcrumbs .separator {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.kq-doc-page .breadcrumbs .current {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Sidebar */
+.kq-doc-sidebar-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.kq-doc-sidebar-title svg {
+  color: #b7791f;
+  font-size: 18px;
+}
+
+.kq-doc-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.kq-doc-link-icon {
+  font-size: 17px;
+  flex-shrink: 0;
+}
+
+/* Document card */
+.kq-doc-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.kq-doc-toolbar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 20px 24px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.kq-doc-toolbar-title {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.kq-doc-toolbar-heading {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a202c;
+}
+
+.kq-doc-toolbar-sub {
+  font-size: 11px;
+  font-weight: 600;
+  color: #a0aec0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.kq-doc-toolbar-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.kq-doc-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.kq-doc-btn svg {
+  font-size: 16px;
+}
+
+.kq-doc-btn--ghost {
+  border: 1px solid #cbd5e0;
+  color: #2d3748;
+  background: #fff;
+}
+
+.kq-doc-btn--ghost:hover {
+  border-color: #2c5282;
+  color: #2c5282;
+}
+
+.kq-doc-btn--solid {
+  background: linear-gradient(135deg, #1a6b3a 0%, #2c5282 100%);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(26, 107, 58, 0.25);
+}
+
+.kq-doc-btn--solid:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(26, 107, 58, 0.32);
+  color: #fff;
+}
+
+.kq-doc-pdf-container {
+  height: 900px;
+}
+
+/* CTA */
+.kq-doc-cta {
+  margin-top: 24px;
+}
+
+.kq-doc-cta-powered {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #a0763b;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .kq-doc-pdf-container {
+    height: 600px;
+  }
+
+  .kq-doc-toolbar {
+    padding: 16px 18px;
+  }
+}
