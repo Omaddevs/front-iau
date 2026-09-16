@@ -12,6 +12,8 @@ import {
   IoShareSocialOutline,
   IoHome,
   IoChevronForwardOutline,
+  IoDownloadOutline,
+  IoOpenOutline,
 } from "react-icons/io5";
 
 import "./NewsDetail.css";
@@ -150,6 +152,28 @@ export default function NewsDetail() {
                   : <p>{news.text}</p>
                 }
               </div>
+
+              {/* Optional CTA: file download or external link from admin */}
+              {news.button_text && news.button_url && (
+                <div className="nd-cta">
+                  <a
+                    className="nd-cta-btn"
+                    href={news.button_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    download={
+                      String(news.button_url).includes("button-download")
+                        ? true
+                        : undefined
+                    }
+                  >
+                    {String(news.button_url).includes("button-download")
+                      ? <IoDownloadOutline />
+                      : <IoOpenOutline />}
+                    {news.button_text}
+                  </a>
+                </div>
+              )}
 
               {/* Gallery */}
               {uniqueGalleryImages.length > 0 && (

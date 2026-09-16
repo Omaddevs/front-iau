@@ -209,6 +209,38 @@
   margin-bottom: 0;
 }
 
+/* Optional CTA button (file / external link) */
+.nd-cta {
+  margin: 0 0 38px;
+}
+
+.nd-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #2b7a5f;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  padding: 12px 22px;
+  font-size: 15px;
+  font-weight: 700;
+  transition: background .2s, transform .15s;
+}
+
+.nd-cta-btn svg {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.nd-cta-btn:hover {
+  background: #236650;
+}
+
+.nd-cta-btn:active {
+  transform: translateY(1px);
+}
+
 /* Gallery */
 .nd-gallery {
   width: 100%;
@@ -477,6 +509,11 @@
   .nd-article {
     font-size: 14px;
     line-height: 1.8;
+  }
+
+  .nd-cta-btn {
+    font-size: 14px;
+    padding: 11px 18px;
   }
 
   .nd-sidebar {
