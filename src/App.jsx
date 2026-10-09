@@ -54,6 +54,8 @@ const PresentationForApplicants = lazy(() => import("./pages/StudentLife/Present
 const InternationalStudents = lazy(() => import("./pages/StudentLife/InternationalStudents"));
 const EkofaolTalabalar = lazy(() => import("./pages/StudentLife/EkofaolTalabalar"));
 const EkofaolNewsDetail = lazy(() => import("./pages/StudentLife/EkofaolNewsDetail"));
+const RubricList = lazy(() => import("./pages/Rubrics/RubricList"));
+const RubricDetail = lazy(() => import("./pages/Rubrics/RubricDetail"));
 const LatestNews = lazy(() => import("./pages/News/LatestNews"));
 const NewsDetail = lazy(() => import("./pages/News/NewsDetail"));
 const AllEvents = lazy(() => import("./pages/Events/AllEvents"));
@@ -123,6 +125,10 @@ function AppRoutes() {
       <Route path="/student-life/international-students" element={<InternationalStudents />} />
       <Route path="/student-life/ekofaol-talabalar" element={<EkofaolTalabalar />} />
       <Route path="/student-life/ekofaol-talabalar/:id" element={<EkofaolNewsDetail />} />
+      <Route path="/student-life/bir-ixtiro-tarixi" element={<RubricList key="bir-ixtiro-tarixi" rubric="bir-ixtiro-tarixi" />} />
+      <Route path="/student-life/bir-ixtiro-tarixi/:id" element={<RubricDetail rubric="bir-ixtiro-tarixi" />} />
+      <Route path="/student-life/ilm-bilan-erishilgan-yutuq" element={<RubricList key="ilm-bilan-erishilgan-yutuq" rubric="ilm-bilan-erishilgan-yutuq" />} />
+      <Route path="/student-life/ilm-bilan-erishilgan-yutuq/:id" element={<RubricDetail rubric="ilm-bilan-erishilgan-yutuq" />} />
       <Route path="/latest-news" element={<LatestNews />} />
       <Route path="/news/:id" element={<NewsDetail />} />
       <Route path="/events" element={<AllEvents />} />

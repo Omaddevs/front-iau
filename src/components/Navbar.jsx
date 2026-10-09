@@ -114,6 +114,8 @@ export default function Navbar() {
                 "STUDENTS CREATIVITY",
                 "INTERVIEWS",
                 "ECO-ACTIVE STUDENTS",
+                "BIR IXTIRO TARIXI",
+                "ILM BILAN ERISHILGAN YUTUQ",
             ],
             admissionsHub: [
                 "HOW TO APPLY",
@@ -204,6 +206,9 @@ export default function Navbar() {
         "STUDENTS CREATIVITY": nl("studentsCreativity"),
         "INTERVIEWS": nl("interviews"),
         "ECO-ACTIVE STUDENTS": nl("ecoActiveStudents"),
+        // Ruknlar faqat o'zbek tilida — tarjima qilinmaydi
+        "BIR IXTIRO TARIXI": "“Bir ixtiro tarixi”",
+        "ILM BILAN ERISHILGAN YUTUQ": "“Ilm bilan erishilgan yutuq”",
         "IAU SCIENTIFIC COUNCIL": nl("scientificCouncil"),
         "RESEARCH PROJECTS": nl("researchProjects"),
         "RESEARCH PUBLICATION": nl("researchPublication"),
@@ -231,6 +236,11 @@ export default function Navbar() {
         "RUSSIAN": t("admissions.trackRussian"),
     };
     const nL = (x) => navLabels[x] || x;
+
+    const rubricRoutes = {
+        "BIR IXTIRO TARIXI": "/student-life/bir-ixtiro-tarixi",
+        "ILM BILAN ERISHILGAN YUTUQ": "/student-life/ilm-bilan-erishilgan-yutuq",
+    };
 
     const admissionsHubRoutes = {
         "HOW TO APPLY": "/admissions/how-to-apply",
@@ -300,12 +310,15 @@ export default function Navbar() {
     const isIauClubsPage = location.pathname.startsWith("/student-life/iau-clubs");
     const isInternationalStudentsPage = location.pathname.startsWith("/student-life/international-students");
     const isEkofaolTalabalarPage = location.pathname.startsWith("/student-life/ekofaol-talabalar");
+    const isRubricPage =
+        location.pathname.startsWith("/student-life/bir-ixtiro-tarixi") ||
+        location.pathname.startsWith("/student-life/ilm-bilan-erishilgan-yutuq");
     const isLatestNewsPage = location.pathname.startsWith("/latest-news");
     const isNewsDetailPage = location.pathname.startsWith("/news/");
     const isEventsPage = location.pathname.startsWith("/events");
     const isVacanciesPage = location.pathname.startsWith("/vacancies");
     const solidWhiteMode =
-        isStaffListPage || isStaffDetailPage || isLegacyStaffPage || isAdmissionsPage || isScientificCouncilPage || isResearchProjectsPage || isGucaePage || isAboutPage || isContactPage || isFestivalsPage || isInternationalDeptPage || isAcademicCalendarPage || isStudentHandbookPage || isPresentationApplicantsPage || isIauClubsPage || isInternationalStudentsPage || isEkofaolTalabalarPage || isLatestNewsPage || isNewsDetailPage || isEventsPage || isVacanciesPage;
+        isStaffListPage || isStaffDetailPage || isLegacyStaffPage || isAdmissionsPage || isScientificCouncilPage || isResearchProjectsPage || isGucaePage || isAboutPage || isContactPage || isFestivalsPage || isInternationalDeptPage || isAcademicCalendarPage || isStudentHandbookPage || isPresentationApplicantsPage || isIauClubsPage || isInternationalStudentsPage || isEkofaolTalabalarPage || isRubricPage || isLatestNewsPage || isNewsDetailPage || isEventsPage || isVacanciesPage;
 
     return (
         <header
@@ -652,6 +665,18 @@ export default function Navbar() {
                                                 onClick={() => {
                                                     closeAll();
                                                     navigate("/student-life/ekofaol-talabalar");
+                                                }}
+                                            >
+                                                {nL(x)}
+                                            </button>
+                                        ) : rubricRoutes[x] ? (
+                                            <button
+                                                key={nL(x)}
+                                                type="button"
+                                                className="navx-ddAction"
+                                                onClick={() => {
+                                                    closeAll();
+                                                    navigate(rubricRoutes[x]);
                                                 }}
                                             >
                                                 {nL(x)}
@@ -1173,6 +1198,18 @@ export default function Navbar() {
                                             onClick={() => {
                                                 setMobileOpen(false);
                                                 navigate("/student-life/ekofaol-talabalar");
+                                            }}
+                                        >
+                                            {nL(x)}
+                                        </button>
+                                    ) : rubricRoutes[x] ? (
+                                        <button
+                                            key={nL(x)}
+                                            type="button"
+                                            className="navx-mDDbtn"
+                                            onClick={() => {
+                                                setMobileOpen(false);
+                                                navigate(rubricRoutes[x]);
                                             }}
                                         >
                                             {nL(x)}
